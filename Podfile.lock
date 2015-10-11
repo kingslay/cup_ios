@@ -1,0 +1,26 @@
+PODS:
+  - Alamofire (2.0.2)
+  - KSJSONHelp (0.3)
+  - KSSwiftExtension (0.1)
+  - Moya/Core (3.0.1):
+    - Alamofire (~> 2.0)
+  - Moya/ReactiveCore (3.0.1):
+    - Moya/Core
+  - Moya/RxSwift (3.0.1):
+    - Moya/ReactiveCore
+    - RxSwift (~> 2.0.0-alpha)
+  - RxSwift (2.0.0-alpha.4)
+
+DEPENDENCIES:
+  - KSJSONHelp
+  - KSSwiftExtension
+  - Moya/RxSwift
+
+SPEC CHECKSUMS:
+  Alamofire: 8edbab00802a752bb5240cc2abe70e7e881488ad
+  KSJSONHelp: c903fd8f01f46eae2c01f3bb331e91693b7c58e2
+  KSSwiftExtension: d6366531149f10890f51aae6afe8a31115fd404b
+  Moya: 58b9f4afc324bfb41f6aa540296536c63de07380
+  RxSwift: 76dbcb12e55197533f8ace2af887511d7c9262dc
+
+COCOAPODS: 0.39.0
