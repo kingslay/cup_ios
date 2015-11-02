@@ -12,6 +12,7 @@
 		3C80A5DE1BCA5A9D0050B6B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C80A5DD1BCA5A9D0050B6B6 /* Assets.xcassets */; };
 		3C80A5E11BCA5A9D0050B6B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C80A5DF1BCA5A9D0050B6B6 /* LaunchScreen.storyboard */; };
 		3C80A5EC1BCA5A9D0050B6B6 /* CupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C80A5EB1BCA5A9D0050B6B6 /* CupTests.swift */; };
+		3CC57E031BE7BA490050E64E /* KSPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC57E021BE7BA490050E64E /* KSPickerView.swift */; };
 		6B05A4CA16F58DF3BD595D6C /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6013113010FD664CC0D5B2B1 /* Pods.framework */; };
 		CB89F7B31BE70B2700FD21FD /* ClockCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89F7B11BE70B2700FD21FD /* ClockCollectionViewCell.swift */; };
 		CB89F7B41BE70B2700FD21FD /* ClockCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB89F7B21BE70B2700FD21FD /* ClockCollectionViewCell.xib */; };
@@ -45,6 +46,7 @@
 		3C80A5E71BCA5A9D0050B6B6 /* CupTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CupTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C80A5EB1BCA5A9D0050B6B6 /* CupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CupTests.swift; sourceTree = "<group>"; };
 		3C80A5ED1BCA5A9D0050B6B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3CC57E021BE7BA490050E64E /* KSPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KSPickerView.swift; sourceTree = "<group>"; };
 		6013113010FD664CC0D5B2B1 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65F98BEC34B52C4E9381B7EB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		CB89F7B11BE70B2700FD21FD /* ClockCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 		CB89F7AB1BE707BF00FD21FD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3CC57E021BE7BA490050E64E /* KSPickerView.swift */,
 				CB89F7AC1BE707BF00FD21FD /* ViewCell */,
 			);
 			path = View;
@@ -389,6 +392,7 @@
 				CB89F7B71BE7101200FD21FD /* ClockCollectionViewController.swift in Sources */,
 				3C80A5D71BCA5A9C0050B6B6 /* CupViewController.swift in Sources */,
 				CB89F7BB1BE710EE00FD21FD /* TabBarViewController.swift in Sources */,
+				3CC57E031BE7BA490050E64E /* KSPickerView.swift in Sources */,
 				CB89F7C41BE73CD300FD21FD /* CupProvider.swift in Sources */,
 				CB89F7B31BE70B2700FD21FD /* ClockCollectionViewCell.swift in Sources */,
 				CB89F7C01BE7150A00FD21FD /* R.generated.swift in Sources */,

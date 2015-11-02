@@ -15,7 +15,7 @@ class ClockCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.whiteColor()
         self.collectionView?.registerNib(R.nib.clockCollectionViewCell)
-        let rightButton = UIBarButtonItem.init(barButtonSystemItem: .Add, target: self, action: "Add")
+        let rightButton = UIBarButtonItem.init(barButtonSystemItem: .Add, target: self, action: "addClock")
         self.navigationItem.rightBarButtonItem = rightButton
         // Do any additional setup after loading the view.
         
@@ -36,59 +36,68 @@ class ClockCollectionViewController: UICollectionViewController {
     }
     */
     
-    
+    func addClock() {
+        let picker = KSPickerView()
+        
+    }
     
 
-    // MARK: UICollectionViewDataSource
-
+    
+}
+// MARK: UICollectionViewDataSource
+extension ClockCollectionViewController {
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 0
     }
-
-
+    
+    
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
         return 0
     }
-
+    
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
-    
+        
         // Configure the cell
-    
+        
         return cell
     }
+}
 
+extension ClockCollectionViewController {
     // MARK: UICollectionViewDelegate
-
+    
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
+    return true
     }
     */
-
+    
     /*
     // Uncomment this method to specify if the specified item should be selected
     override func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
+    return true
     }
     */
-
+    
     /*
     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
     override func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return false
+    return false
     }
-
+    
     override func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
-        return false
+    return false
     }
-
+    
     override func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
     
     }
     */
-    
+
 }
+
+

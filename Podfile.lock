@@ -10,7 +10,7 @@ PODS:
     - Moya/ReactiveCore
     - RxSwift (~> 2.0.0-alpha)
   - R.swift (0.11.0)
-  - RxSwift (2.0.0-beta.1)
+  - RxSwift (2.0.0-beta.2)
 
 DEPENDENCIES:
   - KSJSONHelp
@@ -24,6 +24,6 @@ SPEC CHECKSUMS:
   KSSwiftExtension: d6366531149f10890f51aae6afe8a31115fd404b
   Moya: 83fe7bb268bc4cd5cb7ab00130eed4741b1683c0
   R.swift: dfd7addf1564914d92745816b76b0563d688f387
-  RxSwift: a9b0f4d876eac130cda0ae2f3fba627be3baf3ef
+  RxSwift: 795720c22352cf1f62669ef3695b5df7e195103b
 
 COCOAPODS: 0.39.0
