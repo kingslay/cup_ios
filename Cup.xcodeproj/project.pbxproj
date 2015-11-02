@@ -8,13 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		3C80A5D51BCA5A9C0050B6B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C80A5D41BCA5A9C0050B6B6 /* AppDelegate.swift */; };
-		3C80A5D71BCA5A9C0050B6B6 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C80A5D61BCA5A9C0050B6B6 /* FirstViewController.swift */; };
-		3C80A5D91BCA5A9C0050B6B6 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C80A5D81BCA5A9C0050B6B6 /* SecondViewController.swift */; };
-		3C80A5DC1BCA5A9C0050B6B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C80A5DA1BCA5A9C0050B6B6 /* Main.storyboard */; };
+		3C80A5D71BCA5A9C0050B6B6 /* CupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C80A5D61BCA5A9C0050B6B6 /* CupViewController.swift */; };
 		3C80A5DE1BCA5A9D0050B6B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C80A5DD1BCA5A9D0050B6B6 /* Assets.xcassets */; };
 		3C80A5E11BCA5A9D0050B6B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C80A5DF1BCA5A9D0050B6B6 /* LaunchScreen.storyboard */; };
 		3C80A5EC1BCA5A9D0050B6B6 /* CupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C80A5EB1BCA5A9D0050B6B6 /* CupTests.swift */; };
 		6B05A4CA16F58DF3BD595D6C /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6013113010FD664CC0D5B2B1 /* Pods.framework */; };
+		CB89F7B31BE70B2700FD21FD /* ClockCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89F7B11BE70B2700FD21FD /* ClockCollectionViewCell.swift */; };
+		CB89F7B41BE70B2700FD21FD /* ClockCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB89F7B21BE70B2700FD21FD /* ClockCollectionViewCell.xib */; };
+		CB89F7B71BE7101200FD21FD /* ClockCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89F7B51BE7101200FD21FD /* ClockCollectionViewController.swift */; };
+		CB89F7B81BE7101200FD21FD /* ClockCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB89F7B61BE7101200FD21FD /* ClockCollectionViewController.xib */; };
+		CB89F7BB1BE710EE00FD21FD /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89F7B91BE710EE00FD21FD /* TabBarViewController.swift */; };
+		CB89F7C01BE7150A00FD21FD /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89F7BF1BE7150A00FD21FD /* R.generated.swift */; };
+		CB89F7C21BE7355300FD21FD /* TabBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB89F7C11BE7355300FD21FD /* TabBarViewController.xib */; };
+		CB89F7C41BE73CD300FD21FD /* CupProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89F7C31BE73CD300FD21FD /* CupProvider.swift */; };
+		CB89F7C81BE746F700FD21FD /* CupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB89F7C71BE746F700FD21FD /* CupViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,9 +38,7 @@
 		1D52DF8D440B110927C4FB64 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		3C80A5D11BCA5A9C0050B6B6 /* Cup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C80A5D41BCA5A9C0050B6B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3C80A5D61BCA5A9C0050B6B6 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		3C80A5D81BCA5A9C0050B6B6 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
-		3C80A5DB1BCA5A9C0050B6B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3C80A5D61BCA5A9C0050B6B6 /* CupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CupViewController.swift; path = ../../Cup/CupViewController.swift; sourceTree = "<group>"; };
 		3C80A5DD1BCA5A9D0050B6B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3C80A5E01BCA5A9D0050B6B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3C80A5E21BCA5A9D0050B6B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -42,6 +47,15 @@
 		3C80A5ED1BCA5A9D0050B6B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6013113010FD664CC0D5B2B1 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65F98BEC34B52C4E9381B7EB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		CB89F7B11BE70B2700FD21FD /* ClockCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockCollectionViewCell.swift; sourceTree = "<group>"; };
+		CB89F7B21BE70B2700FD21FD /* ClockCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClockCollectionViewCell.xib; sourceTree = "<group>"; };
+		CB89F7B51BE7101200FD21FD /* ClockCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockCollectionViewController.swift; sourceTree = "<group>"; };
+		CB89F7B61BE7101200FD21FD /* ClockCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClockCollectionViewController.xib; sourceTree = "<group>"; };
+		CB89F7B91BE710EE00FD21FD /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		CB89F7BF1BE7150A00FD21FD /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		CB89F7C11BE7355300FD21FD /* TabBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabBarViewController.xib; sourceTree = "<group>"; };
+		CB89F7C31BE73CD300FD21FD /* CupProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CupProvider.swift; sourceTree = "<group>"; };
+		CB89F7C71BE746F700FD21FD /* CupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CupViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +80,8 @@
 		3C80A5C81BCA5A9C0050B6B6 = {
 			isa = PBXGroup;
 			children = (
+				CB89F7A71BE707BF00FD21FD /* Source */,
+				CB89F7A61BE707BF00FD21FD /* Resource */,
 				3C80A5D31BCA5A9C0050B6B6 /* Cup */,
 				3C80A5EA1BCA5A9D0050B6B6 /* CupTests */,
 				3C80A5D21BCA5A9C0050B6B6 /* Products */,
@@ -87,9 +103,6 @@
 			isa = PBXGroup;
 			children = (
 				3C80A5D41BCA5A9C0050B6B6 /* AppDelegate.swift */,
-				3C80A5D61BCA5A9C0050B6B6 /* FirstViewController.swift */,
-				3C80A5D81BCA5A9C0050B6B6 /* SecondViewController.swift */,
-				3C80A5DA1BCA5A9C0050B6B6 /* Main.storyboard */,
 				3C80A5DD1BCA5A9D0050B6B6 /* Assets.xcassets */,
 				3C80A5DF1BCA5A9D0050B6B6 /* LaunchScreen.storyboard */,
 				3C80A5E21BCA5A9D0050B6B6 /* Info.plist */,
@@ -104,6 +117,86 @@
 				3C80A5ED1BCA5A9D0050B6B6 /* Info.plist */,
 			);
 			path = CupTests;
+			sourceTree = "<group>";
+		};
+		CB89F7A61BE707BF00FD21FD /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		CB89F7A71BE707BF00FD21FD /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				CB89F7A81BE707BF00FD21FD /* Config */,
+				CB89F7A91BE707BF00FD21FD /* Model */,
+				CB89F7AA1BE707BF00FD21FD /* Utils */,
+				CB89F7AB1BE707BF00FD21FD /* View */,
+				CB89F7AD1BE707BF00FD21FD /* ViewControll */,
+				CB89F7AE1BE707BF00FD21FD /* ViewModel */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		CB89F7A81BE707BF00FD21FD /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				CB89F7BF1BE7150A00FD21FD /* R.generated.swift */,
+				CB89F7C31BE73CD300FD21FD /* CupProvider.swift */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		CB89F7A91BE707BF00FD21FD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CB89F7AA1BE707BF00FD21FD /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		CB89F7AB1BE707BF00FD21FD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CB89F7AC1BE707BF00FD21FD /* ViewCell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CB89F7AC1BE707BF00FD21FD /* ViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CB89F7B11BE70B2700FD21FD /* ClockCollectionViewCell.swift */,
+				CB89F7B21BE70B2700FD21FD /* ClockCollectionViewCell.xib */,
+			);
+			path = ViewCell;
+			sourceTree = "<group>";
+		};
+		CB89F7AD1BE707BF00FD21FD /* ViewControll */ = {
+			isa = PBXGroup;
+			children = (
+				3C80A5D61BCA5A9C0050B6B6 /* CupViewController.swift */,
+				CB89F7C71BE746F700FD21FD /* CupViewController.xib */,
+				CB89F7B51BE7101200FD21FD /* ClockCollectionViewController.swift */,
+				CB89F7B61BE7101200FD21FD /* ClockCollectionViewController.xib */,
+				CB89F7B91BE710EE00FD21FD /* TabBarViewController.swift */,
+				CB89F7C11BE7355300FD21FD /* TabBarViewController.xib */,
+			);
+			path = ViewControll;
+			sourceTree = "<group>";
+		};
+		CB89F7AE1BE707BF00FD21FD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		DA07D51378BE1308DC23C162 /* Frameworks */ = {
@@ -131,6 +224,7 @@
 			buildConfigurationList = 3C80A5F01BCA5A9D0050B6B6 /* Build configuration list for PBXNativeTarget "Cup" */;
 			buildPhases = (
 				3894886D13211D0D871E1FEC /* Check Pods Manifest.lock */,
+				CB89F7BD1BE7123500FD21FD /* Run Script */,
 				3C80A5CD1BCA5A9C0050B6B6 /* Sources */,
 				3C80A5CE1BCA5A9C0050B6B6 /* Frameworks */,
 				3C80A5CF1BCA5A9C0050B6B6 /* Resources */,
@@ -206,9 +300,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB89F7C21BE7355300FD21FD /* TabBarViewController.xib in Resources */,
+				CB89F7B81BE7101200FD21FD /* ClockCollectionViewController.xib in Resources */,
 				3C80A5E11BCA5A9D0050B6B6 /* LaunchScreen.storyboard in Resources */,
 				3C80A5DE1BCA5A9D0050B6B6 /* Assets.xcassets in Resources */,
-				3C80A5DC1BCA5A9C0050B6B6 /* Main.storyboard in Resources */,
+				CB89F7C81BE746F700FD21FD /* CupViewController.xib in Resources */,
+				CB89F7B41BE70B2700FD21FD /* ClockCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +364,20 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		CB89F7BD1BE7123500FD21FD /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"./Source/Config\"";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -274,9 +385,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C80A5D91BCA5A9C0050B6B6 /* SecondViewController.swift in Sources */,
 				3C80A5D51BCA5A9C0050B6B6 /* AppDelegate.swift in Sources */,
-				3C80A5D71BCA5A9C0050B6B6 /* FirstViewController.swift in Sources */,
+				CB89F7B71BE7101200FD21FD /* ClockCollectionViewController.swift in Sources */,
+				3C80A5D71BCA5A9C0050B6B6 /* CupViewController.swift in Sources */,
+				CB89F7BB1BE710EE00FD21FD /* TabBarViewController.swift in Sources */,
+				CB89F7C41BE73CD300FD21FD /* CupProvider.swift in Sources */,
+				CB89F7B31BE70B2700FD21FD /* ClockCollectionViewCell.swift in Sources */,
+				CB89F7C01BE7150A00FD21FD /* R.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,14 +414,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		3C80A5DA1BCA5A9C0050B6B6 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3C80A5DB1BCA5A9C0050B6B6 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		3C80A5DF1BCA5A9D0050B6B6 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -354,7 +461,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -392,7 +499,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

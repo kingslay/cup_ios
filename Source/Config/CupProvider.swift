@@ -1,33 +1,33 @@
 //
-//  FirstViewController.swift
+//  CupProvider.swift
 //  Cup
 //
-//  Created by king on 15/10/11.
+//  Created by kingslay on 15/11/2.
 //  Copyright © 2015年 king. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import Moya
 
-let CupProvider = RxMoyaProvider<Cup>(endpointClosure: { (let target) -> Endpoint<Cup> in
+let CupProvider = RxMoyaProvider<CupMoya>(endpointClosure: { (let target) -> Endpoint<CupMoya> in
     let url = target.baseURL.URLByAppendingPathComponent(target.path).absoluteString
-       switch target {
+    switch target {
     case .Add(_,_):
         return Endpoint(URL: url, sampleResponseClosure: {.NetworkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters, parameterEncoding: .JSON)
     default:
         return Endpoint(URL: url, sampleResponseClosure: {.NetworkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters)
-
+        
     }
-
+    
 })
 
-public enum Cup {
+public enum CupMoya {
     case Jsonfeed
     case Add(String,String)
     case TestError
 }
 
-extension Cup : MoyaTarget {
+extension CupMoya : MoyaTarget {
     public var baseURL: NSURL { return NSURL(string: "http://localhost:8080")! }
     public var path: String {
         switch self {
@@ -59,27 +59,3 @@ extension Cup : MoyaTarget {
     public var sampleData: NSData {        return "Half measures are as bad as nothing at all.".dataUsingEncoding(NSUTF8StringEncoding)!
     }
 }
-
-class FirstViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        CupProvider.request(.Jsonfeed).mapJSON().subscribeNext { (let json) -> Void in
-            print(json)
-        }
-        CupProvider.request(.Add("wang","1")).mapString().subscribe { (event) -> Void in
-            print(event)
-        }
-        CupProvider.request(.TestError).subscribe { (event) -> Void in
-            print(event)
-        }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
-}
-
