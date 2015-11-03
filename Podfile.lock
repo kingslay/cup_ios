@@ -10,6 +10,8 @@ PODS:
     - Moya/ReactiveCore
     - RxSwift (~> 2.0.0-beta)
   - R.swift (0.11.0)
+  - RxCocoa (2.0.0-beta.2):
+    - RxSwift (~> 2.0.0-beta)
   - RxSwift (2.0.0-beta.2)
 
 DEPENDENCIES:
@@ -17,6 +19,7 @@ DEPENDENCIES:
   - KSSwiftExtension
   - Moya/RxSwift
   - R.swift
+  - RxCocoa (~> 2.0.0-beta.2)
 
 SPEC CHECKSUMS:
   Alamofire: 9b0a7188b961a03914a99304488bd226b0e46c0e
@@ -24,6 +27,7 @@ SPEC CHECKSUMS:
   KSSwiftExtension: d6366531149f10890f51aae6afe8a31115fd404b
   Moya: 980fa0218d80a3f7379c12c7b983e9a664b8b55a
   R.swift: dfd7addf1564914d92745816b76b0563d688f387
+  RxCocoa: ee39aa3ab24a8dde3832669f8e1e2c7652925e0c
   RxSwift: 795720c22352cf1f62669ef3695b5df7e195103b
 
 COCOAPODS: 0.39.0

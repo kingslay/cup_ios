@@ -9,19 +9,23 @@
 import UIKit
 import KSSwiftExtension
 import KSJSONHelp
+
 class ClockCollectionViewController: UICollectionViewController {
+
     var clockArray: [ClockModel] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.collectionView?.backgroundColor = UIColor.whiteColor()
         self.collectionView?.registerNib(R.nib.clockCollectionViewCell)
         let rightButton = UIBarButtonItem.init(barButtonSystemItem: .Add, target: self, action: "addClock")
-        self.navigationItem.rightBarButtonItem = rightButton
+        self.navigationItem.rightBarButtonItem = rightButton;
+
         // Do any additional setup after loading the view.
         if let array = ClockModel.objectArrayForKey("clockArray")  {
             clockArray = array as! [ClockModel]
         }
         
+        self.collectionView?.addMoveGestureRecognizerForLongPress()
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,6 +53,7 @@ class ClockCollectionViewController: UICollectionViewController {
             self.collectionView?.reloadData()
         }
     }
+   
     
 
     
@@ -75,38 +80,16 @@ extension ClockCollectionViewController {
     }
 }
 
-extension ClockCollectionViewController {
-    // MARK: UICollectionViewDelegate
-    
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-    return true
+extension ClockCollectionViewController:KSArrangeCollectionViewDelegate {
+    func moveDataItem(fromIndexPath : NSIndexPath, toIndexPath: NSIndexPath) -> Void
+    {
+        let model = self.clockArray.removeAtIndex(fromIndexPath.row)
+        self.clockArray.insert(model, atIndex: toIndexPath.row)
     }
-    */
-    
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-    return true
+    func deleteItemAtIndexPath(indexPath : NSIndexPath) -> Void
+    {
+        self.clockArray.removeAtIndex(indexPath.row)
     }
-    */
-    
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-    return false
-    }
-    
-    override func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
-    return false
-    }
-    
-    override func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
-    
-    }
-    */
-
 }
 
 

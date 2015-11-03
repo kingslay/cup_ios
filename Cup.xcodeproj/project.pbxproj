@@ -7,17 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C3947421BE8F19100E7FE90 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3947411BE8F19100E7FE90 /* UICollectionView.swift */; };
+		3C3947441BE9012300E7FE90 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C3947431BE9012300E7FE90 /* Images.xcassets */; };
 		3C80A5D51BCA5A9C0050B6B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C80A5D41BCA5A9C0050B6B6 /* AppDelegate.swift */; };
 		3C80A5D71BCA5A9C0050B6B6 /* CupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C80A5D61BCA5A9C0050B6B6 /* CupViewController.swift */; };
-		3C80A5DE1BCA5A9D0050B6B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C80A5DD1BCA5A9D0050B6B6 /* Assets.xcassets */; };
 		3C80A5E11BCA5A9D0050B6B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C80A5DF1BCA5A9D0050B6B6 /* LaunchScreen.storyboard */; };
 		3C80A5EC1BCA5A9D0050B6B6 /* CupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C80A5EB1BCA5A9D0050B6B6 /* CupTests.swift */; };
 		3CC57E031BE7BA490050E64E /* KSPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC57E021BE7BA490050E64E /* KSPickerView.swift */; };
+		3CC57E371BE8DF440050E64E /* ClockCollectionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CC57E361BE8DF440050E64E /* ClockCollectionViewController.storyboard */; };
 		6B05A4CA16F58DF3BD595D6C /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6013113010FD664CC0D5B2B1 /* Pods.framework */; };
 		CB89F7B31BE70B2700FD21FD /* ClockCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89F7B11BE70B2700FD21FD /* ClockCollectionViewCell.swift */; };
 		CB89F7B41BE70B2700FD21FD /* ClockCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB89F7B21BE70B2700FD21FD /* ClockCollectionViewCell.xib */; };
 		CB89F7B71BE7101200FD21FD /* ClockCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89F7B51BE7101200FD21FD /* ClockCollectionViewController.swift */; };
-		CB89F7B81BE7101200FD21FD /* ClockCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB89F7B61BE7101200FD21FD /* ClockCollectionViewController.xib */; };
 		CB89F7BB1BE710EE00FD21FD /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89F7B91BE710EE00FD21FD /* TabBarViewController.swift */; };
 		CB89F7C01BE7150A00FD21FD /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89F7BF1BE7150A00FD21FD /* R.generated.swift */; };
 		CB89F7C21BE7355300FD21FD /* TabBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB89F7C11BE7355300FD21FD /* TabBarViewController.xib */; };
@@ -38,22 +39,23 @@
 
 /* Begin PBXFileReference section */
 		1D52DF8D440B110927C4FB64 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		3C3947411BE8F19100E7FE90 /* UICollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UICollectionView.swift; path = Source/ViewControll/UICollectionView.swift; sourceTree = SOURCE_ROOT; };
+		3C3947431BE9012300E7FE90 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3C80A5D11BCA5A9C0050B6B6 /* Cup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C80A5D41BCA5A9C0050B6B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3C80A5D61BCA5A9C0050B6B6 /* CupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CupViewController.swift; path = ../../Cup/CupViewController.swift; sourceTree = "<group>"; };
-		3C80A5DD1BCA5A9D0050B6B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3C80A5E01BCA5A9D0050B6B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3C80A5E21BCA5A9D0050B6B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C80A5E71BCA5A9D0050B6B6 /* CupTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CupTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C80A5EB1BCA5A9D0050B6B6 /* CupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CupTests.swift; sourceTree = "<group>"; };
 		3C80A5ED1BCA5A9D0050B6B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3CC57E021BE7BA490050E64E /* KSPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KSPickerView.swift; sourceTree = "<group>"; };
+		3CC57E361BE8DF440050E64E /* ClockCollectionViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ClockCollectionViewController.storyboard; sourceTree = "<group>"; };
 		6013113010FD664CC0D5B2B1 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65F98BEC34B52C4E9381B7EB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		CB89F7B11BE70B2700FD21FD /* ClockCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockCollectionViewCell.swift; sourceTree = "<group>"; };
 		CB89F7B21BE70B2700FD21FD /* ClockCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClockCollectionViewCell.xib; sourceTree = "<group>"; };
 		CB89F7B51BE7101200FD21FD /* ClockCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockCollectionViewController.swift; sourceTree = "<group>"; };
-		CB89F7B61BE7101200FD21FD /* ClockCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClockCollectionViewController.xib; sourceTree = "<group>"; };
 		CB89F7B91BE710EE00FD21FD /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		CB89F7BF1BE7150A00FD21FD /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		CB89F7C11BE7355300FD21FD /* TabBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabBarViewController.xib; sourceTree = "<group>"; };
@@ -107,9 +109,9 @@
 			isa = PBXGroup;
 			children = (
 				3C80A5D41BCA5A9C0050B6B6 /* AppDelegate.swift */,
-				3C80A5DD1BCA5A9D0050B6B6 /* Assets.xcassets */,
 				3C80A5DF1BCA5A9D0050B6B6 /* LaunchScreen.storyboard */,
 				3C80A5E21BCA5A9D0050B6B6 /* Info.plist */,
+				3C3947431BE9012300E7FE90 /* Images.xcassets */,
 			);
 			path = Cup;
 			sourceTree = "<group>";
@@ -163,6 +165,7 @@
 		CB89F7AA1BE707BF00FD21FD /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				3C3947411BE8F19100E7FE90 /* UICollectionView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -191,7 +194,7 @@
 				3C80A5D61BCA5A9C0050B6B6 /* CupViewController.swift */,
 				CB89F7C71BE746F700FD21FD /* CupViewController.xib */,
 				CB89F7B51BE7101200FD21FD /* ClockCollectionViewController.swift */,
-				CB89F7B61BE7101200FD21FD /* ClockCollectionViewController.xib */,
+				3CC57E361BE8DF440050E64E /* ClockCollectionViewController.storyboard */,
 				CB89F7B91BE710EE00FD21FD /* TabBarViewController.swift */,
 				CB89F7C11BE7355300FD21FD /* TabBarViewController.xib */,
 			);
@@ -307,9 +310,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB89F7C21BE7355300FD21FD /* TabBarViewController.xib in Resources */,
-				CB89F7B81BE7101200FD21FD /* ClockCollectionViewController.xib in Resources */,
 				3C80A5E11BCA5A9D0050B6B6 /* LaunchScreen.storyboard in Resources */,
-				3C80A5DE1BCA5A9D0050B6B6 /* Assets.xcassets in Resources */,
+				3CC57E371BE8DF440050E64E /* ClockCollectionViewController.storyboard in Resources */,
+				3C3947441BE9012300E7FE90 /* Images.xcassets in Resources */,
 				CB89F7C81BE746F700FD21FD /* CupViewController.xib in Resources */,
 				CB89F7B41BE70B2700FD21FD /* ClockCollectionViewCell.xib in Resources */,
 			);
@@ -391,6 +394,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C3947421BE8F19100E7FE90 /* UICollectionView.swift in Sources */,
 				3C80A5D51BCA5A9C0050B6B6 /* AppDelegate.swift in Sources */,
 				CBE9E7C51BE88A1B00CE922B /* ClockModel.swift in Sources */,
 				CB89F7B71BE7101200FD21FD /* ClockCollectionViewController.swift in Sources */,
@@ -519,6 +523,7 @@
 			baseConfigurationReference = 1D52DF8D440B110927C4FB64 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				INFOPLIST_FILE = Cup/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = king.Cup;
@@ -531,6 +536,7 @@
 			baseConfigurationReference = 65F98BEC34B52C4E9381B7EB /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				INFOPLIST_FILE = Cup/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = king.Cup;

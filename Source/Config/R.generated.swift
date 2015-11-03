@@ -5,6 +5,8 @@ import UIKit
 
 struct R {
   static func validate() {
+    storyboard.clockCollectionViewController.validateImages()
+    storyboard.clockCollectionViewController.validateViewControllers()
     storyboard.launchScreen.validateImages()
     storyboard.launchScreen.validateViewControllers()
   }
@@ -18,13 +20,12 @@ struct R {
   }
   
   struct image {
-    static var first: UIImage? { return UIImage(named: "first") }
-    static var second: UIImage? { return UIImage(named: "second") }
+    static var brandAssets: UIImage? { return UIImage(named: "Brand Assets") }
+    static var tata_close: UIImage? { return UIImage(named: "tata_close") }
   }
   
   struct nib {
     static var clockCollectionViewCell: _R.nib._ClockCollectionViewCell { return _R.nib._ClockCollectionViewCell() }
-    static var clockCollectionViewController: _R.nib._ClockCollectionViewController { return _R.nib._ClockCollectionViewController() }
     static var cupViewController: _R.nib._CupViewController { return _R.nib._CupViewController() }
     static var tabBarViewController: _R.nib._TabBarViewController { return _R.nib._TabBarViewController() }
   }
@@ -38,6 +39,19 @@ struct R {
   }
   
   struct storyboard {
+    struct clockCollectionViewController {
+      static var initialViewController: Cup.ClockCollectionViewController? { return instance.instantiateInitialViewController() as? Cup.ClockCollectionViewController }
+      static var instance: UIStoryboard { return UIStoryboard(name: "ClockCollectionViewController", bundle: nil) }
+      
+      static func validateImages() {
+        
+      }
+      
+      static func validateViewControllers() {
+        
+      }
+    }
+    
     struct launchScreen {
       static var initialViewController: UIViewController? { return instance.instantiateInitialViewController() }
       static var instance: UIStoryboard { return UIStoryboard(name: "LaunchScreen", bundle: nil) }
@@ -62,19 +76,6 @@ struct _R {
       
       func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> Cup.ClockCollectionViewCell? {
         return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? Cup.ClockCollectionViewCell
-      }
-      
-      func instantiateWithOwner(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> [AnyObject] {
-        return instance.instantiateWithOwner(ownerOrNil, options: optionsOrNil)
-      }
-    }
-    
-    struct _ClockCollectionViewController: NibResource {
-      var instance: UINib { return UINib.init(nibName: "ClockCollectionViewController", bundle: nil) }
-      var name: String { return "ClockCollectionViewController" }
-      
-      func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> Cup.ClockCollectionViewController? {
-        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? Cup.ClockCollectionViewController
       }
       
       func instantiateWithOwner(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> [AnyObject] {
