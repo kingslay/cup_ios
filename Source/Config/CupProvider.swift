@@ -8,7 +8,11 @@
 
 import Foundation
 import Moya
-
+let SCREEN_BOUND = UIScreen.mainScreen().bounds
+let SCREEN_WIDTH = SCREEN_BOUND.width
+let SCREEN_HEIGHT = SCREEN_BOUND.height
+let SCREEN_SCALE = UIScreen.mainScreen().scale
+let SCREEN_RATIO = SCREEN_WIDTH/320.0
 let CupProvider = RxMoyaProvider<CupMoya>(endpointClosure: { (let target) -> Endpoint<CupMoya> in
     let url = target.baseURL.URLByAppendingPathComponent(target.path).absoluteString
     switch target {

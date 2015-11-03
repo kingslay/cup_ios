@@ -23,6 +23,7 @@
 		CB89F7C21BE7355300FD21FD /* TabBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB89F7C11BE7355300FD21FD /* TabBarViewController.xib */; };
 		CB89F7C41BE73CD300FD21FD /* CupProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89F7C31BE73CD300FD21FD /* CupProvider.swift */; };
 		CB89F7C81BE746F700FD21FD /* CupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB89F7C71BE746F700FD21FD /* CupViewController.xib */; };
+		CBE9E7C51BE88A1B00CE922B /* ClockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE9E7C41BE88A1B00CE922B /* ClockModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		CB89F7C11BE7355300FD21FD /* TabBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabBarViewController.xib; sourceTree = "<group>"; };
 		CB89F7C31BE73CD300FD21FD /* CupProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CupProvider.swift; sourceTree = "<group>"; };
 		CB89F7C71BE746F700FD21FD /* CupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CupViewController.xib; sourceTree = "<group>"; };
+		CBE9E7C41BE88A1B00CE922B /* ClockModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 		CB89F7A91BE707BF00FD21FD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CBE9E7C41BE88A1B00CE922B /* ClockModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C80A5D51BCA5A9C0050B6B6 /* AppDelegate.swift in Sources */,
+				CBE9E7C51BE88A1B00CE922B /* ClockModel.swift in Sources */,
 				CB89F7B71BE7101200FD21FD /* ClockCollectionViewController.swift in Sources */,
 				3C80A5D71BCA5A9C0050B6B6 /* CupViewController.swift in Sources */,
 				CB89F7BB1BE710EE00FD21FD /* TabBarViewController.swift in Sources */,

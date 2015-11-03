@@ -10,6 +10,9 @@ import UIKit
 
 class ClockCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var openSwitch: UISwitch!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

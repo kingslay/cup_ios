@@ -4,6 +4,6 @@ platform:ios, "8.0"
 use_frameworks!
 
 pod 'KSSwiftExtension'
-pod 'KSJSONHelp'
+pod 'KSJSONHelp',:head
 pod 'R.swift'
 pod 'Moya/RxSwift'

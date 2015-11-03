@@ -10,7 +10,7 @@ import UIKit
 
 class KSPickerView: UIView ,UIPickerViewDataSource, UIPickerViewDelegate {
     private var pickerView = UIPickerView()
-    var callBackBlock: (Int -> Void)?
+    var callBackBlock: ([Int] -> Void)?
     var pickerData  = [[]]{
         didSet(newValue){
             pickerView.selectRow(0, inComponent: 0, animated: false)
@@ -47,9 +47,10 @@ class KSPickerView: UIView ,UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func doneButtonClicked(sender: UIBarButtonItem) {
-        let index = pickerView.selectedRowInComponent(0)
         if callBackBlock != nil {
-            callBackBlock!(index)
+            var result: [Int] = []
+            (0..<pickerView.numberOfComponents).forEach{ result.append(pickerView.selectedRowInComponent($0)) }
+            callBackBlock!(result)
         }
         self.hidden = true
     }

@@ -7,9 +7,9 @@
 //
 
 import UIKit
-
+import RxSwift
 class CupViewController: UIViewController {
-
+    let bag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.whiteColor()
@@ -17,13 +17,13 @@ class CupViewController: UIViewController {
 
         CupProvider.request(.Jsonfeed).mapJSON().subscribeNext { (let json) -> Void in
             print(json)
-        }
+        }.addDisposableTo(bag)
         CupProvider.request(.Add("wang","1")).mapString().subscribe { (event) -> Void in
             print(event)
-        }
+        }.addDisposableTo(bag)
         CupProvider.request(.TestError).subscribe { (event) -> Void in
             print(event)
-        }
+        }.addDisposableTo(bag)
     }
 
     override func didReceiveMemoryWarning() {

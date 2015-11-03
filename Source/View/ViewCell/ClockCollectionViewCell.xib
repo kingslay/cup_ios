@@ -36,6 +36,10 @@
                 <constraint firstItem="xMh-Dn-nyj" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="xal-hU-hSQ"/>
             </constraints>
             <size key="customSize" width="237" height="162"/>
+            <connections>
+                <outlet property="openSwitch" destination="v5S-2I-exz" id="iWF-gJ-FHb"/>
+                <outlet property="timeLabel" destination="xMh-Dn-nyj" id="7kU-vc-zf6"/>
+            </connections>
             <point key="canvasLocation" x="321.5" y="249"/>
         </collectionViewCell>
     </objects>
