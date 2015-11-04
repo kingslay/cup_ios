@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import KSJSONHelp
 class AccountViewController: UITableViewController {
 
     override func viewDidLoad() {
@@ -77,7 +77,21 @@ class AccountViewController: UITableViewController {
 
             break
         case (1,2):
-            
+            let cityVC = CFCityPickerVC()
+            //设置热门城市
+            cityVC.hotCities = ["北京","上海","广州","成都","杭州","重庆"]
+            let navVC = UINavigationController(rootViewController: cityVC)
+            navVC.navigationBar.barStyle = UIBarStyle.BlackTranslucent
+            self.presentViewController(navVC, animated: true, completion: nil)
+            let plistUrl = NSBundle.mainBundle().URLForResource("City", withExtension: "plist")!
+            let cityArray = NSArray(contentsOfURL: plistUrl) as! [NSDictionary]
+            //解析字典数据
+            cityVC.cityModels = CityModel.toModels(cityArray) as! [CityModel]
+            //选中了城市
+            cityVC.selectedCityModel = { (cityModel: CityModel) in
+                print("您选中了城市： \(cityModel.name)")
+            }
+
             break
         default:
             break

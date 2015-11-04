@@ -9,6 +9,23 @@
 /* Begin PBXBuildFile section */
 		3C3947421BE8F19100E7FE90 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3947411BE8F19100E7FE90 /* UICollectionView.swift */; };
 		3C3947441BE9012300E7FE90 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C3947431BE9012300E7FE90 /* Images.xcassets */; };
+		3C3947AA1BEA44F800E7FE90 /* CFCityPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3947941BEA44F800E7FE90 /* CFCityPickerVC.swift */; };
+		3C3947AB1BEA44F800E7FE90 /* City.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C3947951BEA44F800E7FE90 /* City.plist */; };
+		3C3947AC1BEA44F800E7FE90 /* CFCityPickerVCCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3947971BEA44F800E7FE90 /* CFCityPickerVCCommon.swift */; };
+		3C3947AD1BEA44F800E7FE90 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3947981BEA44F800E7FE90 /* LocationManager.swift */; };
+		3C3947AE1BEA44F800E7FE90 /* CitySearchResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C39479A1BEA44F800E7FE90 /* CitySearchResultVC.swift */; };
+		3C3947AF1BEA44F800E7FE90 /* CitySearchResultVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C39479B1BEA44F800E7FE90 /* CitySearchResultVC.xib */; };
+		3C3947B01BEA44F800E7FE90 /* CFCityPickerVC+Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C39479D1BEA44F800E7FE90 /* CFCityPickerVC+Main.swift */; };
+		3C3947B11BEA44F800E7FE90 /* CFCityPickerVC+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C39479E1BEA44F800E7FE90 /* CFCityPickerVC+TableView.swift */; };
+		3C3947B21BEA44F800E7FE90 /* CityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3947A01BEA44F800E7FE90 /* CityModel.swift */; };
+		3C3947B31BEA44F800E7FE90 /* img.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3C3947A21BEA44F800E7FE90 /* img.bundle */; };
+		3C3947B41BEA44F800E7FE90 /* CFCityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3947A41BEA44F800E7FE90 /* CFCityCell.swift */; };
+		3C3947B51BEA44F800E7FE90 /* CFCityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C3947A51BEA44F800E7FE90 /* CFCityCell.xib */; };
+		3C3947B61BEA44F800E7FE90 /* CityMaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3947A61BEA44F800E7FE90 /* CityMaskView.swift */; };
+		3C3947B71BEA44F800E7FE90 /* CitySearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3947A71BEA44F800E7FE90 /* CitySearchBar.swift */; };
+		3C3947B81BEA44F800E7FE90 /* HeaderItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3947A81BEA44F800E7FE90 /* HeaderItemView.swift */; };
+		3C3947B91BEA44F800E7FE90 /* HeaderItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C3947A91BEA44F800E7FE90 /* HeaderItemView.xib */; };
+		3C70AB4E1BEA540C00E97141 /* KSDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C70AB4D1BEA540C00E97141 /* KSDatePickerView.swift */; };
 		3C80A5D51BCA5A9C0050B6B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C80A5D41BCA5A9C0050B6B6 /* AppDelegate.swift */; };
 		3C80A5D71BCA5A9C0050B6B6 /* CupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C80A5D61BCA5A9C0050B6B6 /* CupViewController.swift */; };
 		3C80A5E11BCA5A9D0050B6B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C80A5DF1BCA5A9D0050B6B6 /* LaunchScreen.storyboard */; };
@@ -50,6 +67,23 @@
 		1D52DF8D440B110927C4FB64 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		3C3947411BE8F19100E7FE90 /* UICollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UICollectionView.swift; path = Source/ViewControll/UICollectionView.swift; sourceTree = SOURCE_ROOT; };
 		3C3947431BE9012300E7FE90 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3C3947941BEA44F800E7FE90 /* CFCityPickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFCityPickerVC.swift; sourceTree = "<group>"; };
+		3C3947951BEA44F800E7FE90 /* City.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = City.plist; sourceTree = "<group>"; };
+		3C3947971BEA44F800E7FE90 /* CFCityPickerVCCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFCityPickerVCCommon.swift; sourceTree = "<group>"; };
+		3C3947981BEA44F800E7FE90 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		3C39479A1BEA44F800E7FE90 /* CitySearchResultVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitySearchResultVC.swift; sourceTree = "<group>"; };
+		3C39479B1BEA44F800E7FE90 /* CitySearchResultVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CitySearchResultVC.xib; sourceTree = "<group>"; };
+		3C39479D1BEA44F800E7FE90 /* CFCityPickerVC+Main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CFCityPickerVC+Main.swift"; sourceTree = "<group>"; };
+		3C39479E1BEA44F800E7FE90 /* CFCityPickerVC+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CFCityPickerVC+TableView.swift"; sourceTree = "<group>"; };
+		3C3947A01BEA44F800E7FE90 /* CityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityModel.swift; sourceTree = "<group>"; };
+		3C3947A21BEA44F800E7FE90 /* img.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = img.bundle; sourceTree = "<group>"; };
+		3C3947A41BEA44F800E7FE90 /* CFCityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFCityCell.swift; sourceTree = "<group>"; };
+		3C3947A51BEA44F800E7FE90 /* CFCityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CFCityCell.xib; sourceTree = "<group>"; };
+		3C3947A61BEA44F800E7FE90 /* CityMaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityMaskView.swift; sourceTree = "<group>"; };
+		3C3947A71BEA44F800E7FE90 /* CitySearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitySearchBar.swift; sourceTree = "<group>"; };
+		3C3947A81BEA44F800E7FE90 /* HeaderItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderItemView.swift; sourceTree = "<group>"; };
+		3C3947A91BEA44F800E7FE90 /* HeaderItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderItemView.xib; sourceTree = "<group>"; };
+		3C70AB4D1BEA540C00E97141 /* KSDatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KSDatePickerView.swift; sourceTree = "<group>"; };
 		3C80A5D11BCA5A9C0050B6B6 /* Cup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C80A5D41BCA5A9C0050B6B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3C80A5D61BCA5A9C0050B6B6 /* CupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CupViewController.swift; path = ../../Cup/CupViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +135,77 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C3947931BEA44F800E7FE90 /* CFCityPickerVC */ = {
+			isa = PBXGroup;
+			children = (
+				3C3947941BEA44F800E7FE90 /* CFCityPickerVC.swift */,
+				3C3947951BEA44F800E7FE90 /* City.plist */,
+				3C3947961BEA44F800E7FE90 /* Common */,
+				3C3947991BEA44F800E7FE90 /* Controller */,
+				3C39479C1BEA44F800E7FE90 /* Extendsion */,
+				3C39479F1BEA44F800E7FE90 /* Model */,
+				3C3947A11BEA44F800E7FE90 /* Resource */,
+				3C3947A31BEA44F800E7FE90 /* View */,
+			);
+			path = CFCityPickerVC;
+			sourceTree = "<group>";
+		};
+		3C3947961BEA44F800E7FE90 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				3C3947971BEA44F800E7FE90 /* CFCityPickerVCCommon.swift */,
+				3C3947981BEA44F800E7FE90 /* LocationManager.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		3C3947991BEA44F800E7FE90 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3C39479A1BEA44F800E7FE90 /* CitySearchResultVC.swift */,
+				3C39479B1BEA44F800E7FE90 /* CitySearchResultVC.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3C39479C1BEA44F800E7FE90 /* Extendsion */ = {
+			isa = PBXGroup;
+			children = (
+				3C39479D1BEA44F800E7FE90 /* CFCityPickerVC+Main.swift */,
+				3C39479E1BEA44F800E7FE90 /* CFCityPickerVC+TableView.swift */,
+			);
+			path = Extendsion;
+			sourceTree = "<group>";
+		};
+		3C39479F1BEA44F800E7FE90 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3C3947A01BEA44F800E7FE90 /* CityModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3C3947A11BEA44F800E7FE90 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				3C3947A21BEA44F800E7FE90 /* img.bundle */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		3C3947A31BEA44F800E7FE90 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3C3947A41BEA44F800E7FE90 /* CFCityCell.swift */,
+				3C3947A51BEA44F800E7FE90 /* CFCityCell.xib */,
+				3C3947A61BEA44F800E7FE90 /* CityMaskView.swift */,
+				3C3947A71BEA44F800E7FE90 /* CitySearchBar.swift */,
+				3C3947A81BEA44F800E7FE90 /* HeaderItemView.swift */,
+				3C3947A91BEA44F800E7FE90 /* HeaderItemView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		3C80A5C81BCA5A9C0050B6B6 = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +258,7 @@
 		CB89F7A71BE707BF00FD21FD /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				3C3947931BEA44F800E7FE90 /* CFCityPickerVC */,
 				CB89F7A81BE707BF00FD21FD /* Config */,
 				CB89F7A91BE707BF00FD21FD /* Model */,
 				CB89F7AA1BE707BF00FD21FD /* Utils */,
@@ -194,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				3CC57E021BE7BA490050E64E /* KSPickerView.swift */,
+				3C70AB4D1BEA540C00E97141 /* KSDatePickerView.swift */,
 				CB89F7AC1BE707BF00FD21FD /* ViewCell */,
 			);
 			path = View;
@@ -342,10 +449,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C80A5E11BCA5A9D0050B6B6 /* LaunchScreen.storyboard in Resources */,
+				3C3947B31BEA44F800E7FE90 /* img.bundle in Resources */,
+				3C3947B91BEA44F800E7FE90 /* HeaderItemView.xib in Resources */,
+				3C3947B51BEA44F800E7FE90 /* CFCityCell.xib in Resources */,
 				CB3CF8951BE9DD6E008D577E /* KSGuidanceViewController.xib in Resources */,
 				CB3CF88D1BE9B0AC008D577E /* Login.storyboard in Resources */,
 				3C3947441BE9012300E7FE90 /* Images.xcassets in Resources */,
+				3C3947AF1BEA44F800E7FE90 /* CitySearchResultVC.xib in Resources */,
 				CBE1DC291BE9EE5B00E1FF29 /* Main.storyboard in Resources */,
+				3C3947AB1BEA44F800E7FE90 /* City.plist in Resources */,
 				CBE1DC311BE9F92200E1FF29 /* AccountTableViewCell.xib in Resources */,
 				CB89F7B41BE70B2700FD21FD /* ClockCollectionViewCell.xib in Resources */,
 			);
@@ -427,21 +539,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C3947B11BEA44F800E7FE90 /* CFCityPickerVC+TableView.swift in Sources */,
 				3C3947421BE8F19100E7FE90 /* UICollectionView.swift in Sources */,
 				CBE1DC331BEA04ED00E1FF29 /* AccountModel.swift in Sources */,
 				CB3CF8891BE9B04F008D577E /* UserLoginViewController.swift in Sources */,
+				3C70AB4E1BEA540C00E97141 /* KSDatePickerView.swift in Sources */,
 				CBE1DC2D1BE9F81C00E1FF29 /* AccountViewController.swift in Sources */,
+				3C3947B61BEA44F800E7FE90 /* CityMaskView.swift in Sources */,
 				CBE1DC301BE9F92200E1FF29 /* AccountTableViewCell.swift in Sources */,
+				3C3947B01BEA44F800E7FE90 /* CFCityPickerVC+Main.swift in Sources */,
 				3C80A5D51BCA5A9C0050B6B6 /* AppDelegate.swift in Sources */,
+				3C3947AE1BEA44F800E7FE90 /* CitySearchResultVC.swift in Sources */,
+				3C3947B71BEA44F800E7FE90 /* CitySearchBar.swift in Sources */,
+				3C3947B41BEA44F800E7FE90 /* CFCityCell.swift in Sources */,
 				CBE9E7C51BE88A1B00CE922B /* ClockModel.swift in Sources */,
+				3C3947B81BEA44F800E7FE90 /* HeaderItemView.swift in Sources */,
+				3C3947B21BEA44F800E7FE90 /* CityModel.swift in Sources */,
 				CB3CF8941BE9DD6E008D577E /* KSGuidanceViewController.swift in Sources */,
 				CB89F7B71BE7101200FD21FD /* ClockCollectionViewController.swift in Sources */,
+				3C3947AA1BEA44F800E7FE90 /* CFCityPickerVC.swift in Sources */,
 				CB3CF88B1BE9B071008D577E /* UserRegistViewController.swift in Sources */,
+				3C3947AC1BEA44F800E7FE90 /* CFCityPickerVCCommon.swift in Sources */,
 				3C80A5D71BCA5A9C0050B6B6 /* CupViewController.swift in Sources */,
 				CB3CF88F1BE9B3F2008D577E /* UIViewController.swift in Sources */,
 				CB89F7BB1BE710EE00FD21FD /* TabBarViewController.swift in Sources */,
 				3CC57E031BE7BA490050E64E /* KSPickerView.swift in Sources */,
 				CB89F7C41BE73CD300FD21FD /* CupProvider.swift in Sources */,
+				3C3947AD1BEA44F800E7FE90 /* LocationManager.swift in Sources */,
 				CB89F7B31BE70B2700FD21FD /* ClockCollectionViewCell.swift in Sources */,
 				CB89F7C01BE7150A00FD21FD /* R.generated.swift in Sources */,
 				CBE1DC2B1BE9F06E00E1FF29 /* MineViewController.swift in Sources */,
