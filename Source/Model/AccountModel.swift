@@ -8,5 +8,14 @@
 
 import Foundation
 class AccountModel: NSObject {
-    var
+    ///昵称
+    @property(nonatomic, strong) NSString *nickname;
+    ///生日
+    @property(nonatomic, strong) NSString *brithday;
+    ///身高
+    @property(nonatomic) float heigth;
+    ///婚否
+    @property(nonatomic) BOOL bMarry;
+    @property(nonatomic, strong) NSString *headImageURL;
+
 }
