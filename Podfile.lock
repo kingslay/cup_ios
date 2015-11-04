@@ -9,25 +9,31 @@ PODS:
   - Moya/RxSwift (4.3.1):
     - Moya/ReactiveCore
     - RxSwift (~> 2.0.0-beta)
+  - PermissionScope (1.0.1)
   - R.swift (0.11.0)
   - RxCocoa (2.0.0-beta.2):
     - RxSwift (~> 2.0.0-beta)
   - RxSwift (2.0.0-beta.2)
+  - SwiftDate (1.2)
 
 DEPENDENCIES:
   - KSJSONHelp (HEAD)
   - KSSwiftExtension
   - Moya/RxSwift
+  - PermissionScope
   - R.swift
   - RxCocoa (~> 2.0.0-beta.2)
+  - SwiftDate
 
 SPEC CHECKSUMS:
   Alamofire: 9b0a7188b961a03914a99304488bd226b0e46c0e
   KSJSONHelp: c903fd8f01f46eae2c01f3bb331e91693b7c58e2
   KSSwiftExtension: d6366531149f10890f51aae6afe8a31115fd404b
   Moya: 980fa0218d80a3f7379c12c7b983e9a664b8b55a
+  PermissionScope: 9767066cedefd211d90a8c4f92f6f1a987085ee8
   R.swift: dfd7addf1564914d92745816b76b0563d688f387
   RxCocoa: ee39aa3ab24a8dde3832669f8e1e2c7652925e0c
   RxSwift: 795720c22352cf1f62669ef3695b5df7e195103b
+  SwiftDate: 49ebd4efb5f82336cfc2b1d8a6622f47d4b17370
 
 COCOAPODS: 0.39.0

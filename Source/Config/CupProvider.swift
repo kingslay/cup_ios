@@ -16,7 +16,7 @@ let SCREEN_RATIO = SCREEN_WIDTH/320.0
 let CupProvider = RxMoyaProvider<CupMoya>(endpointClosure: { (let target) -> Endpoint<CupMoya> in
     let url = target.baseURL.URLByAppendingPathComponent(target.path).absoluteString
     switch target {
-    case .Add(_,_):
+    case .Regist(_,_):
         return Endpoint(URL: url, sampleResponseClosure: {.NetworkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters, parameterEncoding: .JSON)
     default:
         return Endpoint(URL: url, sampleResponseClosure: {.NetworkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters)
@@ -26,26 +26,23 @@ let CupProvider = RxMoyaProvider<CupMoya>(endpointClosure: { (let target) -> End
 })
 
 public enum CupMoya {
-    case Jsonfeed
-    case Add(String,String)
-    case TestError
+    case Login(String,String)
+    case Regist(String,String)
 }
 
 extension CupMoya : MoyaTarget {
     public var baseURL: NSURL { return NSURL(string: "http://localhost:8080")! }
     public var path: String {
         switch self {
-        case .Jsonfeed:
-            return "/user/jsonfeed"
-        case .Add(_,_):
-            return "/user/add"
-        case .TestError:
-            return "/user/testError"
+        case .Login(_, _):
+            return "/user/login"
+        case .Regist(_,_):
+            return "/user/regist"
         }
     }
     public var method: Moya.Method {
         switch self {
-        case .Add(_,_):
+        case .Regist(_,_):
             return .POST
         default:
             return .GET
@@ -53,7 +50,9 @@ extension CupMoya : MoyaTarget {
     }
     public var parameters: [String: AnyObject]? {
         switch self {
-        case .Add(let user,let password):
+        case .Regist(let user,let password):
+            return ["username":user,"password":password]
+        case .Login(let user,let password):
             return ["username":user,"password":password]
         default:
             return nil

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <viewController id="epi-OJ-ofi" customClass="KSGuidanceViewController" customModule="Cup" customModuleProvider="target">
+            <layoutGuides>
+                <viewControllerLayoutGuide type="top" id="RZ5-Dh-xXO"/>
+                <viewControllerLayoutGuide type="bottom" id="X9P-wc-dKN"/>
+            </layoutGuides>
+            <view key="view" contentMode="scaleToFill" id="6Ax-0L-Wk7">
+                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L4R-aT-a04">
+                        <rect key="frame" x="277" y="493" width="46" height="30"/>
+                        <animations/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <state key="normal" title="Button"/>
+                    </button>
+                    <pageControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="SNH-RF-KPe">
+                        <rect key="frame" x="280.5" y="543" width="39" height="37"/>
+                        <animations/>
+                    </pageControl>
+                </subviews>
+                <animations/>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstItem="L4R-aT-a04" firstAttribute="centerX" secondItem="SNH-RF-KPe" secondAttribute="centerX" id="49S-eA-7Sv"/>
+                    <constraint firstItem="X9P-wc-dKN" firstAttribute="top" secondItem="SNH-RF-KPe" secondAttribute="bottom" constant="20" id="N6C-Ns-Nzo"/>
+                    <constraint firstItem="SNH-RF-KPe" firstAttribute="top" secondItem="L4R-aT-a04" secondAttribute="bottom" constant="20" id="gGz-8k-wj0"/>
+                    <constraint firstItem="X9P-wc-dKN" firstAttribute="top" secondItem="SNH-RF-KPe" secondAttribute="bottom" constant="20" id="l5D-H9-cau"/>
+                    <constraint firstItem="SNH-RF-KPe" firstAttribute="centerX" secondItem="6Ax-0L-Wk7" secondAttribute="centerX" id="q2I-4f-stb"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="l5D-H9-cau"/>
+                    </mask>
+                </variation>
+            </view>
+            <connections>
+                <outlet property="pageControl" destination="SNH-RF-KPe" id="cTJ-pV-d63"/>
+                <outlet property="startButton" destination="L4R-aT-a04" id="vHJ-k2-vRW"/>
+            </connections>
+        </viewController>
+    </objects>
+</document>

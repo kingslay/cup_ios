@@ -19,8 +19,6 @@ class ClockCollectionViewController: UICollectionViewController {
         self.collectionView?.registerNib(R.nib.clockCollectionViewCell)
         let rightButton = UIBarButtonItem.init(barButtonSystemItem: .Add, target: self, action: "addClock")
         self.navigationItem.rightBarButtonItem = rightButton;
-
-        // Do any additional setup after loading the view.
         if let array = ClockModel.objectArrayForKey("clockArray")  {
             clockArray = array as! [ClockModel]
         }
@@ -44,19 +42,18 @@ class ClockCollectionViewController: UICollectionViewController {
     */
     
     func addClock() {
+        UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings.init(forTypes: [.Badge,.Sound,.Alert], categories: nil))
         let pickerView = KSPickerView.init(frame: CGRectMake(0, SCREEN_HEIGHT-250,SCREEN_WIDTH, 250))
         pickerView.pickerData = [Array(0..<24).map{ String(format: "%02d", $0)},Array(0..<60).map{String(format:"%02d", $0)}]
         self.view.addSubview(pickerView)
         pickerView.callBackBlock = {[unowned self] in
-            self.clockArray.append(ClockModel.init(hour: $0[0], minute: $0[1]))
+            let model = ClockModel.init(hour: $0[0], minute: $0[1])
+            self.clockArray.append(model)
             ClockModel.setObjectArray(self.clockArray,forKey:"clockArray")
             self.collectionView?.reloadData()
+            model.addUILocalNotification()
         }
     }
-   
-    
-
-    
 }
 // MARK: UICollectionViewDataSource
 extension ClockCollectionViewController {
@@ -88,7 +85,10 @@ extension ClockCollectionViewController:KSArrangeCollectionViewDelegate {
     }
     func deleteItemAtIndexPath(indexPath : NSIndexPath) -> Void
     {
+        let model = clockArray[indexPath.row]
         self.clockArray.removeAtIndex(indexPath.row)
+        ClockModel.setObjectArray(self.clockArray,forKey:"clockArray")
+        model.removeUILocalNotification()
     }
 }
 

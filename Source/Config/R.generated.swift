@@ -5,8 +5,10 @@ import UIKit
 
 struct R {
   static func validate() {
-    storyboard.clockCollectionViewController.validateImages()
-    storyboard.clockCollectionViewController.validateViewControllers()
+    storyboard.login.validateImages()
+    storyboard.login.validateViewControllers()
+    storyboard.main.validateImages()
+    storyboard.main.validateViewControllers()
     storyboard.launchScreen.validateImages()
     storyboard.launchScreen.validateViewControllers()
   }
@@ -21,16 +23,23 @@ struct R {
   
   struct image {
     static var brandAssets: UIImage? { return UIImage(named: "Brand Assets") }
+    static var guidance1: UIImage? { return UIImage(named: "Guidance1") }
+    static var guidance2: UIImage? { return UIImage(named: "Guidance2") }
+    static var guidance3: UIImage? { return UIImage(named: "Guidance3") }
+    static var guidance4: UIImage? { return UIImage(named: "Guidance4") }
+    static var mine_photo: UIImage? { return UIImage(named: "mine_photo") }
     static var tata_close: UIImage? { return UIImage(named: "tata_close") }
   }
   
   struct nib {
+    static var accountTableViewCell: _R.nib._AccountTableViewCell { return _R.nib._AccountTableViewCell() }
     static var clockCollectionViewCell: _R.nib._ClockCollectionViewCell { return _R.nib._ClockCollectionViewCell() }
-    static var cupViewController: _R.nib._CupViewController { return _R.nib._CupViewController() }
-    static var tabBarViewController: _R.nib._TabBarViewController { return _R.nib._TabBarViewController() }
+    static var kSGuidanceViewController: _R.nib._KSGuidanceViewController { return _R.nib._KSGuidanceViewController() }
   }
   
   struct reuseIdentifier {
+    static var accountTableViewCell: ReuseIdentifier<Cup.AccountTableViewCell> { return ReuseIdentifier(identifier: "AccountTableViewCell") }
+    static var cell: ReuseIdentifier<UITableViewCell> { return ReuseIdentifier(identifier: "cell") }
     static var clockCollectionViewCell: ReuseIdentifier<Cup.ClockCollectionViewCell> { return ReuseIdentifier(identifier: "ClockCollectionViewCell") }
   }
   
@@ -39,19 +48,6 @@ struct R {
   }
   
   struct storyboard {
-    struct clockCollectionViewController {
-      static var initialViewController: Cup.ClockCollectionViewController? { return instance.instantiateInitialViewController() as? Cup.ClockCollectionViewController }
-      static var instance: UIStoryboard { return UIStoryboard(name: "ClockCollectionViewController", bundle: nil) }
-      
-      static func validateImages() {
-        
-      }
-      
-      static func validateViewControllers() {
-        
-      }
-    }
-    
     struct launchScreen {
       static var initialViewController: UIViewController? { return instance.instantiateInitialViewController() }
       static var instance: UIStoryboard { return UIStoryboard(name: "LaunchScreen", bundle: nil) }
@@ -64,11 +60,54 @@ struct R {
         
       }
     }
+    
+    struct login {
+      static var initialViewController: UINavigationController? { return instance.instantiateInitialViewController() as? UINavigationController }
+      static var instance: UIStoryboard { return UIStoryboard(name: "Login", bundle: nil) }
+      static var login: Cup.UserLoginViewController? { return instance.instantiateViewControllerWithIdentifier("login") as? Cup.UserLoginViewController }
+      static var register: Cup.UserRegistViewController? { return instance.instantiateViewControllerWithIdentifier("register") as? Cup.UserRegistViewController }
+      
+      static func validateImages() {
+        assert(UIImage(named: "logo") != nil, "[R.swift] Image named 'logo' is used in storyboard 'Login', but couldn't be loaded.")
+      }
+      
+      static func validateViewControllers() {
+        assert(login != nil, "[R.swift] ViewController with identifier 'login' could not be loaded from storyboard 'Login' as 'Cup.UserLoginViewController'.")
+        assert(register != nil, "[R.swift] ViewController with identifier 'register' could not be loaded from storyboard 'Login' as 'Cup.UserRegistViewController'.")
+      }
+    }
+    
+    struct main {
+      static var initialViewController: Cup.TabBarViewController? { return instance.instantiateInitialViewController() as? Cup.TabBarViewController }
+      static var instance: UIStoryboard { return UIStoryboard(name: "Main", bundle: nil) }
+      
+      static func validateImages() {
+        assert(UIImage(named: "mine_photo") != nil, "[R.swift] Image named 'mine_photo' is used in storyboard 'Main', but couldn't be loaded.")
+      }
+      
+      static func validateViewControllers() {
+        
+      }
+    }
   }
 }
 
 struct _R {
   struct nib {
+    struct _AccountTableViewCell: NibResource, Reusable {
+      var instance: UINib { return UINib.init(nibName: "AccountTableViewCell", bundle: nil) }
+      var name: String { return "AccountTableViewCell" }
+      var reuseIdentifier: ReuseIdentifier<Cup.AccountTableViewCell> { return ReuseIdentifier(identifier: "AccountTableViewCell") }
+      
+      func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> Cup.AccountTableViewCell? {
+        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? Cup.AccountTableViewCell
+      }
+      
+      func instantiateWithOwner(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> [AnyObject] {
+        return instance.instantiateWithOwner(ownerOrNil, options: optionsOrNil)
+      }
+    }
+    
     struct _ClockCollectionViewCell: NibResource, Reusable {
       var instance: UINib { return UINib.init(nibName: "ClockCollectionViewCell", bundle: nil) }
       var name: String { return "ClockCollectionViewCell" }
@@ -83,25 +122,12 @@ struct _R {
       }
     }
     
-    struct _CupViewController: NibResource {
-      var instance: UINib { return UINib.init(nibName: "CupViewController", bundle: nil) }
-      var name: String { return "CupViewController" }
+    struct _KSGuidanceViewController: NibResource {
+      var instance: UINib { return UINib.init(nibName: "KSGuidanceViewController", bundle: nil) }
+      var name: String { return "KSGuidanceViewController" }
       
-      func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> Cup.CupViewController? {
-        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? Cup.CupViewController
-      }
-      
-      func instantiateWithOwner(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> [AnyObject] {
-        return instance.instantiateWithOwner(ownerOrNil, options: optionsOrNil)
-      }
-    }
-    
-    struct _TabBarViewController: NibResource {
-      var instance: UINib { return UINib.init(nibName: "TabBarViewController", bundle: nil) }
-      var name: String { return "TabBarViewController" }
-      
-      func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> Cup.TabBarViewController? {
-        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? Cup.TabBarViewController
+      func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> Cup.KSGuidanceViewController? {
+        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? Cup.KSGuidanceViewController
       }
       
       func instantiateWithOwner(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> [AnyObject] {

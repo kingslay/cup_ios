@@ -12,12 +12,6 @@ class TabBarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let cup = UINavigationController.init(rootViewController: R.nib.cupViewController.firstView(nil, options: nil)!)
-        cup.tabBarItem.title = "水杯"
-        let clock = UINavigationController.init(rootViewController: R.storyboard.clockCollectionViewController.instance.instantiateInitialViewController()!)
-        clock.tabBarItem.title = "闹钟"
-        
-        self.viewControllers = [cup,clock]
     }
 
     override func didReceiveMemoryWarning() {

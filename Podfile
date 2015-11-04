@@ -8,3 +8,7 @@ pod 'KSJSONHelp',:head
 pod 'R.swift'
 pod 'Moya/RxSwift'
 pod 'RxCocoa', '~> 2.0.0-beta.2'
+pod 'SwiftDate'
+pod 'BluetoothKit'
+pod 'SwiftyJSON'
+
