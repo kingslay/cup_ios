@@ -69,7 +69,7 @@ class AccountViewController: UITableViewController {
             if let value = value {
                 cell.valueTextField.hidden = true
                 cell.headerImageView.hidden = false
-//                cell.headerImageView.image
+                //                cell.headerImageView.image
             }
             break
         case (1,0):
@@ -189,7 +189,15 @@ extension AccountViewController: UIImagePickerControllerDelegate, UINavigationCo
             cell.valueTextField.hidden = true
             cell.headerImageView.hidden = false
             cell.headerImageView.image = image
+            saveImage(image, imageName: staticAccount!.accountid)
             self.parentViewController?.dismissViewControllerAnimated(true, completion: nil)
         }
+    }
+    func saveImage(currentImage: UIImage,imageName: String){
+        let imageData: NSData = UIImageJPEGRepresentation(currentImage, 0.5)!
+        let fullPath = ((NSHomeDirectory() as NSString).stringByAppendingPathComponent("Documents") as NSString)
+            .stringByAppendingPathComponent(imageName)
+        imageData.writeToFile(fullPath, atomically: false)
+        uploadImage(NSURL(fileURLWithPath: fullPath))
     }
 }

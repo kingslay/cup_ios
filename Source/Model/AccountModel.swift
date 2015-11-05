@@ -8,6 +8,7 @@
 
 import Foundation
 class AccountModel: NSObject {
+    var accountid: String!
     var nickname: String?
     var headImageURL: String?
     var brithday: String?
