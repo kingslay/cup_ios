@@ -49,7 +49,7 @@ class UserRegistViewController: UIViewController,UITextFieldDelegate {
         }
         self.noticeOnlyText("正在登录中")
         self.navigationController?.view.userInteractionEnabled = false
-        CupProvider.request(.Regist(userName,password)).mapJSON().subscribeNext { (let json) -> Void in
+        CupProvider.request(.Regist(userName,password)).mapJSON().observeOn(MainScheduler.sharedInstance).subscribeNext { (let json) -> Void in
             
         }.addDisposableTo(disposeBag)
         

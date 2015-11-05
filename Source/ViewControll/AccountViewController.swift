@@ -100,6 +100,13 @@ class AccountViewController: UITableViewController {
         }
         return cell
     }
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.row == 0 && indexPath.section == 0 {
+            return 70
+        }else{
+            return 44
+        }
+    }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! AccountTableViewCell
         switch (indexPath.section,indexPath.row) {
@@ -180,7 +187,9 @@ extension AccountViewController: UIImagePickerControllerDelegate, UINavigationCo
             image = image.normalizedImage()
             let cell = tableView.cellForRowAtIndexPath(NSIndexPath.init(forRow: 0, inSection: 0)) as! AccountTableViewCell
             cell.valueTextField.hidden = true
+            cell.headerImageView.hidden = false
             cell.headerImageView.image = image
+            self.parentViewController?.dismissViewControllerAnimated(true, completion: nil)
         }
     }
 }

@@ -14,7 +14,7 @@ class UserLoginViewController: UIViewController,UITextFieldDelegate{
     @IBOutlet weak var userPassTextField: UITextField!
     @IBOutlet weak var userLoginBtn: UIButton!
     let disposeBag = DisposeBag()
-
+    
     override func viewDidLoad() {
         let defaults = NSUserDefaults.standardUserDefaults()
         let username = defaults.stringForKey("username")
@@ -50,8 +50,13 @@ class UserLoginViewController: UIViewController,UITextFieldDelegate{
         }
         self.navigationController?.view.userInteractionEnabled = false
         self.noticeOnlyText("正在登录中")
-        CupProvider.request(.Login(userName,password)).mapJSON().subscribeNext { (let json) -> Void in
-          AccountModel.sharedAccount = AccountModel.toModel(json as! NSDictionary)
-        }.addDisposableTo(disposeBag)
+        CupProvider.request(.Login(userName,password)).mapJSON().observeOn(MainScheduler.sharedInstance).subscribeNext { (let json) -> Void in
+            AccountModel.sharedAccount = AccountModel.toModel(json as! NSDictionary)
+            if staticIdentifier == nil {
+                self.navigationController?.ks_pushViewController(CentralViewController())
+            }else{
+                UIApplication.sharedApplication().keyWindow!.rootViewController = R.storyboard.main.instance.instantiateInitialViewController()
+            }
+            }.addDisposableTo(disposeBag)
     }
 }

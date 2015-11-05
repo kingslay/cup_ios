@@ -1,5 +1,7 @@
 PODS:
   - Alamofire (3.1.1)
+  - AlamofireImage (2.1.0):
+    - Alamofire (~> 3.1)
   - BluetoothKit (0.2.1)
   - KSJSONHelp (0.4)
   - KSSwiftExtension (0.3.2)
@@ -14,21 +16,25 @@ PODS:
   - RxCocoa (2.0.0-beta.2):
     - RxSwift (~> 2.0.0-beta)
   - RxSwift (2.0.0-beta.2)
+  - SnapKit (0.16.0)
   - SwiftDate (1.2)
   - SwiftyJSON (2.3.1)
 
 DEPENDENCIES:
+  - AlamofireImage
   - BluetoothKit
   - KSJSONHelp
   - KSSwiftExtension
   - Moya/RxSwift
   - R.swift
   - RxCocoa (~> 2.0.0-beta.2)
+  - SnapKit
   - SwiftDate
   - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: 9b0a7188b961a03914a99304488bd226b0e46c0e
+  AlamofireImage: 97e00995920d85b5cb23ee4c3b7f92605f5dc74b
   BluetoothKit: c1dfd8f529a1d4d2c0778b97a8937b5b68c75395
   KSJSONHelp: e257ea3c7a309cbc9e8a1ea70b379069d956c073
   KSSwiftExtension: 7b99345095d88e8b62d1cc5219358907cfed31e0
@@ -36,6 +42,7 @@ SPEC CHECKSUMS:
   R.swift: dfd7addf1564914d92745816b76b0563d688f387
   RxCocoa: ee39aa3ab24a8dde3832669f8e1e2c7652925e0c
   RxSwift: 795720c22352cf1f62669ef3695b5df7e195103b
+  SnapKit: ddac6b339d571f9d80dbb733585b172ee9eed3cb
   SwiftDate: 49ebd4efb5f82336cfc2b1d8a6622f47d4b17370
   SwiftyJSON: 592b53bee5ef3dd9b3bebc6b9cb7ee35426ae8c3
 

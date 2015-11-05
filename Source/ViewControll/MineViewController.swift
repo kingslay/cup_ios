@@ -36,7 +36,7 @@ class MineViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         if indexPath.row == 0 {
             cell.imageView?.image = R.image.mine_photo
-            cell.textLabel?.text = "wangjinbian"
+            cell.textLabel?.text = staticAccount?.nickname
         }
         return cell
     }

@@ -30,3 +30,4 @@ class AccountModel: NSObject {
     }
 }
 var staticAccount: AccountModel?
+var staticIdentifier: NSUUID?

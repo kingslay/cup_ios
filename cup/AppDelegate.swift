@@ -34,7 +34,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if AccountModel.sharedAccount == nil {
                 self.window?.rootViewController = R.storyboard.login.instance.instantiateInitialViewController()
             }else{
-                self.window?.rootViewController = R.storyboard.main.instance.instantiateInitialViewController()
+                if staticIdentifier != nil {
+                    self.window?.rootViewController = R.storyboard.main.instance.instantiateInitialViewController()
+                }else{
+                    self.window?.rootViewController = UINavigationController.init(rootViewController: CentralViewController())
+                }
             }
         }
         self.window?.makeKeyAndVisible()

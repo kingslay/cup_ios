@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C1BD8671BEB8B47003E34F8 /* CentralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1BD8661BEB8B47003E34F8 /* CentralViewController.swift */; };
+		3C1BD8691BEB8D4D003E34F8 /* AvailabilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1BD8681BEB8D4D003E34F8 /* AvailabilityViewController.swift */; };
+		3C1BD86B1BEB8D65003E34F8 /* AvailabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1BD86A1BEB8D65003E34F8 /* AvailabilityView.swift */; };
+		3C1BD86D1BEB8DA9003E34F8 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1BD86C1BEB8DA9003E34F8 /* Colors.swift */; };
 		3C3947421BE8F19100E7FE90 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3947411BE8F19100E7FE90 /* UICollectionView.swift */; };
 		3C3947441BE9012300E7FE90 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C3947431BE9012300E7FE90 /* Images.xcassets */; };
 		3C3947AA1BEA44F800E7FE90 /* CFCityPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3947941BEA44F800E7FE90 /* CFCityPickerVC.swift */; };
@@ -66,6 +70,10 @@
 
 /* Begin PBXFileReference section */
 		1D52DF8D440B110927C4FB64 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		3C1BD8661BEB8B47003E34F8 /* CentralViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CentralViewController.swift; sourceTree = "<group>"; };
+		3C1BD8681BEB8D4D003E34F8 /* AvailabilityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailabilityViewController.swift; sourceTree = "<group>"; };
+		3C1BD86A1BEB8D65003E34F8 /* AvailabilityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailabilityView.swift; sourceTree = "<group>"; };
+		3C1BD86C1BEB8DA9003E34F8 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		3C3947411BE8F19100E7FE90 /* UICollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UICollectionView.swift; path = Source/ViewControll/UICollectionView.swift; sourceTree = SOURCE_ROOT; };
 		3C3947431BE9012300E7FE90 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3C3947941BEA44F800E7FE90 /* CFCityPickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFCityPickerVC.swift; sourceTree = "<group>"; };
@@ -274,6 +282,7 @@
 		CB89F7A81BE707BF00FD21FD /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				3C1BD86C1BEB8DA9003E34F8 /* Colors.swift */,
 				CB89F7BF1BE7150A00FD21FD /* R.generated.swift */,
 				CB89F7C31BE73CD300FD21FD /* CupProvider.swift */,
 			);
@@ -302,6 +311,7 @@
 		CB89F7AB1BE707BF00FD21FD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3C1BD86A1BEB8D65003E34F8 /* AvailabilityView.swift */,
 				3CC57E021BE7BA490050E64E /* KSPickerView.swift */,
 				3C70AB4D1BEA540C00E97141 /* KSDatePickerView.swift */,
 				CB89F7AC1BE707BF00FD21FD /* ViewCell */,
@@ -328,6 +338,8 @@
 				CB3CF8881BE9B04F008D577E /* UserLoginViewController.swift */,
 				CB3CF88A1BE9B071008D577E /* UserRegistViewController.swift */,
 				CB3CF88C1BE9B0AC008D577E /* Login.storyboard */,
+				3C1BD8661BEB8B47003E34F8 /* CentralViewController.swift */,
+				3C1BD8681BEB8D4D003E34F8 /* AvailabilityViewController.swift */,
 				3C80A5D61BCA5A9C0050B6B6 /* CupViewController.swift */,
 				CB89F7B51BE7101200FD21FD /* ClockCollectionViewController.swift */,
 				CB89F7B91BE710EE00FD21FD /* TabBarViewController.swift */,
@@ -561,17 +573,21 @@
 				CB3CF8941BE9DD6E008D577E /* KSGuidanceViewController.swift in Sources */,
 				CB89F7B71BE7101200FD21FD /* ClockCollectionViewController.swift in Sources */,
 				3C3947AA1BEA44F800E7FE90 /* CFCityPickerVC.swift in Sources */,
+				3C1BD86B1BEB8D65003E34F8 /* AvailabilityView.swift in Sources */,
 				CB3CF88B1BE9B071008D577E /* UserRegistViewController.swift in Sources */,
 				3C3947AC1BEA44F800E7FE90 /* CFCityPickerVCCommon.swift in Sources */,
 				3C80A5D71BCA5A9C0050B6B6 /* CupViewController.swift in Sources */,
 				CB3CF88F1BE9B3F2008D577E /* UIViewController.swift in Sources */,
 				CB89F7BB1BE710EE00FD21FD /* TabBarViewController.swift in Sources */,
+				3C1BD8691BEB8D4D003E34F8 /* AvailabilityViewController.swift in Sources */,
 				3CC57E031BE7BA490050E64E /* KSPickerView.swift in Sources */,
 				CB89F7C41BE73CD300FD21FD /* CupProvider.swift in Sources */,
 				3C3947AD1BEA44F800E7FE90 /* LocationManager.swift in Sources */,
 				CB89F7B31BE70B2700FD21FD /* ClockCollectionViewCell.swift in Sources */,
 				CBE1DC351BEAFCD900E1FF29 /* UINavigationController.swift in Sources */,
+				3C1BD86D1BEB8DA9003E34F8 /* Colors.swift in Sources */,
 				CB89F7C01BE7150A00FD21FD /* R.generated.swift in Sources */,
+				3C1BD8671BEB8B47003E34F8 /* CentralViewController.swift in Sources */,
 				CBE1DC2B1BE9F06E00E1FF29 /* MineViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -15,7 +15,7 @@ class ClockCollectionViewController: UICollectionViewController {
     var clockArray: [ClockModel] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView?.backgroundColor = UIColor.whiteColor()
+        self.collectionView?.backgroundColor = UIColor.lightGrayColor()
         self.collectionView?.registerNib(R.nib.clockCollectionViewCell)
         let rightButton = UIBarButtonItem.init(barButtonSystemItem: .Add, target: self, action: "addClock")
         self.navigationItem.rightBarButtonItem = rightButton;
@@ -43,11 +43,13 @@ class ClockCollectionViewController: UICollectionViewController {
     
     func addClock() {
         UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings.init(forTypes: [.Badge,.Sound,.Alert], categories: nil))
-        let pickerView = KSPickerView.init(frame: CGRectMake(0, SCREEN_HEIGHT-250,SCREEN_WIDTH, 250))
-        pickerView.pickerData = [Array(0..<24).map{ String(format: "%02d", $0)},Array(0..<60).map{String(format:"%02d", $0)}]
+        let pickerView = KSDatePickerView()
+        pickerView.datePicker.datePickerMode = .CountDownTimer
         self.view.addSubview(pickerView)
-        pickerView.callBackBlock = {[unowned self] in
-            let model = ClockModel.init(hour: $0[0], minute: $0[1])
+        pickerView.ks_bottom = self.view.ks_bottom
+        pickerView.callBackBlock = {
+            pickerView.hidden = true
+            let model = ClockModel.init(hour: $0.hour, minute: $0.minute)
             self.clockArray.append(model)
             ClockModel.setObjectArray(self.clockArray,forKey:"clockArray")
             self.collectionView?.reloadData()
