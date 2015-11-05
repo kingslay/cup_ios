@@ -19,31 +19,25 @@ public class KSPickerView: UIView ,UIPickerViewDataSource, UIPickerViewDelegate 
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
-        let toolBar = UIToolbar(frame: CGRectMake(0, 0, self.frame.width, 44))
-        toolBar.barTintColor = UIColor.whiteColor()
-        toolBar.translucent = true
-        let cancelBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: "cancelButtonClicked:")
-        
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: self, action: nil)
-        let doneBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: "doneButtonClicked:")
-        
-        toolBar.setItems([cancelBtn,flexSpace,doneBtn], animated: true)
-        
-        pickerView.frame = CGRectMake(0.0, toolBar.frame.height, toolBar.frame.width, self.frame.height - toolBar.frame.height)
-        pickerView.dataSource = self
-        pickerView.delegate = self
-        pickerView.showsSelectionIndicator = true;
-        pickerView.backgroundColor = UIColor.whiteColor()
-        
+        self.backgroundColor = UIColor.whiteColor()
+        let toolBar = UIView(frame: CGRectMake(0, 0, frame.width, 44))
+        let okButton = UIButton.init(frame: CGRectMake(0, 0, 44, 44))
+        okButton.setTitle("完成".localized, forState: .Normal)
+        okButton.setTitleColor(UIColor.redColor(), forState: .Normal)
+        okButton.ks_right = toolBar.ks_right - 10
+        okButton.addTarget(self, action: "doneButtonClicked:", forControlEvents: .TouchUpInside)
+        toolBar.addSubview(okButton)
         self.addSubview(toolBar)
-        self.addSubview(pickerView)
+
+        self.pickerView.frame = CGRectMake(0.0, toolBar.frame.height, toolBar.frame.width, self.frame.height - toolBar.frame.height)
+        self.pickerView.dataSource = self
+        self.pickerView.delegate = self
+        self.pickerView.showsSelectionIndicator = true;
+        self.pickerView.backgroundColor = UIColor.whiteColor()
+        self.addSubview(self.pickerView)
     }
     required public init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func cancelButtonClicked(sender: UIBarButtonItem) {
-        self.hidden = true
     }
     
     func doneButtonClicked(sender: UIBarButtonItem) {
@@ -52,7 +46,6 @@ public class KSPickerView: UIView ,UIPickerViewDataSource, UIPickerViewDelegate 
             (0..<pickerView.numberOfComponents).forEach{ result.append(pickerView.selectedRowInComponent($0)) }
             callBackBlock!(result)
         }
-        self.hidden = true
     }
     // MARK - Picker delegate
     public func pickerView(_pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {

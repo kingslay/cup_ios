@@ -11,7 +11,8 @@ import UIKit
 class AccountTableViewCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var valueLabel: UILabel!
+    @IBOutlet weak var valueTextField: UITextField!
+    @IBOutlet weak var headerImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

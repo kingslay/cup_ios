@@ -2,7 +2,7 @@ PODS:
   - Alamofire (3.1.1)
   - BluetoothKit (0.2.1)
   - KSJSONHelp (0.4)
-  - KSSwiftExtension (0.3.1)
+  - KSSwiftExtension (0.3.2)
   - Moya/Core (4.3.1):
     - Alamofire (~> 3.0)
   - Moya/ReactiveCore (4.3.1):
@@ -31,7 +31,7 @@ SPEC CHECKSUMS:
   Alamofire: 9b0a7188b961a03914a99304488bd226b0e46c0e
   BluetoothKit: c1dfd8f529a1d4d2c0778b97a8937b5b68c75395
   KSJSONHelp: e257ea3c7a309cbc9e8a1ea70b379069d956c073
-  KSSwiftExtension: 8f4afc4714036daf5bf28d163bca80612d49e97e
+  KSSwiftExtension: 7b99345095d88e8b62d1cc5219358907cfed31e0
   Moya: 980fa0218d80a3f7379c12c7b983e9a664b8b55a
   R.swift: dfd7addf1564914d92745816b76b0563d688f387
   RxCocoa: ee39aa3ab24a8dde3832669f8e1e2c7652925e0c

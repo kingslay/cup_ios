@@ -15,32 +15,43 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的头像" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3T-ia-hqH">
-                        <rect key="frame" x="10" y="11.5" width="68" height="20.5"/>
+                        <rect key="frame" x="10" y="11" width="68" height="20.5"/>
                         <animations/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sjv-BN-ggw">
-                        <rect key="frame" x="268" y="11.5" width="42" height="20.5"/>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eez-zm-M2s">
+                        <rect key="frame" x="88" y="13" width="222" height="17"/>
                         <animations/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WUK-Ed-nps">
+                        <rect key="frame" x="248" y="0.0" width="62" height="62"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="62" id="NTz-Sv-V4G"/>
+                            <constraint firstAttribute="width" constant="62" id="bBa-Er-Zf3"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <animations/>
                 <constraints>
-                    <constraint firstItem="o3T-ia-hqH" firstAttribute="centerY" secondItem="Sjv-BN-ggw" secondAttribute="centerY" id="KQ8-xT-AP5"/>
                     <constraint firstItem="o3T-ia-hqH" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="W4r-Q9-Ntx"/>
+                    <constraint firstAttribute="trailing" secondItem="WUK-Ed-nps" secondAttribute="trailing" constant="10" id="W8o-KH-DJy"/>
                     <constraint firstItem="o3T-ia-hqH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="fdU-EZ-CaN"/>
-                    <constraint firstAttribute="trailing" secondItem="Sjv-BN-ggw" secondAttribute="trailing" constant="10" id="sv9-gi-bq0"/>
+                    <constraint firstItem="o3T-ia-hqH" firstAttribute="centerY" secondItem="eez-zm-M2s" secondAttribute="centerY" id="mmD-eq-nme"/>
+                    <constraint firstAttribute="trailing" secondItem="eez-zm-M2s" secondAttribute="trailing" constant="10" id="nlu-kt-ASI"/>
+                    <constraint firstItem="WUK-Ed-nps" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="tGT-V3-akk"/>
+                    <constraint firstItem="eez-zm-M2s" firstAttribute="leading" secondItem="o3T-ia-hqH" secondAttribute="trailing" constant="10" id="ueM-a4-ViP"/>
                 </constraints>
             </tableViewCellContentView>
             <animations/>
             <connections>
+                <outlet property="headerImageView" destination="WUK-Ed-nps" id="tke-eS-KU4"/>
                 <outlet property="titleLabel" destination="o3T-ia-hqH" id="j8H-wi-p1N"/>
-                <outlet property="valueLabel" destination="Sjv-BN-ggw" id="SXm-sF-kyO"/>
+                <outlet property="valueTextField" destination="eez-zm-M2s" id="jyf-ci-f6e"/>
             </connections>
         </tableViewCell>
     </objects>

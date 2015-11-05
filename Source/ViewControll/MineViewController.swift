@@ -12,7 +12,8 @@ class MineViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.view.backgroundColor = UIColor.lightGrayColor()
+        self.tableView.tableFooterView = UIView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,7 +42,7 @@ class MineViewController: UITableViewController {
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == 0 {
-            self.navigationController?.pushViewController(AccountViewController(), animated: true)
+            self.navigationController?.ks_pushViewController(AccountViewController())
         }
     }
 

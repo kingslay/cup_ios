@@ -50,6 +50,7 @@
 		CBE1DC301BE9F92200E1FF29 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE1DC2E1BE9F92200E1FF29 /* AccountTableViewCell.swift */; };
 		CBE1DC311BE9F92200E1FF29 /* AccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBE1DC2F1BE9F92200E1FF29 /* AccountTableViewCell.xib */; };
 		CBE1DC331BEA04ED00E1FF29 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE1DC321BEA04ED00E1FF29 /* AccountModel.swift */; };
+		CBE1DC351BEAFCD900E1FF29 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE1DC341BEAFCD900E1FF29 /* UINavigationController.swift */; };
 		CBE9E7C51BE88A1B00CE922B /* ClockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE9E7C41BE88A1B00CE922B /* ClockModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -113,6 +114,7 @@
 		CBE1DC2E1BE9F92200E1FF29 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
 		CBE1DC2F1BE9F92200E1FF29 /* AccountTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountTableViewCell.xib; sourceTree = "<group>"; };
 		CBE1DC321BEA04ED00E1FF29 /* AccountModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
+		CBE1DC341BEAFCD900E1FF29 /* UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		CBE9E7C41BE88A1B00CE922B /* ClockModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -292,6 +294,7 @@
 			children = (
 				3C3947411BE8F19100E7FE90 /* UICollectionView.swift */,
 				CB3CF88E1BE9B3F2008D577E /* UIViewController.swift */,
+				CBE1DC341BEAFCD900E1FF29 /* UINavigationController.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -567,6 +570,7 @@
 				CB89F7C41BE73CD300FD21FD /* CupProvider.swift in Sources */,
 				3C3947AD1BEA44F800E7FE90 /* LocationManager.swift in Sources */,
 				CB89F7B31BE70B2700FD21FD /* ClockCollectionViewCell.swift in Sources */,
+				CBE1DC351BEAFCD900E1FF29 /* UINavigationController.swift in Sources */,
 				CB89F7C01BE7150A00FD21FD /* R.generated.swift in Sources */,
 				CBE1DC2B1BE9F06E00E1FF29 /* MineViewController.swift in Sources */,
 			);

@@ -15,8 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        application.applicationIconBadgeNumber = 0
         
+        AccountModel.sharedAccount = AccountModel()
+        application.applicationIconBadgeNumber = 0
         self.window = UIWindow.init(frame: UIScreen.mainScreen().bounds)
         // 得到当前应用的版本号
         let infoDictionary = NSBundle.mainBundle().infoDictionary
@@ -30,7 +31,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             userDefaults.setValue(currentAppVersion, forKey: "appVersion")
             self.window?.rootViewController = R.nib.kSGuidanceViewController.firstView(nil, options: nil)!
         }else{
-            self.window?.rootViewController = R.storyboard.main.instance.instantiateInitialViewController()
+            if AccountModel.sharedAccount == nil {
+                self.window?.rootViewController = R.storyboard.login.instance.instantiateInitialViewController()
+            }else{
+                self.window?.rootViewController = R.storyboard.main.instance.instantiateInitialViewController()
+            }
         }
         self.window?.makeKeyAndVisible()
         return true

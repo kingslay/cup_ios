@@ -11,6 +11,22 @@ class AccountModel: NSObject {
     var nickname: String?
     var headImageURL: String?
     var brithday: String?
-    var heigth: NSNumber?
+    var height: NSNumber?
     var city: String?
+    
+    class var sharedAccount: AccountModel?{
+        get{
+            if let account = staticAccount {
+                return account
+            }else{
+                guard let dic = NSUserDefaults.standardUserDefaults().objectForKey("sharedAccount") as? NSDictionary else{return nil}
+                return AccountModel.toModel(dic)
+            }
+        }
+        set{
+            staticAccount = newValue
+            NSUserDefaults.standardUserDefaults().setObject(staticAccount?.toDictionary(), forKey: "sharedAccount")
+        }
+    }
 }
+var staticAccount: AccountModel?

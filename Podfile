@@ -11,4 +11,4 @@ pod 'RxCocoa', '~> 2.0.0-beta.2'
 pod 'SwiftDate'
 pod 'BluetoothKit'
 pod 'SwiftyJSON'
-
+pod 'AlamofireImage'

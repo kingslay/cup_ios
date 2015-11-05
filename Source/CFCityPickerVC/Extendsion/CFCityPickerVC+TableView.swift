@@ -94,10 +94,9 @@ extension CFCityPickerVC: UITableViewDataSource,UITableViewDelegate{
             
             location.reverseGeocodeLocationWithLatLon(latitude: latitude, longitude: longitude, onReverseGeocodingCompletionHandler: { (reverseGecodeInfo, placemark, error) -> Void in
                 
-                if error != nil {return}
-                if placemark == nil {return}
-                let city: NSString = (placemark!.locality! as NSString).stringByReplacingOccurrencesOfString("市", withString: "")
-                self.currentCity = city as String
+                guard error == nil else{return}
+                guard let placemark = placemark,let locality = placemark.locality else {return}
+                self.currentCity = (locality as NSString).stringByReplacingOccurrencesOfString("市", withString: "")
                 
             })
             

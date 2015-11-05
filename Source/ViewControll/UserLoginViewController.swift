@@ -51,7 +51,7 @@ class UserLoginViewController: UIViewController,UITextFieldDelegate{
         self.navigationController?.view.userInteractionEnabled = false
         self.noticeOnlyText("正在登录中")
         CupProvider.request(.Login(userName,password)).mapJSON().subscribeNext { (let json) -> Void in
-            print(json)
+          AccountModel.sharedAccount = AccountModel.toModel(json as! NSDictionary)
         }.addDisposableTo(disposeBag)
     }
 }

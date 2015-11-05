@@ -8,6 +8,16 @@
 
 import Foundation
 import Moya
+import RxSwift
+import SwiftyJSON
+extension ObservableType where E: MoyaResponse {
+    /// Maps data received from the signal into a JSON object. If the conversion fails, the signal errors.
+    public func mapSwiftyJSON() -> Observable<JSON> {
+        return flatMap { response -> Observable<JSON> in
+            return just(JSON.init(data: response.data))
+        }
+    }
+}
 let CupProvider = RxMoyaProvider<CupMoya>(endpointClosure: { (let target) -> Endpoint<CupMoya> in
     let url = target.baseURL.URLByAppendingPathComponent(target.path).absoluteString
     switch target {
