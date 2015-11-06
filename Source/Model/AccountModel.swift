@@ -17,12 +17,12 @@ class AccountModel: NSObject {
     
     class var sharedAccount: AccountModel?{
         get{
-            if let account = staticAccount {
-                return account
-            }else{
-                guard let dic = NSUserDefaults.standardUserDefaults().objectForKey("sharedAccount") as? NSDictionary else{return nil}
-                return AccountModel.toModel(dic)
-            }
+        if let account = staticAccount {
+        return account
+    }else{
+        guard let dic = NSUserDefaults.standardUserDefaults().objectForKey("sharedAccount") as? NSDictionary else{return nil}
+        return AccountModel.toModel(dic)
+        }
         }
         set{
             staticAccount = newValue
@@ -31,4 +31,11 @@ class AccountModel: NSObject {
     }
 }
 var staticAccount: AccountModel?
-var staticIdentifier: NSUUID?
+var staticIdentifier: String? {
+get{
+    return NSUserDefaults.standardUserDefaults().stringForKey("sharedIdentifier")
+}
+set{
+    NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: "sharedIdentifier")
+}
+}

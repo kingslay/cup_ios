@@ -39,12 +39,13 @@ struct R {
     static var clockCollectionViewCell: _R.nib._ClockCollectionViewCell { return _R.nib._ClockCollectionViewCell() }
     static var headerItemView: _R.nib._HeaderItemView { return _R.nib._HeaderItemView() }
     static var kSGuidanceViewController: _R.nib._KSGuidanceViewController { return _R.nib._KSGuidanceViewController() }
+    static var mineTableViewCell: _R.nib._MineTableViewCell { return _R.nib._MineTableViewCell() }
   }
   
   struct reuseIdentifier {
     static var accountTableViewCell: ReuseIdentifier<Cup.AccountTableViewCell> { return ReuseIdentifier(identifier: "AccountTableViewCell") }
-    static var cell: ReuseIdentifier<UITableViewCell> { return ReuseIdentifier(identifier: "cell") }
     static var clockCollectionViewCell: ReuseIdentifier<Cup.ClockCollectionViewCell> { return ReuseIdentifier(identifier: "ClockCollectionViewCell") }
+    static var mineTableViewCell: ReuseIdentifier<Cup.MineTableViewCell> { return ReuseIdentifier(identifier: "MineTableViewCell") }
   }
   
   struct segue {
@@ -86,7 +87,7 @@ struct R {
       static var instance: UIStoryboard { return UIStoryboard(name: "Main", bundle: nil) }
       
       static func validateImages() {
-        assert(UIImage(named: "mine_photo") != nil, "[R.swift] Image named 'mine_photo' is used in storyboard 'Main', but couldn't be loaded.")
+        
       }
       
       static func validateViewControllers() {
@@ -171,6 +172,20 @@ struct _R {
       
       func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> Cup.KSGuidanceViewController? {
         return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? Cup.KSGuidanceViewController
+      }
+      
+      func instantiateWithOwner(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> [AnyObject] {
+        return instance.instantiateWithOwner(ownerOrNil, options: optionsOrNil)
+      }
+    }
+    
+    struct _MineTableViewCell: NibResource, Reusable {
+      var instance: UINib { return UINib.init(nibName: "MineTableViewCell", bundle: nil) }
+      var name: String { return "MineTableViewCell" }
+      var reuseIdentifier: ReuseIdentifier<Cup.MineTableViewCell> { return ReuseIdentifier(identifier: "MineTableViewCell") }
+      
+      func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> Cup.MineTableViewCell? {
+        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? Cup.MineTableViewCell
       }
       
       func instantiateWithOwner(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> [AnyObject] {

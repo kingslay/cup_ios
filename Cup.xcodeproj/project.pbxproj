@@ -55,6 +55,8 @@
 		CBE1DC311BE9F92200E1FF29 /* AccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBE1DC2F1BE9F92200E1FF29 /* AccountTableViewCell.xib */; };
 		CBE1DC331BEA04ED00E1FF29 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE1DC321BEA04ED00E1FF29 /* AccountModel.swift */; };
 		CBE1DC351BEAFCD900E1FF29 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE1DC341BEAFCD900E1FF29 /* UINavigationController.swift */; };
+		CBE1DC3A1BEC81F900E1FF29 /* MineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE1DC381BEC81F900E1FF29 /* MineTableViewCell.swift */; };
+		CBE1DC3B1BEC81F900E1FF29 /* MineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBE1DC391BEC81F900E1FF29 /* MineTableViewCell.xib */; };
 		CBE9E7C51BE88A1B00CE922B /* ClockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE9E7C41BE88A1B00CE922B /* ClockModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -123,6 +125,8 @@
 		CBE1DC2F1BE9F92200E1FF29 /* AccountTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountTableViewCell.xib; sourceTree = "<group>"; };
 		CBE1DC321BEA04ED00E1FF29 /* AccountModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
 		CBE1DC341BEAFCD900E1FF29 /* UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
+		CBE1DC381BEC81F900E1FF29 /* MineTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineTableViewCell.swift; sourceTree = "<group>"; };
+		CBE1DC391BEC81F900E1FF29 /* MineTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineTableViewCell.xib; sourceTree = "<group>"; };
 		CBE9E7C41BE88A1B00CE922B /* ClockModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -326,6 +330,8 @@
 				CB89F7B21BE70B2700FD21FD /* ClockCollectionViewCell.xib */,
 				CBE1DC2E1BE9F92200E1FF29 /* AccountTableViewCell.swift */,
 				CBE1DC2F1BE9F92200E1FF29 /* AccountTableViewCell.xib */,
+				CBE1DC381BEC81F900E1FF29 /* MineTableViewCell.swift */,
+				CBE1DC391BEC81F900E1FF29 /* MineTableViewCell.xib */,
 			);
 			path = ViewCell;
 			sourceTree = "<group>";
@@ -469,6 +475,7 @@
 				3C3947B51BEA44F800E7FE90 /* CFCityCell.xib in Resources */,
 				CB3CF8951BE9DD6E008D577E /* KSGuidanceViewController.xib in Resources */,
 				CB3CF88D1BE9B0AC008D577E /* Login.storyboard in Resources */,
+				CBE1DC3B1BEC81F900E1FF29 /* MineTableViewCell.xib in Resources */,
 				3C3947441BE9012300E7FE90 /* Images.xcassets in Resources */,
 				3C3947AF1BEA44F800E7FE90 /* CitySearchResultVC.xib in Resources */,
 				CBE1DC291BE9EE5B00E1FF29 /* Main.storyboard in Resources */,
@@ -560,6 +567,7 @@
 				CB3CF8891BE9B04F008D577E /* UserLoginViewController.swift in Sources */,
 				3C70AB4E1BEA540C00E97141 /* KSDatePickerView.swift in Sources */,
 				CBE1DC2D1BE9F81C00E1FF29 /* AccountViewController.swift in Sources */,
+				CBE1DC3A1BEC81F900E1FF29 /* MineTableViewCell.swift in Sources */,
 				3C3947B61BEA44F800E7FE90 /* CityMaskView.swift in Sources */,
 				CBE1DC301BE9F92200E1FF29 /* AccountTableViewCell.swift in Sources */,
 				3C3947B01BEA44F800E7FE90 /* CFCityPickerVC+Main.swift in Sources */,

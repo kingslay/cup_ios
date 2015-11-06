@@ -52,33 +52,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="hPG-zg-et1" imageView="cdc-yZ-mni" rowHeight="80" style="IBUITableViewCellStyleDefault" id="fra-Kx-653">
-                                <rect key="frame" x="0.0" y="92" width="600" height="80"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fra-Kx-653" id="uXq-FM-dY3">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="79.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hPG-zg-et1">
-                                            <rect key="frame" x="92" y="0.0" width="493" height="79.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="mine_photo" id="cdc-yZ-mni">
-                                            <rect key="frame" x="15" y="8" width="62" height="62"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <animations/>
-                                        </imageView>
-                                    </subviews>
-                                    <animations/>
-                                </tableViewCellContentView>
-                                <animations/>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="Wyg-1t-UTh" id="fG8-qo-A7r"/>
                             <outlet property="delegate" destination="Wyg-1t-UTh" id="A2k-ce-Smw"/>
@@ -168,7 +141,4 @@
             <point key="canvasLocation" x="185" y="299"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="mine_photo" width="62" height="62"/>
-    </resources>
 </document>

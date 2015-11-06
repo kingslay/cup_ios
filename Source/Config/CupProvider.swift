@@ -11,6 +11,7 @@ import Moya
 import RxSwift
 import SwiftyJSON
 import Alamofire
+
 extension ObservableType where E: MoyaResponse {
     /// Maps data received from the signal into a JSON object. If the conversion fails, the signal errors.
     public func mapSwiftyJSON() -> Observable<JSON> {
@@ -65,18 +66,20 @@ extension CupMoya : MoyaTarget {
         }
     }
     
-    public var sampleData: NSData {        return "Half measures are as bad as nothing at all.".dataUsingEncoding(NSUTF8StringEncoding)!
+    public var sampleData: NSData {
+        return "Half measures are as bad as nothing at all.".dataUsingEncoding(NSUTF8StringEncoding)!
     }
 }
 
 func uploadImage(imagePath:NSURL, headers: [String: String]? = nil){
-    Alamofire.upload(.POST, "http://localhost:8080",headers:headers,multipartFormData: {
+    Alamofire.upload(.POST, "http://localhost:8080/user/updateProfile.do",headers:headers,multipartFormData: {
         $0.appendBodyPart(fileURL: imagePath, name: "file")
         }, encodingCompletion: {
             switch $0 {
             case .Success(let upload,_,_):
                 upload.responseJSON {
-                    $0.response
+                    let json = JSON.init($0.result.value!)
+                    staticAccount?.headImageURL = "http://localhost:8080/\(json["url"].stringValue)"
                 }
                 break
             case .Failure(let _):

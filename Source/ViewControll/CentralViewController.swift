@@ -141,7 +141,7 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
                 tableView.deselectRowAtIndexPath(indexPath, animated: true)
                 return
             }
-            staticIdentifier = remotePeripheral.identifier
+            staticIdentifier = remotePeripheral.identifier.UUIDString
             UIApplication.sharedApplication().keyWindow!.rootViewController = R.storyboard.main.instance.instantiateInitialViewController()
         }
     }

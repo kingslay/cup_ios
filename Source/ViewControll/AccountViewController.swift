@@ -8,9 +8,8 @@
 
 import UIKit
 import AVFoundation
-import KSJSONHelp
 import KSSwiftExtension
-import SwiftDate
+import AlamofireImage
 class AccountViewController: UITableViewController {
     var datas :[[(String,String,String?)]]!
     override func viewDidLoad() {
@@ -66,10 +65,10 @@ class AccountViewController: UITableViewController {
         cell.valueTextField.userInteractionEnabled = false
         switch (indexPath.section,indexPath.row) {
         case (0,0):
-            if let value = value {
+            if let url = value {
                 cell.valueTextField.hidden = true
                 cell.headerImageView.hidden = false
-                //                cell.headerImageView.image
+                cell.headerImageView.af_setImageWithURL(NSURL.init(string: url)!,placeholderImage: R.image.mine_photo)
             }
             break
         case (1,0):
@@ -78,9 +77,10 @@ class AccountViewController: UITableViewController {
             pickerView.datePicker.datePickerMode = .Date
             pickerView.datePicker.maximumDate = NSDate()
             cell.valueTextField.inputView = pickerView
-            pickerView.callBackBlock = { [unowned self] in
+            pickerView.callBackBlock = {
+                [weak self] in
                 staticAccount?.brithday = $0.toString(format: .Custom("yyyy年MM月dd日"))
-                self.view.endEditing(true)
+                self?.view.endEditing(true)
                 cell.valueTextField.text = staticAccount?.brithday
             }
             break
@@ -89,9 +89,10 @@ class AccountViewController: UITableViewController {
             let pickerView = KSPickerView.init(frame: CGRectMake(0, 0, SCREEN_WIDTH, 200))
             pickerView.pickerData = [Array(60...250).map{"\($0)"},Array(0...9).map{".\($0)CM"}]
             cell.valueTextField.inputView = pickerView
-            pickerView.callBackBlock = { [unowned self] in
+            pickerView.callBackBlock = {
+                [weak self] in
                 staticAccount?.height = Double($0[0]+60) + Double($0[1])/10
-                self.view.endEditing(true)
+                self?.view.endEditing(true)
                 cell.valueTextField.text = "\(staticAccount!.height!)CM"
             }
             break
@@ -111,7 +112,7 @@ class AccountViewController: UITableViewController {
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! AccountTableViewCell
         switch (indexPath.section,indexPath.row) {
         case (0,0):
-            let alertController = UIAlertController.init(title: nil, message: nil, preferredStyle: .ActionSheet)
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
             let albumAction = UIAlertAction(title: "从相册选择", style: UIAlertActionStyle.Default) {
                 (action: UIAlertAction!) -> Void in
                 let imagePickerController = UIImagePickerController()
@@ -180,11 +181,14 @@ class AccountViewController: UITableViewController {
         }
         
     }
+    deinit{
+        print("aaa")
+    }
 }
 extension AccountViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if var image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            image = image.normalizedImage()
+            image = UIImage.imageWithImage(image, scaledToWidth: 62*SCREEN_SCALE)
             let cell = tableView.cellForRowAtIndexPath(NSIndexPath.init(forRow: 0, inSection: 0)) as! AccountTableViewCell
             cell.valueTextField.hidden = true
             cell.headerImageView.hidden = false
@@ -194,10 +198,11 @@ extension AccountViewController: UIImagePickerControllerDelegate, UINavigationCo
         }
     }
     func saveImage(currentImage: UIImage,imageName: String){
-        let imageData: NSData = UIImageJPEGRepresentation(currentImage, 0.5)!
+        let imageData: NSData = UIImageJPEGRepresentation(currentImage, 1)!
         let fullPath = ((NSHomeDirectory() as NSString).stringByAppendingPathComponent("Documents") as NSString)
             .stringByAppendingPathComponent(imageName)
         imageData.writeToFile(fullPath, atomically: false)
+        staticAccount?.headImageURL = fullPath
         uploadImage(NSURL(fileURLWithPath: fullPath))
     }
 }

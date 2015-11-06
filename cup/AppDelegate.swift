@@ -13,10 +13,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
+        staticIdentifier = ""
         AccountModel.sharedAccount = AccountModel()
+        staticAccount?.accountid = "001"
         application.applicationIconBadgeNumber = 0
         self.window = UIWindow.init(frame: UIScreen.mainScreen().bounds)
         // 得到当前应用的版本号
