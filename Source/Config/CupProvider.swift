@@ -36,9 +36,9 @@ public enum CupMoya {
     case Login(String,String)
     case Regist(String,String)
 }
-
+let host = "http://localhost:8080/"
 extension CupMoya : MoyaTarget {
-    public var baseURL: NSURL { return NSURL(string: "http://localhost:8080")! }
+    public var baseURL: NSURL { return NSURL(string: host)! }
     public var path: String {
         switch self {
         case .Login(_, _):
@@ -72,14 +72,15 @@ extension CupMoya : MoyaTarget {
 }
 
 func uploadImage(imagePath:NSURL, headers: [String: String]? = nil){
-    Alamofire.upload(.POST, "http://localhost:8080/user/updateProfile.do",headers:headers,multipartFormData: {
+    Alamofire.upload(.POST, host+"user/updateProfile.do",headers:headers,multipartFormData: {
         $0.appendBodyPart(fileURL: imagePath, name: "file")
         }, encodingCompletion: {
             switch $0 {
             case .Success(let upload,_,_):
                 upload.responseJSON {
                     let json = JSON.init($0.result.value!)
-                    staticAccount?.headImageURL = "http://localhost:8080/\(json["url"].stringValue)"
+                    staticAccount?.headImageURL = host + json["url"].stringValue
+                    AccountModel.sharedAccount = staticAccount
                 }
                 break
             case .Failure(let _):
