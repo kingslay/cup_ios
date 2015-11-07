@@ -9,7 +9,7 @@
 import UIKit
 
 public class KSPickerView: UIView ,UIPickerViewDataSource, UIPickerViewDelegate {
-    private var pickerView = UIPickerView()
+    public var pickerView = UIPickerView()
     public var callBackBlock: ([Int] -> Void)?
     public var pickerData  = [[]]{
         didSet(newValue){

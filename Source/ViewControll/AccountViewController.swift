@@ -23,7 +23,7 @@ class AccountViewController: UITableViewController {
     func initData(){
         datas = [[("我的头像","未添加",staticAccount?.avatar),
             ("我的昵称","未添加",staticAccount?.nickname)],
-            [("生日","生日是什么时候",staticAccount?.brithday),
+            [("生日","生日是什么时候",staticAccount?.birthday),
                 ("身高","身高是多少呢",staticAccount?.height != nil ? "\(staticAccount!.height!)CM" : nil),
                 ("城市","请选择城市",staticAccount?.city)]]
         
@@ -69,7 +69,7 @@ class AccountViewController: UITableViewController {
             if let url = value {
                 cell.valueTextField.hidden = true
                 cell.headerImageView.hidden = false
-                cell.headerImageView.af_setImageWithURL(NSURL.init(string: url)!,placeholderImage: R.image.mine_photo)
+                cell.headerImageView.af_setImageWithURL(NSURL.init(string: url)!,placeholderImage: R.image.mine_photo,filter: AspectScaledToFillSizeFilter(size: CGSizeMake(62, 62)))
             }
             break
         case (1,0):
@@ -80,15 +80,16 @@ class AccountViewController: UITableViewController {
             cell.valueTextField.inputView = pickerView
             pickerView.callBackBlock = {
                 [weak self] in
-                staticAccount?.brithday = $0.toString(format: .Custom("yyyy年MM月dd日"))
+                staticAccount?.birthday = $0.toString(format: .Custom("yyyy年MM月dd日"))
                 self?.view.endEditing(true)
-                cell.valueTextField.text = staticAccount?.brithday
+                cell.valueTextField.text = staticAccount?.birthday
             }
             break
         case (1,1):
             cell.valueTextField.userInteractionEnabled = true
             let pickerView = KSPickerView.init(frame: CGRectMake(0, 0, SCREEN_WIDTH, 200))
             pickerView.pickerData = [Array(60...250).map{"\($0)"},Array(0...9).map{".\($0)CM"}]
+            pickerView.pickerView.selectRow(100, inComponent: 0, animated: false)
             cell.valueTextField.inputView = pickerView
             pickerView.callBackBlock = {
                 [weak self] in
@@ -189,7 +190,7 @@ class AccountViewController: UITableViewController {
 extension AccountViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if var image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            image = UIImage.imageWithImage(image, scaledToWidth: 62*SCREEN_SCALE)
+            image = image.af_imageAspectScaledToFillSize(CGSizeMake(320/SCREEN_SCALE, 320/SCREEN_SCALE))
             let cell = tableView.cellForRowAtIndexPath(NSIndexPath.init(forRow: 0, inSection: 0)) as! AccountTableViewCell
             cell.valueTextField.hidden = true
             cell.headerImageView.hidden = false

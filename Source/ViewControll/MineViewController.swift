@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import AlamofireImage
 class MineViewController: UITableViewController {
 
     override func viewDidLoad() {
@@ -36,11 +36,10 @@ class MineViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(R.nib.mineTableViewCell.reuseIdentifier, forIndexPath: indexPath)
         if indexPath.row == 0 {
             if let str = staticAccount?.avatar,url = NSURL(string: str) {
-                cell?.headerImageView.af_setImageWithURL(url, placeholderImage: R.image.mine_photo)
+                cell?.headerImageView.af_setImageWithURL(url, placeholderImage: R.image.mine_photo,filter: AspectScaledToFillSizeFilter(size: CGSizeMake(62, 62)))
             }else{
                 cell?.headerImageView.image = R.image.mine_photo
             }
-            cell?.headerImageView
             cell?.nickNameLabel.text = staticAccount?.nickname
         }
         return cell!

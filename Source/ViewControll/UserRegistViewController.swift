@@ -54,6 +54,7 @@ class UserRegistViewController: UIViewController,UITextFieldDelegate {
         CupProvider.request(.Regist(userName,password)).filterSuccessfulStatusCodes().mapJSON().observeOn(MainScheduler.sharedInstance).subscribe(onNext: { (let json) -> Void in
             self.clearAllNotice()
             staticAccount = AccountModel.toModel(json as! [String : AnyObject])
+            AccountModel.localSave()
             if staticIdentifier == nil {
                 self.navigationController?.ks_pushViewController(CentralViewController())
             }else{

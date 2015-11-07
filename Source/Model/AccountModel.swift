@@ -26,7 +26,7 @@ class AccountModel: NSObject {
         }
     }
 
-    var brithday: String? {
+    var birthday: String? {
         didSet{
             AccountModel.localSave()
         }
@@ -46,7 +46,9 @@ class AccountModel: NSObject {
     }
     
     class func localSave() {
-         NSUserDefaults.standardUserDefaults().setObject(staticAccount?.toDictionary(), forKey: "sharedAccount")
+        if let account = staticAccount {
+            NSUserDefaults.standardUserDefaults().setObject(account.toDictionary(), forKey: "sharedAccount")
+        }
     }
     class func remoteSave() {
         CupProvider.request(.SaveMe).subscribeNext {_ in
