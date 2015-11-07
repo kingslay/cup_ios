@@ -15,8 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         staticIdentifier = ""
-        AccountModel.sharedAccount = AccountModel()
-        staticAccount?.accountid = "001"
+        staticAccount?.accountid = 1
         application.applicationIconBadgeNumber = 0
         self.window = UIWindow.init(frame: UIScreen.mainScreen().bounds)
         // 得到当前应用的版本号
@@ -31,14 +30,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             userDefaults.setValue(currentAppVersion, forKey: "appVersion")
             self.window?.rootViewController = R.nib.kSGuidanceViewController.firstView(nil, options: nil)!
         }else{
-            if AccountModel.sharedAccount == nil {
-                self.window?.rootViewController = R.storyboard.login.instance.instantiateInitialViewController()
-            }else{
+            if let dic = NSUserDefaults.standardUserDefaults().objectForKey("sharedAccount") as? [String:AnyObject] {
+                staticAccount = AccountModel.toModel(dic)
                 if staticIdentifier != nil {
                     self.window?.rootViewController = R.storyboard.main.instance.instantiateInitialViewController()
                 }else{
                     self.window?.rootViewController = UINavigationController.init(rootViewController: CentralViewController())
                 }
+            }else{
+                self.window?.rootViewController = R.storyboard.login.instance.instantiateInitialViewController()
             }
         }
         self.window?.makeKeyAndVisible()

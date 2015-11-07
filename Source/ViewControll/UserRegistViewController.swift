@@ -9,6 +9,8 @@
 import UIKit
 import Alamofire
 import RxSwift
+import Moya
+import SwiftyJSON
 class UserRegistViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var userPassTextField: UITextField!
@@ -49,9 +51,21 @@ class UserRegistViewController: UIViewController,UITextFieldDelegate {
         }
         self.noticeOnlyText("正在登录中")
         self.navigationController?.view.userInteractionEnabled = false
-        CupProvider.request(.Regist(userName,password)).mapJSON().observeOn(MainScheduler.sharedInstance).subscribeNext { (let json) -> Void in
-            
-        }.addDisposableTo(disposeBag)
-        
+        CupProvider.request(.Regist(userName,password)).filterSuccessfulStatusCodes().mapJSON().observeOn(MainScheduler.sharedInstance).subscribe(onNext: { (let json) -> Void in
+            self.clearAllNotice()
+            staticAccount = AccountModel.toModel(json as! [String : AnyObject])
+            if staticIdentifier == nil {
+                self.navigationController?.ks_pushViewController(CentralViewController())
+            }else{
+                UIApplication.sharedApplication().keyWindow!.rootViewController = R.storyboard.main.instance.instantiateInitialViewController()
+            }
+            }, onError: {
+                self.clearAllNotice()
+                self.navigationController?.view.userInteractionEnabled = true
+                if let error = $0 as? NSError, let response = error.userInfo["data"] as? MoyaResponse {
+                    self.noticeError(JSON(data: response.data)["message"].stringValue, autoClear: true)
+                }
+                
+        }).addDisposableTo(disposeBag)
     }
 }

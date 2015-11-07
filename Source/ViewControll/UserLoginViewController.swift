@@ -9,6 +9,8 @@
 import UIKit
 import Alamofire
 import RxSwift
+import Moya
+import SwiftyJSON
 class UserLoginViewController: UIViewController,UITextFieldDelegate{
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var userPassTextField: UITextField!
@@ -50,13 +52,21 @@ class UserLoginViewController: UIViewController,UITextFieldDelegate{
         }
         self.navigationController?.view.userInteractionEnabled = false
         self.noticeOnlyText("正在登录中")
-        CupProvider.request(.Login(userName,password)).mapJSON().observeOn(MainScheduler.sharedInstance).subscribeNext { (let json) -> Void in
-            AccountModel.sharedAccount = AccountModel.toModel(json as! NSDictionary)
+        CupProvider.request(.Login(userName,password)).filterSuccessfulStatusCodes().mapJSON().observeOn(MainScheduler.sharedInstance).subscribe(onNext: { (let json) -> Void in
+            self.clearAllNotice()
+            staticAccount = AccountModel.toModel(json as! [String : AnyObject])
             if staticIdentifier == nil {
                 self.navigationController?.ks_pushViewController(CentralViewController())
             }else{
                 UIApplication.sharedApplication().keyWindow!.rootViewController = R.storyboard.main.instance.instantiateInitialViewController()
             }
-            }.addDisposableTo(disposeBag)
+            }, onError: {
+                self.clearAllNotice()
+                self.navigationController?.view.userInteractionEnabled = true
+                if let error = $0 as? NSError, let response = error.userInfo["data"] as? MoyaResponse {
+                    self.noticeError(JSON(data: response.data)["message"].stringValue, autoClear: true)
+                }
+                
+        }).addDisposableTo(disposeBag)
     }
 }

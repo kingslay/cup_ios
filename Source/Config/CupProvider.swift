@@ -23,10 +23,10 @@ extension ObservableType where E: MoyaResponse {
 let CupProvider = RxMoyaProvider<CupMoya>(endpointClosure: { (let target) -> Endpoint<CupMoya> in
     let url = target.baseURL.URLByAppendingPathComponent(target.path).absoluteString
     switch target {
-    case .Regist(_,_):
-        return Endpoint(URL: url, sampleResponseClosure: {.NetworkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters, parameterEncoding: .JSON)
-    default:
+    case .Login(_,_):
         return Endpoint(URL: url, sampleResponseClosure: {.NetworkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters)
+    default:
+        return Endpoint(URL: url, sampleResponseClosure: {.NetworkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters, parameterEncoding: .JSON)
         
     }
     
@@ -35,6 +35,7 @@ let CupProvider = RxMoyaProvider<CupMoya>(endpointClosure: { (let target) -> End
 public enum CupMoya {
     case Login(String,String)
     case Regist(String,String)
+    case SaveMe
 }
 let host = "http://localhost:8080/"
 extension CupMoya : MoyaTarget {
@@ -45,14 +46,16 @@ extension CupMoya : MoyaTarget {
             return "/user/login"
         case .Regist(_,_):
             return "/user/regist"
+        case .SaveMe:
+            return "/user/saveme"
         }
     }
     public var method: Moya.Method {
         switch self {
-        case .Regist(_,_):
-            return .POST
-        default:
+        case .Login(_,_):
             return .GET
+        default:
+            return .PUT
         }
     }
     public var parameters: [String: AnyObject]? {
@@ -61,6 +64,8 @@ extension CupMoya : MoyaTarget {
             return ["username":user,"password":password]
         case .Login(let user,let password):
             return ["username":user,"password":password]
+        case .SaveMe:
+            return staticAccount?.toDictionary()
         default:
             return nil
         }
@@ -72,18 +77,23 @@ extension CupMoya : MoyaTarget {
 }
 
 func uploadImage(imagePath:NSURL, headers: [String: String]? = nil){
-    Alamofire.upload(.POST, host+"user/updateProfile.do",headers:headers,multipartFormData: {
+    var dict = [String : String]()
+    if headers != nil {
+        dict = headers!
+    }
+    dict["accountid"] = "\(staticAccount!.accountid)"
+    Alamofire.upload(.POST, host+"user/updateProfile.do",headers:dict,multipartFormData: {
         $0.appendBodyPart(fileURL: imagePath, name: "file")
         }, encodingCompletion: {
             switch $0 {
             case .Success(let upload,_,_):
                 upload.responseJSON {
-                    let json = JSON.init($0.result.value!)
-                    staticAccount?.headImageURL = host + json["url"].stringValue
-                    AccountModel.sharedAccount = staticAccount
+                    if let data = $0.result.value, let url = JSON(data)["url"].string {
+                        staticAccount?.avatar = url
+                    }
                 }
                 break
-            case .Failure(let _):
+            case .Failure(_):
                 break
             }
     })

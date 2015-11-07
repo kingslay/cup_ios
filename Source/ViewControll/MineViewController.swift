@@ -35,7 +35,7 @@ class MineViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(R.nib.mineTableViewCell.reuseIdentifier, forIndexPath: indexPath)
         if indexPath.row == 0 {
-            if let str = staticAccount?.headImageURL,url = NSURL(string: str) {
+            if let str = staticAccount?.avatar,url = NSURL(string: str) {
                 cell?.headerImageView.af_setImageWithURL(url, placeholderImage: R.image.mine_photo)
             }else{
                 cell?.headerImageView.image = R.image.mine_photo

@@ -229,7 +229,10 @@ class SwiftNotice: NSObject {
         frame.size.height = label.frame.origin.y + label.frame.size.height + 14
         window.frame = frame
         mainView.frame = frame
-        
+        var center = label.center
+        center.x = mainView.center.x
+        label.center = center
+
         window.windowLevel = UIWindowLevelAlert
         window.center = getRealCenter()
         // change orientation

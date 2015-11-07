@@ -10,6 +10,7 @@ import UIKit
 import AVFoundation
 import KSSwiftExtension
 import AlamofireImage
+
 class AccountViewController: UITableViewController {
     var datas :[[(String,String,String?)]]!
     override func viewDidLoad() {
@@ -20,7 +21,7 @@ class AccountViewController: UITableViewController {
         self.tableView.tableFooterView = UIView()
     }
     func initData(){
-        datas = [[("我的头像","未添加",staticAccount?.headImageURL),
+        datas = [[("我的头像","未添加",staticAccount?.avatar),
             ("我的昵称","未添加",staticAccount?.nickname)],
             [("生日","生日是什么时候",staticAccount?.brithday),
                 ("身高","身高是多少呢",staticAccount?.height != nil ? "\(staticAccount!.height!)CM" : nil),
@@ -29,7 +30,7 @@ class AccountViewController: UITableViewController {
     }
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        AccountModel.sharedAccount = staticAccount
+        AccountModel.remoteSave()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -167,7 +168,7 @@ class AccountViewController: UITableViewController {
             navVC.navigationBar.barStyle = UIBarStyle.BlackTranslucent
             self.presentViewController(navVC, animated: true, completion: nil)
             let plistUrl = NSBundle.mainBundle().URLForResource("City", withExtension: "plist")!
-            let cityArray = NSArray(contentsOfURL: plistUrl) as! [NSDictionary]
+            let cityArray = NSArray(contentsOfURL: plistUrl) as! [[String:AnyObject]]
             //解析字典数据
             cityVC.cityModels = CityModel.toModels(cityArray) as! [CityModel]
             //选中了城市
@@ -193,7 +194,7 @@ extension AccountViewController: UIImagePickerControllerDelegate, UINavigationCo
             cell.valueTextField.hidden = true
             cell.headerImageView.hidden = false
             cell.headerImageView.image = image
-            saveImage(image, imageName: staticAccount!.accountid)
+            saveImage(image, imageName: "\(staticAccount!.accountid)")
             self.parentViewController?.dismissViewControllerAnimated(true, completion: nil)
         }
     }
@@ -202,7 +203,7 @@ extension AccountViewController: UIImagePickerControllerDelegate, UINavigationCo
         let fullPath = ((NSHomeDirectory() as NSString).stringByAppendingPathComponent("Documents") as NSString)
             .stringByAppendingPathComponent(imageName)
         imageData.writeToFile(fullPath, atomically: false)
-        staticAccount?.headImageURL = fullPath
+        staticAccount?.avatar = fullPath
         uploadImage(NSURL(fileURLWithPath: fullPath))
     }
 }

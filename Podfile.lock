@@ -1,15 +1,15 @@
 PODS:
-  - Alamofire (3.1.1)
+  - Alamofire (3.1.2)
   - AlamofireImage (2.1.0):
     - Alamofire (~> 3.1)
   - BluetoothKit (0.2.1)
-  - KSJSONHelp (0.4)
+  - KSJSONHelp (HEAD based on 0.4.3)
   - KSSwiftExtension (0.3.2)
-  - Moya/Core (4.3.1):
+  - Moya/Core (4.4.0):
     - Alamofire (~> 3.0)
-  - Moya/ReactiveCore (4.3.1):
+  - Moya/ReactiveCore (4.4.0):
     - Moya/Core
-  - Moya/RxSwift (4.3.1):
+  - Moya/RxSwift (4.4.0):
     - Moya/ReactiveCore
     - RxSwift (~> 2.0.0-beta)
   - R.swift (0.11.0)
@@ -23,7 +23,7 @@ PODS:
 DEPENDENCIES:
   - AlamofireImage
   - BluetoothKit
-  - KSJSONHelp
+  - KSJSONHelp (HEAD)
   - KSSwiftExtension
   - Moya/RxSwift
   - R.swift
@@ -33,12 +33,12 @@ DEPENDENCIES:
   - SwiftyJSON
 
 SPEC CHECKSUMS:
-  Alamofire: 9b0a7188b961a03914a99304488bd226b0e46c0e
+  Alamofire: 7c16ca65f3c7e681fd925fd7f2dec7747ff96855
   AlamofireImage: 97e00995920d85b5cb23ee4c3b7f92605f5dc74b
   BluetoothKit: c1dfd8f529a1d4d2c0778b97a8937b5b68c75395
-  KSJSONHelp: e257ea3c7a309cbc9e8a1ea70b379069d956c073
+  KSJSONHelp: 42c1fc24f7cdb4d30814dade95c21a0eb1f2b334
   KSSwiftExtension: 7b99345095d88e8b62d1cc5219358907cfed31e0
-  Moya: 980fa0218d80a3f7379c12c7b983e9a664b8b55a
+  Moya: 0ade653ca4bc83bec120493130ecc32f137e5683
   R.swift: dfd7addf1564914d92745816b76b0563d688f387
   RxCocoa: ee39aa3ab24a8dde3832669f8e1e2c7652925e0c
   RxSwift: 795720c22352cf1f62669ef3695b5df7e195103b

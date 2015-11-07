@@ -8,25 +8,48 @@
 
 import Foundation
 class AccountModel: NSObject {
-    var accountid: String!
-    var nickname: String?
-    var headImageURL: String?
-    var brithday: String?
-    var height: NSNumber?
-    var city: String?
+    var accountid: Int = 0 {
+        didSet{
+            AccountModel.localSave()
+        }
+    }
+
+    var nickname: String? {
+        didSet{
+            AccountModel.localSave()
+        }
+    }
+
+    var avatar: String? {
+        didSet{
+            AccountModel.localSave()
+        }
+    }
+
+    var brithday: String? {
+        didSet{
+            AccountModel.localSave()
+        }
+    }
+
+    var height: NSNumber? {
+        didSet{
+            AccountModel.localSave()
+        }
+    }
+
     
-    class var sharedAccount: AccountModel?{
-        get{
-        if let account = staticAccount {
-        return account
-    }else{
-        guard let dic = NSUserDefaults.standardUserDefaults().objectForKey("sharedAccount") as? NSDictionary else{return nil}
-        return AccountModel.toModel(dic)
+    var city: String? {
+        didSet{
+            AccountModel.localSave()
         }
-        }
-        set{
-            staticAccount = newValue
-            NSUserDefaults.standardUserDefaults().setObject(staticAccount?.toDictionary(), forKey: "sharedAccount")
+    }
+    
+    class func localSave() {
+         NSUserDefaults.standardUserDefaults().setObject(staticAccount?.toDictionary(), forKey: "sharedAccount")
+    }
+    class func remoteSave() {
+        CupProvider.request(.SaveMe).subscribeNext {_ in
         }
     }
 }
