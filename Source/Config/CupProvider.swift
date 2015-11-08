@@ -37,7 +37,9 @@ public enum CupMoya {
     case Regist(String,String)
     case SaveMe
 }
-let host = "http://localhost:8080/"
+let host = "http://121.199.75.79:8180/cup-0.1/"
+//let host = "http://localhost:8080/"
+
 extension CupMoya : MoyaTarget {
     public var baseURL: NSURL { return NSURL(string: host)! }
     public var path: String {
