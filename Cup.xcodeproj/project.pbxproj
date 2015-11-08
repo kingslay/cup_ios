@@ -11,6 +11,10 @@
 		3C1BD8691BEB8D4D003E34F8 /* AvailabilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1BD8681BEB8D4D003E34F8 /* AvailabilityViewController.swift */; };
 		3C1BD86B1BEB8D65003E34F8 /* AvailabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1BD86A1BEB8D65003E34F8 /* AvailabilityView.swift */; };
 		3C1BD86D1BEB8DA9003E34F8 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1BD86C1BEB8DA9003E34F8 /* Colors.swift */; };
+		3C1BD8761BEF85BD003E34F8 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C1BD8751BEF85BD003E34F8 /* JavaScriptCore.framework */; };
+		3C1BD89B1BEF97F4003E34F8 /* MOBFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C1BD8991BEF97F4003E34F8 /* MOBFoundation.framework */; };
+		3C1BD89C1BEF97F4003E34F8 /* SMS_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C1BD89A1BEF97F4003E34F8 /* SMS_SDK.framework */; };
+		3C1BD89E1BEF981E003E34F8 /* SMS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C1BD89D1BEF981E003E34F8 /* SMS.storyboard */; };
 		3C3947421BE8F19100E7FE90 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3947411BE8F19100E7FE90 /* UICollectionView.swift */; };
 		3C3947441BE9012300E7FE90 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C3947431BE9012300E7FE90 /* Images.xcassets */; };
 		3C3947AA1BEA44F800E7FE90 /* CFCityPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3947941BEA44F800E7FE90 /* CFCityPickerVC.swift */; };
@@ -76,6 +80,11 @@
 		3C1BD8681BEB8D4D003E34F8 /* AvailabilityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailabilityViewController.swift; sourceTree = "<group>"; };
 		3C1BD86A1BEB8D65003E34F8 /* AvailabilityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailabilityView.swift; sourceTree = "<group>"; };
 		3C1BD86C1BEB8DA9003E34F8 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		3C1BD8751BEF85BD003E34F8 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		3C1BD87B1BEF87E2003E34F8 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		3C1BD8991BEF97F4003E34F8 /* MOBFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOBFoundation.framework; sourceTree = "<group>"; };
+		3C1BD89A1BEF97F4003E34F8 /* SMS_SDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SMS_SDK.framework; sourceTree = "<group>"; };
+		3C1BD89D1BEF981E003E34F8 /* SMS.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SMS.storyboard; sourceTree = "<group>"; };
 		3C3947411BE8F19100E7FE90 /* UICollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UICollectionView.swift; path = Source/ViewControll/UICollectionView.swift; sourceTree = SOURCE_ROOT; };
 		3C3947431BE9012300E7FE90 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3C3947941BEA44F800E7FE90 /* CFCityPickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFCityPickerVC.swift; sourceTree = "<group>"; };
@@ -135,6 +144,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C1BD89B1BEF97F4003E34F8 /* MOBFoundation.framework in Frameworks */,
+				3C1BD89C1BEF97F4003E34F8 /* SMS_SDK.framework in Frameworks */,
+				3C1BD8761BEF85BD003E34F8 /* JavaScriptCore.framework in Frameworks */,
 				6B05A4CA16F58DF3BD595D6C /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -149,6 +161,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C1BD8981BEF97F4003E34F8 /* SMS */ = {
+			isa = PBXGroup;
+			children = (
+				3C1BD8991BEF97F4003E34F8 /* MOBFoundation.framework */,
+				3C1BD89A1BEF97F4003E34F8 /* SMS_SDK.framework */,
+				3C1BD89D1BEF981E003E34F8 /* SMS.storyboard */,
+			);
+			path = SMS;
+			sourceTree = "<group>";
+		};
 		3C3947931BEA44F800E7FE90 /* CFCityPickerVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +248,7 @@
 				CB89F7A71BE707BF00FD21FD /* Source */,
 				CB89F7A61BE707BF00FD21FD /* Resource */,
 				3C80A5D31BCA5A9C0050B6B6 /* Cup */,
+				3C1BD8981BEF97F4003E34F8 /* SMS */,
 				3C80A5EA1BCA5A9D0050B6B6 /* CupTests */,
 				3C80A5D21BCA5A9C0050B6B6 /* Products */,
 				E9D956B4F1DC8BADB0480A42 /* Pods */,
@@ -249,6 +272,7 @@
 				3C80A5DF1BCA5A9D0050B6B6 /* LaunchScreen.storyboard */,
 				3C80A5E21BCA5A9D0050B6B6 /* Info.plist */,
 				3C3947431BE9012300E7FE90 /* Images.xcassets */,
+				3C1BD87B1BEF87E2003E34F8 /* Bridging-Header.h */,
 			);
 			path = Cup;
 			sourceTree = "<group>";
@@ -366,6 +390,7 @@
 		DA07D51378BE1308DC23C162 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3C1BD8751BEF85BD003E34F8 /* JavaScriptCore.framework */,
 				6013113010FD664CC0D5B2B1 /* Pods.framework */,
 			);
 			name = Frameworks;
@@ -477,6 +502,7 @@
 				CB3CF88D1BE9B0AC008D577E /* Login.storyboard in Resources */,
 				CBE1DC3B1BEC81F900E1FF29 /* MineTableViewCell.xib in Resources */,
 				3C3947441BE9012300E7FE90 /* Images.xcassets in Resources */,
+				3C1BD89E1BEF981E003E34F8 /* SMS.storyboard in Resources */,
 				3C3947AF1BEA44F800E7FE90 /* CitySearchResultVC.xib in Resources */,
 				CBE1DC291BE9EE5B00E1FF29 /* Main.storyboard in Resources */,
 				3C3947AB1BEA44F800E7FE90 /* City.plist in Resources */,
@@ -717,10 +743,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Cup",
+					"$(PROJECT_DIR)/Cup/SMS",
+					"$(PROJECT_DIR)/SMS",
+				);
 				INFOPLIST_FILE = Cup/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = king.Cup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Cup/Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -730,10 +763,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Cup",
+					"$(PROJECT_DIR)/Cup/SMS",
+					"$(PROJECT_DIR)/SMS",
+				);
 				INFOPLIST_FILE = Cup/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = king.Cup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Cup/Bridging-Header.h";
 			};
 			name = Release;
 		};
