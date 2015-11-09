@@ -8,15 +8,14 @@
 
 import UIKit
 
-class IndicatorView: UIView {
+public class IndicatorView: UIView {
     let ovalLayer = CAShapeLayer()
-    let view = UIView()
     var ovalPathSmall: UIBezierPath {
-        return UIBezierPath(ovalInRect: CGRect(x: 50, y: 50, width: 0.0, height: 0.0))
+        return UIBezierPath(ovalInRect: CGRect(x: self.ks_centerX, y: self.ks_centerY, width: 0.0, height: 0.0))
     }
     
     var ovalPathLarge: UIBezierPath {
-        return UIBezierPath(ovalInRect: CGRect(x: 0, y: 0, width: 100, height: 100))
+        return UIBezierPath(ovalInRect: CGRect(x: self.ks_centerX-50, y: self.ks_centerY-50, width: 100, height: 100))
     }
 
     override init(frame: CGRect) {
@@ -34,21 +33,16 @@ class IndicatorView: UIView {
         ovalLayer.fillColor = Colors.red.CGColor
         ovalLayer.path = ovalPathSmall.CGPath
         ovalLayer.opacity = 0.5
-        self.addSubview(view)
-        view.snp_makeConstraints { (make) -> Void in
-            make.center.equalTo(self)
-            make.size.equalTo(CGSizeMake(100, 100))
-        }
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     public func startAnimating()
     {
         self.hidden = false
-        self.view.layer.addSublayer(ovalLayer)
+        self.layer.addSublayer(ovalLayer)
         let expandAnimation: CABasicAnimation = CABasicAnimation(keyPath: "path")
         expandAnimation.fromValue = ovalPathSmall.CGPath
         expandAnimation.toValue = ovalPathLarge.CGPath
