@@ -77,6 +77,13 @@ extension ClockCollectionViewController {
         cell?.openSwitch.on = clockModel.open
         return cell!
     }
+//    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+//        if kind == UICollectionElementKindSectionHeader {
+//            
+//
+//        }
+//        return nil
+//    }
 }
 
 extension ClockCollectionViewController:KSArrangeCollectionViewDelegate {

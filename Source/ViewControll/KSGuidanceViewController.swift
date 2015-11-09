@@ -48,7 +48,7 @@ class KSGuidanceViewController: UIViewController {
         self.view.bringSubviewToFront(pageControl)
         self.view.bringSubviewToFront(startButton)
         self.startButton.rx_tap.subscribeNext{
-            let vc = R.storyboard.login.initialViewController
+            let vc = R.storyboard.sMS.initialViewController
             UIApplication.sharedApplication().keyWindow?.rootViewController = vc
         }
     }

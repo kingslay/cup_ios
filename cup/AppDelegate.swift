@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-//        SMSSDK.registerApp("c1013d64d3ff", withSecret: "528dd34e0cb571afea389ae783053243")
+        SMSSDK.registerApp("c1013d64d3ff", withSecret: "528dd34e0cb571afea389ae783053243")
 //        staticIdentifier = ""
         application.applicationIconBadgeNumber = 0
         self.window = UIWindow.init(frame: UIScreen.mainScreen().bounds)
@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     self.window?.rootViewController = UINavigationController.init(rootViewController: CentralViewController())
                 }
             }else{
-                self.window?.rootViewController = R.storyboard.login.instance.instantiateInitialViewController()
+                self.window?.rootViewController = R.storyboard.sMS.instance.instantiateInitialViewController()
             }
         }
         self.window?.makeKeyAndVisible()

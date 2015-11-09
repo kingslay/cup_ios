@@ -16,6 +16,8 @@
 		3C1BDF8B1BF0CA60003E34F8 /* MOBFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C1BDF871BF0CA60003E34F8 /* MOBFoundation.framework */; };
 		3C1BDF8C1BF0CA60003E34F8 /* SMS_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C1BDF881BF0CA60003E34F8 /* SMS_SDK.framework */; };
 		3C1BDF8D1BF0CA91003E34F8 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C1BDF731BF0C02F003E34F8 /* libstdc++.tbd */; };
+		3C1BDF8F1BF0D090003E34F8 /* SMS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C1BDF8E1BF0D090003E34F8 /* SMS.storyboard */; };
+		3C1BDF911BF0D5C7003E34F8 /* SMSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1BDF901BF0D5C7003E34F8 /* SMSViewController.swift */; };
 		3C3947421BE8F19100E7FE90 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3947411BE8F19100E7FE90 /* UICollectionView.swift */; };
 		3C3947441BE9012300E7FE90 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C3947431BE9012300E7FE90 /* Images.xcassets */; };
 		3C3947AA1BEA44F800E7FE90 /* CFCityPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3947941BEA44F800E7FE90 /* CFCityPickerVC.swift */; };
@@ -89,6 +91,8 @@
 		3C1BDF871BF0CA60003E34F8 /* MOBFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOBFoundation.framework; sourceTree = "<group>"; };
 		3C1BDF881BF0CA60003E34F8 /* SMS_SDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SMS_SDK.framework; sourceTree = "<group>"; };
 		3C1BDF891BF0CA60003E34F8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SMS_SDKLocalizable.strings"; sourceTree = "<group>"; };
+		3C1BDF8E1BF0D090003E34F8 /* SMS.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SMS.storyboard; sourceTree = "<group>"; };
+		3C1BDF901BF0D5C7003E34F8 /* SMSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSViewController.swift; sourceTree = "<group>"; };
 		3C3947411BE8F19100E7FE90 /* UICollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UICollectionView.swift; path = Source/ViewControll/UICollectionView.swift; sourceTree = SOURCE_ROOT; };
 		3C3947431BE9012300E7FE90 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3C3947941BEA44F800E7FE90 /* CFCityPickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFCityPickerVC.swift; sourceTree = "<group>"; };
@@ -175,6 +179,8 @@
 				3C1BDF851BF0CA60003E34F8 /* SMS_SDKLocalizable.strings */,
 				3C1BDF871BF0CA60003E34F8 /* MOBFoundation.framework */,
 				3C1BDF881BF0CA60003E34F8 /* SMS_SDK.framework */,
+				3C1BDF8E1BF0D090003E34F8 /* SMS.storyboard */,
+				3C1BDF901BF0D5C7003E34F8 /* SMSViewController.swift */,
 			);
 			path = SMS_SDK;
 			sourceTree = "<group>";
@@ -511,6 +517,7 @@
 				3C3947B51BEA44F800E7FE90 /* CFCityCell.xib in Resources */,
 				CB3CF8951BE9DD6E008D577E /* KSGuidanceViewController.xib in Resources */,
 				CB3CF88D1BE9B0AC008D577E /* Login.storyboard in Resources */,
+				3C1BDF8F1BF0D090003E34F8 /* SMS.storyboard in Resources */,
 				CBE1DC3B1BEC81F900E1FF29 /* MineTableViewCell.xib in Resources */,
 				3C3947441BE9012300E7FE90 /* Images.xcassets in Resources */,
 				3C1BDF8A1BF0CA60003E34F8 /* SMS_SDKLocalizable.strings in Resources */,
@@ -630,6 +637,7 @@
 				CB89F7B31BE70B2700FD21FD /* ClockCollectionViewCell.swift in Sources */,
 				CBE1DC351BEAFCD900E1FF29 /* UINavigationController.swift in Sources */,
 				3C1BD86D1BEB8DA9003E34F8 /* Colors.swift in Sources */,
+				3C1BDF911BF0D5C7003E34F8 /* SMSViewController.swift in Sources */,
 				CB89F7C01BE7150A00FD21FD /* R.generated.swift in Sources */,
 				3C1BD8671BEB8B47003E34F8 /* CentralViewController.swift in Sources */,
 				CBE1DC2B1BE9F06E00E1FF29 /* MineViewController.swift in Sources */,

@@ -85,6 +85,7 @@
         <!--Clock Collection View Controller-->
         <scene sceneID="wrt-d8-wPS">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zju-D7-vEg" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <collectionViewController id="ATZ-DN-X49" customClass="ClockCollectionViewController" customModule="Cup" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="zGz-mF-KkB">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -116,7 +117,6 @@
                     </collectionView>
                     <navigationItem key="navigationItem" id="EtN-8N-vpM"/>
                 </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zju-D7-vEg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1717" y="619"/>
         </scene>

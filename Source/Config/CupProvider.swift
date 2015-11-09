@@ -23,7 +23,7 @@ extension ObservableType where E: MoyaResponse {
 let CupProvider = RxMoyaProvider<CupMoya>(endpointClosure: { (let target) -> Endpoint<CupMoya> in
     let url = target.baseURL.URLByAppendingPathComponent(target.path).absoluteString
     switch target {
-    case .Login(_,_):
+    case .Login(_,_),.PhoneLogin(_):
         return Endpoint(URL: url, sampleResponseClosure: {.NetworkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters)
     default:
         return Endpoint(URL: url, sampleResponseClosure: {.NetworkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters, parameterEncoding: .JSON)
@@ -35,6 +35,7 @@ let CupProvider = RxMoyaProvider<CupMoya>(endpointClosure: { (let target) -> End
 public enum CupMoya {
     case Login(String,String)
     case Regist(String,String)
+    case PhoneLogin(String)
     case SaveMe
 }
 let host = "http://121.199.75.79:8180/cup-0.1/"
@@ -48,6 +49,8 @@ extension CupMoya : MoyaTarget {
             return "/user/login"
         case .Regist(_,_):
             return "/user/regist"
+        case .PhoneLogin(_):
+            return "user/phonelogin"
         case .SaveMe:
             return "/user/saveme"
         }
@@ -55,6 +58,8 @@ extension CupMoya : MoyaTarget {
     public var method: Moya.Method {
         switch self {
         case .Login(_,_):
+            return .GET
+        case .PhoneLogin(_):
             return .GET
         default:
             return .PUT
@@ -66,6 +71,8 @@ extension CupMoya : MoyaTarget {
             return ["username":user,"password":password]
         case .Login(let user,let password):
             return ["username":user,"password":password]
+        case .PhoneLogin(let phone):
+            return ["phone":phone]
         case .SaveMe:
             return staticAccount?.toDictionary()
         default:

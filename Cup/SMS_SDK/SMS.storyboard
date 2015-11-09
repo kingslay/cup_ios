@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15C31f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="FT4-5p-E2j">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="XZe-3F-LZa">
+            <objects>
+                <navigationController id="FT4-5p-E2j" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fxL-m5-4cm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="MTS-nd-CVU" kind="relationship" relationship="rootViewController" id="GhC-Qz-OXU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X62-lz-Z7l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-357" y="205"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="pC0-hv-X3u">
+            <objects>
+                <viewController id="MTS-nd-CVU" customClass="SMSViewController" customModule="Cup" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="exP-4N-JYP"/>
+                        <viewControllerLayoutGuide type="bottom" id="p8r-Ig-Ici"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BKt-1l-zsg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入手机号码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DtK-j9-gyg">
+                                <rect key="frame" x="200" y="285" width="200" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="fWk-zP-gzI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GCK-JL-WBE">
+                                <rect key="frame" x="199.5" y="335" width="80" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="tdT-nD-6Hj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DcR-Uk-QEM">
+                                <rect key="frame" x="325" y="335" width="75" height="30"/>
+                                <animations/>
+                                <state key="normal" title="获取验证码"/>
+                            </button>
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6vV-cu-zXn">
+                                <rect key="frame" x="200" y="385" width="200" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.31811104145159685" blue="0.23922365944364332" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="登录"/>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="DtK-j9-gyg" firstAttribute="centerX" secondItem="BKt-1l-zsg" secondAttribute="centerX" id="2fm-b6-Ko8"/>
+                            <constraint firstItem="6vV-cu-zXn" firstAttribute="top" secondItem="GCK-JL-WBE" secondAttribute="bottom" constant="20" id="5uG-QL-sFg"/>
+                            <constraint firstItem="GCK-JL-WBE" firstAttribute="leading" secondItem="DtK-j9-gyg" secondAttribute="leading" id="89t-hs-VOC"/>
+                            <constraint firstItem="6vV-cu-zXn" firstAttribute="width" secondItem="DtK-j9-gyg" secondAttribute="width" id="BJz-c4-XPF"/>
+                            <constraint firstItem="GCK-JL-WBE" firstAttribute="top" secondItem="DtK-j9-gyg" secondAttribute="bottom" constant="20" id="SFc-VY-gwN"/>
+                            <constraint firstItem="DtK-j9-gyg" firstAttribute="centerY" secondItem="BKt-1l-zsg" secondAttribute="centerY" id="Uhj-Qq-KQF"/>
+                            <constraint firstItem="6vV-cu-zXn" firstAttribute="centerX" secondItem="BKt-1l-zsg" secondAttribute="centerX" id="d8W-P2-G4y"/>
+                            <constraint firstItem="DcR-Uk-QEM" firstAttribute="trailing" secondItem="DtK-j9-gyg" secondAttribute="trailing" id="hwX-Iw-dO6"/>
+                            <constraint firstItem="DcR-Uk-QEM" firstAttribute="centerY" secondItem="GCK-JL-WBE" secondAttribute="centerY" id="zWN-1z-CKg"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="nJW-FA-iaZ"/>
+                    <connections>
+                        <outlet property="loginButton" destination="6vV-cu-zXn" id="fg8-VP-KGe"/>
+                        <outlet property="phoneTextField" destination="DtK-j9-gyg" id="ZZX-f7-cYx"/>
+                        <outlet property="verificationButton" destination="DcR-Uk-QEM" id="LeA-En-HM2"/>
+                        <outlet property="verificationTextField" destination="GCK-JL-WBE" id="Yxs-JY-7Cb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AMa-hH-ehI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="340" y="205"/>
+        </scene>
+    </scenes>
+</document>
