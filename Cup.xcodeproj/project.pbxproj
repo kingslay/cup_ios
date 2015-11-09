@@ -42,6 +42,7 @@
 		CB3CF88F1BE9B3F2008D577E /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3CF88E1BE9B3F2008D577E /* UIViewController.swift */; };
 		CB3CF8941BE9DD6E008D577E /* KSGuidanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3CF8921BE9DD6E008D577E /* KSGuidanceViewController.swift */; };
 		CB3CF8951BE9DD6E008D577E /* KSGuidanceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB3CF8931BE9DD6E008D577E /* KSGuidanceViewController.xib */; };
+		CB6EF3F01BF09FDD0040BF6E /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6EF3EF1BF09FDD0040BF6E /* IndicatorView.swift */; };
 		CB89F7B31BE70B2700FD21FD /* ClockCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89F7B11BE70B2700FD21FD /* ClockCollectionViewCell.swift */; };
 		CB89F7B41BE70B2700FD21FD /* ClockCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB89F7B21BE70B2700FD21FD /* ClockCollectionViewCell.xib */; };
 		CB89F7B71BE7101200FD21FD /* ClockCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89F7B51BE7101200FD21FD /* ClockCollectionViewController.swift */; };
@@ -112,6 +113,7 @@
 		CB3CF88E1BE9B3F2008D577E /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		CB3CF8921BE9DD6E008D577E /* KSGuidanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KSGuidanceViewController.swift; sourceTree = "<group>"; };
 		CB3CF8931BE9DD6E008D577E /* KSGuidanceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KSGuidanceViewController.xib; sourceTree = "<group>"; };
+		CB6EF3EF1BF09FDD0040BF6E /* IndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
 		CB89F7B11BE70B2700FD21FD /* ClockCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockCollectionViewCell.swift; sourceTree = "<group>"; };
 		CB89F7B21BE70B2700FD21FD /* ClockCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClockCollectionViewCell.xib; sourceTree = "<group>"; };
 		CB89F7B51BE7101200FD21FD /* ClockCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockCollectionViewController.swift; sourceTree = "<group>"; };
@@ -319,6 +321,7 @@
 				3CC57E021BE7BA490050E64E /* KSPickerView.swift */,
 				3C70AB4D1BEA540C00E97141 /* KSDatePickerView.swift */,
 				CB89F7AC1BE707BF00FD21FD /* ViewCell */,
+				CB6EF3EF1BF09FDD0040BF6E /* IndicatorView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -561,6 +564,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB6EF3F01BF09FDD0040BF6E /* IndicatorView.swift in Sources */,
 				3C3947B11BEA44F800E7FE90 /* CFCityPickerVC+TableView.swift in Sources */,
 				3C3947421BE8F19100E7FE90 /* UICollectionView.swift in Sources */,
 				CBE1DC331BEA04ED00E1FF29 /* AccountModel.swift in Sources */,

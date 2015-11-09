@@ -144,14 +144,14 @@ class AccountViewController: UITableViewController {
                 }
                 self.presentViewController(imagePickerController, animated: true, completion: nil)
             }
-            let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Default, handler: nil)
+            let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)
             alertController.addAction(albumAction)
             alertController.addAction(pictureAction)
             alertController.addAction(cancelAction)
             self.presentViewController(alertController, animated: true, completion: nil)
             break
         case (0,1):
-            let alertController = UIAlertController.init(title: nil, message: "请输入昵称", preferredStyle: .Alert)
+            let alertController = UIAlertController(title: nil, message: "请输入昵称", preferredStyle: .Alert)
             alertController.addTextFieldWithConfigurationHandler(nil)
             let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default) {
                 (action: UIAlertAction!) -> Void in

@@ -26,17 +26,10 @@ import UIKit
 import BluetoothKit
 import CoreBluetooth
 import SnapKit
-internal class CentralViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, BKCentralDelegate, AvailabilityViewController {
+internal class CentralViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, BKCentralDelegate, BKAvailabilityObserver {
     
     // MARK: Properties
-
-    internal var availabilityView = AvailabilityView()
-    
-    private var activityIndicator: UIActivityIndicatorView {
-        return activityIndicatorBarButtonItem.customView as! UIActivityIndicatorView
-    }
-    
-    private let activityIndicatorBarButtonItem = UIBarButtonItem(customView: UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.White))
+    private let indicatorView = IndicatorView()
     private let discoveriesTableView = UITableView()
     private var discoveries = [BKDiscovery]()
     private let discoveriesTableViewCellIdentifier = "Discoveries Table View Cell Identifier"
@@ -46,14 +39,12 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
     
     internal override func viewDidLoad() {
         view.backgroundColor = UIColor.whiteColor()
-        activityIndicator.color = UIColor.blackColor()
         navigationItem.title = "Central"
-        navigationItem.rightBarButtonItem = activityIndicatorBarButtonItem
-        applyAvailabilityView()
         discoveriesTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: discoveriesTableViewCellIdentifier)
         discoveriesTableView.dataSource = self
         discoveriesTableView.delegate = self
         view.addSubview(discoveriesTableView)
+        view.addSubview(indicatorView)
         applyConstraints()
         startCentral()
     }
@@ -76,7 +67,10 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
         discoveriesTableView.snp_makeConstraints { make in
             make.top.equalTo(snp_topLayoutGuideBottom)
             make.leading.trailing.equalTo(view)
-            make.bottom.equalTo(availabilityView.snp_top)
+            make.bottom.equalTo(view.snp_bottom)
+        }
+        indicatorView.snp_makeConstraints { (make) -> Void in
+            make.edges.equalTo(view)
         }
     }
     
@@ -106,13 +100,14 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
             }
         }, stateHandler: { newState in
             if newState == .Scanning {
-                self.activityIndicator.startAnimating()
+                self.indicatorView.startAnimating()
                 return
             } else if newState == .Stopped {
                 self.discoveries.removeAll()
                 self.discoveriesTableView.reloadData()
             }
-            self.activityIndicator.stopAnimating()
+            self.indicatorView.hidden = true
+            self.indicatorView.stopAnimating()
         }, errorHandler: { error in
         })
     }
@@ -149,11 +144,38 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
     // MARK: BKAvailabilityObserver
     
     internal func availabilityObserver(availabilityObservable: BKAvailabilityObservable, availabilityDidChange availability: BKAvailability) {
-        availabilityView.availabilityObserver(availabilityObservable, availabilityDidChange: availability)
+        alertForAvailability(availability)
         if availability == .Available {
             scan()
         } else {
             central.interrupScan()
+        }
+    }
+    internal func availabilityObserver(availabilityObservable: BKAvailabilityObservable, unavailabilityCauseDidChange unavailabilityCause: BKUnavailabilityCause) {
+        alertForAvailability(.Unavailable(cause: unavailabilityCause))
+    }
+    private func alertForAvailability(availability: BKAvailability?){
+        if let availability = availability {
+            switch availability {
+            case .Unavailable(cause: .PoweredOff):
+                let alertController = UIAlertController(title: nil, message: "打开蓝牙来允许本应用连接到配件", preferredStyle: .Alert)
+                self.presentViewController(alertController, animated: true, completion: nil)
+                let prefsAction = UIAlertAction(title: "设置", style: .Default, handler: {
+                    (let action) -> Void in
+                    UIApplication.sharedApplication().openURL(NSURL(string: "prefs:root=Bluetooth")!)
+                })
+                let okAction = UIAlertAction(title: "好", style: UIAlertActionStyle.Default) {
+                    (_) -> Void in
+                }
+                alertController.addAction(prefsAction)
+                alertController.addAction(okAction)
+                break
+            case .Unavailable(cause: .Unsupported):
+                self.noticeOnlyText("抱歉你的设备不支持蓝牙。无法使用本应用")
+                break
+            default:
+                break
+            }
         }
     }
     
