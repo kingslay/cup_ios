@@ -20,19 +20,21 @@ public class IndicatorView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.blackColor()
-        self.alpha = 0.5
+//        self.backgroundColor = UIColor.blackColor()
+//        self.alpha = 0.5
         let circularView = UIView()
         circularView.backgroundColor = UIColor.redColor()
         self.addSubview(circularView)
         circularView.snp_makeConstraints { (make) -> Void in
             make.center.equalTo(self)
-            make.size.equalTo(CGSizeMake(2, 2))
+            make.width.equalTo(2)
+            make.height.equalTo(2)
         }
         circularView.layer.cornerRadius = 1
+        
         ovalLayer.fillColor = Colors.red.CGColor
         ovalLayer.path = ovalPathSmall.CGPath
-        ovalLayer.opacity = 0.5
+        ovalLayer.opacity = 0.1
     }
 
     required public init?(coder aDecoder: NSCoder) {

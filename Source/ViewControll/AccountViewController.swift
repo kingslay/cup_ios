@@ -183,9 +183,6 @@ class AccountViewController: UITableViewController {
         }
         
     }
-    deinit{
-        print("aaa")
-    }
 }
 extension AccountViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {

@@ -7,12 +7,10 @@ struct R {
   static func validate() {
     storyboard.login.validateImages()
     storyboard.login.validateViewControllers()
-    storyboard.launchScreen.validateImages()
-    storyboard.launchScreen.validateViewControllers()
-    storyboard.sMS.validateImages()
-    storyboard.sMS.validateViewControllers()
     storyboard.main.validateImages()
     storyboard.main.validateViewControllers()
+    storyboard.launchScreen.validateImages()
+    storyboard.launchScreen.validateViewControllers()
   }
   
   struct file {
@@ -87,19 +85,6 @@ struct R {
     struct main {
       static var initialViewController: Cup.TabBarViewController? { return instance.instantiateInitialViewController() as? Cup.TabBarViewController }
       static var instance: UIStoryboard { return UIStoryboard(name: "Main", bundle: nil) }
-      
-      static func validateImages() {
-        
-      }
-      
-      static func validateViewControllers() {
-        
-      }
-    }
-    
-    struct sMS {
-      static var initialViewController: UINavigationController? { return instance.instantiateInitialViewController() as? UINavigationController }
-      static var instance: UIStoryboard { return UIStoryboard(name: "SMS", bundle: nil) }
       
       static func validateImages() {
         

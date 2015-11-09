@@ -171,7 +171,7 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
                 alertController.addAction(okAction)
                 break
             case .Unavailable(cause: .Unsupported):
-                self.noticeOnlyText("抱歉你的设备不支持蓝牙。无法使用本应用")
+//                self.noticeOnlyText("抱歉你的设备不支持蓝牙。无法使用本应用")
                 break
             default:
                 break
