@@ -45,6 +45,7 @@ struct R {
     static var kSGuidanceViewController: _R.nib._KSGuidanceViewController { return _R.nib._KSGuidanceViewController() }
     static var mineTableViewCell: _R.nib._MineTableViewCell { return _R.nib._MineTableViewCell() }
     static var temperatureTableViewCell: _R.nib._TemperatureTableViewCell { return _R.nib._TemperatureTableViewCell() }
+    static var temperatureViewController: _R.nib._TemperatureViewController { return _R.nib._TemperatureViewController() }
   }
   
   struct reuseIdentifier {
@@ -247,6 +248,19 @@ struct _R {
       
       func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> Cup.TemperatureTableViewCell? {
         return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? Cup.TemperatureTableViewCell
+      }
+      
+      func instantiateWithOwner(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> [AnyObject] {
+        return instance.instantiateWithOwner(ownerOrNil, options: optionsOrNil)
+      }
+    }
+    
+    struct _TemperatureViewController: NibResource {
+      var instance: UINib { return UINib.init(nibName: "TemperatureViewController", bundle: nil) }
+      var name: String { return "TemperatureViewController" }
+      
+      func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> Cup.TemperatureViewController? {
+        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? Cup.TemperatureViewController
       }
       
       func instantiateWithOwner(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> [AnyObject] {

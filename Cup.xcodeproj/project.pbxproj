@@ -18,6 +18,8 @@
 		3C1BDF8D1BF0CA91003E34F8 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C1BDF731BF0C02F003E34F8 /* libstdc++.tbd */; };
 		3C1BDF8F1BF0D090003E34F8 /* SMS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C1BDF8E1BF0D090003E34F8 /* SMS.storyboard */; };
 		3C1BDF911BF0D5C7003E34F8 /* SMSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1BDF901BF0D5C7003E34F8 /* SMSViewController.swift */; };
+		3C1BDF941BF235AA003E34F8 /* TemperatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1BDF921BF235AA003E34F8 /* TemperatureViewController.swift */; };
+		3C1BDF951BF235AA003E34F8 /* TemperatureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C1BDF931BF235AA003E34F8 /* TemperatureViewController.xib */; };
 		3C3947421BE8F19100E7FE90 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3947411BE8F19100E7FE90 /* UICollectionView.swift */; };
 		3C3947441BE9012300E7FE90 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C3947431BE9012300E7FE90 /* Images.xcassets */; };
 		3C3947AA1BEA44F800E7FE90 /* CFCityPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3947941BEA44F800E7FE90 /* CFCityPickerVC.swift */; };
@@ -99,6 +101,8 @@
 		3C1BDF891BF0CA60003E34F8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SMS_SDKLocalizable.strings"; sourceTree = "<group>"; };
 		3C1BDF8E1BF0D090003E34F8 /* SMS.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SMS.storyboard; sourceTree = "<group>"; };
 		3C1BDF901BF0D5C7003E34F8 /* SMSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSViewController.swift; sourceTree = "<group>"; };
+		3C1BDF921BF235AA003E34F8 /* TemperatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemperatureViewController.swift; sourceTree = "<group>"; };
+		3C1BDF931BF235AA003E34F8 /* TemperatureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemperatureViewController.xib; sourceTree = "<group>"; };
 		3C3947411BE8F19100E7FE90 /* UICollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UICollectionView.swift; path = Source/ViewControll/UICollectionView.swift; sourceTree = SOURCE_ROOT; };
 		3C3947431BE9012300E7FE90 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3C3947941BEA44F800E7FE90 /* CFCityPickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFCityPickerVC.swift; sourceTree = "<group>"; };
@@ -407,6 +411,8 @@
 				CBE1DC2A1BE9F06E00E1FF29 /* MineViewController.swift */,
 				CBE1DC281BE9EE5B00E1FF29 /* Main.storyboard */,
 				CBE1DC2C1BE9F81C00E1FF29 /* AccountViewController.swift */,
+				3C1BDF921BF235AA003E34F8 /* TemperatureViewController.swift */,
+				3C1BDF931BF235AA003E34F8 /* TemperatureViewController.xib */,
 			);
 			path = ViewControll;
 			sourceTree = "<group>";
@@ -531,6 +537,7 @@
 			files = (
 				3C80A5E11BCA5A9D0050B6B6 /* LaunchScreen.storyboard in Resources */,
 				3C3947B31BEA44F800E7FE90 /* img.bundle in Resources */,
+				3C1BDF951BF235AA003E34F8 /* TemperatureViewController.xib in Resources */,
 				CBF5E3711BF1F1CE002D4F8F /* TemperatureTableViewCell.xib in Resources */,
 				3C3947B91BEA44F800E7FE90 /* HeaderItemView.xib in Resources */,
 				3C3947B51BEA44F800E7FE90 /* CFCityCell.xib in Resources */,
@@ -665,6 +672,7 @@
 				CB89F7C01BE7150A00FD21FD /* R.generated.swift in Sources */,
 				3C1BD8671BEB8B47003E34F8 /* CentralViewController.swift in Sources */,
 				CBE1DC2B1BE9F06E00E1FF29 /* MineViewController.swift in Sources */,
+				3C1BDF941BF235AA003E34F8 /* TemperatureViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

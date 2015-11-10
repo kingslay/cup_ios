@@ -24,7 +24,7 @@ class CupViewController: UITableViewController {
         self.tableView.estimatedRowHeight = 50
     }
     func addTemperature() {
-        
+        self.presentViewController(R.nib.temperatureViewController.firstView(nil, options: nil)!, animated: true, completion: nil)
         TemperatureModel.setObjectArray(self.temperatureArray,forKey:"temperatureArray")
     }
     func setTableHeaderView() {
