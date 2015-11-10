@@ -38,16 +38,21 @@ struct R {
     static var accountTableViewCell: _R.nib._AccountTableViewCell { return _R.nib._AccountTableViewCell() }
     static var cFCityCell: _R.nib._CFCityCell { return _R.nib._CFCityCell() }
     static var citySearchResultVC: _R.nib._CitySearchResultVC { return _R.nib._CitySearchResultVC() }
+    static var clockCollectionHeaderView: _R.nib._ClockCollectionHeaderView { return _R.nib._ClockCollectionHeaderView() }
     static var clockCollectionViewCell: _R.nib._ClockCollectionViewCell { return _R.nib._ClockCollectionViewCell() }
+    static var cupHeaderView: _R.nib._CupHeaderView { return _R.nib._CupHeaderView() }
     static var headerItemView: _R.nib._HeaderItemView { return _R.nib._HeaderItemView() }
     static var kSGuidanceViewController: _R.nib._KSGuidanceViewController { return _R.nib._KSGuidanceViewController() }
     static var mineTableViewCell: _R.nib._MineTableViewCell { return _R.nib._MineTableViewCell() }
+    static var temperatureTableViewCell: _R.nib._TemperatureTableViewCell { return _R.nib._TemperatureTableViewCell() }
   }
   
   struct reuseIdentifier {
     static var accountTableViewCell: ReuseIdentifier<Cup.AccountTableViewCell> { return ReuseIdentifier(identifier: "AccountTableViewCell") }
+    static var clockCollectionHeaderView: ReuseIdentifier<Cup.ClockCollectionHeaderView> { return ReuseIdentifier(identifier: "ClockCollectionHeaderView") }
     static var clockCollectionViewCell: ReuseIdentifier<Cup.ClockCollectionViewCell> { return ReuseIdentifier(identifier: "ClockCollectionViewCell") }
     static var mineTableViewCell: ReuseIdentifier<Cup.MineTableViewCell> { return ReuseIdentifier(identifier: "MineTableViewCell") }
+    static var temperatureTableViewCell: ReuseIdentifier<Cup.TemperatureTableViewCell> { return ReuseIdentifier(identifier: "TemperatureTableViewCell") }
   }
   
   struct segue {
@@ -154,6 +159,20 @@ struct _R {
       }
     }
     
+    struct _ClockCollectionHeaderView: NibResource, Reusable {
+      var instance: UINib { return UINib.init(nibName: "ClockCollectionHeaderView", bundle: nil) }
+      var name: String { return "ClockCollectionHeaderView" }
+      var reuseIdentifier: ReuseIdentifier<Cup.ClockCollectionHeaderView> { return ReuseIdentifier(identifier: "ClockCollectionHeaderView") }
+      
+      func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> Cup.ClockCollectionHeaderView? {
+        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? Cup.ClockCollectionHeaderView
+      }
+      
+      func instantiateWithOwner(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> [AnyObject] {
+        return instance.instantiateWithOwner(ownerOrNil, options: optionsOrNil)
+      }
+    }
+    
     struct _ClockCollectionViewCell: NibResource, Reusable {
       var instance: UINib { return UINib.init(nibName: "ClockCollectionViewCell", bundle: nil) }
       var name: String { return "ClockCollectionViewCell" }
@@ -161,6 +180,19 @@ struct _R {
       
       func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> Cup.ClockCollectionViewCell? {
         return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? Cup.ClockCollectionViewCell
+      }
+      
+      func instantiateWithOwner(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> [AnyObject] {
+        return instance.instantiateWithOwner(ownerOrNil, options: optionsOrNil)
+      }
+    }
+    
+    struct _CupHeaderView: NibResource {
+      var instance: UINib { return UINib.init(nibName: "CupHeaderView", bundle: nil) }
+      var name: String { return "CupHeaderView" }
+      
+      func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> Cup.CupHeaderView? {
+        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? Cup.CupHeaderView
       }
       
       func instantiateWithOwner(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> [AnyObject] {
@@ -201,6 +233,20 @@ struct _R {
       
       func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> Cup.MineTableViewCell? {
         return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? Cup.MineTableViewCell
+      }
+      
+      func instantiateWithOwner(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> [AnyObject] {
+        return instance.instantiateWithOwner(ownerOrNil, options: optionsOrNil)
+      }
+    }
+    
+    struct _TemperatureTableViewCell: NibResource, Reusable {
+      var instance: UINib { return UINib.init(nibName: "TemperatureTableViewCell", bundle: nil) }
+      var name: String { return "TemperatureTableViewCell" }
+      var reuseIdentifier: ReuseIdentifier<Cup.TemperatureTableViewCell> { return ReuseIdentifier(identifier: "TemperatureTableViewCell") }
+      
+      func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> Cup.TemperatureTableViewCell? {
+        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? Cup.TemperatureTableViewCell
       }
       
       func instantiateWithOwner(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> [AnyObject] {

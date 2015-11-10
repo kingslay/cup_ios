@@ -25,8 +25,26 @@ class AccountModel: NSObject {
             AccountModel.localSave()
         }
     }
+    //性别
+    var sex: String? {
+        didSet{
+            AccountModel.localSave()
+        }
+    }
+    var phone: String? {
+        didSet{
+            AccountModel.localSave()
+        }
+    }
 
-    var birthday: String? {
+    //场景
+    var scene: String? {
+        didSet{
+            AccountModel.localSave()
+        }
+    }
+    //体质
+    var constitution: String? {
         didSet{
             AccountModel.localSave()
         }
@@ -38,12 +56,18 @@ class AccountModel: NSObject {
         }
     }
 
-    
-    var city: String? {
+    var weight: NSNumber? {
         didSet{
             AccountModel.localSave()
         }
     }
+    
+    var birthday: String? {
+        didSet{
+            AccountModel.localSave()
+        }
+    }
+    
     
     class func localSave() {
         if let account = staticAccount {

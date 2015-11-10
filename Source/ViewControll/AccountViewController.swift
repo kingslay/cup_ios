@@ -22,11 +22,14 @@ class AccountViewController: UITableViewController {
     }
     func initData(){
         datas = [[("我的头像","未添加",staticAccount?.avatar),
-            ("我的昵称","未添加",staticAccount?.nickname)],
-            [("生日","生日是什么时候",staticAccount?.birthday),
-                ("身高","身高是多少呢",staticAccount?.height != nil ? "\(staticAccount!.height!)CM" : nil),
-                ("城市","请选择城市",staticAccount?.city)]]
-        
+            ("我的昵称","未添加",staticAccount?.nickname),
+            ("性别","男",staticAccount?.sex),
+            ("帐号安全","",staticAccount?.phone)],
+            [("场境","",staticAccount?.scene),
+                ("体质","",staticAccount?.constitution),
+                ("身高","身高是多少呢",staticAccount?.height != nil ? "\(staticAccount!.height!)cm" : nil),
+                ("体重","体重是多少呢",staticAccount?.weight != nil ? "\(staticAccount!.weight!)kg" : nil),
+                ("生日","生日是什么时候",staticAccount?.birthday)]]
     }
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
@@ -71,8 +74,43 @@ class AccountViewController: UITableViewController {
                 cell.headerImageView.hidden = false
                 cell.headerImageView.af_setImageWithURL(NSURL.init(string: url)!,placeholderImage: R.image.mine_photo,filter: AspectScaledToFillSizeFilter(size: CGSizeMake(62, 62)))
             }
-            break
-        case (1,0):
+        case (0,2):
+            cell.valueTextField.userInteractionEnabled = true
+            let pickerView = KSPickerView.init(frame: CGRectMake(0, 0, SCREEN_WIDTH, 200))
+            pickerView.pickerData = [["男","女"]]
+            cell.valueTextField.inputView = pickerView
+            pickerView.callBackBlock = {
+                [weak self] in
+                staticAccount?.sex = $0[0] == 0 ? "男":"女"
+                self?.view.endEditing(true)
+                cell.valueTextField.text = staticAccount?.sex
+            }
+        case (1,2):
+            cell.valueTextField.userInteractionEnabled = true
+            let pickerView = KSPickerView.init(frame: CGRectMake(0, 0, SCREEN_WIDTH, 200))
+            pickerView.pickerData = [Array(60...250).map{"\($0)"},Array(0...9).map{".\($0)cm"}]
+            pickerView.pickerView.selectRow(100, inComponent: 0, animated: false)
+            cell.valueTextField.inputView = pickerView
+            pickerView.callBackBlock = {
+                [weak self] in
+                staticAccount?.height = Double($0[0]+60) + Double($0[1])/10
+                self?.view.endEditing(true)
+                cell.valueTextField.text = "\(staticAccount!.height!)kg"
+            }
+        case (1,3):
+            cell.valueTextField.userInteractionEnabled = true
+            let pickerView = KSPickerView.init(frame: CGRectMake(0, 0, SCREEN_WIDTH, 200))
+            pickerView.pickerData = [Array(30...150).map{"\($0)"},Array(0...9).map{".\($0)kg"}]
+            pickerView.pickerView.selectRow(20, inComponent: 0, animated: false)
+            cell.valueTextField.inputView = pickerView
+            pickerView.callBackBlock = {
+                [weak self] in
+                staticAccount?.weight = Double($0[0]+20) + Double($0[1])/10
+                self?.view.endEditing(true)
+                cell.valueTextField.text = "\(staticAccount!.weight!)kg"
+            }
+
+        case (1,4):
             cell.valueTextField.userInteractionEnabled = true
             let pickerView = KSDatePickerView()
             pickerView.datePicker.datePickerMode = .Date
@@ -84,20 +122,7 @@ class AccountViewController: UITableViewController {
                 self?.view.endEditing(true)
                 cell.valueTextField.text = staticAccount?.birthday
             }
-            break
-        case (1,1):
-            cell.valueTextField.userInteractionEnabled = true
-            let pickerView = KSPickerView.init(frame: CGRectMake(0, 0, SCREEN_WIDTH, 200))
-            pickerView.pickerData = [Array(60...250).map{"\($0)"},Array(0...9).map{".\($0)CM"}]
-            pickerView.pickerView.selectRow(100, inComponent: 0, animated: false)
-            cell.valueTextField.inputView = pickerView
-            pickerView.callBackBlock = {
-                [weak self] in
-                staticAccount?.height = Double($0[0]+60) + Double($0[1])/10
-                self?.view.endEditing(true)
-                cell.valueTextField.text = "\(staticAccount!.height!)CM"
-            }
-            break
+       
         default:
             break
         }
@@ -106,8 +131,15 @@ class AccountViewController: UITableViewController {
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.row == 0 && indexPath.section == 0 {
             return 70
-        }else{
+        } else {
             return 44
+        }
+    }
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 20
+        } else {
+            return 40
         }
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -149,7 +181,7 @@ class AccountViewController: UITableViewController {
             alertController.addAction(pictureAction)
             alertController.addAction(cancelAction)
             self.presentViewController(alertController, animated: true, completion: nil)
-            break
+
         case (0,1):
             let alertController = UIAlertController(title: nil, message: "请输入昵称", preferredStyle: .Alert)
             alertController.addTextFieldWithConfigurationHandler(nil)
@@ -160,24 +192,36 @@ class AccountViewController: UITableViewController {
             }
             alertController.addAction(okAction)
             self.presentViewController(alertController, animated: true, completion: nil)
-            break
-        case (1,2):
-            let cityVC = CFCityPickerVC()
-            //设置热门城市
-            cityVC.hotCities = ["北京","上海","广州","成都","杭州","重庆"]
-            let navVC = UINavigationController(rootViewController: cityVC)
-            navVC.navigationBar.barStyle = UIBarStyle.BlackTranslucent
-            self.presentViewController(navVC, animated: true, completion: nil)
-            let plistUrl = NSBundle.mainBundle().URLForResource("City", withExtension: "plist")!
-            let cityArray = NSArray(contentsOfURL: plistUrl) as! [[String:AnyObject]]
-            //解析字典数据
-            cityVC.cityModels = CityModel.toModels(cityArray) as! [CityModel]
-            //选中了城市
-            cityVC.selectedCityModel = { (cityModel: CityModel) in
-                staticAccount?.city = cityModel.name
-                cell.valueTextField.text = staticAccount?.city
+        case (1,0):
+            let alertController = UIAlertController(title: nil, message: "场景", preferredStyle: .Alert)
+            alertController.addTextFieldWithConfigurationHandler({
+                $0.keyboardType = .NumberPad
+            })
+            
+            let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default) {
+                (action: UIAlertAction!) -> Void in
+                if let text = alertController.textFields?.first?.text {
+                    staticAccount?.scene = text
+                    cell.valueTextField.text = text
+                }
             }
-            break
+            alertController.addAction(okAction)
+            self.presentViewController(alertController, animated: true, completion: nil)
+        case (1,1):
+            let alertController = UIAlertController(title: nil, message: "体质", preferredStyle: .Alert)
+            alertController.addTextFieldWithConfigurationHandler({
+                $0.keyboardType = .NumberPad
+            })
+            
+            let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default) {
+                (action: UIAlertAction!) -> Void in
+                if let text = alertController.textFields?.first?.text {
+                    staticAccount?.constitution = text
+                    cell.valueTextField.text = text
+                }
+            }
+            alertController.addAction(okAction)
+            self.presentViewController(alertController, animated: true, completion: nil)
         default:
             break
         }

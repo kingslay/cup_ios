@@ -17,29 +17,21 @@ class ClockCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         self.collectionView?.backgroundColor = UIColor.lightGrayColor()
         self.collectionView?.registerNib(R.nib.clockCollectionViewCell)
+        self.collectionView?.registerNib(R.nib.clockCollectionHeaderView, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader)
         let rightButton = UIBarButtonItem.init(barButtonSystemItem: .Add, target: self, action: "addClock")
         self.navigationItem.rightBarButtonItem = rightButton;
         if let array = ClockModel.objectArrayForKey("clockArray")  {
             clockArray = array as! [ClockModel]
         }
-        
         self.collectionView?.addMoveGestureRecognizerForLongPress()
+        let flowLayout  = self.collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
+        flowLayout.headerReferenceSize = CGSizeMake(SCREEN_WIDTH, 100)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     func addClock() {
         UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings.init(forTypes: [.Badge,.Sound,.Alert], categories: nil))
@@ -77,13 +69,10 @@ extension ClockCollectionViewController {
         cell?.openSwitch.on = clockModel.open
         return cell!
     }
-//    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-//        if kind == UICollectionElementKindSectionHeader {
-//            
-//
-//        }
-//        return nil
-//    }
+    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: R.nib.clockCollectionHeaderView.reuseIdentifier, forIndexPath: indexPath)
+        return header!
+    }
 }
 
 extension ClockCollectionViewController:KSArrangeCollectionViewDelegate {

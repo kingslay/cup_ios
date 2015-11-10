@@ -26,7 +26,7 @@ class SMSViewController: UIViewController {
             if let phone = self.phoneTextField.text where phone.checkMobileNumble() {
                 SMSSDK.getVerificationCodeByMethod(SMSGetCodeMethodSMS, phoneNumber: phone, zone: "86", customIdentifier: nil, result: {
                     if let error = $0 {
-                        let alert = UIAlertController(title: nil, message: "\(error.userInfo["getVerificationCode"])", preferredStyle: .Alert)
+                        let alert = UIAlertController(title: nil, message: "\(error.userInfo["getVerificationCode"]!)", preferredStyle: .Alert)
                         self.presentViewController(alert, animated: true, completion: nil)
                     }else{
                         self.loginButton.userInteractionEnabled = true
@@ -43,7 +43,7 @@ class SMSViewController: UIViewController {
         self.loginButton.rx_tap.subscribeNext { [weak self] in
             SMSSDK.commitVerificationCode(self!.verificationTextField.text, phoneNumber: self!.phoneTextField.text, zone: "86", result: {
                 if let error = $0 {
-                    self?.noticeError("\(error.userInfo["commitVerificationCode"])", autoClear: true)
+                    self?.noticeError("\(error.userInfo["commitVerificationCode"]!)", autoClear: true)
                 }else{
                     self!.phonelogin()
                 }

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ClockCollectionHeaderView" id="U6b-Vx-4bR" customClass="ClockCollectionHeaderView" customModule="Cup" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="168"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_photo" translatesAutoresizingMaskIntoConstraints="NO" id="W3w-zh-6qa">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="168"/>
+                    <animations/>
+                </imageView>
+            </subviews>
+            <animations/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="W3w-zh-6qa" secondAttribute="bottom" id="KZu-cA-Dkk"/>
+                <constraint firstItem="W3w-zh-6qa" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="UWO-bi-YcB"/>
+                <constraint firstItem="W3w-zh-6qa" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="hYK-Eo-lVn"/>
+                <constraint firstAttribute="trailing" secondItem="W3w-zh-6qa" secondAttribute="trailing" id="veY-ZN-13G"/>
+            </constraints>
+            <connections>
+                <outlet property="headerImageView" destination="W3w-zh-6qa" id="O3j-Zg-qSi"/>
+            </connections>
+            <point key="canvasLocation" x="462" y="399"/>
+        </collectionReusableView>
+    </objects>
+    <resources>
+        <image name="mine_photo" width="62" height="62"/>
+    </resources>
+</document>

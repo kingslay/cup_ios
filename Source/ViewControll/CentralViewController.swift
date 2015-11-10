@@ -39,7 +39,7 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
     
     internal override func viewDidLoad() {
         view.backgroundColor = UIColor.whiteColor()
-        navigationItem.title = "Central"
+//        navigationItem.title = "Central"
         discoveriesTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: discoveriesTableViewCellIdentifier)
         discoveriesTableView.dataSource = self
         discoveriesTableView.delegate = self
