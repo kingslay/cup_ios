@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 if staticIdentifier != nil {
                     self.window?.rootViewController = R.storyboard.main.instance.instantiateInitialViewController()
                 }else{
-                    self.window?.rootViewController = UINavigationController.init(rootViewController: CentralViewController())
+                    self.window?.rootViewController = UINavigationController(rootViewController: CentralViewController())
                 }
             }else{
                 self.window?.rootViewController = R.storyboard.login.instance.instantiateInitialViewController()

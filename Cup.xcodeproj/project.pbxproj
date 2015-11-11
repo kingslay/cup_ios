@@ -44,6 +44,10 @@
 		3C80A5E11BCA5A9D0050B6B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C80A5DF1BCA5A9D0050B6B6 /* LaunchScreen.storyboard */; };
 		3C80A5EC1BCA5A9D0050B6B6 /* CupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C80A5EB1BCA5A9D0050B6B6 /* CupTests.swift */; };
 		3CC57E031BE7BA490050E64E /* KSPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC57E021BE7BA490050E64E /* KSPickerView.swift */; };
+		3CECE6811BF38A0400C43890 /* FirmwareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CECE67F1BF38A0400C43890 /* FirmwareViewController.swift */; };
+		3CECE6821BF38A0400C43890 /* FirmwareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CECE6801BF38A0400C43890 /* FirmwareViewController.xib */; };
+		3CECE6851BF3996500C43890 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CECE6831BF3996500C43890 /* AboutUsViewController.swift */; };
+		3CECE6861BF3996500C43890 /* AboutUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CECE6841BF3996500C43890 /* AboutUsViewController.xib */; };
 		6B05A4CA16F58DF3BD595D6C /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6013113010FD664CC0D5B2B1 /* Pods.framework */; };
 		CB3CF8891BE9B04F008D577E /* UserLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3CF8881BE9B04F008D577E /* UserLoginViewController.swift */; };
 		CB3CF88B1BE9B071008D577E /* UserRegistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3CF88A1BE9B071008D577E /* UserRegistViewController.swift */; };
@@ -131,6 +135,10 @@
 		3C80A5EB1BCA5A9D0050B6B6 /* CupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CupTests.swift; sourceTree = "<group>"; };
 		3C80A5ED1BCA5A9D0050B6B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3CC57E021BE7BA490050E64E /* KSPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KSPickerView.swift; sourceTree = "<group>"; };
+		3CECE67F1BF38A0400C43890 /* FirmwareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirmwareViewController.swift; sourceTree = "<group>"; };
+		3CECE6801BF38A0400C43890 /* FirmwareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirmwareViewController.xib; sourceTree = "<group>"; };
+		3CECE6831BF3996500C43890 /* AboutUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
+		3CECE6841BF3996500C43890 /* AboutUsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutUsViewController.xib; sourceTree = "<group>"; };
 		6013113010FD664CC0D5B2B1 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65F98BEC34B52C4E9381B7EB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		CB3CF8881BE9B04F008D577E /* UserLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLoginViewController.swift; sourceTree = "<group>"; };
@@ -413,6 +421,10 @@
 				CBE1DC2C1BE9F81C00E1FF29 /* AccountViewController.swift */,
 				3C1BDF921BF235AA003E34F8 /* TemperatureViewController.swift */,
 				3C1BDF931BF235AA003E34F8 /* TemperatureViewController.xib */,
+				3CECE67F1BF38A0400C43890 /* FirmwareViewController.swift */,
+				3CECE6801BF38A0400C43890 /* FirmwareViewController.xib */,
+				3CECE6831BF3996500C43890 /* AboutUsViewController.swift */,
+				3CECE6841BF3996500C43890 /* AboutUsViewController.xib */,
 			);
 			path = ViewControll;
 			sourceTree = "<group>";
@@ -542,6 +554,7 @@
 				3C3947B91BEA44F800E7FE90 /* HeaderItemView.xib in Resources */,
 				3C3947B51BEA44F800E7FE90 /* CFCityCell.xib in Resources */,
 				CB3CF8951BE9DD6E008D577E /* KSGuidanceViewController.xib in Resources */,
+				3CECE6821BF38A0400C43890 /* FirmwareViewController.xib in Resources */,
 				CB3CF88D1BE9B0AC008D577E /* Login.storyboard in Resources */,
 				3C1BDF8F1BF0D090003E34F8 /* SMS.storyboard in Resources */,
 				CBE1DC3B1BEC81F900E1FF29 /* MineTableViewCell.xib in Resources */,
@@ -549,6 +562,7 @@
 				3C1BDF8A1BF0CA60003E34F8 /* SMS_SDKLocalizable.strings in Resources */,
 				CBBCA4001BF18A30002E04F7 /* ClockCollectionHeaderView.xib in Resources */,
 				3C3947AF1BEA44F800E7FE90 /* CitySearchResultVC.xib in Resources */,
+				3CECE6861BF3996500C43890 /* AboutUsViewController.xib in Resources */,
 				CBE1DC291BE9EE5B00E1FF29 /* Main.storyboard in Resources */,
 				CBF5E3751BF1F6E3002D4F8F /* CupHeaderView.xib in Resources */,
 				3C3947AB1BEA44F800E7FE90 /* City.plist in Resources */,
@@ -637,6 +651,7 @@
 				3C3947B11BEA44F800E7FE90 /* CFCityPickerVC+TableView.swift in Sources */,
 				CBBCA3FF1BF18A30002E04F7 /* ClockCollectionHeaderView.swift in Sources */,
 				3C3947421BE8F19100E7FE90 /* UICollectionView.swift in Sources */,
+				3CECE6851BF3996500C43890 /* AboutUsViewController.swift in Sources */,
 				CBE1DC331BEA04ED00E1FF29 /* AccountModel.swift in Sources */,
 				CB3CF8891BE9B04F008D577E /* UserLoginViewController.swift in Sources */,
 				3C70AB4E1BEA540C00E97141 /* KSDatePickerView.swift in Sources */,
@@ -655,6 +670,7 @@
 				3C3947B81BEA44F800E7FE90 /* HeaderItemView.swift in Sources */,
 				3C3947B21BEA44F800E7FE90 /* CityModel.swift in Sources */,
 				CB3CF8941BE9DD6E008D577E /* KSGuidanceViewController.swift in Sources */,
+				3CECE6811BF38A0400C43890 /* FirmwareViewController.swift in Sources */,
 				CB89F7B71BE7101200FD21FD /* ClockCollectionViewController.swift in Sources */,
 				3C3947AA1BEA44F800E7FE90 /* CFCityPickerVC.swift in Sources */,
 				CB3CF88B1BE9B071008D577E /* UserRegistViewController.swift in Sources */,

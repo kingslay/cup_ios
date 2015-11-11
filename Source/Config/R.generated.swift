@@ -35,12 +35,14 @@ struct R {
   }
   
   struct nib {
+    static var aboutUsViewController: _R.nib._AboutUsViewController { return _R.nib._AboutUsViewController() }
     static var accountTableViewCell: _R.nib._AccountTableViewCell { return _R.nib._AccountTableViewCell() }
     static var cFCityCell: _R.nib._CFCityCell { return _R.nib._CFCityCell() }
     static var citySearchResultVC: _R.nib._CitySearchResultVC { return _R.nib._CitySearchResultVC() }
     static var clockCollectionHeaderView: _R.nib._ClockCollectionHeaderView { return _R.nib._ClockCollectionHeaderView() }
     static var clockCollectionViewCell: _R.nib._ClockCollectionViewCell { return _R.nib._ClockCollectionViewCell() }
     static var cupHeaderView: _R.nib._CupHeaderView { return _R.nib._CupHeaderView() }
+    static var firmwareViewController: _R.nib._FirmwareViewController { return _R.nib._FirmwareViewController() }
     static var headerItemView: _R.nib._HeaderItemView { return _R.nib._HeaderItemView() }
     static var kSGuidanceViewController: _R.nib._KSGuidanceViewController { return _R.nib._KSGuidanceViewController() }
     static var mineTableViewCell: _R.nib._MineTableViewCell { return _R.nib._MineTableViewCell() }
@@ -120,6 +122,19 @@ struct R {
 
 struct _R {
   struct nib {
+    struct _AboutUsViewController: NibResource {
+      var instance: UINib { return UINib.init(nibName: "AboutUsViewController", bundle: nil) }
+      var name: String { return "AboutUsViewController" }
+      
+      func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> Cup.AboutUsViewController? {
+        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? Cup.AboutUsViewController
+      }
+      
+      func instantiateWithOwner(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> [AnyObject] {
+        return instance.instantiateWithOwner(ownerOrNil, options: optionsOrNil)
+      }
+    }
+    
     struct _AccountTableViewCell: NibResource, Reusable {
       var instance: UINib { return UINib.init(nibName: "AccountTableViewCell", bundle: nil) }
       var name: String { return "AccountTableViewCell" }
@@ -194,6 +209,19 @@ struct _R {
       
       func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> Cup.CupHeaderView? {
         return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? Cup.CupHeaderView
+      }
+      
+      func instantiateWithOwner(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> [AnyObject] {
+        return instance.instantiateWithOwner(ownerOrNil, options: optionsOrNil)
+      }
+    }
+    
+    struct _FirmwareViewController: NibResource {
+      var instance: UINib { return UINib.init(nibName: "FirmwareViewController", bundle: nil) }
+      var name: String { return "FirmwareViewController" }
+      
+      func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> Cup.FirmwareViewController? {
+        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? Cup.FirmwareViewController
       }
       
       func instantiateWithOwner(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> [AnyObject] {

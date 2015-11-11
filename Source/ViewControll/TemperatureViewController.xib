@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15C31f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -55,7 +55,7 @@
                         <rect key="frame" x="10" y="269" width="68" height="20.5"/>
                         <animations/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -63,11 +63,11 @@
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="2pd-gz-G06" firstAttribute="leading" secondItem="mFb-0c-WcI" secondAttribute="leading" id="7lA-s8-zA0"/>
-                    <constraint firstItem="Yp7-dH-8JC" firstAttribute="top" secondItem="mFb-0c-WcI" secondAttribute="top" constant="20" id="Cls-7A-zfg"/>
                     <constraint firstItem="XhD-Fz-Rc6" firstAttribute="leading" secondItem="mFb-0c-WcI" secondAttribute="leading" constant="10" id="DZA-IX-ShZ"/>
                     <constraint firstAttribute="trailing" secondItem="2pd-gz-G06" secondAttribute="trailing" id="Dds-G0-s7t"/>
                     <constraint firstItem="0Dh-YE-Tga" firstAttribute="leading" secondItem="XhD-Fz-Rc6" secondAttribute="trailing" constant="20" id="KwM-T8-G0J"/>
                     <constraint firstItem="2pd-gz-G06" firstAttribute="top" secondItem="Yp7-dH-8JC" secondAttribute="bottom" id="M8y-ue-06R"/>
+                    <constraint firstItem="Yp7-dH-8JC" firstAttribute="top" secondItem="v2d-N2-Oaw" secondAttribute="bottom" id="TOW-Yd-878"/>
                     <constraint firstAttribute="trailing" secondItem="Yp7-dH-8JC" secondAttribute="trailing" id="fj7-5X-MrJ"/>
                     <constraint firstAttribute="trailing" secondItem="0Dh-YE-Tga" secondAttribute="trailing" constant="10" id="ghN-vE-cIp"/>
                     <constraint firstItem="0Dh-YE-Tga" firstAttribute="centerY" secondItem="XhD-Fz-Rc6" secondAttribute="centerY" id="hGr-aO-lar"/>
