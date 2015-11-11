@@ -56,6 +56,7 @@ class AccountViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(R.nib.accountTableViewCell.reuseIdentifier, forIndexPath: indexPath)!
+        cell.accessoryType = .DisclosureIndicator
         cell.valueTextField.hidden = false
         cell.headerImageView.hidden = true
         cell.selectionStyle = .None
@@ -72,7 +73,7 @@ class AccountViewController: UITableViewController {
             if let url = value {
                 cell.valueTextField.hidden = true
                 cell.headerImageView.hidden = false
-                cell.headerImageView.af_setImageWithURL(NSURL.init(string: url)!,placeholderImage: R.image.mine_photo,filter: AspectScaledToFillSizeFilter(size: CGSizeMake(62, 62)))
+                cell.headerImageView.af_setImageWithURL(NSURL.init(string: url)!,placeholderImage: R.image.mine_photo,filter: AspectScaledToFillSizeCircleFilter(size: CGSizeMake(62, 62)))
             }
         case (0,2):
             cell.valueTextField.userInteractionEnabled = true
@@ -130,17 +131,13 @@ class AccountViewController: UITableViewController {
     }
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.row == 0 && indexPath.section == 0 {
-            return 70
+            return 80
         } else {
-            return 44
+            return 45
         }
     }
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
-            return 20
-        } else {
-            return 40
-        }
+        return 20
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! AccountTableViewCell

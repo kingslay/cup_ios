@@ -38,17 +38,18 @@ class MineViewController: UITableViewController {
         }
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier(R.nib.mineTableViewCell.reuseIdentifier, forIndexPath: indexPath)
-            if let str = staticAccount?.avatar,url = NSURL(string: str) {
-                cell?.headerImageView.af_setImageWithURL(url, placeholderImage: R.image.mine_photo,filter: AspectScaledToFillSizeFilter(size: CGSizeMake(62, 62)))
-            }else{
-                cell?.headerImageView.image = R.image.mine_photo
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+            cell.accessoryType = .DisclosureIndicator
+            if indexPath.section == 0 {
+                if let str = staticAccount?.avatar,url = NSURL(string: str) {
+                    cell.imageView!.af_setImageWithURL(url, placeholderImage: R.image.mine_photo,filter: AspectScaledToFillSizeCircleFilter(size: CGSizeMake(36, 36)))
+                }else{
+                    cell.imageView!.image = R.image.mine_photo
+                }
+                cell.textLabel?.text = "个人信息"
+                return cell
+
             }
-            cell?.nickNameLabel.text = "个人信息"
-            return cell!
-        }else{
-            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
             switch indexPath.row {
             case 0:
                 cell.textLabel?.text = "1"
@@ -65,20 +66,19 @@ class MineViewController: UITableViewController {
             }
             
             return cell
-        }
     }
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 70
+            return 50
         } else {
-            return 40
+            return 45
         }
     }
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
-            return 20
+            return 10
         }else{
-            return 40
+            return 10
         }
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

@@ -20,10 +20,8 @@ class ClockCollectionViewController: UICollectionViewController {
         self.collectionView?.registerNib(R.nib.clockCollectionHeaderView, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader)
         let rightButton = UIBarButtonItem.init(barButtonSystemItem: .Add, target: self, action: "addClock")
         self.navigationItem.rightBarButtonItem = rightButton;
-        if let array = ClockModel.objectArrayForKey("clockArray")  {
-            clockArray = array as! [ClockModel]
-        }
-        self.collectionView?.addMoveGestureRecognizerForLongPress()
+        clockArray = ClockModel.getClocks()
+//        self.collectionView?.addMoveGestureRecognizerForLongPress()
         let flowLayout  = self.collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
         flowLayout.headerReferenceSize = CGSizeMake(SCREEN_WIDTH, 100)
     }
@@ -43,9 +41,8 @@ class ClockCollectionViewController: UICollectionViewController {
             pickerView.hidden = true
             let model = ClockModel.init(hour: $0.hour, minute: $0.minute)
             self.clockArray.append(model)
-            ClockModel.setObjectArray(self.clockArray,forKey:"clockArray")
+            ClockModel.addClock(model)
             self.collectionView?.reloadData()
-            model.addUILocalNotification()
         }
     }
 }
@@ -63,31 +60,53 @@ extension ClockCollectionViewController {
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(R.nib.clockCollectionViewCell.reuseIdentifier, forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(R.nib.clockCollectionViewCell.reuseIdentifier, forIndexPath: indexPath)!
         let clockModel = self.clockArray[indexPath.row]
-        cell?.timeLabel.text = clockModel.description
-        cell?.openSwitch.on = clockModel.open
-        return cell!
+        cell.timeLabel.text = clockModel.description
+        cell.openSwitch.on = clockModel.open
+        cell.openSwitch.rx_controlEvents(.TouchUpInside).subscribeNext{ [unowned cell,unowned self] in
+            let on = cell.openSwitch.on
+            if on {
+               clockModel.addUILocalNotification()
+            } else {
+                clockModel.removeUILocalNotification()
+            }
+        }
+        return cell
     }
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: R.nib.clockCollectionHeaderView.reuseIdentifier, forIndexPath: indexPath)
         return header!
     }
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let pickerView = KSDatePickerView()
+        pickerView.datePicker.datePickerMode = .CountDownTimer
+        self.view.addSubview(pickerView)
+        pickerView.ks_bottom = self.view.ks_bottom
+        pickerView.callBackBlock = { [unowned pickerView,unowned self] in
+            pickerView.hidden = true
+            let model = self.clockArray[indexPath.row]
+            model.hour = $0.hour
+            model.minute = $0.minute
+            ClockModel.setObjectArray(self.clockArray, forKey: "clockArray")
+            self.collectionView?.reloadData()
+        }
+    }
 }
 
-extension ClockCollectionViewController:KSArrangeCollectionViewDelegate {
-    func moveDataItem(fromIndexPath : NSIndexPath, toIndexPath: NSIndexPath) -> Void
-    {
-        let model = self.clockArray.removeAtIndex(fromIndexPath.row)
-        self.clockArray.insert(model, atIndex: toIndexPath.row)
-    }
-    func deleteItemAtIndexPath(indexPath : NSIndexPath) -> Void
-    {
-        let model = clockArray[indexPath.row]
-        self.clockArray.removeAtIndex(indexPath.row)
-        ClockModel.setObjectArray(self.clockArray,forKey:"clockArray")
-        model.removeUILocalNotification()
-    }
-}
+//extension ClockCollectionViewController:KSArrangeCollectionViewDelegate {
+//    func moveDataItem(fromIndexPath : NSIndexPath, toIndexPath: NSIndexPath) -> Void
+//    {
+//        let model = self.clockArray.removeAtIndex(fromIndexPath.row)
+//        self.clockArray.insert(model, atIndex: toIndexPath.row)
+//    }
+//    func deleteItemAtIndexPath(indexPath : NSIndexPath) -> Void
+//    {
+//        let model = clockArray[indexPath.row]
+//        self.clockArray.removeAtIndex(indexPath.row)
+//        ClockModel.setObjectArray(self.clockArray,forKey:"clockArray")
+//        model.removeUILocalNotification()
+//    }
+//}
 
 

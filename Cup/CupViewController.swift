@@ -10,22 +10,23 @@ import UIKit
 import RxSwift
 
 class CupViewController: UITableViewController {
-    var temperatureArray: [TemperatureModel] = []
-
+    var temperatureArray : [TemperatureModel] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-         let rightButton = UIBarButtonItem.init(barButtonSystemItem: .Add, target: self, action: "addTemperature")
+        let rightButton = UIBarButtonItem.init(barButtonSystemItem: .Add, target: self, action: "addTemperature")
         self.navigationItem.rightBarButtonItem = rightButton
-        self.setTableHeaderView()
         self.tableView.registerNib(R.nib.temperatureTableViewCell)
-        if let array = TemperatureModel.objectArrayForKey("temperatureArray") {
-            temperatureArray = array as! [TemperatureModel]
-        }
-        self.tableView.estimatedRowHeight = 50
+        self.setTableHeaderView()
+        self.tableView.tableFooterView = UIView()
+    }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.temperatureArray = TemperatureModel.getTemperatures()
+        self.tableView.reloadData()
     }
     func addTemperature() {
-        self.presentViewController(R.nib.temperatureViewController.firstView(nil, options: nil)!, animated: true, completion: nil)
-        TemperatureModel.setObjectArray(self.temperatureArray,forKey:"temperatureArray")
+        let vc = R.nib.temperatureViewController.firstView(nil, options: nil)!
+        self.presentViewController(vc, animated: true, completion: nil)
     }
     func setTableHeaderView() {
         let headerView = R.nib.cupHeaderView.firstView(nil, options: nil)
@@ -39,20 +40,27 @@ extension CupViewController {
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let mode = temperatureArray[indexPath.row]
-        let cell = tableView.dequeueReusableCellWithIdentifier(R.nib.temperatureTableViewCell.reuseIdentifier, forIndexPath: indexPath)
-        cell?.explanationLabel.text = mode.explanation
-        cell?.temperatureLabel.text = "\(mode.temperature)度"
-        cell?.openSwitch.on = mode.open
-        cell?.openSwitch.rx_value.subscribeNext{
-            if $0 {
+        let cell = tableView.dequeueReusableCellWithIdentifier(R.nib.temperatureTableViewCell.reuseIdentifier, forIndexPath: indexPath)!
+        cell.selectionStyle = .None
+        cell.explanationLabel.text = mode.explanation
+        cell.temperatureLabel.text = "\(mode.temperature)度"
+        cell.openSwitch.on = mode.open
+        cell.openSwitch.rx_controlEvents(.TouchUpInside).subscribeNext{ [unowned cell,unowned self] in
+            let on = cell.openSwitch.on
+            if on {
                 self.temperatureArray.forEach{
                     $0.open = false
                 }
+                mode.open = on
+                tableView.reloadData()
+            } else {
+                mode.open = on
             }
-            mode.open = $0
-            tableView.reloadData()
         }
-        return cell!
+        return cell
+    }
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 50
     }
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "恒温设定"
