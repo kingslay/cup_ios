@@ -106,7 +106,7 @@ class AccountViewController: UITableViewController {
             cell.valueTextField.inputView = pickerView
             pickerView.callBackBlock = {
                 [weak self] in
-                staticAccount?.weight = Double($0[0]+20) + Double($0[1])/10
+                staticAccount?.weight = Double($0[0]+30) + Double($0[1])/10
                 self?.view.endEditing(true)
                 cell.valueTextField.text = "\(staticAccount!.weight!)kg"
             }
@@ -189,6 +189,21 @@ class AccountViewController: UITableViewController {
             }
             alertController.addAction(okAction)
             self.presentViewController(alertController, animated: true, completion: nil)
+        case (0,3):
+            let alertController = UIAlertController(title: nil, message: "请输入手机号码", preferredStyle: .Alert)
+            alertController.addTextFieldWithConfigurationHandler(nil)
+            let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default) {
+                (action: UIAlertAction!) -> Void in
+                if let phone = alertController.textFields?.first?.text where phone.checkMobileNumble() {
+                    staticAccount?.phone = phone
+                    cell.valueTextField.text = staticAccount?.phone
+                }else{
+                    self.noticeInfo("手机号码错误")
+                }
+            }
+            alertController.addAction(okAction)
+            self.presentViewController(alertController, animated: true, completion: nil)
+
         case (1,0):
             let alertController = UIAlertController(title: nil, message: "场景", preferredStyle: .Alert)
             alertController.addTextFieldWithConfigurationHandler({
@@ -232,7 +247,7 @@ extension AccountViewController: UIImagePickerControllerDelegate, UINavigationCo
             let cell = tableView.cellForRowAtIndexPath(NSIndexPath.init(forRow: 0, inSection: 0)) as! AccountTableViewCell
             cell.valueTextField.hidden = true
             cell.headerImageView.hidden = false
-            cell.headerImageView.image = image
+            cell.headerImageView.image = image.af_imageRoundedIntoCircle()
             saveImage(image, imageName: "\(staticAccount!.accountid)")
             self.parentViewController?.dismissViewControllerAnimated(true, completion: nil)
         }
