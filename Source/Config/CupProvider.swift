@@ -37,6 +37,8 @@ public enum CupMoya {
     case Regist(String,String)
     case PhoneLogin(String)
     case SaveMe
+    case Clock(String)
+    case Temperature(String,Int)
 }
 let host = "http://121.199.75.79:8180/cup-0.1/"
 //let host = "http://localhost:8080/"
@@ -53,14 +55,16 @@ extension CupMoya : MoyaTarget {
             return "user/phonelogin"
         case .SaveMe:
             return "/user/saveme"
+        case .Clock(_),.Temperature(_, _):
+            return "/behaviour/insert"
         }
     }
     public var method: Moya.Method {
         switch self {
-        case .Login(_,_):
+        case .Login(_,_),.PhoneLogin(_):
             return .GET
-        case .PhoneLogin(_):
-            return .GET
+        case .Clock(_),.Temperature(_, _):
+            return .POST
         default:
             return .PUT
         }
@@ -75,6 +79,10 @@ extension CupMoya : MoyaTarget {
             return ["phone":phone]
         case .SaveMe:
             return staticAccount?.toDictionary()
+        case .Clock(let clock):
+            return ["clock":clock]
+        case .Temperature(let explanation, let temperature):
+            return ["explanation":explanation,"temperature":temperature]
         default:
             return nil
         }
