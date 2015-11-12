@@ -20,6 +20,7 @@ class FirmwareViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = Colors.tableBackground
         self.updateButton.rx_tap.subscribeNext{
             let alert = UIAlertController(title: "温馨提醒", message: "你现在使用的为最新系统", preferredStyle: .Alert)
             let okAction = UIAlertAction(title: "确定", style: .Default, handler: {

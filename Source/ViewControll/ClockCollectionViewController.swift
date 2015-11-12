@@ -15,15 +15,20 @@ class ClockCollectionViewController: UICollectionViewController {
     var clockArray: [ClockModel] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView?.backgroundColor = UIColor.lightGrayColor()
+        self.collectionView?.backgroundColor = Colors.tableBackground
         self.collectionView?.registerNib(R.nib.clockCollectionViewCell)
         self.collectionView?.registerNib(R.nib.clockCollectionHeaderView, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader)
-        let rightButton = UIBarButtonItem.init(barButtonSystemItem: .Add, target: self, action: "addClock")
+        let rightButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addClock")
         self.navigationItem.rightBarButtonItem = rightButton;
         clockArray = ClockModel.getClocks()
 //        self.collectionView?.addMoveGestureRecognizerForLongPress()
         let flowLayout  = self.collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
         flowLayout.headerReferenceSize = CGSizeMake(SCREEN_WIDTH, 100)
+        let width = self.view.ks_width/3
+        flowLayout.itemSize = CGSizeMake(width-10,width-10)
+        flowLayout.minimumInteritemSpacing = 10
+        flowLayout.minimumLineSpacing = 10
+
     }
 
     override func didReceiveMemoryWarning() {

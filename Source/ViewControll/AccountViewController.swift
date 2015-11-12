@@ -17,7 +17,7 @@ class AccountViewController: UITableViewController {
         super.viewDidLoad()
         initData()
         self.tableView.registerNib(R.nib.accountTableViewCell)
-        self.view.backgroundColor = UIColor.lightGrayColor()
+        self.tableView.backgroundColor = Colors.tableBackground
         self.tableView.tableFooterView = UIView()
     }
     func initData(){
