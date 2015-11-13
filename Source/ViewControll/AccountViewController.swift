@@ -248,7 +248,7 @@ extension AccountViewController: UIImagePickerControllerDelegate, UINavigationCo
             cell.valueTextField.hidden = true
             cell.headerImageView.hidden = false
             cell.headerImageView.image = image.af_imageRoundedIntoCircle()
-            saveImage(image, imageName: "\(staticAccount!.accountid)")
+            saveImage(image, imageName: "\(staticAccount!.accountid).jpg")
             self.parentViewController?.dismissViewControllerAnimated(true, completion: nil)
         }
     }
