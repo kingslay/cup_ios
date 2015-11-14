@@ -17,9 +17,4 @@ class ClockCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-    
-    func vale(sender: UIDatePicker){
-        print(sender)
-    }
-
 }

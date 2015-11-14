@@ -94,10 +94,10 @@ extension ClockCollectionViewController {
                 clockModel.removeUILocalNotification()
             }
         }
-        let datePicker = UIDatePicker()
         cell.timeTextField.inputAccessoryView = navigationAccessoryView
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = .Time
         cell.timeTextField.inputView = datePicker
-        datePicker.datePickerMode = .CountDownTimer
         datePicker.rx_controlEvents(.ValueChanged).subscribeNext{ [unowned self,unowned cell,unowned datePicker] in
             clockModel.hour = datePicker.date.hour
             clockModel.minute = datePicker.date.minute
