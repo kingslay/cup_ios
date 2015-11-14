@@ -9,6 +9,7 @@
 import UIKit
 
 class KSGuidanceViewController: UIViewController {
+    
     var scrollView:  UIScrollView!
     
     @IBOutlet weak var pageControl: UIPageControl!

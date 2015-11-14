@@ -83,8 +83,6 @@ extension CupMoya : MoyaTarget {
             return ["clock":clock]
         case .Temperature(let explanation, let temperature):
             return ["explanation":explanation,"temperature":temperature]
-        default:
-            return nil
         }
     }
     

@@ -91,9 +91,9 @@ class MineViewController: UITableViewController {
             if indexPath.row == 2 {
                 vc.okButton.hidden = false
                 vc.cancelButton.hidden = false
+                vc.updateLabel.hidden = false
             }else if indexPath.row == 3{
                 vc.updateButton.hidden = false
-                vc.updateLabel.hidden = false
             }
             self.navigationController?.ks_pushViewController(vc)
         }

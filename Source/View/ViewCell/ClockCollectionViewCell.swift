@@ -10,11 +10,16 @@ import UIKit
 
 class ClockCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var timeTextField: UITextField!
     @IBOutlet weak var openSwitch: UISwitch!
-    
+
+    var datePicker: UIDatePicker!
     override func awakeFromNib() {
         super.awakeFromNib()
+    }
+    
+    func vale(sender: UIDatePicker){
+        print(sender)
     }
 
 }

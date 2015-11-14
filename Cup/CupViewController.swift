@@ -10,7 +10,6 @@ import UIKit
 import RxSwift
 
 class CupViewController: UITableViewController {
-    var lastSelecteIndexPath : NSIndexPath?
     var temperatureArray : [TemperatureModel] = []
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +25,6 @@ class CupViewController: UITableViewController {
         super.viewWillAppear(animated)
         self.temperatureArray = TemperatureModel.getTemperatures()
         self.tableView.reloadData()
-        if let indexPath = lastSelecteIndexPath {
-            self.tableView.selectRowAtIndexPath(indexPath, animated: false, scrollPosition: .None)
-        }
     }
     func addTemperature() {
         let vc = R.nib.temperatureViewController.firstView(nil, options: nil)!
@@ -53,27 +49,19 @@ extension CupViewController {
         cell.temperatureLabel.text = "\(mode.temperature)度"
         cell.openSwitch.hidden = true
         cell.openSwitch.on = mode.open
-//        cell.openSwitch.rx_controlEvents(.TouchUpInside).subscribeNext{ [unowned cell,unowned self] in
-//            let on = cell.openSwitch.on
-//            if on {
-//                self.temperatureArray.forEach{
-//                    $0.open = false
-//                }
-//                mode.open = on
-//                tableView.reloadData()
-//            } else {
-//                mode.open = on
-//            }
-//        }
-        return cell
-    }
-    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        if let oldIndex = tableView.indexPathForSelectedRow {
-            tableView.cellForRowAtIndexPath(oldIndex)?.accessoryType = .None
+        cell.openSwitch.rx_controlEvents(.TouchUpInside).subscribeNext{ [unowned cell,unowned self] in
+            let on = cell.openSwitch.on
+            if on {
+                self.temperatureArray.forEach{
+                    $0.open = false
+                }
+                mode.open = on
+                tableView.reloadData()
+            } else {
+                mode.open = on
+            }
         }
-        tableView.cellForRowAtIndexPath(indexPath)?.accessoryType = .Checkmark
-        lastSelecteIndexPath = indexPath
-        return indexPath
+        return cell
     }
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "恒温设定"

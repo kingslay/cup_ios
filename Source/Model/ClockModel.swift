@@ -34,6 +34,8 @@ class ClockModel: NSObject {
         localNotification.timeZone = NSTimeZone.defaultTimeZone()
         localNotification.applicationIconBadgeNumber = 1
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+        CupProvider.request(.Clock(self.description)).subscribeNext {_ in
+        }
     }
     func removeUILocalNotification(){
         if let localNotifications = UIApplication.sharedApplication().scheduledLocalNotifications {
@@ -58,13 +60,23 @@ class ClockModel: NSObject {
         var array = getClocks()
         array.append(model)
         ClockModel.setObjectArray(array, forKey: "clockArray")
-        model.addUILocalNotification()
+        if model.open {
+            model.addUILocalNotification()
+        }
     }
     static func getClocks() -> [ClockModel] {
         if let array = ClockModel.objectArrayForKey("clockArray") {
             return array as! [ClockModel]
         }else{
-            return []
+            var array: [ClockModel] = []
+            for _ in 1...9 {
+                let model = ClockModel()
+                model.hour = 8
+                model.minute = 0
+                model.open = false
+                array.append(model)
+            }
+            return array
         }
     }
 }

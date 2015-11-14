@@ -11,7 +11,14 @@ import UIKit
 class TemperatureModel: NSObject {
     var explanation:String = ""
     var temperature:Int = 50
-    var open = false
+    var open = false {
+        didSet(newValue){
+            if newValue {
+                CupProvider.request(.Temperature(self.explanation,self.temperature)).subscribeNext {_ in
+                }
+            }
+        }
+    }
     static func addTemperature(model: TemperatureModel) {
         var array = getTemperatures()
         array.append(model)

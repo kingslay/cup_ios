@@ -10,9 +10,26 @@ import UIKit
 import AVFoundation
 import KSSwiftExtension
 import AlamofireImage
+import RxCocoa
 
 class AccountViewController: UITableViewController {
     var datas :[[(String,String,String?)]]!
+    lazy var navigationAccessoryView : NavigationAccessoryView = {
+        [unowned self] in
+        let naview = NavigationAccessoryView(frame: CGRectMake(0, 0, self.view.frame.width, 44.0))
+        naview.doneButton.target = self
+        naview.doneButton.action = "navigationDone:"
+        return naview
+        }()
+    func navigationDone(sender: UIBarButtonItem) {
+        tableView?.endEditing(true)
+    }
+    //MARK: UIScrollViewDelegate
+    
+    override func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        tableView?.endEditing(true)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         initData()
@@ -75,55 +92,43 @@ class AccountViewController: UITableViewController {
                 cell.headerImageView.hidden = false
                 cell.headerImageView.af_setImageWithURL(NSURL.init(string: url)!,placeholderImage: R.image.mine_photo,filter: AspectScaledToFillSizeCircleFilter(size: CGSizeMake(62, 62)))
             }
-        case (0,2):
-            cell.valueTextField.userInteractionEnabled = true
-            let pickerView = KSPickerView.init(frame: CGRectMake(0, 0, SCREEN_WIDTH, 200))
-            pickerView.pickerData = [["男","女"]]
-            cell.valueTextField.inputView = pickerView
-            pickerView.callBackBlock = {
-                [weak self] in
-                staticAccount?.sex = $0[0] == 0 ? "男":"女"
-                self?.view.endEditing(true)
-                cell.valueTextField.text = staticAccount?.sex
-            }
         case (1,2):
             cell.valueTextField.userInteractionEnabled = true
-            let pickerView = KSPickerView.init(frame: CGRectMake(0, 0, SCREEN_WIDTH, 200))
+            cell.valueTextField.inputAccessoryView = navigationAccessoryView
+            let pickerView = KSPickerView()
             pickerView.pickerData = [Array(60...250).map{"\($0)"},Array(0...9).map{".\($0)cm"}]
-            pickerView.pickerView.selectRow(100, inComponent: 0, animated: false)
+            pickerView.selectRow(100, inComponent: 0, animated: false)
             cell.valueTextField.inputView = pickerView
             pickerView.callBackBlock = {
-                [weak self] in
+                [unowned cell] in
                 staticAccount?.height = Double($0[0]+60) + Double($0[1])/10
-                self?.view.endEditing(true)
                 cell.valueTextField.text = "\(staticAccount!.height!)kg"
             }
         case (1,3):
             cell.valueTextField.userInteractionEnabled = true
-            let pickerView = KSPickerView.init(frame: CGRectMake(0, 0, SCREEN_WIDTH, 200))
+            cell.valueTextField.inputAccessoryView = navigationAccessoryView
+            let pickerView = KSPickerView()
             pickerView.pickerData = [Array(30...150).map{"\($0)"},Array(0...9).map{".\($0)kg"}]
-            pickerView.pickerView.selectRow(20, inComponent: 0, animated: false)
+            pickerView.selectRow(20, inComponent: 0, animated: false)
             cell.valueTextField.inputView = pickerView
             pickerView.callBackBlock = {
-                [weak self] in
+                [unowned cell] in
                 staticAccount?.weight = Double($0[0]+30) + Double($0[1])/10
-                self?.view.endEditing(true)
                 cell.valueTextField.text = "\(staticAccount!.weight!)kg"
             }
 
         case (1,4):
             cell.valueTextField.userInteractionEnabled = true
-            let pickerView = KSDatePickerView()
-            pickerView.datePicker.datePickerMode = .Date
-            pickerView.datePicker.maximumDate = NSDate()
-            cell.valueTextField.inputView = pickerView
-            pickerView.callBackBlock = {
-                [weak self] in
-                staticAccount?.birthday = $0.toString(format: .Custom("yyyy年MM月dd日"))
-                self?.view.endEditing(true)
+            cell.valueTextField.inputAccessoryView = navigationAccessoryView
+            let datePicker = UIDatePicker()
+            datePicker.datePickerMode = .Date
+            datePicker.maximumDate = NSDate()
+            cell.valueTextField.inputView = datePicker
+            datePicker.rx_controlEvents(.ValueChanged).subscribeNext{ [unowned cell,unowned datePicker] in
+                staticAccount?.birthday = datePicker.date.toString(format: .Custom("yyyy年MM月dd日"))
                 cell.valueTextField.text = staticAccount?.birthday
             }
-       
+            datePicker.date = NSDate()
         default:
             break
         }
@@ -188,6 +193,22 @@ class AccountViewController: UITableViewController {
                 cell.valueTextField.text = staticAccount?.nickname
             }
             alertController.addAction(okAction)
+            self.presentViewController(alertController, animated: true, completion: nil)
+        case (0,2):
+            let alertController = UIAlertController(title: nil, message: "您的性别", preferredStyle: .Alert)
+            let menAction = UIAlertAction(title: "男", style: UIAlertActionStyle.Default) {
+                (action: UIAlertAction!) -> Void in
+                staticAccount?.sex = action.title
+                cell.valueTextField.text = staticAccount?.sex
+            }
+            alertController.addAction(menAction)
+            let womenAction = UIAlertAction(title: "女", style: UIAlertActionStyle.Default) {
+                (action: UIAlertAction!) -> Void in
+                staticAccount?.sex = action.title
+                cell.valueTextField.text = staticAccount?.sex
+            }
+            alertController.addAction(womenAction)
+
             self.presentViewController(alertController, animated: true, completion: nil)
         case (0,3):
             let alertController = UIAlertController(title: nil, message: "请输入手机号码", preferredStyle: .Alert)

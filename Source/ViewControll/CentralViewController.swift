@@ -43,6 +43,7 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
         discoveriesTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: discoveriesTableViewCellIdentifier)
         discoveriesTableView.dataSource = self
         discoveriesTableView.delegate = self
+        discoveriesTableView.tableFooterView = UIView()
         view.addSubview(discoveriesTableView)
         view.addSubview(indicatorView)
         applyConstraints()
