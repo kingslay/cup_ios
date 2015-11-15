@@ -83,7 +83,7 @@ struct R {
       static var instance: UIStoryboard { return UIStoryboard(name: "LaunchScreen", bundle: nil) }
       
       static func validateImages() {
-        
+        assert(UIImage(named: "logo") != nil, "[R.swift] Image named 'logo' is used in storyboard 'LaunchScreen', but couldn't be loaded.")
       }
       
       static func validateViewControllers() {

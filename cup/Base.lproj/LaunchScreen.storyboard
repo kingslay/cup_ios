@@ -17,17 +17,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3hv-sn-927">
-                                <rect key="frame" x="250" y="250" width="100" height="100"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="3hv-sn-927">
+                                <rect key="frame" x="239" y="232.5" width="122" height="135"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="jyA-8w-5og"/>
                                     <constraint firstAttribute="height" constant="100" id="pv3-v8-Wku"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="jyA-8w-5og"/>
+                                        <exclude reference="pv3-v8-Wku"/>
+                                    </mask>
+                                </variation>
                             </imageView>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="3hv-sn-927" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="NLY-V5-n1v"/>
                             <constraint firstItem="3hv-sn-927" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="UeA-vI-PK8"/>
@@ -39,4 +45,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo" width="122" height="135"/>
+    </resources>
 </document>

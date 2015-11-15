@@ -88,10 +88,12 @@ class AccountViewController: UITableViewController {
         cell.valueTextField.userInteractionEnabled = false
         switch (indexPath.section,indexPath.row) {
         case (0,0):
+            cell.valueTextField.hidden = true
+            cell.headerImageView.hidden = false
             if let url = value {
-                cell.valueTextField.hidden = true
-                cell.headerImageView.hidden = false
-                cell.headerImageView.af_setImageWithURL(NSURL.init(string: url)!,placeholderImage: R.image.mine_photo,filter: AspectScaledToFillSizeCircleFilter(size: CGSizeMake(62, 62)))
+                cell.headerImageView.af_setImageWithURL(NSURL(string: url)!,placeholderImage: R.image.mine_photo,filter: AspectScaledToFillSizeCircleFilter(size: CGSizeMake(50, 50)))
+            }else{
+                 cell.headerImageView.image = R.image.mine_photo!.af_imageRoundedIntoCircle()
             }
         case (1,2):
             cell.valueTextField.userInteractionEnabled = true
@@ -137,7 +139,7 @@ class AccountViewController: UITableViewController {
     }
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.row == 0 && indexPath.section == 0 {
-            return 80
+            return 60
         } else {
             return 45
         }
