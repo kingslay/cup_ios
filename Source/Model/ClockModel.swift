@@ -39,19 +39,13 @@ class ClockModel: NSObject {
     }
     func removeUILocalNotification(){
         if let localNotifications = UIApplication.sharedApplication().scheduledLocalNotifications {
-            var exit = false
             for localNotification in localNotifications {
                 let fireDate = localNotification.fireDate
                 
                 if fireDate?.hour == self.hour && fireDate?.minute == self.minute {
                     UIApplication.sharedApplication().cancelLocalNotification(localNotification)
-                    exit = true
                     break
                 }
-                if exit{
-                    break
-                }
-
             }
         }
     }

@@ -13,6 +13,8 @@ import RxSwift
 import RxCocoa
 
 class ClockCollectionViewController: UICollectionViewController {
+    let disposeBag = DisposeBag()
+
     var open = Variable(false)
     var clockArray: [ClockModel] = []
     
@@ -45,7 +47,6 @@ class ClockCollectionViewController: UICollectionViewController {
                 self.open.value = true
             }
         }
-        //        self.collectionView?.addMoveGestureRecognizerForLongPress()
         let flowLayout  = self.collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
         flowLayout.headerReferenceSize = CGSizeMake(SCREEN_WIDTH, 204)
         let width = self.view.ks_width/3
@@ -123,15 +124,21 @@ extension ClockCollectionViewController {
             }else{
                 header.headerImageView.image = R.image.clock_close
             }
-            
-        }
+        }.addDisposableTo(disposeBag)
         let tapGestureRecognizer = UITapGestureRecognizer()
         header.addGestureRecognizer(tapGestureRecognizer)
         tapGestureRecognizer.rx_event.subscribeNext{ [unowned self] _ in
             self.open.value = !self.open.value
-            self.clockArray.forEach{$0.open = self.open.value}
+            self.clockArray.forEach{
+                $0.open = self.open.value
+                if $0.open {
+                    $0.addUILocalNotification()
+                }else{
+                    $0.removeUILocalNotification()
+                }
+            }
             collectionView.reloadData()
-        }
+        }.addDisposableTo(disposeBag)
         return header
     }
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {

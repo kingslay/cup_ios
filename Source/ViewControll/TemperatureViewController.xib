@@ -20,7 +20,7 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <animations/>
                         <items>
-                            <navigationItem title="Title" id="IID-Rg-XtT">
+                            <navigationItem id="IID-Rg-XtT">
                                 <barButtonItem key="leftBarButtonItem" title="取消" id="Ii5-kZ-caX">
                                     <connections>
                                         <action selector="cancelAction:" destination="Zvh-K9-PWT" id="Wtl-Ha-FX6"/>
