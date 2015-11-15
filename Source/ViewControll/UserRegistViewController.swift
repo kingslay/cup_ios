@@ -49,7 +49,7 @@ class UserRegistViewController: UIViewController,UITextFieldDelegate {
             self.noticeError("密码不一致请重新输入",autoClear: true)
             return
         }
-        self.noticeOnlyText("正在登录中")
+        self.pleaseWait("正在登录中")
         self.navigationController?.view.userInteractionEnabled = false
         CupProvider.request(.Regist(userName,password)).filterSuccessfulStatusCodes().mapJSON().observeOn(MainScheduler.sharedInstance).subscribe(onNext: { (let json) -> Void in
             self.clearAllNotice()

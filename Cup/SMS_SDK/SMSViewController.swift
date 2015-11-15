@@ -24,7 +24,9 @@ class SMSViewController: UIViewController {
         self.view.backgroundColor = Colors.background
         self.verificationButton.rx_tap.subscribeNext { [unowned self] in
             if let phone = self.phoneTextField.text where phone.checkMobileNumble() {
+                self.pleaseWait("发送验证码中")
                 SMSSDK.getVerificationCodeByMethod(SMSGetCodeMethodSMS, phoneNumber: phone, zone: "86", customIdentifier: nil, result: {
+                    self.clearAllNotice()
                     if let error = $0 {
                         let alert = UIAlertController(title: nil, message: "\(error.userInfo["getVerificationCode"]!)", preferredStyle: .Alert)
                         self.presentViewController(alert, animated: true, completion: nil)
@@ -62,7 +64,7 @@ class SMSViewController: UIViewController {
         }
     }
     func phonelogin() {
-        self.noticeOnlyText("正在登录中")
+        self.pleaseWait("正在登录中")
         self.view.userInteractionEnabled = false
         CupProvider.request(.PhoneLogin(self.phoneTextField.text!)).filterSuccessfulStatusCodes().mapJSON().observeOn(MainScheduler.sharedInstance).subscribe(onNext: { (let json) -> Void in
             self.clearAllNotice()

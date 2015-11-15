@@ -51,7 +51,7 @@ class UserLoginViewController: UIViewController,UITextFieldDelegate{
             return
         }
         self.navigationController?.view.userInteractionEnabled = false
-        self.noticeOnlyText("正在登录中")
+        self.pleaseWait("正在登录中")
         CupProvider.request(.Login(userName,password)).filterSuccessfulStatusCodes().mapJSON().observeOn(MainScheduler.sharedInstance).subscribe(onNext: { (let json) -> Void in
             self.clearAllNotice()
             staticAccount = AccountModel.toModel(json as! [String : AnyObject])
