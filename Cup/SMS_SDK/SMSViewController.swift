@@ -21,7 +21,7 @@ class SMSViewController: UIViewController {
     var count = 90
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        self.view.backgroundColor = Colors.background
         self.verificationButton.rx_tap.subscribeNext { [unowned self] in
             if let phone = self.phoneTextField.text where phone.checkMobileNumble() {
                 SMSSDK.getVerificationCodeByMethod(SMSGetCodeMethodSMS, phoneNumber: phone, zone: "86", customIdentifier: nil, result: {
@@ -63,13 +63,13 @@ class SMSViewController: UIViewController {
     }
     func phonelogin() {
         self.noticeOnlyText("正在登录中")
-        self.navigationController?.view.userInteractionEnabled = false
+        self.view.userInteractionEnabled = false
         CupProvider.request(.PhoneLogin(self.phoneTextField.text!)).filterSuccessfulStatusCodes().mapJSON().observeOn(MainScheduler.sharedInstance).subscribe(onNext: { (let json) -> Void in
             self.clearAllNotice()
             staticAccount = AccountModel.toModel(json as! [String : AnyObject])
             AccountModel.localSave()
             if staticIdentifier == nil {
-                self.navigationController?.ks_pushViewController(CentralViewController())
+                self.presentViewController(CentralViewController(), animated: true, completion: nil)
             }else{
                 UIApplication.sharedApplication().keyWindow!.rootViewController = R.storyboard.main.instance.instantiateInitialViewController()
             }

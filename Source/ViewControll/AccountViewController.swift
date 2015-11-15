@@ -34,7 +34,7 @@ class AccountViewController: UITableViewController {
         super.viewDidLoad()
         initData()
         self.tableView.registerNib(R.nib.accountTableViewCell)
-        self.tableView.backgroundColor = Colors.tableBackground
+        self.tableView.backgroundColor = Colors.background
         self.tableView.tableFooterView = UIView()
     }
     func initData(){
@@ -79,6 +79,7 @@ class AccountViewController: UITableViewController {
         cell.selectionStyle = .None
         let (title,placeholder,value) = datas[indexPath.section][indexPath.row]
         cell.titleLabel.text = title
+        cell.valueTextField.textColor = Colors.red
         if let value = value {
             cell.valueTextField.text = value
         }else{

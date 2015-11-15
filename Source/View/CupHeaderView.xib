@@ -1,18 +1,105 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15C31f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="9oS-BV-Prd" customClass="CupHeaderView" customModule="Cup" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cup_level" translatesAutoresizingMaskIntoConstraints="NO" id="jv9-93-h56">
+                    <rect key="frame" x="33" y="26" width="74" height="138"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="138" id="Fz2-B9-kqE"/>
+                        <constraint firstAttribute="width" constant="74" id="mRJ-e7-BOF"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="52度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lhu-av-yb7">
+                    <rect key="frame" x="52" y="114.5" width="35" height="19.5"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="恒温中" translatesAutoresizingMaskIntoConstraints="NO" id="XyO-su-SFm">
+                    <rect key="frame" x="111" y="72" width="49" height="85"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="49" id="9Te-c2-oRx"/>
+                        <constraint firstAttribute="height" constant="85" id="zmG-yy-oB2"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="恒温设定" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mr4-F6-8AO">
+                    <rect key="frame" x="199" y="23" width="44" height="13.5"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的温度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o6i-42-jys">
+                    <rect key="frame" x="199" y="48.5" width="68" height="20.5"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="55" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQT-bH-6LE">
+                    <rect key="frame" x="199" y="99" width="72" height="73"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="61"/>
+                    <color key="textColor" red="0.89019607840000003" green="0.0" blue="0.56470588239999997" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NcF-bl-UsI">
+                    <rect key="frame" x="276" y="139.5" width="23" height="27.5"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                    <color key="textColor" red="0.89019607840000003" green="0.0" blue="0.56470588239999997" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="时时状态:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWp-09-TZ5">
+                    <rect key="frame" x="46.5" y="174" width="47.5" height="13.5"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="jv9-93-h56" firstAttribute="leading" secondItem="9oS-BV-Prd" secondAttribute="leading" constant="33" id="0B9-Np-7v2"/>
+                <constraint firstItem="Lhu-av-yb7" firstAttribute="bottom" secondItem="jv9-93-h56" secondAttribute="bottom" constant="-30" id="1YI-KD-ZgS"/>
+                <constraint firstItem="UWp-09-TZ5" firstAttribute="top" secondItem="jv9-93-h56" secondAttribute="bottom" constant="10" id="26A-M3-JSz"/>
+                <constraint firstItem="NcF-bl-UsI" firstAttribute="bottom" secondItem="qQT-bH-6LE" secondAttribute="bottom" constant="-5" id="HAL-7U-wdZ"/>
+                <constraint firstItem="XyO-su-SFm" firstAttribute="leading" secondItem="jv9-93-h56" secondAttribute="trailing" constant="4" id="Imy-V8-FMI"/>
+                <constraint firstItem="qQT-bH-6LE" firstAttribute="leading" secondItem="mr4-F6-8AO" secondAttribute="leading" id="J4M-Cf-srk"/>
+                <constraint firstItem="jv9-93-h56" firstAttribute="top" secondItem="9oS-BV-Prd" secondAttribute="top" constant="26" id="JrA-es-ZoZ"/>
+                <constraint firstItem="o6i-42-jys" firstAttribute="leading" secondItem="mr4-F6-8AO" secondAttribute="leading" id="JrW-gV-TGg"/>
+                <constraint firstItem="o6i-42-jys" firstAttribute="top" secondItem="mr4-F6-8AO" secondAttribute="bottom" constant="12" id="Rem-wT-hBI"/>
+                <constraint firstItem="Lhu-av-yb7" firstAttribute="centerX" secondItem="jv9-93-h56" secondAttribute="centerX" id="ZBi-yw-hQg"/>
+                <constraint firstItem="NcF-bl-UsI" firstAttribute="leading" secondItem="qQT-bH-6LE" secondAttribute="trailing" constant="5" id="d6U-YH-X0M"/>
+                <constraint firstAttribute="trailing" secondItem="mr4-F6-8AO" secondAttribute="trailing" constant="77" id="e6T-BO-YT1"/>
+                <constraint firstItem="qQT-bH-6LE" firstAttribute="top" secondItem="o6i-42-jys" secondAttribute="bottom" constant="30" id="hFU-5I-dy1"/>
+                <constraint firstItem="UWp-09-TZ5" firstAttribute="centerX" secondItem="jv9-93-h56" secondAttribute="centerX" id="iab-QH-X2N"/>
+                <constraint firstItem="XyO-su-SFm" firstAttribute="bottom" secondItem="jv9-93-h56" secondAttribute="bottom" constant="-7" id="nhA-OR-HHu"/>
+                <constraint firstItem="mr4-F6-8AO" firstAttribute="top" secondItem="9oS-BV-Prd" secondAttribute="top" constant="23" id="pEG-wI-s09"/>
+            </constraints>
+            <connections>
+                <outlet property="cupTemperatureImageView" destination="XyO-su-SFm" id="6av-Di-xZQ"/>
+                <outlet property="cupTemperaturelabel" destination="Lhu-av-yb7" id="s7T-zv-s8c"/>
+                <outlet property="meTemperaturelabel" destination="qQT-bH-6LE" id="2IY-gw-kfa"/>
+            </connections>
             <point key="canvasLocation" x="233" y="65"/>
         </view>
     </objects>
+    <resources>
+        <image name="cup_level" width="73" height="137"/>
+        <image name="恒温中" width="49" height="85"/>
+    </resources>
 </document>

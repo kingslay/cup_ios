@@ -38,18 +38,49 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
     // MARK: UIViewController Life Cycle
     
     internal override func viewDidLoad() {
-        view.backgroundColor = UIColor.whiteColor()
-//        navigationItem.title = "Central"
-        discoveriesTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: discoveriesTableViewCellIdentifier)
-        discoveriesTableView.dataSource = self
-        discoveriesTableView.delegate = self
-        discoveriesTableView.tableFooterView = UIView()
-        view.addSubview(discoveriesTableView)
+        setupTableView()
         view.addSubview(indicatorView)
         applyConstraints()
         startCentral()
     }
     
+    func setupTableView() {
+        discoveriesTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: discoveriesTableViewCellIdentifier)
+        discoveriesTableView.backgroundColor = Colors.background
+        discoveriesTableView.dataSource = self
+        discoveriesTableView.delegate = self
+        view.addSubview(discoveriesTableView)
+        let headerView = UIView(frame: CGRectMake(0,0,self.view.frame.width,245))
+        let headerLabel = UILabel()
+        headerLabel.text = "发现水杯"
+        headerLabel.font = UIFont.systemFontOfSize(23)
+        headerLabel.sizeToFit()
+        headerView.addSubview(headerLabel)
+        headerLabel.snp_makeConstraints { (make) -> Void in
+            make.centerX.equalTo(0)
+            make.bottom.equalTo(-20)
+        }
+        discoveriesTableView.tableHeaderView = headerView
+        let footerView = UIView()
+        let imageView = UIImageView(image: R.image.cup_adaptation)
+        footerView.addSubview(imageView)
+        imageView.snp_makeConstraints { (make) -> Void in
+            make.top.equalTo(30)
+            make.centerX.equalTo(0)
+        }
+        let footerLabel = UILabel()
+        footerLabel.text = "灯光闪烁表示已连接"
+        footerLabel.font = UIFont.systemFontOfSize(16)
+        footerLabel.sizeToFit()
+        footerView.addSubview(footerLabel)
+        footerLabel.snp_makeConstraints { (make) -> Void in
+            make.top.equalTo(imageView.snp_bottom).offset(28)
+            make.centerX.equalTo(0)
+        }
+        discoveriesTableView.tableFooterView = footerView
+        headerView.hidden = true
+        footerView.hidden = true
+    }
     internal override func viewDidAppear(animated: Bool) {
         scan()
     }
@@ -89,7 +120,11 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
     }
     
     private func scan() {
-        central.scanContinuouslyWithChangeHandler({ changes, discoveries in
+        central.scanContinuouslyWithChangeHandler({ [unowned self] changes, discoveries in
+            self.indicatorView.removeFromSuperview()
+            self.discoveriesTableView.tableHeaderView?.hidden = false
+            self.discoveriesTableView.tableFooterView?.hidden = false
+            
             let indexPathsToRemove = changes.filter({ $0 == .Remove(discovery: nil) }).map({ NSIndexPath(forRow: self.discoveries.indexOf($0.discovery)!, inSection: 0) })
             self.discoveries = discoveries
             let indexPathsToInsert = changes.filter({ $0 == .Insert(discovery: nil) }).map({ NSIndexPath(forRow: self.discoveries.indexOf($0.discovery)!, inSection: 0) })
@@ -99,17 +134,16 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
             if !indexPathsToInsert.isEmpty {
                 self.discoveriesTableView.insertRowsAtIndexPaths(indexPathsToInsert, withRowAnimation: UITableViewRowAnimation.Automatic)
             }
-        }, stateHandler: { newState in
-            if newState == .Scanning {
-                self.indicatorView.startAnimating()
-                return
-            } else if newState == .Stopped {
-                self.discoveries.removeAll()
-                self.discoveriesTableView.reloadData()
-            }
-            self.indicatorView.hidden = true
-            self.indicatorView.stopAnimating()
-        }, errorHandler: { error in
+            }, stateHandler: { [unowned self] newState in
+                if newState == .Scanning {
+                    self.indicatorView.startAnimating()
+                    return
+                } else if newState == .Stopped {
+                    self.discoveries.removeAll()
+                    self.discoveriesTableView.reloadData()
+                }
+            }, errorHandler: { [unowned self] error in
+                self.indicatorView.removeFromSuperview()
         })
     }
     
@@ -172,7 +206,7 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
                 alertController.addAction(okAction)
                 break
             case .Unavailable(cause: .Unsupported):
-//                self.noticeOnlyText("抱歉你的设备不支持蓝牙。无法使用本应用")
+                self.noticeOnlyText("抱歉你的设备不支持蓝牙。无法使用本应用")
                 break
             default:
                 break

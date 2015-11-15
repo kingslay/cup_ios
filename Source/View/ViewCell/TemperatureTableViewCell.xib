@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15C31f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TemperatureTableViewCell" id="KGk-i7-Jjw" customClass="TemperatureTableViewCell" customModule="Cup" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TemperatureTableViewCell" rowHeight="45" id="KGk-i7-Jjw" customClass="TemperatureTableViewCell" customModule="Cup" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="63.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vwL-w7-tRa">
-                        <rect key="frame" x="10" y="5" width="250" height="40"/>
+                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vwL-w7-tRa">
+                        <rect key="frame" x="15" y="7" width="233" height="49.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVM-Q4-wfc">
-                                <rect key="frame" x="5" y="9.5" width="42" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVM-Q4-wfc">
+                                <rect key="frame" x="9" y="17.5" width="31" height="14.5"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5DG-EN-hmN">
-                                <rect key="frame" x="203" y="9.5" width="42" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5DG-EN-hmN">
+                                <rect key="frame" x="193" y="17.5" width="31" height="14.5"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -35,10 +35,11 @@
                         <animations/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="bVM-Q4-wfc" firstAttribute="leading" secondItem="vwL-w7-tRa" secondAttribute="leading" constant="5" id="BP7-zD-gGJ"/>
+                            <constraint firstItem="bVM-Q4-wfc" firstAttribute="leading" secondItem="vwL-w7-tRa" secondAttribute="leading" constant="9" id="BP7-zD-gGJ"/>
                             <constraint firstAttribute="width" constant="250" id="E5V-wf-2M3"/>
                             <constraint firstAttribute="height" constant="40" id="GsC-Q1-f97"/>
-                            <constraint firstAttribute="trailing" secondItem="5DG-EN-hmN" secondAttribute="trailing" constant="5" id="Knl-H6-jJC"/>
+                            <constraint firstAttribute="trailing" secondItem="5DG-EN-hmN" secondAttribute="trailing" constant="9" id="Knl-H6-jJC"/>
+                            <constraint firstAttribute="height" constant="31" id="PEy-yq-Qa1"/>
                             <constraint firstItem="bVM-Q4-wfc" firstAttribute="centerY" secondItem="vwL-w7-tRa" secondAttribute="centerY" id="Qcx-A0-AGC"/>
                             <constraint firstItem="5DG-EN-hmN" firstAttribute="centerY" secondItem="vwL-w7-tRa" secondAttribute="centerY" id="mCc-sZ-bwJ"/>
                         </constraints>
@@ -47,21 +48,28 @@
                                 <real key="value" value="10"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="E5V-wf-2M3"/>
+                                <exclude reference="GsC-Q1-f97"/>
+                            </mask>
+                        </variation>
                     </view>
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="tgE-Sc-Kbl">
-                        <rect key="frame" x="261" y="16.5" width="51" height="31"/>
+                        <rect key="frame" x="256" y="16.5" width="51" height="31"/>
                         <animations/>
                     </switch>
                 </subviews>
                 <animations/>
                 <constraints>
-                    <constraint firstItem="vwL-w7-tRa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="32W-UL-9Ba"/>
+                    <constraint firstItem="vwL-w7-tRa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="32W-UL-9Ba"/>
                     <constraint firstItem="vwL-w7-tRa" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="JFu-KV-KLl"/>
                     <constraint firstItem="tgE-Sc-Kbl" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="UqD-an-3ge"/>
+                    <constraint firstItem="tgE-Sc-Kbl" firstAttribute="leading" secondItem="vwL-w7-tRa" secondAttribute="trailing" constant="8" id="Y1A-fN-I6x"/>
                     <constraint firstItem="tgE-Sc-Kbl" firstAttribute="leading" secondItem="vwL-w7-tRa" secondAttribute="trailing" constant="40" id="ghV-27-UOF"/>
                     <constraint firstAttribute="bottom" secondItem="vwL-w7-tRa" secondAttribute="bottom" constant="5" id="jqA-Ex-edp"/>
-                    <constraint firstItem="vwL-w7-tRa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="roh-P5-6L6"/>
-                    <constraint firstAttribute="trailing" secondItem="tgE-Sc-Kbl" secondAttribute="trailing" constant="10" id="sPV-03-aCr"/>
+                    <constraint firstItem="vwL-w7-tRa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="roh-P5-6L6"/>
+                    <constraint firstAttribute="trailing" secondItem="tgE-Sc-Kbl" secondAttribute="trailing" constant="15" id="sPV-03-aCr"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">

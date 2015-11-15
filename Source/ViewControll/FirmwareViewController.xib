@@ -45,22 +45,57 @@
                         </constraints>
                     </view>
                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T1i-Fo-2s7">
-                        <rect key="frame" x="145" y="180" width="30" height="30"/>
+                        <rect key="frame" x="60" y="180" width="200" height="30"/>
                         <animations/>
-                        <state key="normal" title="升级"/>
+                        <color key="backgroundColor" red="0.89019607840000003" green="0.0" blue="0.56470588239999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="QtJ-Sh-o8T"/>
+                        </constraints>
+                        <state key="normal" title="升级">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </button>
                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dai-91-uh4">
-                        <rect key="frame" x="50" y="180" width="30" height="30"/>
+                        <rect key="frame" x="50" y="180" width="60" height="30"/>
                         <animations/>
-                        <state key="normal" title="继续"/>
+                        <color key="backgroundColor" red="0.89019607840000003" green="0.0" blue="0.56470588239999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="NTd-nB-X0v"/>
+                            <constraint firstAttribute="width" constant="60" id="Uql-Xq-oMk"/>
+                        </constraints>
+                        <state key="normal" title="继续">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </button>
                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WHc-cs-5UV">
-                        <rect key="frame" x="240" y="180" width="30" height="30"/>
+                        <rect key="frame" x="210" y="180" width="60" height="30"/>
                         <animations/>
-                        <state key="normal" title="取消"/>
+                        <color key="backgroundColor" red="0.89019607840000003" green="0.0" blue="0.56470588239999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="5bX-FO-oLF"/>
+                            <constraint firstAttribute="height" constant="30" id="PoS-tu-ilh"/>
+                        </constraints>
+                        <state key="normal" title="取消">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </button>
-                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="恢复出厂设置将会清空系统里的数据并解除与当前帐号绑定关系，是否继续操作？" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tz6-0u-kTO">
-                        <rect key="frame" x="10" y="121" width="300" height="36"/>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="恢复出厂设置将会清空系统里的数据并解除与当前帐号绑定关系，是否继续操作？" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tz6-0u-kTO">
+                        <rect key="frame" x="20" y="121" width="280" height="36"/>
                         <animations/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -68,8 +103,9 @@
                     </label>
                 </subviews>
                 <animations/>
-                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
+                    <constraint firstItem="T1i-Fo-2s7" firstAttribute="leading" secondItem="Y9p-sO-rHz" secondAttribute="leading" constant="60" id="8VT-qg-s5l"/>
                     <constraint firstAttribute="trailing" secondItem="WHc-cs-5UV" secondAttribute="trailing" constant="50" id="8kh-gO-ZXW"/>
                     <constraint firstItem="WHc-cs-5UV" firstAttribute="centerY" secondItem="Dai-91-uh4" secondAttribute="centerY" id="9Es-wL-phm"/>
                     <constraint firstAttribute="trailing" secondItem="WqJ-Z0-ioe" secondAttribute="trailing" id="J2f-Hc-s0b"/>
@@ -81,7 +117,7 @@
                     <constraint firstItem="tz6-0u-kTO" firstAttribute="centerX" secondItem="Y9p-sO-rHz" secondAttribute="centerX" id="xX0-vM-Twr"/>
                     <constraint firstItem="tz6-0u-kTO" firstAttribute="top" secondItem="WqJ-Z0-ioe" secondAttribute="bottom" constant="21" id="yRC-p8-Ad3"/>
                     <constraint firstItem="T1i-Fo-2s7" firstAttribute="top" secondItem="WqJ-Z0-ioe" secondAttribute="bottom" constant="80" id="ysl-Ur-Kz8"/>
-                    <constraint firstItem="tz6-0u-kTO" firstAttribute="leading" secondItem="Y9p-sO-rHz" secondAttribute="leading" constant="10" id="zQs-R5-js1"/>
+                    <constraint firstItem="tz6-0u-kTO" firstAttribute="leading" secondItem="Y9p-sO-rHz" secondAttribute="leading" constant="20" id="zQs-R5-js1"/>
                 </constraints>
             </view>
             <connections>

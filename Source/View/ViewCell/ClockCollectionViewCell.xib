@@ -14,7 +14,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                 <subviews>
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v5S-2I-exz">
-                        <rect key="frame" x="15.5" y="27" width="51" height="31"/>
+                        <rect key="frame" x="15.5" y="38" width="51" height="31"/>
                         <animations/>
                         <constraints>
                             <constraint firstAttribute="width" constant="49" id="axk-yB-PkN"/>
@@ -26,23 +26,53 @@
                         </variation>
                     </switch>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="21:30" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="beF-hc-lmy">
-                        <rect key="frame" x="20.5" y="5" width="40" height="17"/>
+                        <rect key="frame" x="17" y="9" width="47" height="21"/>
                         <animations/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mDj-lR-RFp">
+                        <rect key="frame" x="0.0" y="79" width="80" height="1"/>
+                        <animations/>
+                        <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="1JI-06-zLU"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WIL-m5-M3I">
+                        <rect key="frame" x="79" y="22" width="1" height="36"/>
+                        <animations/>
+                        <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="1" id="eWm-N7-qrw"/>
+                            <constraint firstAttribute="height" constant="36" id="uWy-a8-n5q"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <animations/>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <animations/>
             <constraints>
-                <constraint firstItem="beF-hc-lmy" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="HYn-vc-RzJ"/>
-                <constraint firstItem="v5S-2I-exz" firstAttribute="top" secondItem="beF-hc-lmy" secondAttribute="bottom" constant="5" id="dfj-hC-xrb"/>
+                <constraint firstItem="beF-hc-lmy" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="9" id="HYn-vc-RzJ"/>
+                <constraint firstAttribute="trailing" secondItem="mDj-lR-RFp" secondAttribute="trailing" id="OP1-CH-mhH"/>
+                <constraint firstAttribute="bottom" secondItem="WIL-m5-M3I" secondAttribute="bottom" constant="5" id="R5M-ok-2RB"/>
+                <constraint firstAttribute="trailing" secondItem="WIL-m5-M3I" secondAttribute="trailing" id="Sch-mi-ifw"/>
+                <constraint firstItem="WIL-m5-M3I" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="TxC-MQ-OGW"/>
+                <constraint firstAttribute="bottom" secondItem="mDj-lR-RFp" secondAttribute="bottom" id="ZgE-rl-UZZ"/>
+                <constraint firstItem="v5S-2I-exz" firstAttribute="top" secondItem="beF-hc-lmy" secondAttribute="bottom" constant="8" id="dfj-hC-xrb"/>
                 <constraint firstItem="v5S-2I-exz" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="ggV-T9-Ou2"/>
+                <constraint firstItem="WIL-m5-M3I" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="i3L-H1-lQj"/>
                 <constraint firstItem="beF-hc-lmy" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="qcK-Jx-Gao"/>
+                <constraint firstItem="mDj-lR-RFp" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="tyB-uv-a0G"/>
             </constraints>
             <size key="customSize" width="99.5" height="107.5"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="R5M-ok-2RB"/>
+                    <exclude reference="TxC-MQ-OGW"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="openSwitch" destination="v5S-2I-exz" id="iWF-gJ-FHb"/>
                 <outlet property="timeTextField" destination="beF-hc-lmy" id="Tvu-53-E1B"/>

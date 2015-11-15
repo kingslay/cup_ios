@@ -20,7 +20,7 @@ class FirmwareViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = Colors.tableBackground
+        self.view.backgroundColor = Colors.background
         self.updateButton.rx_tap.subscribeNext{
             let alert = UIAlertController(title: "温馨提醒", message: "你现在使用的为最新系统", preferredStyle: .Alert)
             let okAction = UIAlertAction(title: "确定", style: .Default, handler: {
@@ -28,6 +28,7 @@ class FirmwareViewController: UIViewController {
                 self.dismissViewControllerAnimated(true, completion: nil)
             })
             alert.addAction(okAction)
+            self.presentViewController(alert, animated: true, completion: nil)
         }.addDisposableTo(self.disposeBag)
         self.okButton.rx_tap.subscribeNext{
             NSUserDefaults.standardUserDefaults().removeObjectForKey("sharedAccount")

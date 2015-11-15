@@ -12,10 +12,9 @@ class MineViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.backgroundColor = Colors.tableBackground
+        self.tableView.backgroundColor = Colors.background
         self.tableView.registerNib(R.nib.mineTableViewCell)
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        self.tableView.tableFooterView = UIView()
     }
     override func viewWillAppear(animated: Bool) {
         self.tableView.reloadData()

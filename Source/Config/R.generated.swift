@@ -25,13 +25,28 @@ struct R {
   }
   
   struct image {
-    static var brandAssets: UIImage? { return UIImage(named: "Brand Assets") }
+    static var clock: UIImage? { return UIImage(named: "clock") }
+    static var clock_close: UIImage? { return UIImage(named: "clock_close") }
+    static var clock_open: UIImage? { return UIImage(named: "clock_open") }
+    static var clock_up: UIImage? { return UIImage(named: "clock_up") }
+    static var cup: UIImage? { return UIImage(named: "cup") }
+    static var cup_adaptation: UIImage? { return UIImage(named: "cup_adaptation") }
+    static var cup_level: UIImage? { return UIImage(named: "cup_level") }
+    static var cup_up: UIImage? { return UIImage(named: "cup_up") }
     static var guidance1: UIImage? { return UIImage(named: "Guidance1") }
     static var guidance2: UIImage? { return UIImage(named: "Guidance2") }
     static var guidance3: UIImage? { return UIImage(named: "Guidance3") }
     static var guidance4: UIImage? { return UIImage(named: "Guidance4") }
+    static var logo: UIImage? { return UIImage(named: "logo") }
+    static var me: UIImage? { return UIImage(named: "me") }
+    static var me_up: UIImage? { return UIImage(named: "me_up") }
     static var mine_photo: UIImage? { return UIImage(named: "mine_photo") }
+    static var photo: UIImage? { return UIImage(named: "photo") }
+    static var plus: UIImage? { return UIImage(named: "plus") }
     static var tata_close: UIImage? { return UIImage(named: "tata_close") }
+    static var 已恒温: UIImage? { return UIImage(named: "已恒温") }
+    static var 恒温中: UIImage? { return UIImage(named: "恒温中") }
+    static var 自然温: UIImage? { return UIImage(named: "自然温") }
   }
   
   struct nib {
@@ -97,7 +112,9 @@ struct R {
       static var instance: UIStoryboard { return UIStoryboard(name: "Main", bundle: nil) }
       
       static func validateImages() {
-        
+        assert(UIImage(named: "clock") != nil, "[R.swift] Image named 'clock' is used in storyboard 'Main', but couldn't be loaded.")
+        assert(UIImage(named: "cup") != nil, "[R.swift] Image named 'cup' is used in storyboard 'Main', but couldn't be loaded.")
+        assert(UIImage(named: "me") != nil, "[R.swift] Image named 'me' is used in storyboard 'Main', but couldn't be loaded.")
       }
       
       static func validateViewControllers() {
@@ -106,11 +123,12 @@ struct R {
     }
     
     struct sMS {
-      static var initialViewController: UINavigationController? { return instance.instantiateInitialViewController() as? UINavigationController }
+      static var initialViewController: Cup.SMSViewController? { return instance.instantiateInitialViewController() as? Cup.SMSViewController }
       static var instance: UIStoryboard { return UIStoryboard(name: "SMS", bundle: nil) }
       
       static func validateImages() {
-        
+        assert(UIImage(named: "logo") != nil, "[R.swift] Image named 'logo' is used in storyboard 'SMS', but couldn't be loaded.")
+        assert(UIImage(named: "photo") != nil, "[R.swift] Image named 'photo' is used in storyboard 'SMS', but couldn't be loaded.")
       }
       
       static func validateViewControllers() {

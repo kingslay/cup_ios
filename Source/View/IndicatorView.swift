@@ -20,10 +20,29 @@ public class IndicatorView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        self.backgroundColor = UIColor.blackColor()
-//        self.alpha = 0.5
+        self.backgroundColor = Colors.black
+        let label1 = UILabel()
+        label1.text = "搜索智能水杯"
+        label1.font = UIFont.systemFontOfSize(23)
+        label1.sizeToFit()
+        label1.textColor = UIColor.whiteColor()
+        self.addSubview(label1)
+        label1.snp_makeConstraints { (make) -> Void in
+            make.centerX.equalTo(0)
+            make.centerY.equalTo(-160)
+        }
+        let label2 = UILabel()
+        label2.text = "请将手机靠近智能水杯"
+        label2.font = UIFont.systemFontOfSize(12)
+        label2.sizeToFit()
+        label2.textColor = UIColor.whiteColor()
+        self.addSubview(label2)
+        label2.snp_makeConstraints { (make) -> Void in
+            make.centerX.equalTo(0)
+            make.top.equalTo(label1.snp_bottom).offset(20)
+        }
         let circularView = UIView()
-        circularView.backgroundColor = UIColor.redColor()
+        circularView.backgroundColor = Colors.red
         self.addSubview(circularView)
         circularView.snp_makeConstraints { (make) -> Void in
             make.center.equalTo(self)
@@ -31,8 +50,7 @@ public class IndicatorView: UIView {
             make.height.equalTo(2)
         }
         circularView.layer.cornerRadius = 1
-        
-        ovalLayer.fillColor = Colors.red.CGColor
+        ovalLayer.fillColor = Colors.pink.CGColor
         ovalLayer.path = ovalPathSmall.CGPath
         ovalLayer.opacity = 0.1
     }

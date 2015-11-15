@@ -5,11 +5,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <scenes>
-        <!--恒-->
+        <!--恒温-->
         <scene sceneID="YbW-CH-ibQ">
             <objects>
                 <navigationController id="KhA-yu-KI4" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="恒" id="30v-u0-gGX"/>
+                    <tabBarItem key="tabBarItem" title="恒温" image="cup" id="30v-u0-gGX"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z4D-2r-9n9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -23,7 +23,7 @@
             </objects>
             <point key="canvasLocation" x="1024" y="686"/>
         </scene>
-        <!--Cup View Controller-->
+        <!--恒温提醒-->
         <scene sceneID="6nh-HD-OUd">
             <objects>
                 <tableViewController id="Tta-VS-PWa" customClass="CupViewController" customModule="Cup" customModuleProvider="target" sceneMemberID="viewController">
@@ -33,6 +33,12 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="XLw-zd-qQH">
+                            <rect key="frame" x="0.0" y="136" width="600" height="0.0"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <animations/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="mgh-81-cuU">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
@@ -50,17 +56,17 @@
                             <outlet property="delegate" destination="Tta-VS-PWa" id="38A-ei-Q2I"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="a9h-Ha-gSn"/>
+                    <navigationItem key="navigationItem" title="恒温提醒" id="a9h-Ha-gSn"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oqw-P7-aSP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1709" y="686"/>
         </scene>
-        <!--闹-->
+        <!--提醒-->
         <scene sceneID="CSD-U0-Z3M">
             <objects>
                 <navigationController id="FXS-g4-2Gh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="闹" id="dXZ-pf-kZc"/>
+                    <tabBarItem key="tabBarItem" title="提醒" image="clock" id="dXZ-pf-kZc"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gkT-rn-0u9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -74,7 +80,7 @@
             </objects>
             <point key="canvasLocation" x="1024" y="3"/>
         </scene>
-        <!--我的-->
+        <!--我-->
         <scene sceneID="JFz-NF-08c">
             <objects>
                 <tableViewController id="Wyg-1t-UTh" customClass="MineViewController" customModule="Cup" customModuleProvider="target" sceneMemberID="viewController">
@@ -83,23 +89,41 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="a0B-dS-a2v">
+                            <rect key="frame" x="0.0" y="172" width="600" height="0.0"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <animations/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="NpU-FC-NKn">
+                                <rect key="frame" x="0.0" y="92" width="600" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NpU-FC-NKn" id="yko-ce-OOI">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="79.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="Wyg-1t-UTh" id="fG8-qo-A7r"/>
                             <outlet property="delegate" destination="Wyg-1t-UTh" id="A2k-ce-Smw"/>
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="我的" id="Pp1-QG-afn"/>
-                    <navigationItem key="navigationItem" id="ZOJ-6Q-1nF"/>
+                    <navigationItem key="navigationItem" title="我" id="ZOJ-6Q-1nF"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nsh-fZ-EDF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1735" y="1384"/>
         </scene>
-        <!--我的-->
+        <!--我-->
         <scene sceneID="0Bf-CD-xCF">
             <objects>
                 <navigationController id="gdv-md-aOT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="我的" id="wJe-rc-ey7"/>
+                    <tabBarItem key="tabBarItem" title="我" image="me" id="wJe-rc-ey7"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rYp-FT-weh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -113,7 +137,7 @@
             </objects>
             <point key="canvasLocation" x="1024" y="1384"/>
         </scene>
-        <!--Clock Collection View Controller-->
+        <!--闹钟提醒-->
         <scene sceneID="wrt-d8-wPS">
             <objects>
                 <collectionViewController id="ATZ-DN-X49" customClass="ClockCollectionViewController" customModule="Cup" customModuleProvider="target" sceneMemberID="viewController">
@@ -121,18 +145,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xoP-EL-40W">
-                            <size key="itemSize" width="80" height="80"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="xoP-EL-40W">
+                            <size key="itemSize" width="0.0" height="0.0"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Uxq-7q-Tv4">
-                                <rect key="frame" x="0.0" y="64" width="80" height="80"/>
+                                <rect key="frame" x="300" y="64" width="0.0" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <animations/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -145,7 +168,7 @@
                             <outlet property="delegate" destination="ATZ-DN-X49" id="PhG-lJ-68S"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="EtN-8N-vpM"/>
+                    <navigationItem key="navigationItem" title="闹钟提醒" id="EtN-8N-vpM"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zju-D7-vEg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -172,4 +195,9 @@
             <point key="canvasLocation" x="185" y="299"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="clock" width="26" height="26"/>
+        <image name="cup" width="26" height="26"/>
+        <image name="me" width="27" height="26"/>
+    </resources>
 </document>

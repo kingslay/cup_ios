@@ -7,15 +7,24 @@
 //
 
 import UIKit
-
+import KSSwiftExtension
 class AboutUsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.backgroundColor = Colors.tableBackground
+        self.tableView.backgroundColor = Colors.background
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        self.tableView.tableHeaderView = UIImageView(image: R.image.mine_photo)
-        self.tableView.tableFooterView = UIView()
+        let tableHeaderView = UIView(frame: CGRectMake(0,0,SCREEN_WIDTH,221))
+        tableHeaderView.backgroundColor = UIColor.whiteColor()
+        let image = UIImageView(image: R.image.logo)
+        tableHeaderView.addSubview(image)
+        self.tableView.tableHeaderView = tableHeaderView
+        image.snp_makeConstraints { (make) -> Void in
+            make.top.equalTo(51)
+            make.width.equalTo(122)
+            make.height.equalTo(135)
+            make.centerX.equalTo(tableHeaderView)
+        }
         let lable = UILabel()
         lable.text = "杭州未蓝智能科技有限公司\n杭州市萧山区兴五路237号\n400-666-7566"
         lable.numberOfLines = -1

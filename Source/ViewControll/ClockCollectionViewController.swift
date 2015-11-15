@@ -9,9 +9,11 @@
 import UIKit
 import KSSwiftExtension
 import KSJSONHelp
+import RxSwift
 import RxCocoa
+
 class ClockCollectionViewController: UICollectionViewController {
-    
+    var open = Variable(false)
     var clockArray: [ClockModel] = []
     
     lazy var navigationAccessoryView : NavigationAccessoryView = {
@@ -32,19 +34,24 @@ class ClockCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView?.backgroundColor = Colors.tableBackground
+        self.collectionView?.backgroundColor = UIColor.whiteColor()
         self.collectionView?.registerNib(R.nib.clockCollectionViewCell)
         self.collectionView?.registerNib(R.nib.clockCollectionHeaderView, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader)
         let rightButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addClock")
-//        self.navigationItem.rightBarButtonItem = rightButton;
+        //        self.navigationItem.rightBarButtonItem = rightButton;
         clockArray = ClockModel.getClocks()
+        for model in clockArray {
+            if model.open {
+                self.open.value = true
+            }
+        }
         //        self.collectionView?.addMoveGestureRecognizerForLongPress()
         let flowLayout  = self.collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
-        flowLayout.headerReferenceSize = CGSizeMake(SCREEN_WIDTH, 100)
+        flowLayout.headerReferenceSize = CGSizeMake(SCREEN_WIDTH, 204)
         let width = self.view.ks_width/3
-        flowLayout.itemSize = CGSizeMake(width-10,width-10)
-        flowLayout.minimumInteritemSpacing = 10
-        flowLayout.minimumLineSpacing = 10
+        flowLayout.itemSize = CGSizeMake(width,84)
+        flowLayout.minimumInteritemSpacing = 0
+        flowLayout.minimumLineSpacing = 0
         
     }
     
@@ -107,11 +114,25 @@ extension ClockCollectionViewController {
         datePicker.date = NSDate()
         return cell
     }
-
+    
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: R.nib.clockCollectionHeaderView.reuseIdentifier, forIndexPath: indexPath)
-        //        header.addGestureRecognizer()
-        return header!
+        let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: R.nib.clockCollectionHeaderView.reuseIdentifier, forIndexPath: indexPath)!
+        self.open.subscribeNext{
+            if $0 {
+                header.headerImageView.image = R.image.clock_open
+            }else{
+                header.headerImageView.image = R.image.clock_close
+            }
+            
+        }
+        let tapGestureRecognizer = UITapGestureRecognizer()
+        header.addGestureRecognizer(tapGestureRecognizer)
+        tapGestureRecognizer.rx_event.subscribeNext{ [unowned self] _ in
+            self.open.value = !self.open.value
+            self.clockArray.forEach{$0.open = self.open.value}
+            collectionView.reloadData()
+        }
+        return header
     }
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
     }

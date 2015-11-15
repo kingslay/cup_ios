@@ -14,5 +14,4 @@ class ClockCollectionHeaderView: UICollectionReusableView {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-    
 }
