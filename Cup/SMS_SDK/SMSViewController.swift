@@ -22,6 +22,10 @@ class SMSViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = Colors.background
+      let image = UIColor.createImageWithColor(UIColor(hexString: "e30090"))
+      self.verificationButton.setBackgroundImage(image, forState: .Normal)
+      self.loginButton.setBackgroundImage(image, forState: .Normal)
+
         self.verificationButton.rx_tap.subscribeNext { [unowned self] in
             if let phone = self.phoneTextField.text where phone.checkMobileNumble() {
                 self.pleaseWait("发送验证码中")
@@ -31,9 +35,9 @@ class SMSViewController: UIViewController {
                         let alert = UIAlertController(title: nil, message: "\(error.userInfo["getVerificationCode"]!)", preferredStyle: .Alert)
                         self.presentViewController(alert, animated: true, completion: nil)
                     }else{
-                        self.loginButton.userInteractionEnabled = true
+                        self.loginButton.enabled = true
                         self.timer =  NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "setVerificationButtonText", userInfo: nil, repeats: true)
-                        self.verificationButton.userInteractionEnabled = false
+                        self.verificationButton.enabled = false
                         self.count = 90
                     }
                 })
@@ -55,11 +59,11 @@ class SMSViewController: UIViewController {
     }
     func setVerificationButtonText(){
         if count == 0 {
-            self.verificationButton.userInteractionEnabled = true
+            self.verificationButton.enabled = true
             self.timer?.invalidate()
             self.verificationButton.setTitle("发送验证码", forState: .Normal)
         }else{
-            self.verificationButton.setTitle("\(count)秒", forState: .Normal)
+            self.verificationButton.setTitle("\(count)秒", forState: .Disabled)
             count--
         }
     }
@@ -77,7 +81,7 @@ class SMSViewController: UIViewController {
             }
             }, onError: {
                 self.clearAllNotice()
-                self.navigationController?.view.userInteractionEnabled = true
+                self.view.userInteractionEnabled = true
                 if let error = $0 as? NSError, let response = error.userInfo["data"] as? MoyaResponse {
                     self.noticeError(JSON(data: response.data)["message"].stringValue, autoClear: true)
                 }
