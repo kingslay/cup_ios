@@ -41,7 +41,7 @@ class MineViewController: UITableViewController {
         cell.accessoryType = .DisclosureIndicator
         if indexPath.section == 0 {
             if let str = staticAccount?.avatar,url = NSURL(string: str) {
-                cell.imageView!.af_setImageWithURL(url, placeholderImage: R.image.mine_photo,filter: AspectScaledToFillSizeCircleFilter(size: CGSizeMake(50, 50)))
+                cell.imageView!.af_setImageWithURL(url, placeholderImage: R.image.mine_photo,filter: AspectScaledToFillSizeCircleFilter(size: CGSizeMake(62, 62)))
             }else{
                 cell.imageView!.image = R.image.mine_photo!.af_imageRoundedIntoCircle()
             }
@@ -66,7 +66,7 @@ class MineViewController: UITableViewController {
     }
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 60
+            return 72
         } else {
             return 45
         }

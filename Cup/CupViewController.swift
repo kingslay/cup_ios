@@ -85,10 +85,20 @@ extension CupViewController {
         return headerView
     }
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 46
+        return 50
     }
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "恒温设定"
+    }
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+            temperatureArray.removeAtIndex(indexPath.row)
+            TemperatureModel.setObjectArray(temperatureArray, forKey: "temperatureArray")
+        }
     }
 }
 

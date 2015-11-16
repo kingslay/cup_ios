@@ -24,6 +24,7 @@ class TemperatureModel: NSObject {
         array.append(model)
         TemperatureModel.setObjectArray(array, forKey: "temperatureArray")
     }
+
     static func getTemperatures() -> [TemperatureModel] {
         if let array = TemperatureModel.objectArrayForKey("temperatureArray") {
             return array as! [TemperatureModel]
@@ -31,4 +32,5 @@ class TemperatureModel: NSObject {
             return []
         }
     }
+    
 }

@@ -20,14 +20,14 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVM-Q4-wfc">
                                 <rect key="frame" x="9" y="17.5" width="31" height="14.5"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5DG-EN-hmN">
                                 <rect key="frame" x="193" y="17.5" width="31" height="14.5"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -39,7 +39,7 @@
                             <constraint firstAttribute="width" constant="250" id="E5V-wf-2M3"/>
                             <constraint firstAttribute="height" constant="40" id="GsC-Q1-f97"/>
                             <constraint firstAttribute="trailing" secondItem="5DG-EN-hmN" secondAttribute="trailing" constant="9" id="Knl-H6-jJC"/>
-                            <constraint firstAttribute="height" constant="31" id="PEy-yq-Qa1"/>
+                            <constraint firstAttribute="height" constant="35" id="PEy-yq-Qa1"/>
                             <constraint firstItem="bVM-Q4-wfc" firstAttribute="centerY" secondItem="vwL-w7-tRa" secondAttribute="centerY" id="Qcx-A0-AGC"/>
                             <constraint firstItem="5DG-EN-hmN" firstAttribute="centerY" secondItem="vwL-w7-tRa" secondAttribute="centerY" id="mCc-sZ-bwJ"/>
                         </constraints>

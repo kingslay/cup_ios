@@ -91,7 +91,7 @@ class AccountViewController: UITableViewController {
             cell.valueTextField.hidden = true
             cell.headerImageView.hidden = false
             if let url = value {
-                cell.headerImageView.af_setImageWithURL(NSURL(string: url)!,placeholderImage: R.image.mine_photo,filter: AspectScaledToFillSizeCircleFilter(size: CGSizeMake(50, 50)))
+                cell.headerImageView.af_setImageWithURL(NSURL(string: url)!,placeholderImage: R.image.mine_photo,filter: AspectScaledToFillSizeCircleFilter(size: CGSizeMake(62, 62)))
             }else{
                  cell.headerImageView.image = R.image.mine_photo!.af_imageRoundedIntoCircle()
             }
@@ -139,7 +139,7 @@ class AccountViewController: UITableViewController {
     }
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.row == 0 && indexPath.section == 0 {
-            return 60
+            return 72
         } else {
             return 45
         }
@@ -271,7 +271,7 @@ extension AccountViewController: UIImagePickerControllerDelegate, UINavigationCo
             let cell = tableView.cellForRowAtIndexPath(NSIndexPath.init(forRow: 0, inSection: 0)) as! AccountTableViewCell
             cell.valueTextField.hidden = true
             cell.headerImageView.hidden = false
-            cell.headerImageView.image = image.af_imageRoundedIntoCircle()
+            cell.headerImageView.image = image.af_imageAspectScaledToFillSize(CGSizeMake(62, 62)).af_imageRoundedIntoCircle()
             saveImage(image, imageName: "\(staticAccount!.accountid).jpg")
             self.parentViewController?.dismissViewControllerAnimated(true, completion: nil)
         }
