@@ -22,10 +22,10 @@ class SMSViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = Colors.background
-      let image = UIColor.createImageWithColor(UIColor(hexString: "e30090"))
-      self.verificationButton.setBackgroundImage(image, forState: .Normal)
-      self.loginButton.setBackgroundImage(image, forState: .Normal)
-
+        let image = UIColor.createImageWithColor(Colors.red)
+        self.verificationButton.setBackgroundImage(image, forState: .Normal)
+        self.loginButton.setBackgroundImage(image, forState: .Normal)
+        
         self.verificationButton.rx_tap.subscribeNext { [unowned self] in
             if let phone = self.phoneTextField.text where phone.checkMobileNumble() {
                 self.pleaseWait("发送验证码中")
