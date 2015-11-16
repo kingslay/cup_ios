@@ -121,10 +121,6 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
     
     private func scan() {
         central.scanContinuouslyWithChangeHandler({ [unowned self] changes, discoveries in
-            self.indicatorView.removeFromSuperview()
-            self.discoveriesTableView.tableHeaderView?.hidden = false
-            self.discoveriesTableView.tableFooterView?.hidden = false
-            
             let indexPathsToRemove = changes.filter({ $0 == .Remove(discovery: nil) }).map({ NSIndexPath(forRow: self.discoveries.indexOf($0.discovery)!, inSection: 0) })
             self.discoveries = discoveries
             let indexPathsToInsert = changes.filter({ $0 == .Insert(discovery: nil) }).map({ NSIndexPath(forRow: self.discoveries.indexOf($0.discovery)!, inSection: 0) })
@@ -133,6 +129,9 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
             }
             if !indexPathsToInsert.isEmpty {
                 self.discoveriesTableView.insertRowsAtIndexPaths(indexPathsToInsert, withRowAnimation: UITableViewRowAnimation.Automatic)
+                self.indicatorView.removeFromSuperview()
+                self.discoveriesTableView.tableHeaderView?.hidden = false
+                self.discoveriesTableView.tableFooterView?.hidden = false
             }
             }, stateHandler: { [unowned self] newState in
                 if newState == .Scanning {
@@ -142,8 +141,7 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
                     self.discoveries.removeAll()
                     self.discoveriesTableView.reloadData()
                 }
-            }, errorHandler: { [unowned self] error in
-                self.indicatorView.removeFromSuperview()
+            }, errorHandler: {error in
         })
     }
     
