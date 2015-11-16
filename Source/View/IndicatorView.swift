@@ -15,7 +15,7 @@ public class IndicatorView: UIView {
     }
     
     var ovalPathLarge: UIBezierPath {
-        return UIBezierPath(ovalInRect: CGRect(x: self.ks_centerX-50, y: self.ks_centerY-50, width: 100, height: 100))
+        return UIBezierPath(ovalInRect: CGRect(x: self.ks_centerX-100, y: self.ks_centerY-100, width: 200, height: 200))
     }
 
     override init(frame: CGRect) {
@@ -66,7 +66,7 @@ public class IndicatorView: UIView {
         let expandAnimation: CABasicAnimation = CABasicAnimation(keyPath: "path")
         expandAnimation.fromValue = ovalPathSmall.CGPath
         expandAnimation.toValue = ovalPathLarge.CGPath
-        expandAnimation.duration = 1.5
+        expandAnimation.duration = 2
         expandAnimation.fillMode = kCAFillModeForwards
         expandAnimation.removedOnCompletion = true
         expandAnimation.repeatCount = 1000
