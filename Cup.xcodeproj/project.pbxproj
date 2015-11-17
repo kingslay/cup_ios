@@ -20,6 +20,7 @@
 		3C1BDF911BF0D5C7003E34F8 /* SMSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1BDF901BF0D5C7003E34F8 /* SMSViewController.swift */; };
 		3C1BDF941BF235AA003E34F8 /* TemperatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1BDF921BF235AA003E34F8 /* TemperatureViewController.swift */; };
 		3C1BDF951BF235AA003E34F8 /* TemperatureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C1BDF931BF235AA003E34F8 /* TemperatureViewController.xib */; };
+		3C37588A1BFB821C00566E61 /* UIViewController+ Bluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3758891BFB821C00566E61 /* UIViewController+ Bluetooth.swift */; };
 		3C3947421BE8F19100E7FE90 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3947411BE8F19100E7FE90 /* UICollectionView.swift */; };
 		3C3947441BE9012300E7FE90 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C3947431BE9012300E7FE90 /* Images.xcassets */; };
 		3C3947AA1BEA44F800E7FE90 /* CFCityPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3947941BEA44F800E7FE90 /* CFCityPickerVC.swift */; };
@@ -43,6 +44,9 @@
 		3C80A5D71BCA5A9C0050B6B6 /* CupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C80A5D61BCA5A9C0050B6B6 /* CupViewController.swift */; };
 		3C80A5E11BCA5A9D0050B6B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C80A5DF1BCA5A9D0050B6B6 /* LaunchScreen.storyboard */; };
 		3C80A5EC1BCA5A9D0050B6B6 /* CupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C80A5EB1BCA5A9D0050B6B6 /* CupTests.swift */; };
+		3C89F51E1BFB5F62005D85F1 /* CBCentralManager+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C89F51B1BFB5F62005D85F1 /* CBCentralManager+Rx.swift */; };
+		3C89F51F1BFB5F62005D85F1 /* CBPeripheral+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C89F51C1BFB5F62005D85F1 /* CBPeripheral+Rx.swift */; };
+		3C89F5201BFB5F62005D85F1 /* CBPeripheralManager+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C89F51D1BFB5F62005D85F1 /* CBPeripheralManager+Rx.swift */; };
 		3CC57E031BE7BA490050E64E /* KSPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC57E021BE7BA490050E64E /* KSPickerView.swift */; };
 		3CECE6811BF38A0400C43890 /* FirmwareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CECE67F1BF38A0400C43890 /* FirmwareViewController.swift */; };
 		3CECE6821BF38A0400C43890 /* FirmwareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CECE6801BF38A0400C43890 /* FirmwareViewController.xib */; };
@@ -107,6 +111,7 @@
 		3C1BDF901BF0D5C7003E34F8 /* SMSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSViewController.swift; sourceTree = "<group>"; };
 		3C1BDF921BF235AA003E34F8 /* TemperatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemperatureViewController.swift; sourceTree = "<group>"; };
 		3C1BDF931BF235AA003E34F8 /* TemperatureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemperatureViewController.xib; sourceTree = "<group>"; };
+		3C3758891BFB821C00566E61 /* UIViewController+ Bluetooth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+ Bluetooth.swift"; sourceTree = "<group>"; };
 		3C3947411BE8F19100E7FE90 /* UICollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UICollectionView.swift; path = Source/ViewControll/UICollectionView.swift; sourceTree = SOURCE_ROOT; };
 		3C3947431BE9012300E7FE90 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3C3947941BEA44F800E7FE90 /* CFCityPickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFCityPickerVC.swift; sourceTree = "<group>"; };
@@ -134,6 +139,9 @@
 		3C80A5E71BCA5A9D0050B6B6 /* CupTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CupTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C80A5EB1BCA5A9D0050B6B6 /* CupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CupTests.swift; sourceTree = "<group>"; };
 		3C80A5ED1BCA5A9D0050B6B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C89F51B1BFB5F62005D85F1 /* CBCentralManager+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CBCentralManager+Rx.swift"; sourceTree = "<group>"; };
+		3C89F51C1BFB5F62005D85F1 /* CBPeripheral+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CBPeripheral+Rx.swift"; sourceTree = "<group>"; };
+		3C89F51D1BFB5F62005D85F1 /* CBPeripheralManager+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CBPeripheralManager+Rx.swift"; sourceTree = "<group>"; };
 		3CC57E021BE7BA490050E64E /* KSPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KSPickerView.swift; sourceTree = "<group>"; };
 		3CECE67F1BF38A0400C43890 /* FirmwareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirmwareViewController.swift; sourceTree = "<group>"; };
 		3CECE6801BF38A0400C43890 /* FirmwareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirmwareViewController.xib; sourceTree = "<group>"; };
@@ -370,8 +378,12 @@
 		CB89F7AA1BE707BF00FD21FD /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				3C89F51B1BFB5F62005D85F1 /* CBCentralManager+Rx.swift */,
+				3C89F51C1BFB5F62005D85F1 /* CBPeripheral+Rx.swift */,
+				3C89F51D1BFB5F62005D85F1 /* CBPeripheralManager+Rx.swift */,
 				3C3947411BE8F19100E7FE90 /* UICollectionView.swift */,
 				CBE1DC341BEAFCD900E1FF29 /* UINavigationController.swift */,
+				3C3758891BFB821C00566E61 /* UIViewController+ Bluetooth.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -671,6 +683,7 @@
 				CBE9E7C51BE88A1B00CE922B /* ClockModel.swift in Sources */,
 				3C3947B81BEA44F800E7FE90 /* HeaderItemView.swift in Sources */,
 				3C3947B21BEA44F800E7FE90 /* CityModel.swift in Sources */,
+				3C89F51E1BFB5F62005D85F1 /* CBCentralManager+Rx.swift in Sources */,
 				CB3CF8941BE9DD6E008D577E /* KSGuidanceViewController.swift in Sources */,
 				3CECE6811BF38A0400C43890 /* FirmwareViewController.swift in Sources */,
 				CB89F7B71BE7101200FD21FD /* ClockCollectionViewController.swift in Sources */,
@@ -680,6 +693,7 @@
 				3C80A5D71BCA5A9C0050B6B6 /* CupViewController.swift in Sources */,
 				3C76DDF71BF63924004C1BF4 /* NavigationAccessoryView.swift in Sources */,
 				CB89F7BB1BE710EE00FD21FD /* TabBarViewController.swift in Sources */,
+				3C89F5201BFB5F62005D85F1 /* CBPeripheralManager+Rx.swift in Sources */,
 				3CC57E031BE7BA490050E64E /* KSPickerView.swift in Sources */,
 				CB89F7C41BE73CD300FD21FD /* CupProvider.swift in Sources */,
 				3C3947AD1BEA44F800E7FE90 /* LocationManager.swift in Sources */,
@@ -687,8 +701,10 @@
 				CBE1DC351BEAFCD900E1FF29 /* UINavigationController.swift in Sources */,
 				3C1BD86D1BEB8DA9003E34F8 /* Colors.swift in Sources */,
 				CBF5E3691BF1DAE0002D4F8F /* CupHeaderView.swift in Sources */,
+				3C89F51F1BFB5F62005D85F1 /* CBPeripheral+Rx.swift in Sources */,
 				3C1BDF911BF0D5C7003E34F8 /* SMSViewController.swift in Sources */,
 				CB89F7C01BE7150A00FD21FD /* R.generated.swift in Sources */,
+				3C37588A1BFB821C00566E61 /* UIViewController+ Bluetooth.swift in Sources */,
 				3C1BD8671BEB8B47003E34F8 /* CentralViewController.swift in Sources */,
 				CBE1DC2B1BE9F06E00E1FF29 /* MineViewController.swift in Sources */,
 				3C1BDF941BF235AA003E34F8 /* TemperatureViewController.swift in Sources */,
@@ -820,8 +836,8 @@
 			baseConfigurationReference = 1D52DF8D440B110927C4FB64 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -832,7 +848,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = im.meiyou.imyttq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "826e880b-7255-41cc-a3ec-913b8a11363c";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Cup/Bridging-Header.h";
 			};
 			name = Debug;
@@ -842,8 +858,8 @@
 			baseConfigurationReference = 65F98BEC34B52C4E9381B7EB /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -854,7 +870,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = im.meiyou.imyttq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "826e880b-7255-41cc-a3ec-913b8a11363c";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Cup/Bridging-Header.h";
 			};
 			name = Release;
