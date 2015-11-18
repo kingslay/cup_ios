@@ -12,8 +12,12 @@ import CoreBluetooth
 //import RxBluetooth
 
 class CupViewController: UITableViewController {
+  let bag = DisposeBag()
   var headerView = R.nib.cupHeaderView.firstView(nil, options: nil)
   var temperatureArray : [TemperatureModel] = []
+  var central: CBCentralManager!
+  var peripheral: CBPeripheral!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     self.tableView.backgroundColor = Colors.background
@@ -23,52 +27,6 @@ class CupViewController: UITableViewController {
     self.setTableHeaderView()
     self.tableView.estimatedRowHeight = 45
     self.setUpCentral()
-  }
-  var central: CBCentralManager!
-  var peripheral: CBPeripheral!
-  let bag = DisposeBag()
-  func setUpCentral() {
-    central = CBCentralManager(delegate: nil, queue: nil)
-    central.rx_didUpdateState.subscribeNext{
-      if $0.state == .PoweredOn {
-        $0.scanForPeripheralsWithServices(nil, options: nil)
-      }else if $0.state == .PoweredOn {
-        let alertController = UIAlertController(title: nil, message: "打开蓝牙来允许本应用连接到配件", preferredStyle: .Alert)
-        self.presentViewController(alertController, animated: true, completion: nil)
-        let prefsAction = UIAlertAction(title: "设置", style: .Default, handler: {
-          (let action) -> Void in
-          UIApplication.sharedApplication().openURL(NSURL(string: "prefs:root=Bluetooth")!)
-        })
-        let okAction = UIAlertAction(title: "好", style: UIAlertActionStyle.Default) {
-          (_) -> Void in
-        }
-        alertController.addAction(prefsAction)
-        alertController.addAction(okAction)
-      }else if $0.state == .Unsupported {
-        self.noticeOnlyText("抱歉你的设备不支持蓝牙。无法使用本应用")
-      }
-    }.addDisposableTo(bag)
-    central.rx_didDiscoverPeripheral.subscribeNext { [unowned self] in
-      let name = $0.1.name
-      if name?.length > 0 {
-        self.peripheral = $0.1
-        $0.0.connectPeripheral(self.peripheral, options: nil)
-      }
-    }.addDisposableTo(bag)
-    central.rx_didConnectPeripheral.subscribeNext{
-      $0.discoverServices(nil)
-      $0.rx_didDiscoverServices.subscribeNext {
-        if let services = $0.0.services {
-          for var service in services {
-            service.peripheral.discoverCharacteristics(nil, forService: service)
-          }
-        }
-      }
-      
-    }.addDisposableTo(bag)
-    central.rx_didFailToConnectPeripheral.subscribeNext{
-      $0.0.name
-    }.addDisposableTo(bag)
   }
 
   override func viewWillAppear(animated: Bool) {
@@ -149,6 +107,11 @@ extension CupViewController {
       temperatureArray.removeAtIndex(indexPath.row)
       TemperatureModel.setObjectArray(temperatureArray, forKey: "temperatureArray")
     }
+  }
+}
+extension CupViewController {
+  func setUpCentral() {
+    central = CBCentralManager(delegate: self, queue: nil)
   }
 }
 

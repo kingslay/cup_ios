@@ -8,15 +8,22 @@
 
 import UIKit
 import CoreBluetooth
-public protocol BluetoothDelegate : NSObjectProtocol {
-  
-}
 
-extension CBCentralManagerDelegate where Self: UIViewController,Self: CBPeripheralDelegate {
-  
+public protocol BluetoothDelegate : NSObjectProtocol{
+  func serviceUUIDs() -> [CBUUID]?
+  func characteristicUUIDs(service: CBUUID) -> [CBUUID]?
+}
+//extension BluetoothDelegate where Self: UIViewController, Self: CBPeripheralDelegate {
+extension UIViewController: BluetoothDelegate,CBCentralManagerDelegate,CBPeripheralDelegate {
+  public func serviceUUIDs() -> [CBUUID]? {
+    return nil
+  }
+  public func characteristicUUIDs(service: CBUUID) -> [CBUUID]? {
+    return nil
+  }
   public func centralManagerDidUpdateState(central: CBCentralManager) {
     if central.state == .PoweredOn {
-      central.scanForPeripheralsWithServices(nil, options: nil)
+      central.scanForPeripheralsWithServices(serviceUUIDs(), options: nil)
     }else if central.state == .PoweredOn {
       let alertController = UIAlertController(title: nil, message: "打开蓝牙来允许本应用连接到配件", preferredStyle: .Alert)
       self.presentViewController(alertController, animated: true, completion: nil)
@@ -39,7 +46,7 @@ extension CBCentralManagerDelegate where Self: UIViewController,Self: CBPeripher
   }
   public func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {
     peripheral.delegate = self
-    peripheral.discoverServices(nil)
+    peripheral.discoverServices(serviceUUIDs())
   }
   public func centralManager(central: CBCentralManager, didFailToConnectPeripheral peripheral: CBPeripheral, error: NSError?) {
     print(error)
@@ -49,7 +56,7 @@ extension CBCentralManagerDelegate where Self: UIViewController,Self: CBPeripher
   {
     if let services = peripheral.services {
       for var service in services {
-        service.peripheral.discoverCharacteristics(nil, forService: service)
+        service.peripheral.discoverCharacteristics(characteristicUUIDs(service.UUID), forService: service)
       }
     }
   }
