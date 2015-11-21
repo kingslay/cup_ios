@@ -103,8 +103,8 @@ extension CupViewController {
   }
   override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
     if editingStyle == .Delete {
-      self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .None)
       temperatureArray.removeAtIndex(indexPath.row)
+      self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .None)
       TemperatureModel.setObjectArray(temperatureArray, forKey: "temperatureArray")
     }
   }

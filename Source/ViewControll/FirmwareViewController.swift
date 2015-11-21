@@ -35,7 +35,7 @@ class FirmwareViewController: UIViewController {
             NSUserDefaults.standardUserDefaults().removeObjectForKey("sharedIdentifier")
             NSUserDefaults.standardUserDefaults().removeObjectForKey("clockArray")
             NSUserDefaults.standardUserDefaults().removeObjectForKey("temperatureArray")
-            UIApplication.sharedApplication().keyWindow!.rootViewController = R.storyboard.login.instance.instantiateInitialViewController()
+            UIApplication.sharedApplication().keyWindow!.rootViewController = R.storyboard.sMS.instance.instantiateInitialViewController()
         }.addDisposableTo(self.disposeBag)
         self.cancelButton.rx_tap.subscribeNext{ [unowned self] in
             self.dismissViewControllerAnimated(true, completion: nil)

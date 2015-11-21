@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         SMSSDK.registerApp("c1013d64d3ff", withSecret: "528dd34e0cb571afea389ae783053243")
-//        staticIdentifier = nil
+        staticIdentifier = " "
         application.applicationIconBadgeNumber = 0
         self.window = UIWindow.init(frame: UIScreen.mainScreen().bounds)
         // 得到当前应用的版本号

@@ -215,7 +215,10 @@ class AccountViewController: UITableViewController {
             self.presentViewController(alertController, animated: true, completion: nil)
         case (0,3):
             let alertController = UIAlertController(title: nil, message: "请输入手机号码", preferredStyle: .Alert)
-            alertController.addTextFieldWithConfigurationHandler(nil)
+            alertController.addTextFieldWithConfigurationHandler(){
+              $0.keyboardType = .NumberPad
+            }
+            
             let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default) {
                 (action: UIAlertAction!) -> Void in
                 if let phone = alertController.textFields?.first?.text where phone.checkMobileNumble() {
@@ -229,11 +232,8 @@ class AccountViewController: UITableViewController {
             self.presentViewController(alertController, animated: true, completion: nil)
 
         case (1,0):
-            let alertController = UIAlertController(title: nil, message: "场景", preferredStyle: .Alert)
-            alertController.addTextFieldWithConfigurationHandler({
-                $0.keyboardType = .NumberPad
-            })
-            
+            let alertController = UIAlertController(title: nil, message: "水杯场景", preferredStyle: .Alert)
+            alertController.addTextFieldWithConfigurationHandler(nil)
             let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default) {
                 (action: UIAlertAction!) -> Void in
                 if let text = alertController.textFields?.first?.text {
@@ -245,10 +245,7 @@ class AccountViewController: UITableViewController {
             self.presentViewController(alertController, animated: true, completion: nil)
         case (1,1):
             let alertController = UIAlertController(title: nil, message: "体质", preferredStyle: .Alert)
-            alertController.addTextFieldWithConfigurationHandler({
-                $0.keyboardType = .NumberPad
-            })
-            
+            alertController.addTextFieldWithConfigurationHandler(nil)
             let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default) {
                 (action: UIAlertAction!) -> Void in
                 if let text = alertController.textFields?.first?.text {
