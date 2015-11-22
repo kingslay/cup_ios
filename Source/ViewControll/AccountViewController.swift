@@ -42,7 +42,7 @@ class AccountViewController: UITableViewController {
             ("我的昵称","未添加",staticAccount?.nickname),
             ("性别","男",staticAccount?.sex),
             ("帐号安全","",staticAccount?.phone)],
-            [("场境","",staticAccount?.scene),
+            [("水杯场景","",staticAccount?.scene),
                 ("体质","",staticAccount?.constitution),
                 ("身高","身高是多少呢",staticAccount?.height != nil ? "\(staticAccount!.height!)cm" : nil),
                 ("体重","体重是多少呢",staticAccount?.weight != nil ? "\(staticAccount!.weight!)kg" : nil),

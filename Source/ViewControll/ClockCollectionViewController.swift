@@ -15,7 +15,7 @@ import RxCocoa
 class ClockCollectionViewController: UICollectionViewController {
     let disposeBag = DisposeBag()
 
-    var open = Variable(false)
+    var open = Variable(ClockModel.open)
     var clockArray: [ClockModel] = []
     
     lazy var navigationAccessoryView : NavigationAccessoryView = {
@@ -36,24 +36,20 @@ class ClockCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView?.backgroundColor = UIColor.whiteColor()
+        self.collectionView?.backgroundColor = Colors.background
+
         self.collectionView?.registerNib(R.nib.clockCollectionViewCell)
         self.collectionView?.registerNib(R.nib.clockCollectionHeaderView, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader)
         let rightButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addClock")
         //        self.navigationItem.rightBarButtonItem = rightButton;
         clockArray = ClockModel.getClocks()
-        for model in clockArray {
-            if model.open {
-                self.open.value = true
-            }
-        }
         let flowLayout  = self.collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
         flowLayout.headerReferenceSize = CGSizeMake(SCREEN_WIDTH, 204)
-        let width = self.view.ks_width/3
-        flowLayout.itemSize = CGSizeMake(width,84)
+        let width = SCREEN_WIDTH/3
+      let height = (self.view.ks_height - 108 - 204)/3
+        flowLayout.itemSize = CGSizeMake(width,height)
         flowLayout.minimumInteritemSpacing = 0
         flowLayout.minimumLineSpacing = 0
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -118,26 +114,30 @@ extension ClockCollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: R.nib.clockCollectionHeaderView.reuseIdentifier, forIndexPath: indexPath)!
-        self.open.subscribeNext{
+      let view = UIView(frame: CGRectMake(0,204,self.view.ks_width,self.view.ks_height))
+      view.alpha = 0.5
+      view.backgroundColor = UIColor.blackColor()
+        self.open.subscribeNext{ [unowned self]  in
             if $0 {
+              view.removeFromSuperview()
                 header.headerImageView.image = R.image.clock_open
             }else{
+              self.view.addSubview(view)
                 header.headerImageView.image = R.image.clock_close
             }
         }.addDisposableTo(disposeBag)
         let tapGestureRecognizer = UITapGestureRecognizer()
         header.addGestureRecognizer(tapGestureRecognizer)
         tapGestureRecognizer.rx_event.subscribeNext{ [unowned self] _ in
-            self.open.value = !self.open.value
+          self.open.value = !self.open.value
+          ClockModel.open = self.open.value
             self.clockArray.forEach{
-                $0.open = self.open.value
-                if $0.open {
+                if $0.open && self.open.value {
                     $0.addUILocalNotification()
-                }else{
+                }else if !$0.open && self.open.value {
                     $0.removeUILocalNotification()
                 }
             }
-            collectionView.reloadData()
         }.addDisposableTo(disposeBag)
         return header
     }

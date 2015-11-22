@@ -21,6 +21,7 @@
                 </imageView>
             </subviews>
             <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="W3w-zh-6qa" secondAttribute="bottom" id="KZu-cA-Dkk"/>
                 <constraint firstItem="W3w-zh-6qa" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="UWO-bi-YcB"/>
