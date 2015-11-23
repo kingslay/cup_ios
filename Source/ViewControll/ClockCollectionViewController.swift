@@ -50,7 +50,7 @@ class ClockCollectionViewController: UICollectionViewController {
         flowLayout.itemSize = CGSizeMake(width,height)
         flowLayout.minimumInteritemSpacing = 0
         flowLayout.minimumLineSpacing = 0
-        UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings.init(forTypes: [.Badge,.Sound,.Alert], categories: nil))
+        UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Badge,.Sound,.Alert], categories: nil))
     }
     
     override func didReceiveMemoryWarning() {

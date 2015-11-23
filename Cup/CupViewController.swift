@@ -21,7 +21,7 @@ class CupViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.tableView.backgroundColor = Colors.background
-    let rightButton = UIBarButtonItem.init(barButtonSystemItem: .Add, target: self, action: "addTemperature")
+    let rightButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addTemperature")
     //        self.navigationItem.rightBarButtonItem = rightButton
     self.tableView.registerNib(R.nib.temperatureTableViewCell)
     self.setTableHeaderView()

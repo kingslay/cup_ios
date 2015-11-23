@@ -265,7 +265,7 @@ extension AccountViewController: UIImagePickerControllerDelegate, UINavigationCo
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if var image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             image = image.af_imageAspectScaledToFillSize(CGSizeMake(320/SCREEN_SCALE, 320/SCREEN_SCALE))
-            let cell = tableView.cellForRowAtIndexPath(NSIndexPath.init(forRow: 0, inSection: 0)) as! AccountTableViewCell
+            let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! AccountTableViewCell
             cell.valueTextField.hidden = true
             cell.headerImageView.hidden = false
             cell.headerImageView.image = image.af_imageAspectScaledToFillSize(CGSizeMake(62, 62)).af_imageRoundedIntoCircle()
