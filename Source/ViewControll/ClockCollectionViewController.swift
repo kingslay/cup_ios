@@ -128,7 +128,7 @@ extension ClockCollectionViewController {
             self.close.value = !self.close.value
             ClockModel.close = self.close.value
             if  self.close.value {
-                 UIApplication.sharedApplication().cancelAllLocalNotifications()
+                UIApplication.sharedApplication().cancelAllLocalNotifications()
             }
             self.clockArray.forEach{
                 if $0.open && !self.close.value {

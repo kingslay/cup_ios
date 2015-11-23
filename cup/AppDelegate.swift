@@ -80,8 +80,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
         application.applicationIconBadgeNumber = 0
-//        let alert = UIAlertController(title: "亲，已到设定饮水时间咯", message: "请及时享用咯", preferredStyle: .Alert)
-//        window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+        let alertController = UIAlertController(title: "亲，已到设定饮水时间咯", message: "请及时享用咯", preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default, handler: nil)
+        alertController.addAction(okAction)
+        window?.rootViewController?.presentViewController(alertController, animated: true, completion: nil)
     }
 
 
