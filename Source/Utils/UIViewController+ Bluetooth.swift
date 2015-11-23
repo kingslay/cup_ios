@@ -10,20 +10,22 @@ import UIKit
 import CoreBluetooth
 
 public protocol BluetoothDelegate : NSObjectProtocol{
-  func serviceUUIDs() -> [CBUUID]?
+  var serviceUUIDs: [CBUUID]? {get}
   func characteristicUUIDs(service: CBUUID) -> [CBUUID]?
 }
 //extension BluetoothDelegate where Self: UIViewController, Self: CBPeripheralDelegate {
 extension UIViewController: BluetoothDelegate,CBCentralManagerDelegate,CBPeripheralDelegate {
-  public func serviceUUIDs() -> [CBUUID]? {
-    return nil
-  }
+    public var serviceUUIDs: [CBUUID]? {
+        get{
+            return nil
+        }
+    }
   public func characteristicUUIDs(service: CBUUID) -> [CBUUID]? {
     return nil
   }
   public func centralManagerDidUpdateState(central: CBCentralManager) {
     if central.state == .PoweredOn {
-      central.scanForPeripheralsWithServices(serviceUUIDs(), options: nil)
+      central.scanForPeripheralsWithServices(serviceUUIDs, options: nil)
     }else if central.state == .PoweredOn {
       let alertController = UIAlertController(title: nil, message: "打开蓝牙来允许本应用连接到配件", preferredStyle: .Alert)
       self.presentViewController(alertController, animated: true, completion: nil)
@@ -46,7 +48,7 @@ extension UIViewController: BluetoothDelegate,CBCentralManagerDelegate,CBPeriphe
   }
   public func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {
     peripheral.delegate = self
-    peripheral.discoverServices(serviceUUIDs())
+    peripheral.discoverServices(serviceUUIDs)
   }
   public func centralManager(central: CBCentralManager, didFailToConnectPeripheral peripheral: CBPeripheral, error: NSError?) {
     print(error)
