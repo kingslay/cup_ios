@@ -17,7 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         SMSSDK.registerApp("c1013d64d3ff", withSecret: "528dd34e0cb571afea389ae783053243")
         staticIdentifier = " "
-        application.applicationIconBadgeNumber = 0
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         // 得到当前应用的版本号
         let infoDictionary = NSBundle.mainBundle().infoDictionary
@@ -73,17 +72,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+      application.applicationIconBadgeNumber = 0
     }
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
-        application.applicationIconBadgeNumber = 0
+      if application.applicationIconBadgeNumber > 0 {
         let alertController = UIAlertController(title: "亲，已到设定饮水时间咯", message: "请及时享用咯", preferredStyle: .Alert)
         let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default, handler: nil)
         alertController.addAction(okAction)
         window?.rootViewController?.presentViewController(alertController, animated: true, completion: nil)
+      }
     }
 
 

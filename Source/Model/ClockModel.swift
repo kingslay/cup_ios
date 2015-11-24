@@ -31,6 +31,7 @@ class ClockModel: NSObject {
         localNotification.fireDate = date
         localNotification.repeatInterval = .Day
         localNotification.alertBody = "该喝水了"
+      localNotification.soundName = UILocalNotificationDefaultSoundName
         localNotification.timeZone = NSTimeZone.defaultTimeZone()
         localNotification.applicationIconBadgeNumber = 1
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
