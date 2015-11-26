@@ -40,8 +40,8 @@ public enum CupMoya {
     case Clock(String)
     case Temperature(String,Int)
 }
-let host = "http://121.199.75.79:8180/cup-0.1/"
-//let host = "http://localhost:8080/"
+//let host = "http://121.199.75.79:8180/cup-0.1/"
+let host = "http://localhost:8080/"
 
 extension CupMoya : MoyaTarget {
     public var baseURL: NSURL { return NSURL(string: host)! }
@@ -56,7 +56,7 @@ extension CupMoya : MoyaTarget {
         case .SaveMe:
             return "/user/saveme"
         case .Clock(_),.Temperature(_, _):
-            return "/behaviour/insert"
+            return "/behaviour"
         }
     }
     public var method: Moya.Method {
