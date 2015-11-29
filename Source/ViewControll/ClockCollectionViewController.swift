@@ -125,6 +125,7 @@ extension ClockCollectionViewController {
         let tapGestureRecognizer = UITapGestureRecognizer()
         header.addGestureRecognizer(tapGestureRecognizer)
         tapGestureRecognizer.rx_event.subscribeNext{ [unowned self] _ in
+          self.view.endEditing(true)
             self.close.value = !self.close.value
             ClockModel.close = self.close.value
             if  self.close.value {
