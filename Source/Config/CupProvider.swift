@@ -103,11 +103,12 @@ func uploadImage(imagePath:NSURL, headers: [String: String]? = nil){
         dict = headers!
     }
     dict["accountid"] = "\(staticAccount!.accountid)"
-    Alamofire.upload(.POST, host+"user/updateProfile.do",headers:dict,multipartFormData: {
+    Alamofire.upload(.POST, host+"/user/updateProfile.do",headers:dict,multipartFormData: {
         $0.appendBodyPart(fileURL: imagePath, name: "file")
         }, encodingCompletion: {
             switch $0 {
             case .Success(let upload,_,_):
+                upload.authenticate(user: staticAccount!.phone!, password: "phone")
                 upload.responseJSON {
                     if let data = $0.result.value, let url = JSON(data)["url"].string {
                         staticAccount?.avatar = url
