@@ -29,8 +29,14 @@ let CupProvider = RxMoyaProvider<CupMoya>(endpointClosure: { (let target) -> End
         return Endpoint(URL: url, sampleResponseClosure: {.NetworkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters, parameterEncoding: .JSON)
         
     }
-    
-})
+    }, plugins: [CredentialsPlugin<CupMoya>(credentialsClosure: {
+        switch $0 {
+        case .Login(_, _),.Regist(_,_),.PhoneLogin(_):
+            return nil
+        default:
+            return NSURLCredential(user: staticAccount!.phone!, password: "phone", persistence: .ForSession)
+        }
+    })])
 
 public enum CupMoya {
     case Login(String,String)
@@ -40,8 +46,8 @@ public enum CupMoya {
     case Clock(String)
     case Temperature(String,Int)
 }
-let host = "http://121.199.75.79:8280/"
-//let host = "http://localhost:8280/"
+//let host = "http://121.199.75.79:8280"
+let host = "http://localhost:8280"
 
 extension CupMoya : MoyaTarget {
     public var baseURL: NSURL { return NSURL(string: host)! }
@@ -52,7 +58,7 @@ extension CupMoya : MoyaTarget {
         case .Regist(_,_):
             return "/user/regist"
         case .PhoneLogin(_):
-            return "user/phonelogin"
+            return "/user/phonelogin"
         case .SaveMe:
             return "/user/saveme"
         case .Clock(_),.Temperature(_, _):
