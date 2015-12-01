@@ -8,6 +8,8 @@
 
 import UIKit
 import KSSwiftExtension
+import Alamofire
+import AlamofireImage
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -53,6 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().translucent = false
         UITabBar.appearance().barTintColor = Colors.black
         UITabBar.appearance().translucent = false
+      configureAlamofireManager()
         return true
     }
 
@@ -86,7 +89,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController?.presentViewController(alertController, animated: true, completion: nil)
       }
     }
-
-
+}
+func configureAlamofireManager() {
+  let manager = Manager.sharedInstance
+  UIImageView.af_sharedImageDownloader = ImageDownloader(sessionManager:manager)
+  manager.delegate.sessionDidReceiveChallenge = { session, challenge in
+    var disposition: NSURLSessionAuthChallengeDisposition = .PerformDefaultHandling
+    var credential: NSURLCredential?
+    
+    if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust {
+      disposition = NSURLSessionAuthChallengeDisposition.UseCredential
+      credential = NSURLCredential(forTrust: challenge.protectionSpace.serverTrust!)
+    } else {
+      if challenge.previousFailureCount > 0 {
+        disposition = .CancelAuthenticationChallenge
+      } else {
+        credential = manager.session.configuration.URLCredentialStorage?.defaultCredentialForProtectionSpace(challenge.protectionSpace)
+        
+        if credential != nil {
+          disposition = .UseCredential
+        }
+      }
+    }
+    return (disposition, credential)
+  }
 }
 

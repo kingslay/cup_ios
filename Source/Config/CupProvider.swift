@@ -11,7 +11,6 @@ import Moya
 import RxSwift
 import SwiftyJSON
 import Alamofire
-
 extension ObservableType where E: MoyaResponse {
     /// Maps data received from the signal into a JSON object. If the conversion fails, the signal errors.
     public func mapSwiftyJSON() -> Observable<JSON> {
@@ -46,8 +45,8 @@ public enum CupMoya {
     case Clock(String)
     case Temperature(String,Int)
 }
-let host = "http://121.199.75.79:8280"
-//let host = "http://localhost:8280"
+//let host = "http://121.199.75.79:8280"
+let host = "https://localhost:8282"
 
 extension CupMoya : MoyaTarget {
     public var baseURL: NSURL { return NSURL(string: host)! }
