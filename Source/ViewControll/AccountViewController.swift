@@ -229,7 +229,7 @@ class AccountViewController: UITableViewController {
                 }
             }
             alertController.addAction(okAction)
-            self.presentViewController(alertController, animated: true, completion: nil)
+//            self.presentViewController(alertController, animated: true, completion: nil)
 
         case (1,0):
             let alertController = UIAlertController(title: nil, message: "水杯场景", preferredStyle: .Alert)

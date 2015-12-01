@@ -129,7 +129,10 @@ extension ClockCollectionViewController {
             self.close.value = !self.close.value
             ClockModel.close = self.close.value
             if  self.close.value {
+                self.noticeOnlyText("闹钟功能已禁用")
                 UIApplication.sharedApplication().cancelAllLocalNotifications()
+            }else{
+                self.noticeOnlyText("闹钟功能已开启")
             }
             self.clockArray.forEach{
                 if $0.open && !self.close.value {
