@@ -98,7 +98,9 @@ func configureAlamofireManager() {
     var credential: NSURLCredential?
     
     if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust {
-      disposition = NSURLSessionAuthChallengeDisposition.UseCredential
+      if challenge.protectionSpace.host == host {
+        disposition = .UseCredential
+      }
       credential = NSURLCredential(forTrust: challenge.protectionSpace.serverTrust!)
     } else {
       if challenge.previousFailureCount > 0 {
