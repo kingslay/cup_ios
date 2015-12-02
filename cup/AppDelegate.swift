@@ -55,7 +55,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().translucent = false
         UITabBar.appearance().barTintColor = Colors.black
         UITabBar.appearance().translucent = false
-      configureAlamofireManager()
         return true
     }
 
@@ -98,7 +97,7 @@ func configureAlamofireManager() {
     var credential: NSURLCredential?
     
     if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust {
-      if challenge.protectionSpace.host == host {
+      if host.containsString(challenge.protectionSpace.host) {
         disposition = .UseCredential
       }
       credential = NSURLCredential(forTrust: challenge.protectionSpace.serverTrust!)
