@@ -82,7 +82,6 @@ class SMSViewController: UIViewController {
         self.view.bounds = frame
       })
       }.addDisposableTo(disposeBag)
-
   }
   func setVerificationButtonText(){
     if count == 0 {
@@ -96,6 +95,8 @@ class SMSViewController: UIViewController {
   }
   func phonelogin() {
     self.pleaseWait("正在登录中")
+    self.verificationButton.enabled = true
+    self.timer?.invalidate()
     self.view.userInteractionEnabled = false
     CupProvider.request(.PhoneLogin(self.phoneTextField.text!)).filterSuccessfulStatusCodes().mapJSON().observeOn(MainScheduler.sharedInstance).subscribe(onNext: { (let json) -> Void in
       self.clearAllNotice()
