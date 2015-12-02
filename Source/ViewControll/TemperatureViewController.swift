@@ -28,7 +28,10 @@ class TemperatureViewController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     @IBAction func saveAction(sender: AnyObject) {
-        if let text = explanationTextField.text where text.length > 0 {
+        if var text = explanationTextField.text where text.length > 0 {
+            if text.length > 10 {
+                text = text[0..<10]
+            }
             let model = TemperatureModel()
             model.explanation = text
             model.temperature = temperaturePickerView.selectedRowInComponent(0)+20

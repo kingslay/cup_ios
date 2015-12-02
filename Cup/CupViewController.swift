@@ -12,7 +12,7 @@ import CoreBluetooth
 //import RxBluetooth
 
 class CupViewController: UITableViewController {
-  let bag = DisposeBag()
+  let disposeBag = DisposeBag()
   var headerView = R.nib.cupHeaderView.firstView(nil, options: nil)
   var temperatureArray : [TemperatureModel] = []
   var central: CBCentralManager!
@@ -38,6 +38,22 @@ class CupViewController: UITableViewController {
   func setTableHeaderView() {
     headerView?.ks_height = 204
     self.tableView.tableHeaderView = headerView
+    let view = UIView(frame: CGRectMake(0,204,self.view.ks_width,self.view.ks_height))
+    view.alpha = 0.5
+    view.backgroundColor = UIColor.blackColor()
+    let tapGestureRecognizer = UITapGestureRecognizer()
+    headerView?.meTemperaturelabel.addGestureRecognizer(tapGestureRecognizer)
+    tapGestureRecognizer.rx_event.subscribeNext{ [unowned self] _ in
+        if view.superview != nil {
+            view.removeFromSuperview()
+        }else{
+            self.view.addSubview(view)
+            self.temperatureArray.forEach{
+                $0.open = false
+            }
+            self.tableView.reloadData()
+        }
+    }.addDisposableTo(disposeBag)
   }
 }
 extension CupViewController {
@@ -86,9 +102,13 @@ extension CupViewController {
       make.right.equalTo(-12)
       make.centerY.equalTo(0)
     }
+    if self.temperatureArray.count >= 4 {
+//        button.enabled = false
+        button.removeFromSuperview()
+    }
     button.rx_tap.subscribeNext { [unowned self] in
       let vc = R.nib.temperatureViewController.firstView(nil, options: nil)!
-      self.presentViewController(vc, animated: true, completion: nil)
+        self.navigationController?.presentViewController(vc, animated: true, completion: nil)
     }
     return headerView
   }
@@ -104,7 +124,8 @@ extension CupViewController {
   override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
     if editingStyle == .Delete {
       temperatureArray.removeAtIndex(indexPath.row)
-      self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+        self.tableView.reloadData()
+//      self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .None)
       TemperatureModel.setObjectArray(temperatureArray, forKey: "temperatureArray")
     }
   }
