@@ -25,9 +25,7 @@ class ClockModel: NSObject {
     }
     func addUILocalNotification(){
         let localNotification = UILocalNotification()
-        var date = NSDate()
-        date = date.set("hour", value: self.hour)!
-        date = date.set("minute", value: self.minute)!
+      let date = NSDate(params: [.Hour:self.hour,.Minute:self.minute])
         localNotification.fireDate = date
         localNotification.repeatInterval = .Day
         localNotification.alertBody = "该喝水了"

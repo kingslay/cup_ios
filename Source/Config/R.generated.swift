@@ -16,8 +16,8 @@ struct R {
   }
   
   struct file {
-    static var cityPlist: NSURL? { return NSBundle.mainBundle().URLForResource("City", withExtension: "plist") }
-    static var imgBundle: NSURL? { return NSBundle.mainBundle().URLForResource("img", withExtension: "bundle") }
+    static var cityPlist: NSURL? { return _R.hostingBundle?.URLForResource("City", withExtension: "plist") }
+    static var imgBundle: NSURL? { return _R.hostingBundle?.URLForResource("img", withExtension: "bundle") }
   }
   
   struct font {
@@ -25,28 +25,28 @@ struct R {
   }
   
   struct image {
-    static var clock: UIImage? { return UIImage(named: "clock") }
-    static var clock_close: UIImage? { return UIImage(named: "clock_close") }
-    static var clock_open: UIImage? { return UIImage(named: "clock_open") }
-    static var clock_up: UIImage? { return UIImage(named: "clock_up") }
-    static var cup: UIImage? { return UIImage(named: "cup") }
-    static var cup_adaptation: UIImage? { return UIImage(named: "cup_adaptation") }
-    static var cup_level: UIImage? { return UIImage(named: "cup_level") }
-    static var cup_up: UIImage? { return UIImage(named: "cup_up") }
-    static var guidance1: UIImage? { return UIImage(named: "Guidance1") }
-    static var guidance2: UIImage? { return UIImage(named: "Guidance2") }
-    static var guidance3: UIImage? { return UIImage(named: "Guidance3") }
-    static var guidance4: UIImage? { return UIImage(named: "Guidance4") }
-    static var logo: UIImage? { return UIImage(named: "logo") }
-    static var me: UIImage? { return UIImage(named: "me") }
-    static var me_up: UIImage? { return UIImage(named: "me_up") }
-    static var mine_photo: UIImage? { return UIImage(named: "mine_photo") }
-    static var photo: UIImage? { return UIImage(named: "photo") }
-    static var plus: UIImage? { return UIImage(named: "plus") }
-    static var tata_close: UIImage? { return UIImage(named: "tata_close") }
-    static var 已恒温: UIImage? { return UIImage(named: "已恒温") }
-    static var 恒温中: UIImage? { return UIImage(named: "恒温中") }
-    static var 自然温: UIImage? { return UIImage(named: "自然温") }
+    static var clock: UIImage? { return UIImage(named: "clock", inBundle: _R.hostingBundle, compatibleWithTraitCollection: nil) }
+    static var clock_close: UIImage? { return UIImage(named: "clock_close", inBundle: _R.hostingBundle, compatibleWithTraitCollection: nil) }
+    static var clock_open: UIImage? { return UIImage(named: "clock_open", inBundle: _R.hostingBundle, compatibleWithTraitCollection: nil) }
+    static var clock_up: UIImage? { return UIImage(named: "clock_up", inBundle: _R.hostingBundle, compatibleWithTraitCollection: nil) }
+    static var cup: UIImage? { return UIImage(named: "cup", inBundle: _R.hostingBundle, compatibleWithTraitCollection: nil) }
+    static var cup_adaptation: UIImage? { return UIImage(named: "cup_adaptation", inBundle: _R.hostingBundle, compatibleWithTraitCollection: nil) }
+    static var cup_level: UIImage? { return UIImage(named: "cup_level", inBundle: _R.hostingBundle, compatibleWithTraitCollection: nil) }
+    static var cup_up: UIImage? { return UIImage(named: "cup_up", inBundle: _R.hostingBundle, compatibleWithTraitCollection: nil) }
+    static var guidance1: UIImage? { return UIImage(named: "Guidance1", inBundle: _R.hostingBundle, compatibleWithTraitCollection: nil) }
+    static var guidance2: UIImage? { return UIImage(named: "Guidance2", inBundle: _R.hostingBundle, compatibleWithTraitCollection: nil) }
+    static var guidance3: UIImage? { return UIImage(named: "Guidance3", inBundle: _R.hostingBundle, compatibleWithTraitCollection: nil) }
+    static var guidance4: UIImage? { return UIImage(named: "Guidance4", inBundle: _R.hostingBundle, compatibleWithTraitCollection: nil) }
+    static var logo: UIImage? { return UIImage(named: "logo", inBundle: _R.hostingBundle, compatibleWithTraitCollection: nil) }
+    static var me: UIImage? { return UIImage(named: "me", inBundle: _R.hostingBundle, compatibleWithTraitCollection: nil) }
+    static var me_up: UIImage? { return UIImage(named: "me_up", inBundle: _R.hostingBundle, compatibleWithTraitCollection: nil) }
+    static var mine_photo: UIImage? { return UIImage(named: "mine_photo", inBundle: _R.hostingBundle, compatibleWithTraitCollection: nil) }
+    static var photo: UIImage? { return UIImage(named: "photo", inBundle: _R.hostingBundle, compatibleWithTraitCollection: nil) }
+    static var plus: UIImage? { return UIImage(named: "plus", inBundle: _R.hostingBundle, compatibleWithTraitCollection: nil) }
+    static var tata_close: UIImage? { return UIImage(named: "tata_close", inBundle: _R.hostingBundle, compatibleWithTraitCollection: nil) }
+    static var 已恒温: UIImage? { return UIImage(named: "已恒温", inBundle: _R.hostingBundle, compatibleWithTraitCollection: nil) }
+    static var 恒温中: UIImage? { return UIImage(named: "恒温中", inBundle: _R.hostingBundle, compatibleWithTraitCollection: nil) }
+    static var 自然温: UIImage? { return UIImage(named: "自然温", inBundle: _R.hostingBundle, compatibleWithTraitCollection: nil) }
   }
   
   struct nib {
@@ -66,11 +66,11 @@ struct R {
   }
   
   struct reuseIdentifier {
-    static var accountTableViewCell: ReuseIdentifier<Cup.AccountTableViewCell> { return ReuseIdentifier(identifier: "AccountTableViewCell") }
-    static var clockCollectionHeaderView: ReuseIdentifier<Cup.ClockCollectionHeaderView> { return ReuseIdentifier(identifier: "ClockCollectionHeaderView") }
-    static var clockCollectionViewCell: ReuseIdentifier<Cup.ClockCollectionViewCell> { return ReuseIdentifier(identifier: "ClockCollectionViewCell") }
-    static var mineTableViewCell: ReuseIdentifier<Cup.MineTableViewCell> { return ReuseIdentifier(identifier: "MineTableViewCell") }
-    static var temperatureTableViewCell: ReuseIdentifier<Cup.TemperatureTableViewCell> { return ReuseIdentifier(identifier: "TemperatureTableViewCell") }
+    static var accountTableViewCell: ReuseIdentifier<AccountTableViewCell> { return ReuseIdentifier(identifier: "AccountTableViewCell") }
+    static var clockCollectionHeaderView: ReuseIdentifier<ClockCollectionHeaderView> { return ReuseIdentifier(identifier: "ClockCollectionHeaderView") }
+    static var clockCollectionViewCell: ReuseIdentifier<ClockCollectionViewCell> { return ReuseIdentifier(identifier: "ClockCollectionViewCell") }
+    static var mineTableViewCell: ReuseIdentifier<MineTableViewCell> { return ReuseIdentifier(identifier: "MineTableViewCell") }
+    static var temperatureTableViewCell: ReuseIdentifier<TemperatureTableViewCell> { return ReuseIdentifier(identifier: "TemperatureTableViewCell") }
   }
   
   struct segue {
@@ -80,7 +80,7 @@ struct R {
   struct storyboard {
     struct launchScreen {
       static var initialViewController: UIViewController? { return instance.instantiateInitialViewController() }
-      static var instance: UIStoryboard { return UIStoryboard(name: "LaunchScreen", bundle: nil) }
+      static var instance: UIStoryboard { return UIStoryboard(name: "LaunchScreen", bundle: _R.hostingBundle) }
       
       static func validateImages() {
         assert(UIImage(named: "logo") != nil, "[R.swift] Image named 'logo' is used in storyboard 'LaunchScreen', but couldn't be loaded.")
@@ -93,23 +93,23 @@ struct R {
     
     struct login {
       static var initialViewController: UINavigationController? { return instance.instantiateInitialViewController() as? UINavigationController }
-      static var instance: UIStoryboard { return UIStoryboard(name: "Login", bundle: nil) }
-      static var login: Cup.UserLoginViewController? { return instance.instantiateViewControllerWithIdentifier("login") as? Cup.UserLoginViewController }
-      static var register: Cup.UserRegistViewController? { return instance.instantiateViewControllerWithIdentifier("register") as? Cup.UserRegistViewController }
+      static var instance: UIStoryboard { return UIStoryboard(name: "Login", bundle: _R.hostingBundle) }
+      static var login: UserLoginViewController? { return instance.instantiateViewControllerWithIdentifier("login") as? UserLoginViewController }
+      static var register: UserRegistViewController? { return instance.instantiateViewControllerWithIdentifier("register") as? UserRegistViewController }
       
       static func validateImages() {
         assert(UIImage(named: "logo") != nil, "[R.swift] Image named 'logo' is used in storyboard 'Login', but couldn't be loaded.")
       }
       
       static func validateViewControllers() {
-        assert(login != nil, "[R.swift] ViewController with identifier 'login' could not be loaded from storyboard 'Login' as 'Cup.UserLoginViewController'.")
-        assert(register != nil, "[R.swift] ViewController with identifier 'register' could not be loaded from storyboard 'Login' as 'Cup.UserRegistViewController'.")
+        assert(login != nil, "[R.swift] ViewController with identifier 'login' could not be loaded from storyboard 'Login' as 'UserLoginViewController'.")
+        assert(register != nil, "[R.swift] ViewController with identifier 'register' could not be loaded from storyboard 'Login' as 'UserRegistViewController'.")
       }
     }
     
     struct main {
-      static var initialViewController: Cup.TabBarViewController? { return instance.instantiateInitialViewController() as? Cup.TabBarViewController }
-      static var instance: UIStoryboard { return UIStoryboard(name: "Main", bundle: nil) }
+      static var initialViewController: TabBarViewController? { return instance.instantiateInitialViewController() as? TabBarViewController }
+      static var instance: UIStoryboard { return UIStoryboard(name: "Main", bundle: _R.hostingBundle) }
       
       static func validateImages() {
         assert(UIImage(named: "clock") != nil, "[R.swift] Image named 'clock' is used in storyboard 'Main', but couldn't be loaded.")
@@ -123,8 +123,8 @@ struct R {
     }
     
     struct sMS {
-      static var initialViewController: Cup.SMSViewController? { return instance.instantiateInitialViewController() as? Cup.SMSViewController }
-      static var instance: UIStoryboard { return UIStoryboard(name: "SMS", bundle: nil) }
+      static var initialViewController: SMSViewController? { return instance.instantiateInitialViewController() as? SMSViewController }
+      static var instance: UIStoryboard { return UIStoryboard(name: "SMS", bundle: _R.hostingBundle) }
       
       static func validateImages() {
         assert(UIImage(named: "logo") != nil, "[R.swift] Image named 'logo' is used in storyboard 'SMS', but couldn't be loaded.")
@@ -139,13 +139,15 @@ struct R {
 }
 
 struct _R {
+  static var hostingBundle: NSBundle? { return NSBundle(identifier: "im.meiyou.imyttq") }
+  
   struct nib {
     struct _AboutUsViewController: NibResource {
-      var instance: UINib { return UINib.init(nibName: "AboutUsViewController", bundle: nil) }
+      var instance: UINib { return UINib.init(nibName: "AboutUsViewController", bundle: _R.hostingBundle) }
       var name: String { return "AboutUsViewController" }
       
-      func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> Cup.AboutUsViewController? {
-        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? Cup.AboutUsViewController
+      func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> AboutUsViewController? {
+        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? AboutUsViewController
       }
       
       func instantiateWithOwner(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> [AnyObject] {
@@ -154,12 +156,12 @@ struct _R {
     }
     
     struct _AccountTableViewCell: NibResource, Reusable {
-      var instance: UINib { return UINib.init(nibName: "AccountTableViewCell", bundle: nil) }
+      var instance: UINib { return UINib.init(nibName: "AccountTableViewCell", bundle: _R.hostingBundle) }
       var name: String { return "AccountTableViewCell" }
-      var reuseIdentifier: ReuseIdentifier<Cup.AccountTableViewCell> { return ReuseIdentifier(identifier: "AccountTableViewCell") }
+      var reuseIdentifier: ReuseIdentifier<AccountTableViewCell> { return ReuseIdentifier(identifier: "AccountTableViewCell") }
       
-      func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> Cup.AccountTableViewCell? {
-        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? Cup.AccountTableViewCell
+      func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> AccountTableViewCell? {
+        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? AccountTableViewCell
       }
       
       func instantiateWithOwner(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> [AnyObject] {
@@ -168,11 +170,11 @@ struct _R {
     }
     
     struct _CFCityCell: NibResource {
-      var instance: UINib { return UINib.init(nibName: "CFCityCell", bundle: nil) }
+      var instance: UINib { return UINib.init(nibName: "CFCityCell", bundle: _R.hostingBundle) }
       var name: String { return "CFCityCell" }
       
-      func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> Cup.CFCityCell? {
-        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? Cup.CFCityCell
+      func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> CFCityCell? {
+        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? CFCityCell
       }
       
       func instantiateWithOwner(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> [AnyObject] {
@@ -181,7 +183,7 @@ struct _R {
     }
     
     struct _CitySearchResultVC: NibResource {
-      var instance: UINib { return UINib.init(nibName: "CitySearchResultVC", bundle: nil) }
+      var instance: UINib { return UINib.init(nibName: "CitySearchResultVC", bundle: _R.hostingBundle) }
       var name: String { return "CitySearchResultVC" }
       
       func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> UIView? {
@@ -194,12 +196,12 @@ struct _R {
     }
     
     struct _ClockCollectionHeaderView: NibResource, Reusable {
-      var instance: UINib { return UINib.init(nibName: "ClockCollectionHeaderView", bundle: nil) }
+      var instance: UINib { return UINib.init(nibName: "ClockCollectionHeaderView", bundle: _R.hostingBundle) }
       var name: String { return "ClockCollectionHeaderView" }
-      var reuseIdentifier: ReuseIdentifier<Cup.ClockCollectionHeaderView> { return ReuseIdentifier(identifier: "ClockCollectionHeaderView") }
+      var reuseIdentifier: ReuseIdentifier<ClockCollectionHeaderView> { return ReuseIdentifier(identifier: "ClockCollectionHeaderView") }
       
-      func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> Cup.ClockCollectionHeaderView? {
-        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? Cup.ClockCollectionHeaderView
+      func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> ClockCollectionHeaderView? {
+        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? ClockCollectionHeaderView
       }
       
       func instantiateWithOwner(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> [AnyObject] {
@@ -208,12 +210,12 @@ struct _R {
     }
     
     struct _ClockCollectionViewCell: NibResource, Reusable {
-      var instance: UINib { return UINib.init(nibName: "ClockCollectionViewCell", bundle: nil) }
+      var instance: UINib { return UINib.init(nibName: "ClockCollectionViewCell", bundle: _R.hostingBundle) }
       var name: String { return "ClockCollectionViewCell" }
-      var reuseIdentifier: ReuseIdentifier<Cup.ClockCollectionViewCell> { return ReuseIdentifier(identifier: "ClockCollectionViewCell") }
+      var reuseIdentifier: ReuseIdentifier<ClockCollectionViewCell> { return ReuseIdentifier(identifier: "ClockCollectionViewCell") }
       
-      func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> Cup.ClockCollectionViewCell? {
-        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? Cup.ClockCollectionViewCell
+      func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> ClockCollectionViewCell? {
+        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? ClockCollectionViewCell
       }
       
       func instantiateWithOwner(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> [AnyObject] {
@@ -222,11 +224,11 @@ struct _R {
     }
     
     struct _CupHeaderView: NibResource {
-      var instance: UINib { return UINib.init(nibName: "CupHeaderView", bundle: nil) }
+      var instance: UINib { return UINib.init(nibName: "CupHeaderView", bundle: _R.hostingBundle) }
       var name: String { return "CupHeaderView" }
       
-      func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> Cup.CupHeaderView? {
-        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? Cup.CupHeaderView
+      func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> CupHeaderView? {
+        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? CupHeaderView
       }
       
       func instantiateWithOwner(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> [AnyObject] {
@@ -235,11 +237,11 @@ struct _R {
     }
     
     struct _FirmwareViewController: NibResource {
-      var instance: UINib { return UINib.init(nibName: "FirmwareViewController", bundle: nil) }
+      var instance: UINib { return UINib.init(nibName: "FirmwareViewController", bundle: _R.hostingBundle) }
       var name: String { return "FirmwareViewController" }
       
-      func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> Cup.FirmwareViewController? {
-        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? Cup.FirmwareViewController
+      func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> FirmwareViewController? {
+        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? FirmwareViewController
       }
       
       func instantiateWithOwner(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> [AnyObject] {
@@ -248,11 +250,11 @@ struct _R {
     }
     
     struct _HeaderItemView: NibResource {
-      var instance: UINib { return UINib.init(nibName: "HeaderItemView", bundle: nil) }
+      var instance: UINib { return UINib.init(nibName: "HeaderItemView", bundle: _R.hostingBundle) }
       var name: String { return "HeaderItemView" }
       
-      func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> Cup.HeaderItemView? {
-        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? Cup.HeaderItemView
+      func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> HeaderItemView? {
+        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? HeaderItemView
       }
       
       func instantiateWithOwner(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> [AnyObject] {
@@ -261,11 +263,11 @@ struct _R {
     }
     
     struct _KSGuidanceViewController: NibResource {
-      var instance: UINib { return UINib.init(nibName: "KSGuidanceViewController", bundle: nil) }
+      var instance: UINib { return UINib.init(nibName: "KSGuidanceViewController", bundle: _R.hostingBundle) }
       var name: String { return "KSGuidanceViewController" }
       
-      func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> Cup.KSGuidanceViewController? {
-        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? Cup.KSGuidanceViewController
+      func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> KSGuidanceViewController? {
+        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? KSGuidanceViewController
       }
       
       func instantiateWithOwner(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> [AnyObject] {
@@ -274,12 +276,12 @@ struct _R {
     }
     
     struct _MineTableViewCell: NibResource, Reusable {
-      var instance: UINib { return UINib.init(nibName: "MineTableViewCell", bundle: nil) }
+      var instance: UINib { return UINib.init(nibName: "MineTableViewCell", bundle: _R.hostingBundle) }
       var name: String { return "MineTableViewCell" }
-      var reuseIdentifier: ReuseIdentifier<Cup.MineTableViewCell> { return ReuseIdentifier(identifier: "MineTableViewCell") }
+      var reuseIdentifier: ReuseIdentifier<MineTableViewCell> { return ReuseIdentifier(identifier: "MineTableViewCell") }
       
-      func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> Cup.MineTableViewCell? {
-        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? Cup.MineTableViewCell
+      func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> MineTableViewCell? {
+        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? MineTableViewCell
       }
       
       func instantiateWithOwner(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> [AnyObject] {
@@ -288,12 +290,12 @@ struct _R {
     }
     
     struct _TemperatureTableViewCell: NibResource, Reusable {
-      var instance: UINib { return UINib.init(nibName: "TemperatureTableViewCell", bundle: nil) }
+      var instance: UINib { return UINib.init(nibName: "TemperatureTableViewCell", bundle: _R.hostingBundle) }
       var name: String { return "TemperatureTableViewCell" }
-      var reuseIdentifier: ReuseIdentifier<Cup.TemperatureTableViewCell> { return ReuseIdentifier(identifier: "TemperatureTableViewCell") }
+      var reuseIdentifier: ReuseIdentifier<TemperatureTableViewCell> { return ReuseIdentifier(identifier: "TemperatureTableViewCell") }
       
-      func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> Cup.TemperatureTableViewCell? {
-        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? Cup.TemperatureTableViewCell
+      func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> TemperatureTableViewCell? {
+        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? TemperatureTableViewCell
       }
       
       func instantiateWithOwner(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> [AnyObject] {
@@ -302,11 +304,11 @@ struct _R {
     }
     
     struct _TemperatureViewController: NibResource {
-      var instance: UINib { return UINib.init(nibName: "TemperatureViewController", bundle: nil) }
+      var instance: UINib { return UINib.init(nibName: "TemperatureViewController", bundle: _R.hostingBundle) }
       var name: String { return "TemperatureViewController" }
       
-      func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> Cup.TemperatureViewController? {
-        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? Cup.TemperatureViewController
+      func firstView(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> TemperatureViewController? {
+        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? TemperatureViewController
       }
       
       func instantiateWithOwner(ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]?) -> [AnyObject] {
@@ -390,6 +392,6 @@ extension UICollectionView {
 
 extension UIViewController {
   convenience init(nib: NibResource) {
-    self.init(nibName: nib.name, bundle: nil)
+    self.init(nibName: nib.name, bundle: _R.hostingBundle)
   }
 }
