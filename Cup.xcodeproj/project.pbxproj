@@ -524,7 +524,6 @@
 				TargetAttributes = {
 					3C80A5D01BCA5A9C0050B6B6 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = T63J6SF7QS;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -848,7 +847,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = im.meiyou.imyttq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "826e880b-7255-41cc-a3ec-913b8a11363c";
+				PROVISIONING_PROFILE = "8c5ede01-8971-4737-9bbb-cd6682d3d6fe";
 				SWIFT_OBJC_BRIDGING_HEADER = "Cup/Bridging-Header.h";
 			};
 			name = Debug;
@@ -870,7 +869,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = im.meiyou.imyttq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "826e880b-7255-41cc-a3ec-913b8a11363c";
+				PROVISIONING_PROFILE = "8c5ede01-8971-4737-9bbb-cd6682d3d6fe";
 				SWIFT_OBJC_BRIDGING_HEADER = "Cup/Bridging-Header.h";
 			};
 			name = Release;

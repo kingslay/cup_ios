@@ -25,11 +25,13 @@ class ClockModel: NSObject {
     }
     func addUILocalNotification(){
         let localNotification = UILocalNotification()
-      let date = NSDate(params: [.Hour:self.hour,.Minute:self.minute])
-        localNotification.fireDate = date
+        let components = NSDate().components(inRegion: Region.LocalRegion())
+        components.hour = self.hour
+        components.minute = self.minute
+        localNotification.fireDate = components.date
         localNotification.repeatInterval = .Day
         localNotification.alertBody = "该喝水了"
-      localNotification.soundName = UILocalNotificationDefaultSoundName
+        localNotification.soundName = UILocalNotificationDefaultSoundName
         localNotification.timeZone = NSTimeZone.defaultTimeZone()
         localNotification.applicationIconBadgeNumber = 1
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)

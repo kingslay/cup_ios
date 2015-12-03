@@ -11,7 +11,7 @@ import KSSwiftExtension
 import KSJSONHelp
 import RxSwift
 import RxCocoa
-
+import SwiftDate
 class ClockCollectionViewController: UICollectionViewController {
     let disposeBag = DisposeBag()
     
@@ -96,8 +96,9 @@ extension ClockCollectionViewController {
             if on {
                 clockModel.removeUILocalNotification()
             }
-            clockModel.hour = datePicker.date.hour
-            clockModel.minute = datePicker.date.minute
+            let components = datePicker.date.components(inRegion: Region.LocalRegion())
+            clockModel.hour = components.hour
+            clockModel.minute = components.minute
             if on {
                 clockModel.addUILocalNotification()
             }
