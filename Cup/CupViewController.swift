@@ -131,8 +131,23 @@ extension CupViewController {
   }
 }
 extension CupViewController {
+    
   func setUpCentral() {
     central = CBCentralManager(delegate: self, queue: nil)
   }
+    
+    public var serviceUUIDs: [CBUUID]? {
+        get{
+            return [CBUUID(string: "FFE0"),CBUUID(string: "FFE5")]
+        }
+    }
+    public func characteristicUUIDs(service: CBUUID) -> [CBUUID]? {
+        if service.UUIDString == "FFE0" {
+            return CBUUID(string: "FFE4")
+        }else  if service.UUIDString == "FFE5" {
+            return CBUUID(string: "FFE9")
+        }
+        return nil
+    }
 }
 
