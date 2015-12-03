@@ -19,6 +19,8 @@ class CupViewController: UITableViewController {
   var peripheral: CBPeripheral?
   var characteristic: CBCharacteristic?
   var temperature: Int!
+  var timer: NSTimer?
+
   override func viewDidLoad() {
     super.viewDidLoad()
     self.tableView.backgroundColor = Colors.background
@@ -55,10 +57,11 @@ class CupViewController: UITableViewController {
       }.addDisposableTo(disposeBag)
   }
   deinit {
+    self.timer?.invalidate()
+    self.timer = nil
     if let peripheral = self.peripheral {
       self.central.cancelPeripheralConnection(peripheral)
     }
-    
   }
 }
 extension CupViewController {
@@ -153,7 +156,8 @@ extension CupViewController {
       self.peripheral?.setNotifyValue(true, forCharacteristic: characteristic)
     }
     if characteristic.properties.contains([.Write]) {
-      self.characteristic = characteristic;
+      self.characteristic = characteristic
+        self.timer =  NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "askTemperature", userInfo: nil, repeats: true)
     }
   }
   
