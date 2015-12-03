@@ -16,13 +16,12 @@ class CupViewController: UITableViewController {
   var headerView = R.nib.cupHeaderView.firstView(nil, options: nil)
   var temperatureArray : [TemperatureModel] = []
   var central: CBCentralManager!
-  var peripheral: CBPeripheral!
-  
+  var peripheral: CBPeripheral?
+  var characteristic: CBCharacteristic?
+  var temperature: Int!
   override func viewDidLoad() {
     super.viewDidLoad()
     self.tableView.backgroundColor = Colors.background
-    let rightButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addTemperature")
-    //        self.navigationItem.rightBarButtonItem = rightButton
     self.tableView.registerNib(R.nib.temperatureTableViewCell)
     self.setTableHeaderView()
     self.tableView.estimatedRowHeight = 45
@@ -55,6 +54,12 @@ class CupViewController: UITableViewController {
       }
       }.addDisposableTo(disposeBag)
   }
+  deinit {
+    if let peripheral = self.peripheral {
+      self.central.cancelPeripheralConnection(peripheral)
+    }
+    
+  }
 }
 extension CupViewController {
   override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -75,12 +80,13 @@ extension CupViewController {
           $0.open = false
         }
         model.open = on
-        self.headerView?.meTemperaturelabel.text = "\(model.temperature)"
         tableView.reloadData()
+        self.temperature = model.temperature
+        self.sendTemperature()
       } else {
         model.open = on
       }
-    }
+    }.addDisposableTo(cell.disposeBag)
     return cell
   }
   override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -102,7 +108,7 @@ extension CupViewController {
       make.right.equalTo(-12)
       make.centerY.equalTo(0)
     }
-    if self.temperatureArray.count >= 4 {
+    if self.temperatureArray.count >= 5 {
       //        button.enabled = false
       button.removeFromSuperview()
     }
@@ -133,12 +139,21 @@ extension CupViewController {
 extension CupViewController {
   
   func setUpCentral() {
-    central = CBCentralManager(delegate: self, queue: nil)
+    self.central = CBCentralManager(delegate: self, queue: nil)
   }
-  override func centralManager(central: CBCentralManager, peripheral: CBPeripheral) {
+  override func didDiscoverPeripheral(peripheral: CBPeripheral) {
     if peripheral.identifier.UUIDString == "80208298-6E62-076C-A59B-C0E0A1C9949C" {
       self.peripheral = peripheral
-      central.connectPeripheral(self.peripheral, options: nil)
+      self.central.connectPeripheral(peripheral, options: nil)
+      self.central.stopScan()
+    }
+  }
+  override func didDiscoverCharacteristicsForService(characteristic: CBCharacteristic) {
+    if characteristic.properties.contains([.Notify]) {
+      self.peripheral?.setNotifyValue(true, forCharacteristic: characteristic)
+    }
+    if characteristic.properties.contains([.Write]) {
+      self.characteristic = characteristic;
     }
   }
   
@@ -154,6 +169,46 @@ extension CupViewController {
       return [CBUUID(string: "FFE9")]
     }
     return nil
+  }
+  func peripheral(peripheral: CBPeripheral, didUpdateNotificationStateForCharacteristic characteristic: CBCharacteristic, error: NSError?)
+  {
+    if let data = characteristic.value {
+       self.headerView?.cupTemperaturelabel.text = ""
+    }
+  }
+  func peripheral(peripheral: CBPeripheral, didWriteValueForCharacteristic characteristic: CBCharacteristic, error: NSError?)
+  {
+    if let _ = error {
+      sendTemperature()
+    }else{
+      self.headerView?.meTemperaturelabel.text = "\(self.temperature)"
+    }
+    if let data = characteristic.value {
+      let bytes = UnsafePointer<UInt8>(data.bytes)
+      if bytes[0] == 0x88 {
+      }else if bytes[0] == 0x44 {
+        self.noticeError("校验码错误")
+      }else{
+      }
+    }
+  }
+  func centralManager(central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: NSError?)
+  {
+    self.central.connectPeripheral(peripheral, options: nil)
+  }
+  func sendTemperature(){
+    if let characteristic = self.characteristic {
+      let data = NSMutableData()
+      data.appendUInt8(0x3a)
+      data.appendUInt8(0x01)
+      var val = UInt16(self.temperature * 10).littleEndian
+      data.appendBytes(&val, length: sizeofValue(val))
+      data.appendUInt16(0)
+      let bytes = UnsafePointer<UInt8>(data.bytes)
+      data.appendUInt8(bytes[1] | bytes[2] & bytes[3] & bytes[4] & bytes[5])
+      data.appendUInt8(0x0a)
+      self.peripheral?.writeValue(data, forCharacteristic: characteristic, type: .WithResponse)
+    }
   }
 }
 

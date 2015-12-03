@@ -12,7 +12,8 @@ import CoreBluetooth
 public protocol BluetoothDelegate : NSObjectProtocol{
   var serviceUUIDs: [CBUUID]? {get}
   func characteristicUUIDs(service: CBUUID) -> [CBUUID]?
-  func centralManager(central: CBCentralManager, peripheral: CBPeripheral)
+  func didDiscoverPeripheral(peripheral: CBPeripheral)
+  func didDiscoverCharacteristicsForService(characteristic: CBCharacteristic)
 }
 //extension BluetoothDelegate where Self: UIViewController, Self: CBPeripheralDelegate {
 extension UIViewController: BluetoothDelegate,CBCentralManagerDelegate,CBPeripheralDelegate {
@@ -24,13 +25,16 @@ extension UIViewController: BluetoothDelegate,CBCentralManagerDelegate,CBPeriphe
   public func characteristicUUIDs(service: CBUUID) -> [CBUUID]? {
     return nil
   }
-  public func centralManager(central: CBCentralManager, peripheral: CBPeripheral) {
+  public func didDiscoverPeripheral(peripheral: CBPeripheral) {
+    
+  }
+  public func didDiscoverCharacteristicsForService(characteristic: CBCharacteristic) {
     
   }
 
   public func centralManagerDidUpdateState(central: CBCentralManager) {
     if central.state == .PoweredOn {
-      central.scanForPeripheralsWithServices(serviceUUIDs, options: nil)
+      central.scanForPeripheralsWithServices(nil, options: nil)
     }else if central.state == .PoweredOn {
       let alertController = UIAlertController(title: nil, message: "打开蓝牙来允许本应用连接到配件", preferredStyle: .Alert)
       self.presentViewController(alertController, animated: true, completion: nil)
@@ -49,7 +53,7 @@ extension UIViewController: BluetoothDelegate,CBCentralManagerDelegate,CBPeriphe
     
   }
   public func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
-    self.centralManager(central, peripheral: peripheral)
+    self.didDiscoverPeripheral(peripheral)
   }
   public func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {
     peripheral.delegate = self
@@ -70,14 +74,7 @@ extension UIViewController: BluetoothDelegate,CBCentralManagerDelegate,CBPeriphe
   public func peripheral(peripheral: CBPeripheral, didDiscoverCharacteristicsForService service: CBService, error: NSError?) {
     if let characteristics = service.characteristics {
       for var characteristic in characteristics {
-        if characteristic.properties.contains([.Notify]) {
-          peripheral.setNotifyValue(true, forCharacteristic: characteristic)
-        }
-        if characteristic.properties.contains([.Write]) {
-          let a = NSData()
-          peripheral.writeValue(a, forCharacteristic: characteristic, type: .WithResponse)
-        }
-        
+        self.didDiscoverCharacteristicsForService(characteristic)
       }
     }
   }

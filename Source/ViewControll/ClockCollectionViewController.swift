@@ -40,8 +40,6 @@ class ClockCollectionViewController: UICollectionViewController {
         self.collectionView?.scrollEnabled = false
         self.collectionView?.registerNib(R.nib.clockCollectionViewCell)
         self.collectionView?.registerNib(R.nib.clockCollectionHeaderView, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader)
-        let rightButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addClock")
-        //        self.navigationItem.rightBarButtonItem = rightButton;
         clockArray = ClockModel.getClocks()
         let flowLayout  = self.collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
         flowLayout.headerReferenceSize = CGSizeMake(SCREEN_WIDTH, 204)
@@ -86,7 +84,7 @@ extension ClockCollectionViewController {
             }
             clockModel.open = true
             ClockModel.setObjectArray(self.clockArray, forKey: "clockArray")
-        }
+        }.addDisposableTo(cell.disposeBag)
         cell.timeTextField.inputAccessoryView = navigationAccessoryView
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .Time
@@ -104,7 +102,7 @@ extension ClockCollectionViewController {
             }
             cell.timeTextField.text = clockModel.description
             ClockModel.setObjectArray(self.clockArray, forKey: "clockArray")
-        }
+        }.addDisposableTo(cell.disposeBag)
         datePicker.date = NSDate()
         return cell
     }

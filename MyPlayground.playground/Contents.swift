@@ -2,6 +2,13 @@
 
 import UIKit
 import XCPlayground
+var b:[UInt8] = [0x3a,0x01,0x20]
+var d = NSData(bytes: b, length: 3)
+d
+let bytes = UnsafePointer<UInt8>(d.bytes)
+bytes[0]
+bytes[1]
+bytes[2]
 
 
 var str = "Hello, playground"

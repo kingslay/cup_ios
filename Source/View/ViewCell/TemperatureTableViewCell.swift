@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class TemperatureTableViewCell: UITableViewCell {
 
@@ -25,5 +26,10 @@ class TemperatureTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+  var disposeBag = DisposeBag()
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    self.disposeBag = DisposeBag()
+  }
     
 }

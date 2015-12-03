@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import RxSwift
 class ClockCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var timeTextField: UITextField!
@@ -17,4 +17,10 @@ class ClockCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+  var disposeBag = DisposeBag()
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    self.disposeBag = DisposeBag()
+  }
+
 }
