@@ -198,6 +198,8 @@ extension CupViewController {
   }
   func centralManager(central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: NSError?)
   {
+    self.timer?.invalidate()
+    self.timer = nil
     self.central.connectPeripheral(peripheral, options: nil)
   }
   func sendTemperature(){
