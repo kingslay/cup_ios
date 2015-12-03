@@ -210,5 +210,17 @@ extension CupViewController {
       self.peripheral?.writeValue(data, forCharacteristic: characteristic, type: .WithResponse)
     }
   }
+  func askTemperature(){
+    if let characteristic = self.characteristic {
+      let data = NSMutableData()
+      data.appendUInt8(0x3a)
+      data.appendUInt8(0x02)
+      data.appendUInt16(0x00)
+      data.appendUInt16(0x00)
+      data.appendUInt8(0x02)
+      data.appendUInt8(0x0a)
+      self.peripheral?.writeValue(data, forCharacteristic: characteristic, type: .WithResponse)
+    }
+  }
 }
 
