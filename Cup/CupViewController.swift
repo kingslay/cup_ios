@@ -203,9 +203,9 @@ extension CupViewController {
       data.appendUInt8(0x01)
       var val = UInt16(self.temperature * 10).littleEndian
       data.appendBytes(&val, length: sizeofValue(val))
-      data.appendUInt16(0)
+      data.appendUInt16(0x00)
       let bytes = UnsafePointer<UInt8>(data.bytes)
-      data.appendUInt8(bytes[1] | bytes[2] & bytes[3] & bytes[4] & bytes[5])
+      data.appendUInt8(bytes[1] & bytes[2] & bytes[3] & bytes[4] & bytes[5])
       data.appendUInt8(0x0a)
       self.peripheral?.writeValue(data, forCharacteristic: characteristic, type: .WithResponse)
     }
