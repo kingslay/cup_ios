@@ -12,6 +12,7 @@ import CoreBluetooth
 public protocol BluetoothDelegate : NSObjectProtocol{
   var serviceUUIDs: [CBUUID]? {get}
   func characteristicUUIDs(service: CBUUID) -> [CBUUID]?
+  func centralManager(central: CBCentralManager, peripheral: CBPeripheral)
 }
 //extension BluetoothDelegate where Self: UIViewController, Self: CBPeripheralDelegate {
 extension UIViewController: BluetoothDelegate,CBCentralManagerDelegate,CBPeripheralDelegate {
@@ -23,6 +24,10 @@ extension UIViewController: BluetoothDelegate,CBCentralManagerDelegate,CBPeriphe
   public func characteristicUUIDs(service: CBUUID) -> [CBUUID]? {
     return nil
   }
+  public func centralManager(central: CBCentralManager, peripheral: CBPeripheral) {
+    
+  }
+
   public func centralManagerDidUpdateState(central: CBCentralManager) {
     if central.state == .PoweredOn {
       central.scanForPeripheralsWithServices(serviceUUIDs, options: nil)
@@ -44,7 +49,7 @@ extension UIViewController: BluetoothDelegate,CBCentralManagerDelegate,CBPeriphe
     
   }
   public func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
-    central.connectPeripheral(peripheral, options: nil)
+    self.centralManager(central, peripheral: peripheral)
   }
   public func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {
     peripheral.delegate = self
@@ -65,6 +70,13 @@ extension UIViewController: BluetoothDelegate,CBCentralManagerDelegate,CBPeriphe
   public func peripheral(peripheral: CBPeripheral, didDiscoverCharacteristicsForService service: CBService, error: NSError?) {
     if let characteristics = service.characteristics {
       for var characteristic in characteristics {
+        if characteristic.properties.contains([.Notify]) {
+          peripheral.setNotifyValue(true, forCharacteristic: characteristic)
+        }
+        if characteristic.properties.contains([.Write]) {
+          let a = NSData()
+          peripheral.writeValue(a, forCharacteristic: characteristic, type: .WithResponse)
+        }
         
       }
     }

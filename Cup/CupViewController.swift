@@ -134,5 +134,11 @@ extension CupViewController {
   func setUpCentral() {
     central = CBCentralManager(delegate: self, queue: nil)
   }
+  override func centralManager(central: CBCentralManager, peripheral: CBPeripheral) {
+    if peripheral.identifier.UUIDString == "80208298-6E62-076C-A59B-C0E0A1C9949C" {
+      self.peripheral = peripheral
+      central.connectPeripheral(self.peripheral, options: nil)
+    }
+  }
 }
 
