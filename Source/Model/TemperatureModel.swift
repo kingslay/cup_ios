@@ -29,7 +29,13 @@ class TemperatureModel: NSObject {
         if let array = TemperatureModel.objectArrayForKey("temperatureArray") {
             return array as! [TemperatureModel]
         }else{
-            return []
+            let first = TemperatureModel()
+            first.explanation = "早上第一杯水温"
+            first.temperature = 45
+            let second = TemperatureModel()
+            second.explanation = "泡咖啡"
+            second.temperature = 75
+            return [first,second]
         }
     }
     

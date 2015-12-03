@@ -28,7 +28,7 @@ class CupViewController: UITableViewController {
     self.tableView.estimatedRowHeight = 45
     self.setUpCentral()
   }
-
+  
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     self.temperatureArray = TemperatureModel.getTemperatures()
@@ -44,16 +44,16 @@ class CupViewController: UITableViewController {
     let tapGestureRecognizer = UITapGestureRecognizer()
     headerView?.meTemperaturelabel.addGestureRecognizer(tapGestureRecognizer)
     tapGestureRecognizer.rx_event.subscribeNext{ [unowned self] _ in
-        if view.superview != nil {
-            view.removeFromSuperview()
-        }else{
-            self.view.addSubview(view)
-            self.temperatureArray.forEach{
-                $0.open = false
-            }
-            self.tableView.reloadData()
+      if view.superview != nil {
+        view.removeFromSuperview()
+      }else{
+        self.view.addSubview(view)
+        self.temperatureArray.forEach{
+          $0.open = false
         }
-    }.addDisposableTo(disposeBag)
+        self.tableView.reloadData()
+      }
+      }.addDisposableTo(disposeBag)
   }
 }
 extension CupViewController {
@@ -103,12 +103,12 @@ extension CupViewController {
       make.centerY.equalTo(0)
     }
     if self.temperatureArray.count >= 4 {
-//        button.enabled = false
-        button.removeFromSuperview()
+      //        button.enabled = false
+      button.removeFromSuperview()
     }
     button.rx_tap.subscribeNext { [unowned self] in
       let vc = R.nib.temperatureViewController.firstView(nil, options: nil)!
-        self.navigationController?.presentViewController(vc, animated: true, completion: nil)
+      self.navigationController?.presentViewController(vc, animated: true, completion: nil)
     }
     return headerView
   }
@@ -124,13 +124,14 @@ extension CupViewController {
   override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
     if editingStyle == .Delete {
       temperatureArray.removeAtIndex(indexPath.row)
-        self.tableView.reloadData()
-//      self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+      self.tableView.reloadData()
+      //      self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .None)
       TemperatureModel.setObjectArray(temperatureArray, forKey: "temperatureArray")
     }
   }
 }
 extension CupViewController {
+  
   func setUpCentral() {
     central = CBCentralManager(delegate: self, queue: nil)
   }
@@ -139,6 +140,20 @@ extension CupViewController {
       self.peripheral = peripheral
       central.connectPeripheral(self.peripheral, options: nil)
     }
+  }
+  
+  override var serviceUUIDs: [CBUUID]? {
+    get{
+      return [CBUUID(string: "FFE0"),CBUUID(string: "FFE5")]
+    }
+  }
+  override func characteristicUUIDs(service: CBUUID) -> [CBUUID]? {
+    if service.UUIDString == "FFE0" {
+      return [CBUUID(string: "FFE4")]
+    }else  if service.UUIDString == "FFE5" {
+      return [CBUUID(string: "FFE9")]
+    }
+    return nil
   }
 }
 
