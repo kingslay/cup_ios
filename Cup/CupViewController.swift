@@ -145,7 +145,7 @@ extension CupViewController {
     self.central = CBCentralManager(delegate: self, queue: nil)
   }
   override func didDiscoverPeripheral(peripheral: CBPeripheral) {
-    if peripheral.identifier.UUIDString == "80208298-6E62-076C-A59B-C0E0A1C9949C" {
+    if peripheral.identifier.UUIDString == staticIdentifier {
       self.peripheral = peripheral
       self.central.connectPeripheral(peripheral, options: nil)
       self.central.stopScan()
@@ -178,26 +178,21 @@ extension CupViewController {
   {
     if let data = characteristic.value {
         let bytes = UnsafePointer<UInt8>(data.bytes)
-
-       self.headerView?.cupTemperaturelabel.text = ""
+        if bytes[0] == 0x3a {
+            if bytes[1] == 0x88 {
+                self.headerView?.meTemperaturelabel.text = "\(self.temperature)"
+            }else if bytes[1] == 0x44 {
+                self.noticeError("校验码错误")
+            }else if bytes[1] == 0x02 {
+                var cupTemperature: UInt16 = 0
+                data.getBytes(&cupTemperature, range: NSMakeRange(2,2))
+                cupTemperature = UInt16(bigEndian: cupTemperature)
+                self.headerView?.cupTemperaturelabel.text = "\(cupTemperature)"
+            }
+        }
     }
   }
-  func peripheral(peripheral: CBPeripheral, didWriteValueForCharacteristic characteristic: CBCharacteristic, error: NSError?)
-  {
-    if let _ = error {
-      sendTemperature()
-    }else{
-      self.headerView?.meTemperaturelabel.text = "\(self.temperature)"
-    }
-    if let data = characteristic.value {
-      let bytes = UnsafePointer<UInt8>(data.bytes)
-      if bytes[0] == 0x88 {
-      }else if bytes[0] == 0x44 {
-        self.noticeError("校验码错误")
-      }else{
-      }
-    }
-  }
+ 
   func centralManager(central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: NSError?)
   {
     self.timer?.invalidate()
