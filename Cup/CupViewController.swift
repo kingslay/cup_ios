@@ -177,6 +177,8 @@ extension CupViewController {
   func peripheral(peripheral: CBPeripheral, didUpdateNotificationStateForCharacteristic characteristic: CBCharacteristic, error: NSError?)
   {
     if let data = characteristic.value {
+        let bytes = UnsafePointer<UInt8>(data.bytes)
+
        self.headerView?.cupTemperaturelabel.text = ""
     }
   }
@@ -211,7 +213,7 @@ extension CupViewController {
       data.appendBytes(&val, length: sizeofValue(val))
       data.appendUInt16(0x00)
       let bytes = UnsafePointer<UInt8>(data.bytes)
-      data.appendUInt8(bytes[1] & bytes[2] & bytes[3] & bytes[4] & bytes[5])
+      data.appendUInt8(bytes[1] + bytes[2] + bytes[3] + bytes[4] + bytes[5])
       data.appendUInt8(0x0a)
       self.peripheral?.writeValue(data, forCharacteristic: characteristic, type: .WithResponse)
     }
@@ -225,7 +227,7 @@ extension CupViewController {
       data.appendUInt16(0x00)
       data.appendUInt8(0x02)
       data.appendUInt8(0x0a)
-      self.peripheral?.writeValue(data, forCharacteristic: characteristic, type: .WithResponse)
+      self.peripheral?.writeValue(data, forCharacteristic: characteristic, type: .WithoutResponse)
     }
   }
 }
