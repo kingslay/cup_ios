@@ -87,6 +87,7 @@ class MineViewController: UITableViewController {
                 return
             }
             let vc = R.nib.firmwareViewController.firstView(nil, options: nil)!
+            vc.serialLabel.text = "序列号: " + (staticIdentifier ?? "")
             if indexPath.row == 2 {
                 vc.okButton.hidden = false
                 vc.cancelButton.hidden = false
