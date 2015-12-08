@@ -24,7 +24,13 @@ class TemperatureModel: NSObject {
         array.append(model)
         TemperatureModel.setObjectArray(array, forKey: "temperatureArray")
     }
-
+  static func removeAtIndex(index: Int) {
+    var array = getTemperatures()
+    if array.count > index {
+      array.removeAtIndex(index)
+    }
+    TemperatureModel.setObjectArray(array, forKey: "temperatureArray")
+  }
     static func getTemperatures() -> [TemperatureModel] {
         if let array = TemperatureModel.objectArrayForKey("temperatureArray") {
             return array as! [TemperatureModel]

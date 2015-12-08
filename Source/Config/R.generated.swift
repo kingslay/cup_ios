@@ -324,6 +324,29 @@ struct ReuseIdentifier<T>: CustomStringConvertible {
   var description: String { return identifier }
 }
 
+struct StoryboardSegueIdentifier<Segue: UIStoryboardSegue, Source: UIViewController, Destination: UIViewController>: CustomStringConvertible {
+  let identifier: String
+  
+  var description: String { return identifier }
+}
+
+struct TypedStoryboardSegueInfo<Segue: UIStoryboardSegue, Source: UIViewController, Destination: UIViewController>: CustomStringConvertible {
+  let destinationViewController: Destination
+  let identifier: String?
+  let segue: Segue
+  let sourceViewController: Source
+  
+  var description: String { return identifier ?? "" }
+  
+   init?(segue: UIStoryboardSegue) {
+    guard let segue = segue as? Segue, sourceViewController = segue.sourceViewController as? Source, destinationViewController = segue.destinationViewController as? Destination else { return nil }
+    self.segue = segue
+    self.identifier = segue.identifier
+    self.sourceViewController = sourceViewController
+    self.destinationViewController = destinationViewController
+  }
+}
+
 protocol NibResource {
   var instance: UINib { get }
   var name: String { get }
@@ -393,5 +416,18 @@ extension UICollectionView {
 extension UIViewController {
   convenience init(nib: NibResource) {
     self.init(nibName: nib.name, bundle: _R.hostingBundle)
+  }
+}
+
+extension UIViewController {
+  func performSegueWithIdentifier<Segue: UIStoryboardSegue,Source: UIViewController,Destination: UIViewController>(identifier: StoryboardSegueIdentifier<Segue, Source, Destination>, sender: AnyObject?) {
+    performSegueWithIdentifier(identifier.identifier, sender: sender)
+  }
+}
+
+extension UIStoryboardSegue {
+  func typedInfoWithIdentifier<Segue: UIStoryboardSegue,Source: UIViewController,Destination: UIViewController>(identifier: StoryboardSegueIdentifier<Segue, Source, Destination>) -> TypedStoryboardSegueInfo<Segue, Source, Destination>? {
+    guard self.identifier == identifier.identifier else { return nil }
+    return TypedStoryboardSegueInfo(segue: self)
   }
 }

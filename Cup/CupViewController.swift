@@ -17,7 +17,7 @@ class CupViewController: UITableViewController {
   var central: CBCentralManager!
   var peripheral: CBPeripheral?
   var characteristic: CBCharacteristic?
-  var temperature: Int?
+  var selectedIndex: Int?
   var timer: NSTimer?
 
   override func viewDidLoad() {
@@ -32,6 +32,9 @@ class CupViewController: UITableViewController {
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     self.temperatureArray = TemperatureModel.getTemperatures()
+    if let selectedIndex = self.selectedIndex {
+      self.temperatureArray[selectedIndex].open = true
+    }
     self.tableView.reloadData()
   }
   
@@ -83,10 +86,11 @@ extension CupViewController {
         }
         model.open = on
         tableView.reloadData()
-        self.temperature = model.temperature
+        self.selectedIndex = indexPath.row
         self.sendTemperature()
       } else {
         model.open = on
+        self.selectedIndex = nil
       }
     }.addDisposableTo(cell.disposeBag)
     return cell
@@ -133,8 +137,7 @@ extension CupViewController {
     if editingStyle == .Delete {
       temperatureArray.removeAtIndex(indexPath.row)
       self.tableView.reloadData()
-      //      self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .None)
-      TemperatureModel.setObjectArray(temperatureArray, forKey: "temperatureArray")
+      TemperatureModel.removeAtIndex(indexPath.row)
     }
   }
 }
@@ -161,7 +164,7 @@ extension CupViewController {
     }
     if characteristic.properties.contains([.Write]) {
       self.characteristic = characteristic
-        self.timer =  NSTimer.scheduledTimerWithTimeInterval(60*5, target: self, selector: "askTemperature", userInfo: nil, repeats: true)
+      self.timer = NSTimer.scheduledTimerWithTimeInterval(60*5, target: self, selector: "askTemperature", userInfo: nil, repeats: true)
       self.timer?.fire()
       //连接通过之后，发送一下。让杯子叫一下
       let data = NSMutableData()
@@ -172,7 +175,6 @@ extension CupViewController {
       data.appendUInt8(0x11)
       data.appendUInt8(0x0a)
       self.peripheral?.writeValue(data, forCharacteristic: characteristic, type: .WithResponse)
-
     }
   }
   
@@ -196,7 +198,8 @@ extension CupViewController {
         let bytes = UnsafePointer<UInt8>(data.bytes)
         if bytes[0] == 0x3a {
             if bytes[1] == 0x88 {
-              if let temperature = self.temperature {
+              if let selectedIndex = self.selectedIndex {
+                let temperature = self.temperatureArray[selectedIndex].temperature
                 self.headerView?.meTemperaturelabel.text = "\(temperature)"
                 if let text = self.headerView?.cupTemperaturelabel.text,cupTemperature = Int(text) {
                   if temperature > cupTemperature {
@@ -208,13 +211,16 @@ extension CupViewController {
               }
             }else if bytes[1] == 0x44 {
                 self.noticeError("校验码错误")
-            }else if bytes[1] == 0x02 {
+            }else if bytes[1] == 0x01 || bytes[1] == 0x02 {
                 var cupTemperature: UInt16 = 0
                 data.getBytes(&cupTemperature, range: NSMakeRange(2,2))
                 cupTemperature =  (cupTemperature / 10)
                 self.headerView?.cupTemperaturelabel.text = "\(cupTemperature)"
-              if let temperature = self.temperature where temperature >= Int(cupTemperature) {
-                self.headerView?.cupTemperatureImageView.image = R.image.已恒温
+              if let selectedIndex = self.selectedIndex {
+                let temperature = self.temperatureArray[selectedIndex].temperature
+                if temperature <= Int(cupTemperature) {
+                  self.headerView?.cupTemperatureImageView.image = R.image.已恒温
+                }
               }
             }
         }
@@ -228,11 +234,11 @@ extension CupViewController {
     self.central.connectPeripheral(peripheral, options: nil)
   }
   func sendTemperature(){
-    if let characteristic = self.characteristic, temperature = self.temperature {
+    if let characteristic = self.characteristic, selectedIndex = self.selectedIndex {
       let data = NSMutableData()
       data.appendUInt8(0x3a)
       data.appendUInt8(0x01)
-      var val = UInt16(temperature * 10)
+      var val = UInt16(self.temperatureArray[selectedIndex].temperature * 10)
       data.appendBytes(&val, length: sizeofValue(val))
       data.appendUInt16(0x00)
       let bytes = UnsafePointer<UInt8>(data.bytes)

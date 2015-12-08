@@ -12,7 +12,7 @@ class TemperatureViewController: UIViewController {
     
     @IBOutlet weak var temperaturePickerView: UIPickerView!
     @IBOutlet weak var explanationTextField: UITextField!
-    var pickerData = [Array(20...70).map{"\($0)度"}]
+    var pickerData = [Array(21...75).map{"\($0)度"}]
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,7 +34,7 @@ class TemperatureViewController: UIViewController {
             }
             let model = TemperatureModel()
             model.explanation = text
-            model.temperature = temperaturePickerView.selectedRowInComponent(0)+20
+            model.temperature = temperaturePickerView.selectedRowInComponent(0)+21
             TemperatureModel.addTemperature(model)
             self.dismissViewControllerAnimated(true, completion: nil)
         }else{
