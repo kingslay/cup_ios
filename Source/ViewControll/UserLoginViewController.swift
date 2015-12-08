@@ -57,7 +57,7 @@ class UserLoginViewController: UIViewController,UITextFieldDelegate{
             staticAccount = AccountModel.toModel(json as! [String : AnyObject])
             AccountModel.localSave()
             if staticIdentifier == nil {
-                self.navigationController?.ks_pushViewController(CentralViewController())
+               UIApplication.sharedApplication().keyWindow!.rootViewController = CentralViewController()
             }else{
                 UIApplication.sharedApplication().keyWindow!.rootViewController = R.storyboard.main.instance.instantiateInitialViewController()
             }

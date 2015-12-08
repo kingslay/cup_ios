@@ -9,7 +9,6 @@
 import UIKit
 import RxSwift
 import CoreBluetooth
-//import RxBluetooth
 
 class CupViewController: UITableViewController {
   let disposeBag = DisposeBag()
@@ -18,7 +17,7 @@ class CupViewController: UITableViewController {
   var central: CBCentralManager!
   var peripheral: CBPeripheral?
   var characteristic: CBCharacteristic?
-  var temperature: Int!
+  var temperature: Int?
   var timer: NSTimer?
 
   override func viewDidLoad() {
@@ -140,9 +139,14 @@ extension CupViewController {
   }
 }
 extension CupViewController {
-  
   func setUpCentral() {
     self.central = CBCentralManager(delegate: self, queue: nil)
+    if let identifier = NSUUID(UUIDString: staticIdentifier!) {
+      let peripherals = self.central.retrievePeripheralsWithIdentifiers([identifier])
+      if peripherals.count > 0 {
+        didDiscoverPeripheral(peripherals[0])
+      }
+    }
   }
   override func didDiscoverPeripheral(peripheral: CBPeripheral) {
     if peripheral.identifier.UUIDString == staticIdentifier {
@@ -157,7 +161,18 @@ extension CupViewController {
     }
     if characteristic.properties.contains([.Write]) {
       self.characteristic = characteristic
-        self.timer =  NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "askTemperature", userInfo: nil, repeats: true)
+        self.timer =  NSTimer.scheduledTimerWithTimeInterval(60*5, target: self, selector: "askTemperature", userInfo: nil, repeats: true)
+      self.timer?.fire()
+      //连接通过之后，发送一下。让杯子叫一下
+      let data = NSMutableData()
+      data.appendUInt8(0x3a)
+      data.appendUInt8(0x11)
+      data.appendUInt16(0x00)
+      data.appendUInt16(0x00)
+      data.appendUInt8(0x11)
+      data.appendUInt8(0x0a)
+      self.peripheral?.writeValue(data, forCharacteristic: characteristic, type: .WithResponse)
+
     }
   }
   
@@ -167,6 +182,7 @@ extension CupViewController {
     }
   }
   override func characteristicUUIDs(service: CBUUID) -> [CBUUID]? {
+    //监听的通道
     if service.UUIDString == "FFE0" {
       return [CBUUID(string: "FFE4")]
     }else  if service.UUIDString == "FFE5" {
@@ -174,20 +190,32 @@ extension CupViewController {
     }
     return nil
   }
-  func peripheral(peripheral: CBPeripheral, didUpdateNotificationStateForCharacteristic characteristic: CBCharacteristic, error: NSError?)
+  func peripheral(peripheral: CBPeripheral, didUpdateValueForCharacteristic characteristic: CBCharacteristic, error: NSError?)
   {
     if let data = characteristic.value {
         let bytes = UnsafePointer<UInt8>(data.bytes)
         if bytes[0] == 0x3a {
             if bytes[1] == 0x88 {
-                self.headerView?.meTemperaturelabel.text = "\(self.temperature)"
+              if let temperature = self.temperature {
+                self.headerView?.meTemperaturelabel.text = "\(temperature)"
+                if let text = self.headerView?.cupTemperaturelabel.text,cupTemperature = Int(text) {
+                  if temperature > cupTemperature {
+                    self.headerView?.cupTemperatureImageView.image = R.image.恒温中
+                  }else {
+                    self.headerView?.cupTemperatureImageView.image = R.image.已恒温
+                  }
+                }
+              }
             }else if bytes[1] == 0x44 {
                 self.noticeError("校验码错误")
             }else if bytes[1] == 0x02 {
                 var cupTemperature: UInt16 = 0
                 data.getBytes(&cupTemperature, range: NSMakeRange(2,2))
-                cupTemperature = UInt16(bigEndian: cupTemperature)
+                cupTemperature =  (cupTemperature / 10)
                 self.headerView?.cupTemperaturelabel.text = "\(cupTemperature)"
+              if let temperature = self.temperature where temperature >= Int(cupTemperature) {
+                self.headerView?.cupTemperatureImageView.image = R.image.已恒温
+              }
             }
         }
     }
@@ -200,11 +228,11 @@ extension CupViewController {
     self.central.connectPeripheral(peripheral, options: nil)
   }
   func sendTemperature(){
-    if let characteristic = self.characteristic {
+    if let characteristic = self.characteristic, temperature = self.temperature {
       let data = NSMutableData()
       data.appendUInt8(0x3a)
       data.appendUInt8(0x01)
-      var val = UInt16(self.temperature * 10).littleEndian
+      var val = UInt16(temperature * 10)
       data.appendBytes(&val, length: sizeofValue(val))
       data.appendUInt16(0x00)
       let bytes = UnsafePointer<UInt8>(data.bytes)
@@ -222,8 +250,7 @@ extension CupViewController {
       data.appendUInt16(0x00)
       data.appendUInt8(0x02)
       data.appendUInt8(0x0a)
-      self.peripheral?.writeValue(data, forCharacteristic: characteristic, type: .WithoutResponse)
+      self.peripheral?.writeValue(data, forCharacteristic: characteristic, type: .WithResponse)
     }
   }
 }
-

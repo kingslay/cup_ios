@@ -26,195 +26,123 @@ import UIKit
 import BluetoothKit
 import CoreBluetooth
 import SnapKit
-internal class CentralViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, BKCentralDelegate, BKAvailabilityObserver {
-    
-    // MARK: Properties
-    private let indicatorView = IndicatorView()
-    private let discoveriesTableView = UITableView()
-    private var discoveries = [BKDiscovery]()
-    private let discoveriesTableViewCellIdentifier = "Discoveries Table View Cell Identifier"
-    private let central = BKCentral()
-    
-    // MARK: UIViewController Life Cycle
-    
-    internal override func viewDidLoad() {
-        setupTableView()
-        view.addSubview(indicatorView)
-        applyConstraints()
-        startCentral()
+internal class CentralViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+  
+  // MARK: Properties
+  private let indicatorView = IndicatorView()
+  private let discoveriesTableView = UITableView()
+  private let discoveriesTableViewCellIdentifier = "Discoveries Table View Cell Identifier"
+  private var central: CBCentralManager!
+  var discoveries: Set<CBPeripheral> = []
+  // MARK: UIViewController Life Cycle
+  
+  internal override func viewDidLoad() {
+    setupTableView()
+    view.addSubview(indicatorView)
+    applyConstraints()
+    self.central = CBCentralManager(delegate: self, queue: nil)
+  }
+  
+  func setupTableView() {
+    discoveriesTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: discoveriesTableViewCellIdentifier)
+    discoveriesTableView.backgroundColor = Colors.background
+    discoveriesTableView.dataSource = self
+    discoveriesTableView.delegate = self
+    view.addSubview(discoveriesTableView)
+    let headerView = UIView(frame: CGRectMake(0,0,self.view.frame.width,245))
+    let headerLabel = UILabel()
+    headerLabel.text = "发现水杯"
+    headerLabel.font = UIFont.systemFontOfSize(23)
+    headerLabel.sizeToFit()
+    headerView.addSubview(headerLabel)
+    headerLabel.snp_makeConstraints { (make) -> Void in
+      make.centerX.equalTo(0)
+      make.bottom.equalTo(-20)
     }
-    
-    func setupTableView() {
-        discoveriesTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: discoveriesTableViewCellIdentifier)
-        discoveriesTableView.backgroundColor = Colors.background
-        discoveriesTableView.dataSource = self
-        discoveriesTableView.delegate = self
-        view.addSubview(discoveriesTableView)
-        let headerView = UIView(frame: CGRectMake(0,0,self.view.frame.width,245))
-        let headerLabel = UILabel()
-        headerLabel.text = "发现水杯"
-        headerLabel.font = UIFont.systemFontOfSize(23)
-        headerLabel.sizeToFit()
-        headerView.addSubview(headerLabel)
-        headerLabel.snp_makeConstraints { (make) -> Void in
-            make.centerX.equalTo(0)
-            make.bottom.equalTo(-20)
-        }
-        discoveriesTableView.tableHeaderView = headerView
-        let footerView = UIView()
-        let imageView = UIImageView(image: R.image.cup_adaptation)
-        footerView.addSubview(imageView)
-        imageView.snp_makeConstraints { (make) -> Void in
-            make.top.equalTo(30)
-            make.centerX.equalTo(0)
-        }
-        let footerLabel = UILabel()
-        footerLabel.text = "灯光闪烁表示已连接"
-        footerLabel.font = UIFont.systemFontOfSize(16)
-        footerLabel.sizeToFit()
-        footerView.addSubview(footerLabel)
-        footerLabel.snp_makeConstraints { (make) -> Void in
-            make.top.equalTo(imageView.snp_bottom).offset(28)
-            make.centerX.equalTo(0)
-        }
-        discoveriesTableView.tableFooterView = footerView
-        headerView.hidden = true
-        footerView.hidden = true
+    discoveriesTableView.tableHeaderView = headerView
+    let footerView = UIView()
+    let imageView = UIImageView(image: R.image.cup_adaptation)
+    footerView.addSubview(imageView)
+    imageView.snp_makeConstraints { (make) -> Void in
+      make.top.equalTo(30)
+      make.centerX.equalTo(0)
     }
-    internal override func viewDidAppear(animated: Bool) {
-        scan()
+    let footerLabel = UILabel()
+    footerLabel.text = "灯光闪烁表示已连接"
+    footerLabel.font = UIFont.systemFontOfSize(16)
+    footerLabel.sizeToFit()
+    footerView.addSubview(footerLabel)
+    footerLabel.snp_makeConstraints { (make) -> Void in
+      make.top.equalTo(imageView.snp_bottom).offset(28)
+      make.centerX.equalTo(0)
     }
-    
-    internal override func viewWillDisappear(animated: Bool) {
-        central.interrupScan()
+    discoveriesTableView.tableFooterView = footerView
+    headerView.hidden = true
+    footerView.hidden = true
+  }
+  override func viewDidAppear(animated: Bool) {
+    super.viewDidAppear(animated)
+    indicatorView.startAnimating()
+    indicatorView.stopAnimating()
+  }
+  deinit {
+    central.stopScan()
+  }
+  
+  // MARK: Functions
+  
+  private func applyConstraints() {
+    discoveriesTableView.snp_makeConstraints { make in
+      make.top.equalTo(snp_topLayoutGuideBottom)
+      make.leading.trailing.equalTo(view)
+      make.bottom.equalTo(view.snp_bottom)
     }
-    
-    deinit {
-        try! central.stop()
+    indicatorView.snp_makeConstraints { (make) -> Void in
+      make.edges.equalTo(view)
     }
-    
-    // MARK: Functions
-    
-    private func applyConstraints() {
-        discoveriesTableView.snp_makeConstraints { make in
-            make.top.equalTo(snp_topLayoutGuideBottom)
-            make.leading.trailing.equalTo(view)
-            make.bottom.equalTo(view.snp_bottom)
-        }
-        indicatorView.snp_makeConstraints { (make) -> Void in
-            make.edges.equalTo(view)
-        }
+  }
+  
+  override func didDiscoverPeripheral(peripheral: CBPeripheral) {
+    if peripheral.name == "8点am" || peripheral.name == "TAv22u-83E5"{
+      indicatorView.stopAnimating()
+      discoveries.insert(peripheral)
+      discoveriesTableView.tableHeaderView?.hidden = false
+      discoveriesTableView.tableFooterView?.hidden = false
+      discoveriesTableView.reloadData()
     }
+  }
+  
+  // MARK: UITableViewDataSource
+  
+  internal func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return discoveries.count
+  }
+  
+  internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCellWithIdentifier(discoveriesTableViewCellIdentifier, forIndexPath: indexPath)
+    let discovery = discoveries[discoveries.startIndex.advancedBy(indexPath.row)]
+    cell.textLabel?.text = discovery.name
+    return cell
+  }
+  
+  // MARK: UITableViewDelegate
+  
+  internal func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    tableView.userInteractionEnabled = false
+    let discovery = discoveries[discoveries.startIndex.advancedBy(indexPath.row)]
+    central.connectPeripheral(discovery, options: nil)
+  }
+  override func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {
+    staticIdentifier = peripheral.identifier.UUIDString
+    UIApplication.sharedApplication().keyWindow!.rootViewController = R.storyboard.main.instance.instantiateInitialViewController()
     
-    private func startCentral() {
-        do {
-            central.delegate = self
-            central.addAvailabilityObserver(self)
-            let dataServiceUUID = NSUUID(UUIDString: "6E6B5C64-FAF7-40AE-9C21-D4933AF45B23")!
-            let dataServiceCharacteristicUUID = NSUUID(UUIDString: "477A2967-1FAB-4DC5-920A-DEE5DE685A3D")!
-            let configuration = BKConfiguration(dataServiceUUID: dataServiceUUID, dataServiceCharacteristicUUID: dataServiceCharacteristicUUID)
-            try central.startWithConfiguration(configuration)
-        } catch let error {
-            print("Error while starting: \(error)")
-        }
+  }
+  override func centralManager(central: CBCentralManager, didFailToConnectPeripheral peripheral: CBPeripheral, error: NSError?) {
+    if let error = error {
+      self.noticeError("连接失败: \(error)")
+      if let _ = discoveries.remove(peripheral) {
+        discoveriesTableView.reloadData()
+      }
     }
-    
-    private func scan() {
-        central.scanContinuouslyWithChangeHandler({ [unowned self] changes, discoveries in
-            let indexPathsToRemove = changes.filter({ $0 == .Remove(discovery: nil) }).map({ NSIndexPath(forRow: self.discoveries.indexOf($0.discovery)!, inSection: 0) })
-            self.discoveries = discoveries
-            let indexPathsToInsert = changes.filter({ $0 == .Insert(discovery: nil) }).map({ NSIndexPath(forRow: self.discoveries.indexOf($0.discovery)!, inSection: 0) })
-            if !indexPathsToRemove.isEmpty {
-                self.discoveriesTableView.deleteRowsAtIndexPaths(indexPathsToRemove, withRowAnimation: UITableViewRowAnimation.Automatic)
-            }
-            if !indexPathsToInsert.isEmpty {
-                self.discoveriesTableView.insertRowsAtIndexPaths(indexPathsToInsert, withRowAnimation: UITableViewRowAnimation.Automatic)
-                self.indicatorView.removeFromSuperview()
-                self.discoveriesTableView.tableHeaderView?.hidden = false
-                self.discoveriesTableView.tableFooterView?.hidden = false
-            }
-            }, stateHandler: { [unowned self] newState in
-                if newState == .Scanning {
-                    self.indicatorView.startAnimating()
-                    return
-                } else if newState == .Stopped {
-                    self.discoveries.removeAll()
-                    self.discoveriesTableView.reloadData()
-                }
-            }, errorHandler: {error in
-        })
-    }
-    
-    // MARK: UITableViewDataSource
-    
-    internal func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return discoveries.count
-    }
-    
-    internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(discoveriesTableViewCellIdentifier, forIndexPath: indexPath)
-        let discovery = discoveries[indexPath.row]
-        cell.textLabel?.text = discovery.localName != nil ? discovery.localName : discovery.remotePeripheral.name
-        return cell
-    }
-    
-    // MARK: UITableViewDelegate
-    
-    internal func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.userInteractionEnabled = false
-        central.connect(remotePeripheral: discoveries[indexPath.row].remotePeripheral) { remotePeripheral, error in
-            tableView.userInteractionEnabled = true
-            guard error == nil else {
-                print("Error connecting peripheral: \(error)")
-                tableView.deselectRowAtIndexPath(indexPath, animated: true)
-                return
-            }
-            staticIdentifier = remotePeripheral.identifier.UUIDString
-            UIApplication.sharedApplication().keyWindow!.rootViewController = R.storyboard.main.instance.instantiateInitialViewController()
-        }
-    }
-    
-    // MARK: BKAvailabilityObserver
-    
-    internal func availabilityObserver(availabilityObservable: BKAvailabilityObservable, availabilityDidChange availability: BKAvailability) {
-        alertForAvailability(availability)
-        if availability == .Available {
-            scan()
-        } else {
-            central.interrupScan()
-        }
-    }
-    internal func availabilityObserver(availabilityObservable: BKAvailabilityObservable, unavailabilityCauseDidChange unavailabilityCause: BKUnavailabilityCause) {
-        alertForAvailability(.Unavailable(cause: unavailabilityCause))
-    }
-    private func alertForAvailability(availability: BKAvailability?){
-        if let availability = availability {
-            switch availability {
-            case .Unavailable(cause: .PoweredOff):
-                let alertController = UIAlertController(title: nil, message: "打开蓝牙来允许本应用连接到配件", preferredStyle: .Alert)
-                self.presentViewController(alertController, animated: true, completion: nil)
-                let prefsAction = UIAlertAction(title: "设置", style: .Default, handler: {
-                    (let action) -> Void in
-                    UIApplication.sharedApplication().openURL(NSURL(string: "prefs:root=Bluetooth")!)
-                })
-                let okAction = UIAlertAction(title: "好", style: UIAlertActionStyle.Default) {
-                    (_) -> Void in
-                }
-                alertController.addAction(prefsAction)
-                alertController.addAction(okAction)
-                break
-            case .Unavailable(cause: .Unsupported):
-                self.noticeOnlyText("抱歉你的设备不支持蓝牙。无法使用本应用")
-                break
-            default:
-                break
-            }
-        }
-    }
-    
-    // MARK: BKCentralDelegate
-    
-    internal func central(central: BKCentral, remotePeripheralDidDisconnect remotePeripheral: BKRemotePeripheral) {
-        self.navigationController?.popToViewController(self, animated: true)
-    }
+  }
 }
