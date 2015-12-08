@@ -278,7 +278,7 @@ extension AccountViewController: UIImagePickerControllerDelegate, UINavigationCo
         let fullPath = ((NSHomeDirectory() as NSString).stringByAppendingPathComponent("Documents") as NSString)
             .stringByAppendingPathComponent(imageName)
         imageData.writeToFile(fullPath, atomically: false)
-        staticAccount?.avatar = fullPath
+        staticAccount?.avatar = "file:"+fullPath
         uploadImage(NSURL(fileURLWithPath: fullPath))
     }
 }

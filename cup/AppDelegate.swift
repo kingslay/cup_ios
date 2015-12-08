@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     self.window?.rootViewController = CentralViewController()
                 }
             }else{
-                self.window?.rootViewController = R.storyboard.sMS.instance.instantiateInitialViewController()
+                self.window?.rootViewController = R.storyboard.login.instance.instantiateInitialViewController()
             }
         }
         self.window?.makeKeyAndVisible()
@@ -55,6 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().translucent = false
         UITabBar.appearance().barTintColor = Colors.black
         UITabBar.appearance().translucent = false
+        configureAlamofireManager()
         return true
     }
 
@@ -90,29 +91,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 func configureAlamofireManager() {
-  let manager = Manager.sharedInstance
-  UIImageView.af_sharedImageDownloader = ImageDownloader(sessionManager:manager)
-  manager.delegate.sessionDidReceiveChallenge = { session, challenge in
-    var disposition: NSURLSessionAuthChallengeDisposition = .PerformDefaultHandling
-    var credential: NSURLCredential?
-    
-    if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust {
-      if host.containsString(challenge.protectionSpace.host) {
-        disposition = .UseCredential
-      }
-      credential = NSURLCredential(forTrust: challenge.protectionSpace.serverTrust!)
-    } else {
-      if challenge.previousFailureCount > 0 {
-        disposition = .CancelAuthenticationChallenge
-      } else {
-        credential = manager.session.configuration.URLCredentialStorage?.defaultCredentialForProtectionSpace(challenge.protectionSpace)
-        
-        if credential != nil {
-          disposition = .UseCredential
-        }
-      }
-    }
-    return (disposition, credential)
-  }
+    UIImageView.af_sharedImageDownloader = ImageDownloader(sessionManager:CupMoya.sharedManager())
+   
 }
 

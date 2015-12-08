@@ -26,8 +26,27 @@ public enum CupMoya: TargetType  {
   case SaveMe
   case Clock(String)
   case Temperature(String,Int)
+    ///因为AlamofireImage不是马上执行的，所以不能用单例
+    public static func sharedManager() -> Manager {
+        let serverTrustPolicies: [String: ServerTrustPolicy] = [
+            "test.example.com": .PinCertificates(
+                // Certificate chain 必须包含一个 pinned certificate
+                certificates: ServerTrustPolicy.certificatesInBundle(),
+                // Certificate chain 必须有效
+                validateCertificateChain: true,
+                // Challenge host 必须匹配上面证书链的叶证书中的主机
+                validateHost: true
+            ),
+            // 不验证证书链，总是让 TLS 握手成功
+            "121.199.75.79": .DisableEvaluation
+        ]
+        return Manager(
+            configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
+            serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
+        )
+    }
 }
-let host = "http://121.199.75.79:8280"
+let host = "https://121.199.75.79:8282"
 //let host = "http://localhost:8280"
 
 extension CupMoya {
@@ -87,7 +106,7 @@ let CupProvider = RxMoyaProvider<CupMoya>(endpointClosure: { (let target) -> End
     return Endpoint(URL: url, sampleResponseClosure: {.NetworkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters, parameterEncoding: .JSON)
     
   }
-  }, plugins: [CredentialsPlugin {
+    },manager:CupMoya.sharedManager(), plugins: [CredentialsPlugin {
     switch $0 {
     case CupMoya.Login(_, _),CupMoya.Regist(_,_),CupMoya.PhoneLogin(_):
             return nil
@@ -103,7 +122,7 @@ func uploadImage(imagePath:NSURL, headers: [String: String]? = nil){
     dict = headers!
   }
   dict["accountid"] = "\(staticAccount!.accountid)"
-  Alamofire.upload(.POST, host+"/user/updateProfile.do",headers:dict,multipartFormData: {
+  CupProvider.manager.upload(.POST, host+"/user/updateProfile.do",headers:dict,multipartFormData: {
     $0.appendBodyPart(fileURL: imagePath, name: "file")
     }, encodingCompletion: {
       switch $0 {
