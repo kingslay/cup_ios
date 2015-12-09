@@ -66,14 +66,14 @@ extension UIViewController: BluetoothDelegate,CBCentralManagerDelegate,CBPeriphe
   public func peripheral(peripheral: CBPeripheral, didDiscoverServices error: NSError?)
   {
     if let services = peripheral.services {
-      for var service in services {
+      for service in services {
         service.peripheral.discoverCharacteristics(characteristicUUIDs(service.UUID), forService: service)
       }
     }
   }
   public func peripheral(peripheral: CBPeripheral, didDiscoverCharacteristicsForService service: CBService, error: NSError?) {
     if let characteristics = service.characteristics {
-      for var characteristic in characteristics {
+      for characteristic in characteristics {
         self.didDiscoverCharacteristicsForService(characteristic)
       }
     }
