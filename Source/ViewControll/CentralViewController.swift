@@ -83,7 +83,9 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
   override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(animated)
     indicatorView.startAnimating()
-    indicatorView.stopAnimating()
+    NSNotificationCenter.defaultCenter().rx_notification(UIApplicationDidBecomeActiveNotification).subscribeNext{_ in
+        self.indicatorView.startAnimating()
+    }
   }
   deinit {
     central.stopScan()
