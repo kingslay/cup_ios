@@ -206,6 +206,10 @@ extension CupViewController {
                     self.headerView?.cupTemperatureImageView.image = R.image.恒温中
                   }else {
                     self.headerView?.cupTemperatureImageView.image = R.image.已恒温
+                    let alertController = UIAlertController(title: "亲! 水温已到达最适宜度数!", message: "请及时享用哦。", preferredStyle: .Alert)
+                    let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default, handler: nil)
+                    alertController.addAction(okAction)
+                    presentViewController(alertController, animated: true, completion: nil)
                   }
                 }
               }
@@ -220,6 +224,10 @@ extension CupViewController {
                 let temperature = self.temperatureArray[selectedIndex].temperature
                 if temperature <= Int(cupTemperature) {
                   self.headerView?.cupTemperatureImageView.image = R.image.已恒温
+                    let alertController = UIAlertController(title: "亲! 水温已到达最适宜度数!", message: "请及时享用哦。", preferredStyle: .Alert)
+                    let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default, handler: nil)
+                    alertController.addAction(okAction)
+                    presentViewController(alertController, animated: true, completion: nil)
                 }
               }
             }
