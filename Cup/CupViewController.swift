@@ -19,7 +19,7 @@ class CupViewController: UITableViewController {
   var characteristic: CBCharacteristic?
   var selectedIndex: Int?
   var timer: NSTimer?
-
+  var durationTimer: NSTimer?
   override func viewDidLoad() {
     super.viewDidLoad()
     self.tableView.backgroundColor = Colors.background
@@ -64,6 +64,8 @@ class CupViewController: UITableViewController {
     if let peripheral = self.peripheral {
       self.central.cancelPeripheralConnection(peripheral)
     }
+    self.durationTimer?.invalidate()
+    self.durationTimer = nil
   }
 }
 extension CupViewController {
@@ -150,7 +152,25 @@ extension CupViewController {
         didDiscoverPeripheral(peripherals[0])
       }
     }
+    durationTimer = NSTimer.scheduledTimerWithTimeInterval(15, target: self, selector: "durationTimerElapsed", userInfo: nil, repeats: false)
   }
+  @objc private func durationTimerElapsed() {
+      self.durationTimer?.invalidate()
+      self.durationTimer = nil
+      if peripheral == nil {
+        let alertController = UIAlertController(title: "找不到之前设定的蓝牙的设备，是否要重新扫描，设定蓝牙设备", message: nil, preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: "是", style: UIAlertActionStyle.Default){
+          (action: UIAlertAction!) -> Void in
+          self.navigationController?.pushViewController(CentralViewController(), animated: true)
+        }
+        let cancelAction = UIAlertAction(title: "否", style: .Cancel, handler: nil)
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        presentViewController(alertController, animated: true, completion: nil)
+
+      }
+  }
+
   override func didDiscoverPeripheral(peripheral: CBPeripheral) {
     if peripheral.identifier.UUIDString == staticIdentifier {
       self.peripheral = peripheral
