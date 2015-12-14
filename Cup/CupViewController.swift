@@ -161,7 +161,7 @@ extension CupViewController {
         let alertController = UIAlertController(title: "找不到之前设定的蓝牙的设备，是否要重新扫描，设定蓝牙设备", message: nil, preferredStyle: .Alert)
         let okAction = UIAlertAction(title: "是", style: UIAlertActionStyle.Default){
           (action: UIAlertAction!) -> Void in
-          self.navigationController?.pushViewController(CentralViewController(), animated: true)
+          self.navigationController?.ks_pushViewController(CentralViewController(), animated: true)
         }
         let cancelAction = UIAlertAction(title: "否", style: .Cancel, handler: nil)
         alertController.addAction(okAction)
