@@ -13,6 +13,8 @@ class CupHeaderView: UIView {
     @IBOutlet weak var cupTemperaturelabel: UILabel!
     
     @IBOutlet weak var meTemperaturelabel: UILabel!
+  @IBOutlet weak var meExplanation: UILabel!
+
 
     @IBOutlet weak var cupTemperatureImageView: UIImageView!
 }

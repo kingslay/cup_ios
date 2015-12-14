@@ -16,7 +16,7 @@ class CupViewController: UITableViewController {
   var temperatureArray : [TemperatureModel] = []
   var central: CBCentralManager!
   var peripheral: CBPeripheral?
-  var characteristic: CBCharacteristic?
+  var characteristic: Variable<CBCharacteristic?> = Variable(nil)
   var selectedIndex: Int?
   var timer: NSTimer?
   var durationTimer: NSTimer?
@@ -44,6 +44,7 @@ class CupViewController: UITableViewController {
     let view = UIView(frame: CGRectMake(0,204,self.view.ks_width,self.view.ks_height))
     view.alpha = 0.5
     view.backgroundColor = UIColor.blackColor()
+    self.view.addSubview(view)
     let tapGestureRecognizer = UITapGestureRecognizer()
     headerView?.meTemperaturelabel.addGestureRecognizer(tapGestureRecognizer)
     tapGestureRecognizer.rx_event.subscribeNext{ [unowned self] _ in
@@ -57,6 +58,11 @@ class CupViewController: UITableViewController {
         self.tableView.reloadData()
       }
       }.addDisposableTo(disposeBag)
+    characteristic.subscribeNext{
+      if $0 != nil {
+        view.removeFromSuperview()
+      }
+    }.addDisposableTo(disposeBag)
   }
   deinit {
     self.timer?.invalidate()
@@ -183,7 +189,7 @@ extension CupViewController {
       self.peripheral?.setNotifyValue(true, forCharacteristic: characteristic)
     }
     if characteristic.properties.contains([.Write]) {
-      self.characteristic = characteristic
+      self.characteristic.value = characteristic
       self.timer = NSTimer.scheduledTimerWithTimeInterval(60*5, target: self, selector: "askTemperature", userInfo: nil, repeats: true)
       self.timer?.fire()
       //连接通过之后，发送一下。让杯子叫一下
@@ -221,6 +227,7 @@ extension CupViewController {
               if let selectedIndex = self.selectedIndex {
                 let temperature = self.temperatureArray[selectedIndex].temperature
                 self.headerView?.meTemperaturelabel.text = "\(temperature)"
+                self.headerView?.meExplanation.text = self.temperatureArray[selectedIndex].explanation
                 if let text = self.headerView?.cupTemperaturelabel.text,cupTemperature = Int(text) {
                   if temperature > cupTemperature {
                     self.headerView?.cupTemperatureImageView.image = R.image.恒温中
@@ -262,7 +269,7 @@ extension CupViewController {
     self.central.connectPeripheral(peripheral, options: nil)
   }
   func sendTemperature(){
-    if let characteristic = self.characteristic, selectedIndex = self.selectedIndex {
+    if let characteristic = self.characteristic.value, selectedIndex = self.selectedIndex {
       let data = NSMutableData()
       data.appendUInt8(0x3a)
       data.appendUInt8(0x01)
@@ -276,7 +283,7 @@ extension CupViewController {
     }
   }
   func askTemperature(){
-    if let characteristic = self.characteristic {
+    if let characteristic = self.characteristic.value {
       let data = NSMutableData()
       data.appendUInt8(0x3a)
       data.appendUInt8(0x02)
