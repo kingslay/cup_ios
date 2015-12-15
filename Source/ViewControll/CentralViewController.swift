@@ -105,7 +105,7 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
   }
   
   override func didDiscoverPeripheral(peripheral: CBPeripheral) {
-    if peripheral.name == "8点am" || peripheral.name == "TAv22u-83E5"{
+    if let name = peripheral.name where name == "8点am" || name.hasPrefix("TAv22u") {
       indicatorView.stopAnimating()
       discoveries.insert(peripheral)
       discoveriesTableView.tableHeaderView?.hidden = false
