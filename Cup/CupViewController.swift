@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 import CoreBluetooth
-
+import Async
 class CupViewController: UITableViewController {
   let disposeBag = DisposeBag()
   var headerView = R.nib.cupHeaderView.firstView(nil, options: nil)
@@ -224,6 +224,9 @@ extension CupViewController {
         let bytes = UnsafePointer<UInt8>(data.bytes)
         if bytes[0] == 0x3a {
             if bytes[1] == 0x88 {
+              Async.main(after: 1){
+                self.clearAllNotice()
+              }
               if let selectedIndex = self.selectedIndex {
                 let temperature = self.temperatureArray[selectedIndex].temperature
                 self.headerView?.meTemperaturelabel.text = "\(temperature)"
@@ -269,6 +272,7 @@ extension CupViewController {
     self.central.connectPeripheral(peripheral, options: nil)
   }
   func sendTemperature(){
+    self.pleaseWait("正在下达指令 请稍后")
     if let characteristic = self.characteristic.value, selectedIndex = self.selectedIndex {
       let data = NSMutableData()
       data.appendUInt8(0x3a)
