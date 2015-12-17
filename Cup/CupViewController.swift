@@ -141,14 +141,17 @@ extension CupViewController {
   override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
     return true
   }
-  override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-    if editingStyle == .Delete {
-      temperatureArray.removeAtIndex(indexPath.row)
+  override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+    let topAction = UITableViewRowAction(style: .Default, title: "删除") {
+      (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
+      self.temperatureArray.removeAtIndex(indexPath.row)
       self.tableView.reloadData()
       TemperatureModel.removeAtIndex(indexPath.row)
     }
+    topAction.backgroundColor = Colors.black
+    return [topAction]
   }
-}
+ }
 extension CupViewController {
   func setUpCentral() {
     self.central = CBCentralManager(delegate: self, queue: nil)
