@@ -11,17 +11,23 @@ import CoreBluetooth
 
 public protocol BluetoothDelegate : NSObjectProtocol{
   var serviceUUIDs: [CBUUID]? {get}
+  func scanForPeripherals(central: CBCentralManager)
   func characteristicUUIDs(service: CBUUID) -> [CBUUID]?
   func didDiscoverPeripheral(peripheral: CBPeripheral)
   func didDiscoverCharacteristicsForService(characteristic: CBCharacteristic)
 }
 //extension BluetoothDelegate where Self: UIViewController, Self: CBPeripheralDelegate {
 extension UIViewController: BluetoothDelegate,CBCentralManagerDelegate,CBPeripheralDelegate {
-    public var serviceUUIDs: [CBUUID]? {
-        get{
-            return nil
-        }
+  public var serviceUUIDs: [CBUUID]? {
+    get{
+      return nil
     }
+  }
+  
+  public func scanForPeripherals(central: CBCentralManager) {
+    central.scanForPeripheralsWithServices(nil, options: nil)
+  }
+  
   public func characteristicUUIDs(service: CBUUID) -> [CBUUID]? {
     return nil
   }
@@ -31,10 +37,10 @@ extension UIViewController: BluetoothDelegate,CBCentralManagerDelegate,CBPeriphe
   public func didDiscoverCharacteristicsForService(characteristic: CBCharacteristic) {
     
   }
-
+  
   public func centralManagerDidUpdateState(central: CBCentralManager) {
     if central.state == .PoweredOn {
-      central.scanForPeripheralsWithServices(nil, options: nil)
+      self.scanForPeripherals(central)
     }else if central.state == .PoweredOn {
       let alertController = UIAlertController(title: nil, message: "打开蓝牙来允许本应用连接到配件", preferredStyle: .Alert)
       self.presentViewController(alertController, animated: true, completion: nil)

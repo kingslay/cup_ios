@@ -155,18 +155,20 @@ extension CupViewController {
 extension CupViewController {
   func setUpCentral() {
     self.central = CBCentralManager(delegate: self, queue: nil)
+    durationTimer = NSTimer.scheduledTimerWithTimeInterval(15, target: self, selector: "durationTimerElapsed", userInfo: nil, repeats: false)
+  }
+  override func scanForPeripherals(central: CBCentralManager) {
     if let identifier = NSUUID(UUIDString: staticIdentifier!) {
       let peripherals = self.central.retrievePeripheralsWithIdentifiers([identifier])
       if peripherals.count > 0 {
         didDiscoverPeripheral(peripherals[0])
       }
     }
-    durationTimer = NSTimer.scheduledTimerWithTimeInterval(15, target: self, selector: "durationTimerElapsed", userInfo: nil, repeats: false)
   }
   @objc private func durationTimerElapsed() {
       self.durationTimer?.invalidate()
       self.durationTimer = nil
-      if peripheral == nil {
+      if self.peripheral == nil {
         let alertController = UIAlertController(title: "找不到之前设定的蓝牙的设备，是否要重新扫描，设定蓝牙设备", message: nil, preferredStyle: .Alert)
         let okAction = UIAlertAction(title: "是", style: UIAlertActionStyle.Default){
           (action: UIAlertAction!) -> Void in

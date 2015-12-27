@@ -136,6 +136,7 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
   }
   override func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {
     staticIdentifier = peripheral.identifier.UUIDString
+    central.cancelPeripheralConnection(peripheral)
     UIApplication.sharedApplication().keyWindow!.rootViewController = R.storyboard.main.instance.instantiateInitialViewController()
     
   }
