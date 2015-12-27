@@ -34,11 +34,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }else{
             if let dic = NSUserDefaults.standardUserDefaults().objectForKey("sharedAccount") as? [String:AnyObject] {
                 staticAccount = AccountModel.toModel(dic)
-                if staticIdentifier != nil {
-                    self.window?.rootViewController = R.storyboard.main.instance.instantiateInitialViewController()
-                }else{
-                    self.window?.rootViewController = CentralViewController()
-                }
+              self.window?.rootViewController = R.storyboard.main.instance.instantiateInitialViewController()
+//                if staticIdentifier != nil {
+//                }else{
+//                    self.window?.rootViewController = CentralViewController()
+//                }
             }else{
                 self.window?.rootViewController = R.storyboard.sMS.instance.instantiateInitialViewController()
             }

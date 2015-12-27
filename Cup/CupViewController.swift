@@ -155,14 +155,24 @@ extension CupViewController {
 extension CupViewController {
   func setUpCentral() {
     self.central = CBCentralManager(delegate: self, queue: nil)
-    durationTimer = NSTimer.scheduledTimerWithTimeInterval(15, target: self, selector: "durationTimerElapsed", userInfo: nil, repeats: false)
   }
   override func scanForPeripherals(central: CBCentralManager) {
-    if let identifier = NSUUID(UUIDString: staticIdentifier!) {
+    if let staticIdentifier = staticIdentifier, identifier = NSUUID(UUIDString: staticIdentifier) {
+       self.durationTimer = NSTimer.scheduledTimerWithTimeInterval(15, target: self, selector: "durationTimerElapsed", userInfo: nil, repeats: false)
       let peripherals = self.central.retrievePeripheralsWithIdentifiers([identifier])
       if peripherals.count > 0 {
         didDiscoverPeripheral(peripherals[0])
       }
+    }else{
+      let alertController = UIAlertController(title: "您还没有关联水杯设备,是否现在进行关联", message: nil, preferredStyle: .Alert)
+      let okAction = UIAlertAction(title: "是", style: UIAlertActionStyle.Default){
+        (action: UIAlertAction!) -> Void in
+        self.navigationController?.ks_pushViewController(CentralViewController(), animated: true)
+      }
+      let cancelAction = UIAlertAction(title: "否", style: .Cancel, handler: nil)
+      alertController.addAction(okAction)
+      alertController.addAction(cancelAction)
+      presentViewController(alertController, animated: true, completion: nil)
     }
   }
   @objc private func durationTimerElapsed() {

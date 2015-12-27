@@ -40,7 +40,6 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
     setupTableView()
     view.addSubview(indicatorView)
     applyConstraints()
-    self.central = CBCentralManager(delegate: self, queue: nil)
   }
   
   func setupTableView() {
@@ -83,6 +82,8 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
   override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(animated)
     indicatorView.startAnimating()
+    self.central = CBCentralManager(delegate: self, queue: nil)
+
     NSNotificationCenter.defaultCenter().rx_notification(UIApplicationDidBecomeActiveNotification).subscribeNext{_ in
         self.indicatorView.startAnimating()
     }
