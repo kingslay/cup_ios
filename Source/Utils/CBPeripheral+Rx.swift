@@ -33,7 +33,7 @@ extension CBPeripheral {
     For more information take a look at `DelegateProxyType` protocol documentation.
     */
     public var rx_delegate: DelegateProxy {
-        return proxyForObject(self) as RxCBPeripheralDelegateProxy
+        return proxyForObject(RxCBPeripheralDelegateProxy.self,self)
     }
     
     // MARK: Responding to CB Peripheral

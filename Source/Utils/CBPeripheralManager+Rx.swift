@@ -39,7 +39,7 @@ extension CBPeripheralManager {
     For more information take a look at `DelegateProxyType` protocol documentation.
     */
     public var rx_delegate: DelegateProxy {
-        return proxyForObject(self) as RxCBPeripheralManagerDelegateProxy
+        return proxyForObject(RxCBPeripheralManagerDelegateProxy.self,self)
     }
     
     // MARK: Responding to CB Peripheral Manager

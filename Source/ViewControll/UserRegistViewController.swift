@@ -51,7 +51,7 @@ class UserRegistViewController: UIViewController,UITextFieldDelegate {
         }
         self.pleaseWait("正在登录中")
         self.navigationController?.view.userInteractionEnabled = false
-        CupProvider.request(.Regist(userName,password)).filterSuccessfulStatusCodes().mapJSON().observeOn(MainScheduler.sharedInstance).subscribe(onNext: { (let json) -> Void in
+        CupProvider.request(.Regist(userName,password)).filterSuccessfulStatusCodes().mapJSON().observeOn(MainScheduler.instance).subscribe(onNext: { (let json) -> Void in
             self.clearAllNotice()
             staticAccount = AccountModel.toModel(json as! [String : AnyObject])
             AccountModel.localSave()

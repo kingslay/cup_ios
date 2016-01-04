@@ -58,7 +58,7 @@ class CupViewController: UITableViewController {
         self.tableView.reloadData()
       }
       }.addDisposableTo(disposeBag)
-    characteristic.subscribeNext{
+    self.characteristic.asObservable().subscribeNext{
       if $0 != nil {
         view.removeFromSuperview()
       }
@@ -86,7 +86,7 @@ extension CupViewController {
     cell.explanationLabel.text = model.explanation
     cell.temperatureLabel.text = "\(model.temperature)度"
     cell.openSwitch.on = model.open
-    cell.openSwitch.rx_controlEvents(.TouchUpInside).subscribeNext{ [unowned cell,unowned self] in
+    cell.openSwitch.rx_controlEvent(.TouchUpInside).subscribeNext{ [unowned cell,unowned self] in
       let on = cell.openSwitch.on
       if on {
         self.temperatureArray.forEach{

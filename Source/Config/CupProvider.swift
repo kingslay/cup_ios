@@ -15,7 +15,7 @@ extension ObservableType where E: Moya.Response {
   /// Maps data received from the signal into a JSON object. If the conversion fails, the signal errors.
   public func mapSwiftyJSON() -> Observable<JSON> {
     return flatMap { response -> Observable<JSON> in
-      return just(JSON(data: response.data))
+      return Observable.just(JSON(data: response.data))
     }
   }
 }

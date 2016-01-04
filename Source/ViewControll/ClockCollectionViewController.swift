@@ -75,7 +75,7 @@ extension ClockCollectionViewController {
         let clockModel = self.clockArray[indexPath.row]
         cell.timeTextField.text = clockModel.description
         cell.openSwitch.on = clockModel.open
-        cell.openSwitch.rx_controlEvents(.TouchUpInside).subscribeNext{ [unowned cell,unowned self] in
+        cell.openSwitch.rx_controlEvent(.TouchUpInside).subscribeNext{ [unowned cell,unowned self] in
             let on = cell.openSwitch.on
             if on {
                 clockModel.addUILocalNotification()
@@ -89,7 +89,7 @@ extension ClockCollectionViewController {
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .Time
         cell.timeTextField.inputView = datePicker
-        datePicker.rx_controlEvents(.ValueChanged).subscribeNext{ [unowned self,unowned cell,unowned datePicker] in
+        datePicker.rx_controlEvent(.ValueChanged).subscribeNext{ [unowned self,unowned cell,unowned datePicker] in
             let on = cell.openSwitch.on
             if on {
                 clockModel.removeUILocalNotification()
@@ -112,7 +112,7 @@ extension ClockCollectionViewController {
         let view = UIView(frame: CGRectMake(0,204,self.view.ks_width,self.view.ks_height))
         view.alpha = 0.5
         view.backgroundColor = UIColor.blackColor()
-        self.close.subscribeNext{ [unowned self]  in
+        self.close.asObservable().subscribeNext{ [unowned self]  in
             if $0 {
                 self.view.addSubview(view)
                 header.headerImageView.image = R.image.clock_close

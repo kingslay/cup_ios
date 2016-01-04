@@ -127,7 +127,7 @@ class AccountViewController: UITableViewController {
             datePicker.datePickerMode = .Date
             datePicker.maximumDate = NSDate()
             cell.valueTextField.inputView = datePicker
-            datePicker.rx_controlEvents(.ValueChanged).subscribeNext{ [unowned cell,unowned datePicker] in
+            datePicker.rx_controlEvent(.ValueChanged).subscribeNext{ [unowned cell,unowned datePicker] in
                 staticAccount?.birthday = datePicker.date.toString(.Custom("yyyy年MM月dd日"))
                 cell.valueTextField.text = staticAccount?.birthday
             }
