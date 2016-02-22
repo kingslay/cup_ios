@@ -178,7 +178,7 @@ extension CupViewController {
   @objc private func durationTimerElapsed() {
       self.durationTimer?.invalidate()
       self.durationTimer = nil
-      if self.peripheral == nil {
+    if self.characteristic.value == nil {
         let alertController = UIAlertController(title: "找不到之前设定的蓝牙的设备，是否要重新扫描，设定蓝牙设备", message: nil, preferredStyle: .Alert)
         let okAction = UIAlertAction(title: "是", style: UIAlertActionStyle.Default){
           (action: UIAlertAction!) -> Void in

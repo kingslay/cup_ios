@@ -25,8 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let currentAppVersion = infoDictionary!["CFBundleShortVersionString"] as! String
         
         let userDefaults = NSUserDefaults.standardUserDefaults()
-        let appVersion = userDefaults.stringForKey("appVersion")
-        
+        var appVersion = userDefaults.stringForKey("appVersion")
+        //先不需要引导图
+        appVersion = currentAppVersion
         // 如果appVersion为nil说明是第一次启动；如果appVersion不等于currentAppVersion说明是更新了
         if appVersion == nil || appVersion != currentAppVersion {
             userDefaults.setValue(currentAppVersion, forKey: "appVersion")
