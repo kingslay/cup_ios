@@ -102,11 +102,11 @@ class SMSViewController: UIViewController {
       self.clearAllNotice()
       staticAccount = AccountModel.toModel(json as! [String : AnyObject])
       AccountModel.localSave()
-      if staticIdentifier == nil {
-        self.presentViewController(CentralViewController(), animated: true, completion: nil)
-      }else{
+//      if staticIdentifier == nil {
+//        self.presentViewController(CentralViewController(), animated: true, completion: nil)
+//      }else{
         UIApplication.sharedApplication().keyWindow!.rootViewController = R.storyboard.main.instance.instantiateInitialViewController()
-      }
+//      }
       }, onError: {
         self.clearAllNotice()
         self.view.userInteractionEnabled = true

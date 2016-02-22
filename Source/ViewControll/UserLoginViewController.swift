@@ -56,11 +56,11 @@ class UserLoginViewController: UIViewController,UITextFieldDelegate{
             self.clearAllNotice()
             staticAccount = AccountModel.toModel(json as! [String : AnyObject])
             AccountModel.localSave()
-            if staticIdentifier == nil {
-               UIApplication.sharedApplication().keyWindow!.rootViewController = CentralViewController()
-            }else{
+//            if staticIdentifier == nil {
+//               UIApplication.sharedApplication().keyWindow!.rootViewController = CentralViewController()
+//            }else{
                 UIApplication.sharedApplication().keyWindow!.rootViewController = R.storyboard.main.instance.instantiateInitialViewController()
-            }
+//            }
             }, onError: {
                 self.clearAllNotice()
                 self.navigationController?.view.userInteractionEnabled = true
