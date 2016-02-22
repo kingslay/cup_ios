@@ -25,14 +25,15 @@ class ClockModel: NSObject {
     }
     func addUILocalNotification(){
         let localNotification = UILocalNotification()
-        let components = NSDate().components(inRegion: Region.LocalRegion())
+        let components = NSDate().components
+        components.timeZone = NSTimeZone.localTimeZone()
         components.hour = self.hour
         components.minute = self.minute
         localNotification.fireDate = components.date
         localNotification.repeatInterval = .Day
         localNotification.alertBody = "该喝水了"
         localNotification.soundName = UILocalNotificationDefaultSoundName
-        localNotification.timeZone = NSTimeZone.defaultTimeZone()
+        localNotification.timeZone = NSTimeZone.localTimeZone()
         localNotification.applicationIconBadgeNumber = 1
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
         CupProvider.request(.Clock(self.description)).subscribeNext {_ in
@@ -41,12 +42,15 @@ class ClockModel: NSObject {
     func removeUILocalNotification(){
         if let localNotifications = UIApplication.sharedApplication().scheduledLocalNotifications {
             for localNotification in localNotifications {
-                let fireDate = localNotification.fireDate
-                
-                if fireDate?.hour == self.hour && fireDate?.minute == self.minute {
-                    UIApplication.sharedApplication().cancelLocalNotification(localNotification)
-                    break
+                if let fireDate = localNotification.fireDate {
+                    let components = fireDate.components(inRegion: Region.LocalRegion())
+                    if components.hour == self.hour && components.minute == self.minute {
+                        UIApplication.sharedApplication().cancelLocalNotification(localNotification)
+                        break
+                    }
                 }
+                
+
             }
         }
     }

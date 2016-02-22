@@ -27,6 +27,7 @@ class ClockCollectionViewController: UICollectionViewController {
         }()
     func navigationDone(sender: UIBarButtonItem) {
         self.view.endEditing(true)
+        ClockModel.setObjectArray(self.clockArray, forKey: "clockArray")
     }
     //MARK: UIScrollViewDelegate
     
@@ -82,7 +83,7 @@ extension ClockCollectionViewController {
             } else {
                 clockModel.removeUILocalNotification()
             }
-            clockModel.open = true
+            clockModel.open = on
             ClockModel.setObjectArray(self.clockArray, forKey: "clockArray")
         }.addDisposableTo(cell.disposeBag)
         cell.timeTextField.inputAccessoryView = navigationAccessoryView
@@ -101,7 +102,6 @@ extension ClockCollectionViewController {
                 clockModel.addUILocalNotification()
             }
             cell.timeTextField.text = clockModel.description
-            ClockModel.setObjectArray(self.clockArray, forKey: "clockArray")
         }.addDisposableTo(cell.disposeBag)
         datePicker.date = NSDate()
         return cell
