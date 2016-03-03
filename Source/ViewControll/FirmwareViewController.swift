@@ -32,7 +32,10 @@ class FirmwareViewController: UIViewController {
         }.addDisposableTo(self.disposeBag)
         self.okButton.rx_tap.subscribeNext{
             NSUserDefaults.standardUserDefaults().removeObjectForKey("sharedAccount")
-            NSUserDefaults.standardUserDefaults().removeObjectForKey("sharedIdentifier")
+            staticIdentifier = nil
+            if let vcs = self.tabBarController?.viewControllers where vcs.count > 1, let navigationController = vcs[1] as? UINavigationController, let cupViewController = navigationController.topViewController as? CupViewController, let peripheral = cupViewController.peripheral  {
+                cupViewController.central.cancelPeripheralConnection(peripheral)
+            }
             NSUserDefaults.standardUserDefaults().removeObjectForKey("clockArray")
             NSUserDefaults.standardUserDefaults().removeObjectForKey("temperatureArray")
             UIApplication.sharedApplication().keyWindow!.rootViewController = R.storyboard.sMS.instance.instantiateInitialViewController()

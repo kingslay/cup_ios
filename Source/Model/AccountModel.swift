@@ -86,5 +86,6 @@ get{
 }
 set{
     NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: "sharedIdentifier")
+    NSUserDefaults.standardUserDefaults().synchronize()
 }
 }

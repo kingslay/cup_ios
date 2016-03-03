@@ -67,11 +67,11 @@ class CupViewController: UITableViewController {
   deinit {
     self.timer?.invalidate()
     self.timer = nil
-    if let peripheral = self.peripheral {
-      self.central.cancelPeripheralConnection(peripheral)
-    }
     self.durationTimer?.invalidate()
     self.durationTimer = nil
+    if let peripheral = self.peripheral {
+        self.central.cancelPeripheralConnection(peripheral)
+    }
   }
 }
 extension CupViewController {
@@ -284,7 +284,11 @@ extension CupViewController {
   {
     self.timer?.invalidate()
     self.timer = nil
-    self.central.connectPeripheral(peripheral, options: nil)
+    self.durationTimer?.invalidate()
+    self.durationTimer = nil
+    if let _ = error {
+        self.central.connectPeripheral(peripheral, options: nil)
+    }
   }
   func sendTemperature(){
     self.pleaseWait("正在下达指令 请稍后")
