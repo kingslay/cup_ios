@@ -36,7 +36,35 @@ animation2.duration = 2
 layer.addAnimation(animation, forKey: "")
 layer.addAnimation(animation2, forKey: "")
 
-
 let container = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 400))
 container.layer.addSublayer(layer)
 XCPlaygroundPage.currentPage.liveView = container
+import Foundation
+class CustomThread: NSThread {
+    var myTimer: NSTimer!
+    init(myTimer: NSTimer) {
+        self.myTimer = myTimer
+    }
+    override func main() {
+        autoreleasepool{
+            let runloop = NSRunLoop.currentRunLoop()
+            runloop.addTimer(self.myTimer, forMode: NSRunLoopCommonModes)
+            print(NSThread.isMultiThreaded())
+            runloop.runUntilDate(NSDate(timeIntervalSinceNow: 5))
+        }
+    }
+}
+class TestThread: NSObject {
+    func testTimerSource() {
+        let fireTimer = NSDate(timeIntervalSinceNow: 1)
+        let myTimer = NSTimer(fireDate: fireTimer, interval: 0.5, target: self, selector: "timerTask", userInfo: nil, repeats: true)
+        let customThread = CustomThread(myTimer: myTimer)
+        customThread.start()
+        sleep(5)
+    }
+    func timerTask() {
+        print("Fire timer...")
+    }
+}
+let testThread = TestThread()
+testThread.testTimerSource()

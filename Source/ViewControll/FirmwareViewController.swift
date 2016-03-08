@@ -36,6 +36,8 @@ class FirmwareViewController: UIViewController {
             if let vcs = self.tabBarController?.viewControllers where vcs.count > 1, let navigationController = vcs[1] as? UINavigationController, let cupViewController = navigationController.topViewController as? CupViewController, let peripheral = cupViewController.peripheral  {
                 cupViewController.central.cancelPeripheralConnection(peripheral)
             }
+            UIApplication.sharedApplication().cancelAllLocalNotifications()
+            NSUserDefaults.standardUserDefaults().removeObjectForKey("ClockModelClose")
             NSUserDefaults.standardUserDefaults().removeObjectForKey("clockArray")
             NSUserDefaults.standardUserDefaults().removeObjectForKey("temperatureArray")
             UIApplication.sharedApplication().keyWindow!.rootViewController = R.storyboard.sMS.instance.instantiateInitialViewController()
