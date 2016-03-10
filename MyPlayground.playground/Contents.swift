@@ -68,3 +68,7 @@ class TestThread: NSObject {
 }
 let testThread = TestThread()
 testThread.testTimerSource()
+let f: Float80
+let d1 = 1e-5
+d1 == 0.0
+
