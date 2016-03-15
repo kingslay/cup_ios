@@ -27,6 +27,7 @@ class CupViewController: UITableViewController {
         self.setTableHeaderView()
         self.tableView.estimatedRowHeight = 45
         self.setUpCentral()
+//        self.tableView.scrollEnabled = false
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -123,7 +124,6 @@ extension CupViewController {
             make.centerY.equalTo(0)
         }
         if self.temperatureArray.count >= 5 {
-            //        button.enabled = false
             button.removeFromSuperview()
         }
         button.rx_tap.subscribeNext { [unowned self] in
@@ -138,9 +138,9 @@ extension CupViewController {
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "恒温设定"
     }
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath){
     }
+
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let topAction = UITableViewRowAction(style: .Default, title: "删除") {
             (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in

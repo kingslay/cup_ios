@@ -38,14 +38,18 @@ class ClockCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView?.backgroundColor = Colors.background
-        self.collectionView?.scrollEnabled = false
         self.collectionView?.registerNib(R.nib.clockCollectionViewCell)
         self.collectionView?.registerNib(R.nib.clockCollectionHeaderView, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader)
         clockArray = ClockModel.getClocks()
         let flowLayout  = self.collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
         flowLayout.headerReferenceSize = CGSizeMake(SCREEN_WIDTH, 204)
         let width = SCREEN_WIDTH/3
-        let height = (self.view.ks_height - 108 - 204)/3
+        var height = (self.view.ks_height - 108 - 204)/3
+        if height < 80 {
+            height = 80
+        }else{
+            self.collectionView?.scrollEnabled = false
+        }
         flowLayout.itemSize = CGSizeMake(width,height)
         flowLayout.minimumInteritemSpacing = 0
         flowLayout.minimumLineSpacing = 0
