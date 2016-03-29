@@ -205,7 +205,7 @@ extension CupViewController {
         }
         if characteristic.properties.contains([.Write]) {
             self.characteristic.value = characteristic
-            self.timer = NSTimer.scheduledTimerWithTimeInterval(60*5, target: self, selector: "askTemperature", userInfo: nil, repeats: true)
+            self.timer = NSTimer.scheduledTimerWithTimeInterval(60*5, target: self, selector: #selector(askTemperature), userInfo: nil, repeats: true)
             self.timer?.fire()
             //连接通过之后，发送一下。让杯子叫一下
             let data = NSMutableData()

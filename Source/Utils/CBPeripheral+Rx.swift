@@ -140,7 +140,7 @@ extension CBPeripheral {
     */
 
     public var rx_didDiscoverDescriptorsForCharacteristic: Observable<(CBCharacteristic, NSError?)> {
-        return rx_delegate.observe("peripheral:didDiscoverDescriptorsForCharacteristic:error:")
+        return rx_delegate.observe(#selector(CBPeripheralDelegate.peripheral(_:didDiscoverDescriptorsForCharacteristic:error:)))
             .map { a in
                 return (a[1] as! CBCharacteristic, a[2] as? NSError)
         }
