@@ -846,7 +846,7 @@
 				);
 				INFOPLIST_FILE = Cup/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = im.meiyou.IMYTTQ;
+				PRODUCT_BUNDLE_IDENTIFIER = im.meiyou.IMYTTQ1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Cup/Bridging-Header.h";
@@ -868,7 +868,7 @@
 				);
 				INFOPLIST_FILE = Cup/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = im.meiyou.IMYTTQ;
+				PRODUCT_BUNDLE_IDENTIFIER = im.meiyou.IMYTTQ1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Cup/Bridging-Header.h";

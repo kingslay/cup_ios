@@ -139,7 +139,7 @@ struct R {
 }
 
 struct _R {
-  static var hostingBundle: NSBundle? { return NSBundle(identifier: "im.meiyou.imyttq") }
+  static var hostingBundle: NSBundle? { return NSBundle(identifier: "im.meiyou.IMYTTQ1") }
   
   struct nib {
     struct _AboutUsViewController: NibResource {

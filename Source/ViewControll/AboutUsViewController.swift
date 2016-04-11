@@ -26,7 +26,7 @@ class AboutUsViewController: UITableViewController {
             make.centerX.equalTo(tableHeaderView)
         }
         let lable = UILabel()
-        lable.text = "杭州未蓝智能科技有限公司\n杭州市萧山区兴五路237号\n400-666-7566"
+//        lable.text = "杭州未蓝智能科技有限公司\n杭州市萧山区兴五路237号\n400-666-7566"
         lable.numberOfLines = -1
         lable.textAlignment = .Center
         lable.sizeToFit()
