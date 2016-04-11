@@ -40,8 +40,10 @@ public enum CupMoya: TargetType  {
             // 不验证证书链，总是让 TLS 握手成功
             "121.199.75.79": .DisableEvaluation
         ]
+        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+        configuration.HTTPAdditionalHeaders = Manager.defaultHTTPHeaders
         return Manager(
-            configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
+            configuration: configuration,
             serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
         )
     }
@@ -98,22 +100,22 @@ extension CupMoya {
 }
 
 let CupProvider = RxMoyaProvider<CupMoya>(endpointClosure: { (let target) -> Endpoint<CupMoya> in
-  let url = target.baseURL.URLByAppendingPathComponent(target.path).absoluteString
-  switch target {
-  case .Login(_,_),.PhoneLogin(_):
-    return Endpoint(URL: url, sampleResponseClosure: {.NetworkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters)
-  default:
-    return Endpoint(URL: url, sampleResponseClosure: {.NetworkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters, parameterEncoding: .JSON)
-    
-  }
-    },manager:CupMoya.sharedManager(), plugins: [CredentialsPlugin {
-    switch $0 {
-    case CupMoya.Login(_, _),CupMoya.Regist(_,_),CupMoya.PhoneLogin(_):
-            return nil
+    let url = target.baseURL.URLByAppendingPathComponent(target.path).absoluteString
+    switch target {
+    case .Login(_,_),.PhoneLogin(_):
+        return Endpoint(URL: url, sampleResponseClosure: {.NetworkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters)
     default:
-      return NSURLCredential(user: staticAccount!.phone!, password: "phone", persistence: .ForSession)
+        return Endpoint(URL: url, sampleResponseClosure: {.NetworkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters, parameterEncoding: .JSON)
+        
     }
-    }])
+    },manager:CupMoya.sharedManager(), plugins: [CredentialsPlugin {
+        switch $0 {
+        case CupMoya.Login(_, _),CupMoya.Regist(_,_),CupMoya.PhoneLogin(_):
+            return nil
+        default:
+            return NSURLCredential(user: staticAccount!.phone!, password: "phone", persistence: .ForSession)
+        }
+        }])
 
 
 func uploadImage(imagePath:NSURL, headers: [String: String]? = nil){

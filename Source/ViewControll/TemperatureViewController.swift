@@ -15,6 +15,7 @@ class TemperatureViewController: UIViewController {
     var pickerData = [Array(21...75).map{"\($0)度"}]
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.ksAutoAdjustKeyBoard()
 
         // Do any additional setup after loading the view.
     }

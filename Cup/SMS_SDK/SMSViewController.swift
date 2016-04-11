@@ -59,29 +59,7 @@ class SMSViewController: UIViewController {
       })
       
       }.addDisposableTo(disposeBag)
-    NSNotificationCenter.defaultCenter().rx_notification(UIKeyboardWillShowNotification).subscribeNext{
-      [unowned self] in
-      let userInfo: NSDictionary = $0.userInfo!
-      let keyboardBounds = userInfo[UIKeyboardFrameEndUserInfoKey]!.CGRectValue
-      let diff = self.loginButton.ks_bottom + keyboardBounds.height - SCREEN_HEIGHT
-      if diff > 0 {
-        let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSTimeInterval ?? 0
-        UIView.animateWithDuration(duration, animations: {
-          var frame = self.view.frame
-          frame.origin.y += diff
-          self.view.bounds = frame
-        })
-      }
-      }.addDisposableTo(disposeBag)
-    NSNotificationCenter.defaultCenter().rx_notification(UIKeyboardWillHideNotification).subscribeNext{
-      [unowned self] in
-      let userInfo: NSDictionary = $0.userInfo!
-      let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSTimeInterval ?? 0
-      UIView.animateWithDuration(duration, animations: {
-        let frame = self.view.frame
-        self.view.bounds = frame
-      })
-      }.addDisposableTo(disposeBag)
+    self.ksAutoAdjustKeyBoard()
   }
   func setVerificationButtonText(){
     if count == 0 {
