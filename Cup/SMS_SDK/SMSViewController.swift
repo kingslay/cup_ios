@@ -96,6 +96,7 @@ class SMSViewController: UIViewController {
   }
   deinit{
     self.timer?.invalidate()
+    NSNotificationCenter.defaultCenter().removeObserver(self)
   }
   
 }

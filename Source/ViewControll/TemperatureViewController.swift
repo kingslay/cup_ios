@@ -42,6 +42,12 @@ class TemperatureViewController: UIViewController {
             self.noticeInfo("温度描述不能为空")
         }
     }
+    @IBAction func textFieldDidEndOnExit(sender: UIResponder) {
+        sender.resignFirstResponder()
+    }
+    deinit{
+         NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
 }
 extension TemperatureViewController:UIPickerViewDataSource, UIPickerViewDelegate {
     // MARK - Picker delegate
