@@ -60,7 +60,7 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
     }
     discoveriesTableView.tableHeaderView = headerView
     let footerView = UIView()
-    let imageView = UIImageView(image: R.image.cup_adaptation)
+    let imageView = UIImageView(image: R.image.cup_adaptation())
     footerView.addSubview(imageView)
     imageView.snp_makeConstraints { (make) -> Void in
       make.top.equalTo(30)
@@ -140,7 +140,7 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
   override func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {
     staticIdentifier = peripheral.identifier.UUIDString
     central.cancelPeripheralConnection(peripheral)
-    UIApplication.sharedApplication().keyWindow!.rootViewController = R.storyboard.main.instance.instantiateInitialViewController()
+    UIApplication.sharedApplication().keyWindow!.rootViewController = R.storyboard.main.initialViewController()
     
   }
   override func centralManager(central: CBCentralManager, didFailToConnectPeripheral peripheral: CBPeripheral, error: NSError?) {

@@ -12,6 +12,7 @@ import RxSwift
 import Moya
 import SwiftyJSON
 import KSSwiftExtension
+import KSJSONHelp
 class SMSViewController: UIViewController {
   @IBOutlet weak var phoneTextField: UITextField!
   @IBOutlet weak var verificationTextField: UITextField!
@@ -23,7 +24,7 @@ class SMSViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.view.backgroundColor = Colors.background
-    let image = UIColor.createImageWithColor(Colors.red)
+    let image = UIColor.ks_createImage(Colors.red)
     self.verificationButton.setBackgroundImage(image, forState: .Normal)
     self.loginButton.setBackgroundImage(image, forState: .Normal)
     
@@ -38,7 +39,7 @@ class SMSViewController: UIViewController {
           }else{
             self.loginButton.enabled = true
             self.verificationTextField.becomeFirstResponder()
-            self.timer =  NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "setVerificationButtonText", userInfo: nil, repeats: true)
+            self.timer =  NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(self.setVerificationButtonText), userInfo: nil, repeats: true)
             self.verificationButton.enabled = false
             self.count = 90
           }
@@ -59,7 +60,7 @@ class SMSViewController: UIViewController {
       })
       
       }.addDisposableTo(disposeBag)
-    self.ksAutoAdjustKeyBoard()
+    self.ks_autoAdjustKeyBoard()
   }
     override func ks_relatedViewFor(inputView: UIView) -> UIView {
         return self.loginButton
@@ -71,7 +72,7 @@ class SMSViewController: UIViewController {
       self.verificationButton.setTitle("发送验证码", forState: .Normal)
     }else{
       self.verificationButton.setTitle("\(count)秒", forState: .Disabled)
-      count--
+      count -= 1
     }
   }
   func phonelogin() {
@@ -81,12 +82,12 @@ class SMSViewController: UIViewController {
     self.view.userInteractionEnabled = false
     CupProvider.request(.PhoneLogin(self.phoneTextField.text!)).filterSuccessfulStatusCodes().mapJSON().observeOn(MainScheduler.instance).subscribe(onNext: { (let json) -> Void in
       self.clearAllNotice()
-      staticAccount = AccountModel.toModel(json as! [String : AnyObject])
+        staticAccount = AccountModel(from: json as! [String : AnyObject])
       AccountModel.localSave()
 //      if staticIdentifier == nil {
 //        self.presentViewController(CentralViewController(), animated: true, completion: nil)
 //      }else{
-        UIApplication.sharedApplication().keyWindow!.rootViewController = R.storyboard.main.instance.instantiateInitialViewController()
+        UIApplication.sharedApplication().keyWindow!.rootViewController = R.storyboard.main.initialViewController()
 //      }
       }, onError: {
         self.clearAllNotice()

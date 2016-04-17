@@ -16,7 +16,7 @@ class AboutUsViewController: UITableViewController {
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         let tableHeaderView = UIView(frame: CGRectMake(0,0,SCREEN_WIDTH,221))
         tableHeaderView.backgroundColor = UIColor.whiteColor()
-        let image = UIImageView(image: R.image.logo)
+        let image = UIImageView(image: R.image.logo())
         tableHeaderView.addSubview(image)
         self.tableView.tableHeaderView = tableHeaderView
         image.snp_makeConstraints { (make) -> Void in

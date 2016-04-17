@@ -86,7 +86,7 @@ extension CupMoya {
     case .PhoneLogin(let phone):
       return ["phone":phone]
     case .SaveMe:
-      return staticAccount?.toDictionary()
+      return staticAccount?.dictionary
     case .Clock(let clock):
       return ["clock":clock]
     case .Temperature(let explanation, let temperature):

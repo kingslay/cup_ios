@@ -8,6 +8,7 @@
 
 import UIKit
 import AlamofireImage
+import KSSwiftExtension
 class MineViewController: UITableViewController {
     
     override func viewDidLoad() {
@@ -41,9 +42,9 @@ class MineViewController: UITableViewController {
         cell.accessoryType = .DisclosureIndicator
         if indexPath.section == 0 {
             if let str = staticAccount?.avatar,url = NSURL(string: str) {
-                cell.imageView!.af_setImageWithURL(url, placeholderImage: R.image.mine_photo,filter: AspectScaledToFillSizeCircleFilter(size: CGSizeMake(62, 62)))
+                cell.imageView!.af_setImageWithURL(url, placeholderImage: R.image.mine_photo(),filter: AspectScaledToFillSizeCircleFilter(size: CGSizeMake(62, 62)))
             }else{
-                cell.imageView!.image = R.image.mine_photo!.af_imageRoundedIntoCircle()
+                cell.imageView!.image = R.image.mine_photo()!.af_imageRoundedIntoCircle()
             }
             cell.textLabel?.text = "个人信息"
             return cell
@@ -80,13 +81,13 @@ class MineViewController: UITableViewController {
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 0 {
-            self.navigationController?.ks_pushViewController(AccountViewController())
+            self.navigationController?.pushViewController(AccountViewController())
         }else{
             if indexPath.row == 0 {
-                self.navigationController?.ks_pushViewController(R.nib.aboutUsViewController.firstView(nil, options: nil)!)
+                self.navigationController?.pushViewController(R.nib.aboutUsViewController.firstView(owner: nil, options: nil)!)
                 return
             }
-            let vc = R.nib.firmwareViewController.firstView(nil, options: nil)!
+            let vc = R.nib.firmwareViewController.firstView(owner: nil, options: nil)!
             vc.serialLabel.text = "序列号: " + (staticIdentifier ?? "")
             if indexPath.row == 2 {
                 vc.okButton.hidden = false
@@ -95,7 +96,7 @@ class MineViewController: UITableViewController {
             }else if indexPath.row == 3{
                 vc.updateButton.hidden = false
             }
-            self.navigationController?.ks_pushViewController(vc)
+            self.navigationController?.pushViewController(vc)
         }
     }
     

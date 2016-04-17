@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import KSSwiftExtension
 class TemperatureViewController: UIViewController {
     
     @IBOutlet weak var temperaturePickerView: UIPickerView!
@@ -15,7 +15,7 @@ class TemperatureViewController: UIViewController {
     var pickerData = [Array(21...75).map{"\($0)度"}]
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.ksAutoAdjustKeyBoard()
+        self.ks_autoAdjustKeyBoard()
 
         // Do any additional setup after loading the view.
     }

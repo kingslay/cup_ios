@@ -20,8 +20,6 @@
 		3C1BDF911BF0D5C7003E34F8 /* SMSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1BDF901BF0D5C7003E34F8 /* SMSViewController.swift */; };
 		3C1BDF941BF235AA003E34F8 /* TemperatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1BDF921BF235AA003E34F8 /* TemperatureViewController.swift */; };
 		3C1BDF951BF235AA003E34F8 /* TemperatureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C1BDF931BF235AA003E34F8 /* TemperatureViewController.xib */; };
-		3C37588A1BFB821C00566E61 /* UIViewController+ Bluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3758891BFB821C00566E61 /* UIViewController+ Bluetooth.swift */; };
-		3C3947421BE8F19100E7FE90 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3947411BE8F19100E7FE90 /* UICollectionView.swift */; };
 		3C3947441BE9012300E7FE90 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C3947431BE9012300E7FE90 /* Images.xcassets */; };
 		3C3947AA1BEA44F800E7FE90 /* CFCityPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3947941BEA44F800E7FE90 /* CFCityPickerVC.swift */; };
 		3C3947AB1BEA44F800E7FE90 /* City.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C3947951BEA44F800E7FE90 /* City.plist */; };
@@ -70,7 +68,6 @@
 		CBE1DC301BE9F92200E1FF29 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE1DC2E1BE9F92200E1FF29 /* AccountTableViewCell.swift */; };
 		CBE1DC311BE9F92200E1FF29 /* AccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBE1DC2F1BE9F92200E1FF29 /* AccountTableViewCell.xib */; };
 		CBE1DC331BEA04ED00E1FF29 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE1DC321BEA04ED00E1FF29 /* AccountModel.swift */; };
-		CBE1DC351BEAFCD900E1FF29 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE1DC341BEAFCD900E1FF29 /* UINavigationController.swift */; };
 		CBE1DC3A1BEC81F900E1FF29 /* MineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE1DC381BEC81F900E1FF29 /* MineTableViewCell.swift */; };
 		CBE1DC3B1BEC81F900E1FF29 /* MineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBE1DC391BEC81F900E1FF29 /* MineTableViewCell.xib */; };
 		CBE9E7C51BE88A1B00CE922B /* ClockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE9E7C41BE88A1B00CE922B /* ClockModel.swift */; };
@@ -108,8 +105,6 @@
 		3C1BDF901BF0D5C7003E34F8 /* SMSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSViewController.swift; sourceTree = "<group>"; };
 		3C1BDF921BF235AA003E34F8 /* TemperatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemperatureViewController.swift; sourceTree = "<group>"; };
 		3C1BDF931BF235AA003E34F8 /* TemperatureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemperatureViewController.xib; sourceTree = "<group>"; };
-		3C3758891BFB821C00566E61 /* UIViewController+ Bluetooth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+ Bluetooth.swift"; sourceTree = "<group>"; };
-		3C3947411BE8F19100E7FE90 /* UICollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UICollectionView.swift; path = Source/ViewControll/UICollectionView.swift; sourceTree = SOURCE_ROOT; };
 		3C3947431BE9012300E7FE90 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3C3947941BEA44F800E7FE90 /* CFCityPickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFCityPickerVC.swift; sourceTree = "<group>"; };
 		3C3947951BEA44F800E7FE90 /* City.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = City.plist; sourceTree = "<group>"; };
@@ -164,7 +159,6 @@
 		CBE1DC2E1BE9F92200E1FF29 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
 		CBE1DC2F1BE9F92200E1FF29 /* AccountTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountTableViewCell.xib; sourceTree = "<group>"; };
 		CBE1DC321BEA04ED00E1FF29 /* AccountModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
-		CBE1DC341BEAFCD900E1FF29 /* UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		CBE1DC381BEC81F900E1FF29 /* MineTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineTableViewCell.swift; sourceTree = "<group>"; };
 		CBE1DC391BEC81F900E1FF29 /* MineTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineTableViewCell.xib; sourceTree = "<group>"; };
 		CBE9E7C41BE88A1B00CE922B /* ClockModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockModel.swift; sourceTree = "<group>"; };
@@ -372,9 +366,6 @@
 		CB89F7AA1BE707BF00FD21FD /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				3C3947411BE8F19100E7FE90 /* UICollectionView.swift */,
-				CBE1DC341BEAFCD900E1FF29 /* UINavigationController.swift */,
-				3C3758891BFB821C00566E61 /* UIViewController+ Bluetooth.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -656,7 +647,6 @@
 				CB6EF3F01BF09FDD0040BF6E /* IndicatorView.swift in Sources */,
 				3C3947B11BEA44F800E7FE90 /* CFCityPickerVC+TableView.swift in Sources */,
 				CBBCA3FF1BF18A30002E04F7 /* ClockCollectionHeaderView.swift in Sources */,
-				3C3947421BE8F19100E7FE90 /* UICollectionView.swift in Sources */,
 				3CECE6851BF3996500C43890 /* AboutUsViewController.swift in Sources */,
 				CBE1DC331BEA04ED00E1FF29 /* AccountModel.swift in Sources */,
 				CB3CF8891BE9B04F008D577E /* UserLoginViewController.swift in Sources */,
@@ -687,12 +677,10 @@
 				CB89F7C41BE73CD300FD21FD /* CupProvider.swift in Sources */,
 				3C3947AD1BEA44F800E7FE90 /* LocationManager.swift in Sources */,
 				CB89F7B31BE70B2700FD21FD /* ClockCollectionViewCell.swift in Sources */,
-				CBE1DC351BEAFCD900E1FF29 /* UINavigationController.swift in Sources */,
 				3C1BD86D1BEB8DA9003E34F8 /* Colors.swift in Sources */,
 				CBF5E3691BF1DAE0002D4F8F /* CupHeaderView.swift in Sources */,
 				3C1BDF911BF0D5C7003E34F8 /* SMSViewController.swift in Sources */,
 				CB89F7C01BE7150A00FD21FD /* R.generated.swift in Sources */,
-				3C37588A1BFB821C00566E61 /* UIViewController+ Bluetooth.swift in Sources */,
 				3C1BD8671BEB8B47003E34F8 /* CentralViewController.swift in Sources */,
 				CBE1DC2B1BE9F06E00E1FF29 /* MineViewController.swift in Sources */,
 				3C1BDF941BF235AA003E34F8 /* TemperatureViewController.swift in Sources */,

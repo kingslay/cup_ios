@@ -7,8 +7,11 @@
 //
 
 import UIKit
-
-class TemperatureModel: NSObject {
+import KSJSONHelp
+class TemperatureModel: NSObject,Model,Storable {
+    override required init() {
+        super.init()
+    }
     var explanation:String = ""
     var temperature:Int = 50
     var open = false {
@@ -32,8 +35,8 @@ class TemperatureModel: NSObject {
     TemperatureModel.setObjectArray(array, forKey: "temperatureArray")
   }
     static func getTemperatures() -> [TemperatureModel] {
-        if let array = TemperatureModel.objectArrayForKey("temperatureArray") {
-            return array as! [TemperatureModel]
+        if let array = TemperatureModel.objectArray(forKey: "temperatureArray") {
+            return array
         }else{
             let first = TemperatureModel()
             first.explanation = "早上第一杯水温"

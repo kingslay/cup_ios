@@ -7,7 +7,11 @@
 //
 
 import Foundation
-class AccountModel: NSObject {
+import KSJSONHelp
+class AccountModel: NSObject,Model,Storable {
+    override required init() {
+        super.init()
+    }
     var accountid: Int = 0 {
         didSet{
             AccountModel.localSave()
@@ -71,7 +75,7 @@ class AccountModel: NSObject {
     
     class func localSave() {
         if let account = staticAccount {
-            NSUserDefaults.standardUserDefaults().setObject(account.toDictionary(), forKey: "sharedAccount")
+            NSUserDefaults.standardUserDefaults().setObject(account.dictionary, forKey: "sharedAccount")
         }
     }
     class func remoteSave() {

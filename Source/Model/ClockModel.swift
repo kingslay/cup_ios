@@ -9,12 +9,12 @@
 import UIKit
 import KSJSONHelp
 import SwiftDate
-class ClockModel: NSObject {
+class ClockModel: NSObject,Model,Storable {
     var hour:Int
     var minute :Int
     var open = true
     override var description: String { return String(format: "%02d:%02d", self.hour,self.minute) }
-    override init(){
+    override required init(){
         self.hour = 0
         self.minute = 0
     }
@@ -43,7 +43,7 @@ class ClockModel: NSObject {
         if let localNotifications = UIApplication.sharedApplication().scheduledLocalNotifications {
             for localNotification in localNotifications {
                 if let fireDate = localNotification.fireDate {
-                    let components = fireDate.components(inRegion: Region.LocalRegion())
+                    let components = fireDate.components(inRegion: Region())
                     if components.hour == self.hour && components.minute == self.minute {
                         UIApplication.sharedApplication().cancelLocalNotification(localNotification)
                         break
@@ -64,9 +64,9 @@ class ClockModel: NSObject {
         }
     }
     static func getClocks() -> [ClockModel] {
-        if let array = ClockModel.objectArrayForKey("clockArray") {
-            return array as! [ClockModel]
-        }else{
+        if let array = ClockModel.objectArray(forKey: "clockArray") {
+            return array
+        } else {
             var array: [ClockModel] = []
             for _ in 1...9 {
                 let model = ClockModel()

@@ -10,9 +10,10 @@ import UIKit
 import RxSwift
 import CoreBluetooth
 import Async
+import KSSwiftExtension
 class CupViewController: UITableViewController {
     let disposeBag = DisposeBag()
-    var headerView = R.nib.cupHeaderView.firstView(nil, options: nil)
+    var headerView = R.nib.cupHeaderView.firstView(owner: nil, options: nil)
     var temperatureArray : [TemperatureModel] = []
     var central: CBCentralManager!
     var peripheral: CBPeripheral?
@@ -81,7 +82,7 @@ extension CupViewController {
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let model = temperatureArray[indexPath.row]
-        let cell = tableView.dequeueReusableCellWithIdentifier(R.nib.temperatureTableViewCell.reuseIdentifier, forIndexPath: indexPath)!
+        let cell = tableView.dequeueReusableCellWithIdentifier(R.nib.temperatureTableViewCell, forIndexPath: indexPath)!
         cell.backgroundColor = Colors.background
         cell.selectionStyle = .None
         cell.explanationLabel.text = model.explanation
@@ -116,7 +117,7 @@ extension CupViewController {
             make.centerY.equalTo(headerView)
         }
         let button = UIButton()
-        button.setImage(R.image.plus, forState: .Normal)
+        button.setImage(UIImage(named: R.image.plus.name), forState: .Normal)
         headerView.addSubview(button)
         button.snp_makeConstraints { (make) -> Void in
             make.width.height.equalTo(27)
@@ -127,7 +128,7 @@ extension CupViewController {
             button.removeFromSuperview()
         }
         button.rx_tap.subscribeNext { [unowned self] in
-            let vc = R.nib.temperatureViewController.firstView(nil, options: nil)!
+            let vc = R.nib.temperatureViewController.firstView(owner: nil, options: nil)!
             self.navigationController?.presentViewController(vc, animated: true, completion: nil)
         }.addDisposableTo(self.disposeBag)
         return headerView
@@ -167,7 +168,7 @@ extension CupViewController {
             let alertController = UIAlertController(title: "您还没有关联水杯设备,是否现在进行关联", message: nil, preferredStyle: .Alert)
             let okAction = UIAlertAction(title: "是", style: UIAlertActionStyle.Default){
                 (action: UIAlertAction!) -> Void in
-                self.navigationController?.ks_pushViewController(CentralViewController(), animated: true)
+                self.navigationController?.pushViewController(CentralViewController(), animated: true)
             }
             let cancelAction = UIAlertAction(title: "否", style: .Cancel, handler: nil)
             alertController.addAction(okAction)
@@ -182,7 +183,7 @@ extension CupViewController {
             let alertController = UIAlertController(title: "找不到之前设定的蓝牙的设备，是否要重新扫描，设定蓝牙设备", message: nil, preferredStyle: .Alert)
             let okAction = UIAlertAction(title: "是", style: UIAlertActionStyle.Default){
                 (action: UIAlertAction!) -> Void in
-                self.navigationController?.ks_pushViewController(CentralViewController(), animated: true)
+                self.navigationController?.pushViewController(CentralViewController(), animated: true)
             }
             let cancelAction = UIAlertAction(title: "否", style: .Cancel, handler: nil)
             alertController.addAction(okAction)
@@ -248,13 +249,13 @@ extension CupViewController {
                         self.headerView?.meExplanation.text = self.temperatureArray[selectedIndex].explanation
                         if let text = self.headerView?.cupTemperaturelabel.text,cupTemperature = Int(text) {
                             if abs(cupTemperature - temperature) <= 1 {
-                                self.headerView?.cupTemperatureImageView.image = R.image.已恒温
+                                self.headerView?.cupTemperatureImageView.image = R.image.已恒温()
                                 let alertController = UIAlertController(title: "亲! 水温已到达最适宜度数!", message: "请及时享用哦。", preferredStyle: .Alert)
                                 let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default, handler: nil)
                                 alertController.addAction(okAction)
                                 presentViewController(alertController, animated: true, completion: nil)
                             }else{
-                                self.headerView?.cupTemperatureImageView.image = R.image.恒温中
+                                self.headerView?.cupTemperatureImageView.image = R.image.恒温中()
                             }
                         }
                     }
@@ -268,7 +269,7 @@ extension CupViewController {
                     if let selectedIndex = self.selectedIndex {
                         let temperature = self.temperatureArray[selectedIndex].temperature
                         if abs(Int(cupTemperature) - temperature) <= 1  {
-                            self.headerView?.cupTemperatureImageView.image = R.image.已恒温
+                            self.headerView?.cupTemperatureImageView.image = R.image.已恒温()
                             let alertController = UIAlertController(title: "亲! 水温已到达最适宜度数!", message: "请及时享用哦。", preferredStyle: .Alert)
                             let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default, handler: nil)
                             alertController.addAction(okAction)

@@ -72,7 +72,7 @@ class AccountViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(R.nib.accountTableViewCell.reuseIdentifier, forIndexPath: indexPath)!
+        let cell = tableView.dequeueReusableCellWithIdentifier(R.nib.accountTableViewCell, forIndexPath: indexPath)!
         cell.accessoryType = .DisclosureIndicator
         cell.valueTextField.hidden = false
         cell.headerImageView.hidden = true
@@ -91,9 +91,9 @@ class AccountViewController: UITableViewController {
             cell.valueTextField.hidden = true
             cell.headerImageView.hidden = false
             if let url = value {
-                cell.headerImageView.af_setImageWithURL(NSURL(string: url)!,placeholderImage: R.image.mine_photo,filter: AspectScaledToFillSizeCircleFilter(size: CGSizeMake(62, 62)))
+                cell.headerImageView.af_setImageWithURL(NSURL(string: url)!,placeholderImage: R.image.mine_photo(),filter: AspectScaledToFillSizeCircleFilter(size: CGSizeMake(62, 62)))
             }else{
-                 cell.headerImageView.image = R.image.mine_photo!.af_imageRoundedIntoCircle()
+                 cell.headerImageView.image = R.image.mine_photo()!.af_imageRoundedIntoCircle()
             }
         case (1,2):
             cell.valueTextField.userInteractionEnabled = true

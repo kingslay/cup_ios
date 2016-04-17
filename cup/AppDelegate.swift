@@ -10,7 +10,7 @@ import UIKit
 import KSSwiftExtension
 import Alamofire
 import AlamofireImage
-
+import KSJSONHelp
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -31,17 +31,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 如果appVersion为nil说明是第一次启动；如果appVersion不等于currentAppVersion说明是更新了
         if appVersion == nil || appVersion != currentAppVersion {
             userDefaults.setValue(currentAppVersion, forKey: "appVersion")
-            self.window?.rootViewController = R.nib.kSGuidanceViewController.firstView(nil, options: nil)!
+            self.window?.rootViewController = R.nib.kSGuidanceViewController.firstView(owner: nil, options: nil)!
         }else{
             if let dic = NSUserDefaults.standardUserDefaults().objectForKey("sharedAccount") as? [String:AnyObject] {
-                staticAccount = AccountModel.toModel(dic)
-              self.window?.rootViewController = R.storyboard.main.instance.instantiateInitialViewController()
+                staticAccount = AccountModel(from: dic)
+              self.window?.rootViewController = R.storyboard.main.initialViewController()
 //                if staticIdentifier != nil {
 //                }else{
 //                    self.window?.rootViewController = CentralViewController()
 //                }
             }else{
-                self.window?.rootViewController = R.storyboard.sMS.instance.instantiateInitialViewController()
+                self.window?.rootViewController = R.storyboard.sMS.initialViewController()
             }
         }
         self.window?.makeKeyAndVisible()

@@ -11,6 +11,7 @@ import Alamofire
 import RxSwift
 import Moya
 import SwiftyJSON
+import KSSwiftExtension
 class UserRegistViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var userPassTextField: UITextField!
@@ -53,12 +54,12 @@ class UserRegistViewController: UIViewController,UITextFieldDelegate {
         self.navigationController?.view.userInteractionEnabled = false
         CupProvider.request(.Regist(userName,password)).filterSuccessfulStatusCodes().mapJSON().observeOn(MainScheduler.instance).subscribe(onNext: { (let json) -> Void in
             self.clearAllNotice()
-            staticAccount = AccountModel.toModel(json as! [String : AnyObject])
+            staticAccount = AccountModel(from: json as! [String : AnyObject])
             AccountModel.localSave()
             if staticIdentifier == nil {
-                self.navigationController?.ks_pushViewController(CentralViewController())
+                self.navigationController?.pushViewController(CentralViewController())
             }else{
-                UIApplication.sharedApplication().keyWindow!.rootViewController = R.storyboard.main.instance.instantiateInitialViewController()
+                UIApplication.sharedApplication().keyWindow!.rootViewController = R.storyboard.main.initialViewController()
             }
             }, onError: {
                 self.clearAllNotice()
