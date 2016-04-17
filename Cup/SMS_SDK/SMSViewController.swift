@@ -61,6 +61,9 @@ class SMSViewController: UIViewController {
       }.addDisposableTo(disposeBag)
     self.ksAutoAdjustKeyBoard()
   }
+    override func ks_relatedViewFor(inputView: UIView) -> UIView {
+        return self.loginButton
+    }
   func setVerificationButtonText(){
     if count == 0 {
       self.verificationButton.enabled = true

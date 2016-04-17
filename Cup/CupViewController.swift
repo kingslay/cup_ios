@@ -129,7 +129,7 @@ extension CupViewController {
         button.rx_tap.subscribeNext { [unowned self] in
             let vc = R.nib.temperatureViewController.firstView(nil, options: nil)!
             self.navigationController?.presentViewController(vc, animated: true, completion: nil)
-        }
+        }.addDisposableTo(self.disposeBag)
         return headerView
     }
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -158,7 +158,7 @@ extension CupViewController {
     }
     override func scanForPeripherals(central: CBCentralManager) {
         if let staticIdentifier = staticIdentifier, identifier = NSUUID(UUIDString: staticIdentifier) {
-            self.durationTimer = NSTimer.scheduledTimerWithTimeInterval(15, target: self, selector: "durationTimerElapsed", userInfo: nil, repeats: false)
+            self.durationTimer = NSTimer.scheduledTimerWithTimeInterval(15, target: self, selector: #selector(durationTimerElapsed), userInfo: nil, repeats: false)
             let peripherals = self.central.retrievePeripheralsWithIdentifiers([identifier])
             if peripherals.count > 0 {
                 didDiscoverPeripheral(peripherals[0])

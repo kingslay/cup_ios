@@ -45,9 +45,6 @@ class TemperatureViewController: UIViewController {
     @IBAction func textFieldDidEndOnExit(sender: UIResponder) {
         sender.resignFirstResponder()
     }
-    deinit{
-         NSNotificationCenter.defaultCenter().removeObserver(self)
-    }
 }
 extension TemperatureViewController:UIPickerViewDataSource, UIPickerViewDelegate {
     // MARK - Picker delegate

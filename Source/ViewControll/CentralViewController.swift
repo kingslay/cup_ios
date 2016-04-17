@@ -84,7 +84,7 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
     indicatorView.startAnimating()
     self.central = CBCentralManager(delegate: self, queue: nil)
 
-    NSNotificationCenter.defaultCenter().rx_notification(UIApplicationDidBecomeActiveNotification).subscribeNext{_ in
+    NSNotificationCenter.defaultCenter().rx_notification(UIApplicationDidBecomeActiveNotification).takeUntil(self.rx_deallocated).subscribeNext{_ in
         if self.discoveries.count == 0 {
             self.indicatorView.startAnimating()
         }

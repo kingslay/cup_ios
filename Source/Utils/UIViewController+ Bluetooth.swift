@@ -85,4 +85,57 @@ extension UIViewController: BluetoothDelegate,CBCentralManagerDelegate,CBPeriphe
     }
   }
 }
+extension UIViewController {
+    public func ksAutoAdjustKeyBoard() {
+        NSNotificationCenter.defaultCenter().rx_notification(UIKeyboardWillShowNotification).takeUntil(self.rx_deallocated).subscribeNext{ [weak self] notification in
+            if let stongSelf = self, inputView = stongSelf.ksFindFirstResponder() {
+                let userInfo: NSDictionary = notification.userInfo!
+                let keyboardRect = userInfo[UIKeyboardFrameEndUserInfoKey]!.CGRectValue
+                let window = UIApplication.sharedApplication().keyWindow
+                let relatedView = stongSelf.ks_relatedViewFor(inputView)
+                if let convertRect = relatedView.superview?.convertRect(relatedView.frame, toView: window) {
+                    let diff = CGRectGetMaxY(convertRect) - CGRectGetMinY(keyboardRect) + 10
+                    if diff > 0 {
+                        let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSTimeInterval ?? 0
+                        UIView.animateWithDuration(duration, animations: {
+                            var bounds = stongSelf.view.bounds
+                            bounds.origin.y += diff
+                            stongSelf.view.bounds = bounds
+                        })
+                    }
+                }
+            }
+        }
+        NSNotificationCenter.defaultCenter().rx_notification(UIKeyboardWillHideNotification).takeUntil(self.rx_deallocated).subscribeNext{ [weak self] notification in
+            if let stongSelf = self {
+                let userInfo: NSDictionary = notification.userInfo!
+                let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSTimeInterval ?? 0
+                UIView.animateWithDuration(duration, animations: {
+                    let frame = stongSelf.view.frame
+                    stongSelf.view.bounds = frame
+                })
+            }
+            
+        }
+    }
+    public func ks_relatedViewFor(inputView: UIView) -> UIView {
+        return inputView
+    }
+    
+    public func ksFindFirstResponder() -> UIView? {
+        return recursionTraverseFindFirstResponderIn(self.view)
+    }
+    private func recursionTraverseFindFirstResponderIn(view: UIView) -> UIView? {
+        for subView in view.subviews {
+            if subView.isFirstResponder() {
+                return subView
+            }
+            if let subView = recursionTraverseFindFirstResponderIn(subView) {
+                return subView
+            }
+        }
+        return nil
+    }
+
+}
 

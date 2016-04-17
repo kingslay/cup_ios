@@ -18,7 +18,7 @@ class AccountViewController: UITableViewController {
         [unowned self] in
         let naview = NavigationAccessoryView(frame: CGRectMake(0, 0, self.view.frame.width, 44.0))
         naview.doneButton.target = self
-        naview.doneButton.action = "navigationDone:"
+        naview.doneButton.action = #selector(navigationDone(_:))
         return naview
         }()
     func navigationDone(sender: UIBarButtonItem) {
