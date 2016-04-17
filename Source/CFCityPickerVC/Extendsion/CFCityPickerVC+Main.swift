@@ -34,14 +34,14 @@ extension CFCityPickerVC {
         locationPrepare()
         
         //通知处理
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "notiAction:", name: CityChoosedNoti, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(notiAction(_:)), name: CityChoosedNoti, object: nil)
     }
     
     /** 返回按钮 */
     func dismissBtnPrepare(){
         
         dismissBtn.setImage(UIImage(named: "img.bundle/cancel"), forState: UIControlState.Normal)
-        dismissBtn.addTarget(self, action: "dismiss", forControlEvents: UIControlEvents.TouchUpInside)
+        dismissBtn.addTarget(self, action: #selector(dismiss), forControlEvents: UIControlEvents.TouchUpInside)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: dismissBtn)
     }
     

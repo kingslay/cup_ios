@@ -8,6 +8,7 @@
 
 import Foundation
 import KSJSONHelp
+import KSSwiftExtension
 class AccountModel: NSObject,Model,Storable {
     override required init() {
         super.init()

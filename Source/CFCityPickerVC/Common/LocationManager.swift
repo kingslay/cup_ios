@@ -157,15 +157,7 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
     locationManager.delegate = self
     // locationManager.locationServicesEnabled
     locationManager.desiredAccuracy = kCLLocationAccuracyBest
-    
-    if NSString(string: UIDevice.currentDevice().systemVersion).doubleValue >= 8 {
-      
-      //locationManager.requestAlwaysAuthorization() // add in plist NSLocationAlwaysUsageDescription
-      if #available(iOS 8.0, *) {
-          locationManager.requestWhenInUseAuthorization()
-      }
-    }
-    
+    locationManager.requestWhenInUseAuthorization()
     startLocationManger()
   }
   
@@ -211,7 +203,7 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
     if showVerboseMessage {verbose = verboseMessage}
     completionHandler?(latitude: 0.0, longitude: 0.0, status: locationStatus, verboseMessage:verbose,error: error.localizedDescription)
     
-    if (delegate != nil) && (delegate?.respondsToSelector(Selector("locationManagerReceivedError:")))! {
+    if (delegate != nil) && (delegate?.respondsToSelector(#selector(LocationManagerDelegate.locationManagerReceivedError(_:))))! {
       delegate?.locationManagerReceivedError!(error.localizedDescription)
     }
   }
@@ -246,10 +238,10 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
     hasLastKnownLocation = true
     
     if delegate != nil {
-      if (delegate?.respondsToSelector(Selector("locationFoundGetAsString:longitude:")))! {
+      if (delegate?.respondsToSelector(#selector(LocationManagerDelegate.locationFoundGetAsString(_:longitude:))))! {
         delegate?.locationFoundGetAsString!(latitudeAsString,longitude:longitudeAsString)
       }
-      if (delegate?.respondsToSelector(Selector("locationFound:longitude:")))! {
+      if (delegate?.respondsToSelector(#selector(LocationManagerDelegate.locationFound(_:longitude:))))! {
         delegate?.locationFound(latitude,longitude:longitude)
       }
     }
@@ -285,7 +277,7 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
             
             verbose = verboseMessage
             
-            if (delegate != nil) && (delegate?.respondsToSelector(Selector("locationManagerVerboseMessage:")))! {
+            if (delegate != nil) && (delegate?.respondsToSelector(#selector(LocationManagerDelegate.locationManagerVerboseMessage(_:))))! {
               
               delegate?.locationManagerVerboseMessage!(verbose)
             }
@@ -295,7 +287,7 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
             completionHandler?(latitude: latitude, longitude: longitude, status: locationStatus, verboseMessage:verbose,error: nil)
           }
         }
-        if (delegate != nil) && (delegate?.respondsToSelector(Selector("locationManagerStatus:")))! {
+        if (delegate != nil) && (delegate?.respondsToSelector(#selector(LocationManagerDelegate.locationManagerStatus(_:))))! {
           delegate?.locationManagerStatus!(locationStatus)
         }
       }
@@ -518,7 +510,7 @@ private class AddressParser: NSObject{
   
   private func parseAppleLocationData(placemark:CLPlacemark) {
     
-    var addressLines = placemark.addressDictionary?["FormattedAddressLines"] as! NSArray
+    let addressLines = placemark.addressDictionary?["FormattedAddressLines"] as! NSArray
     
     //self.streetNumber = placemark.subThoroughfare ? placemark.subThoroughfare : ""
     self.streetNumber = (placemark.thoroughfare != nil ? placemark.thoroughfare : "")!
@@ -595,46 +587,26 @@ private class AddressParser: NSObject{
   }
   
   private func getPlacemark() -> CLPlacemark {
+    var addressDict = [String : AnyObject]()
+    let formattedAddressArray = formattedAddress.componentsSeparatedByString(", ")
+    addressDict["SubAdministrativeArea"] = subAdministrativeArea
+    addressDict["SubLocality"] = subLocality
+    addressDict["State"] = subAdministrativeArea
+    addressDict["Street"] = formattedAddressArray.first
+    addressDict["Thoroughfare"] = thoroughfare
+    addressDict["FormattedAddressLines"] = formattedAddressArray
+    addressDict["SubThoroughfare"] = subThoroughfare
+    addressDict["PostCodeExtension"] = ""
+    addressDict["City"] = locality
+    addressDict["ZIP"] = postalCode
+    addressDict["Country"] = country
+    addressDict["CountryCode"] = ISOcountryCode
     
-    var addressDict = NSMutableDictionary()
+    let lat = self.latitude.doubleValue
+    let lng = self.longitude.doubleValue
+    let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lng)
     
-    var formattedAddressArray = self.formattedAddress.componentsSeparatedByString(", ") as Array
-    
-    let kSubAdministrativeArea = "SubAdministrativeArea"
-    let kSubLocality           = "SubLocality"
-    let kState                 = "State"
-    let kStreet                = "Street"
-    let kThoroughfare          = "Thoroughfare"
-    let kFormattedAddressLines = "FormattedAddressLines"
-    let kSubThoroughfare       = "SubThoroughfare"
-    let kPostCodeExtension     = "PostCodeExtension"
-    let kCity                  = "City"
-    let kZIP                   = "ZIP"
-    let kCountry               = "Country"
-    let kCountryCode           = "CountryCode"
-    
-    addressDict.setObject(self.subAdministrativeArea, forKey: kSubAdministrativeArea)
-    addressDict.setObject(self.subLocality, forKey: kSubLocality)
-    addressDict.setObject(self.administrativeAreaCode, forKey: kState)
-    
-    addressDict.setObject(formattedAddressArray.first as! NSString, forKey: kStreet)
-    addressDict.setObject(self.thoroughfare, forKey: kThoroughfare)
-    addressDict.setObject(formattedAddressArray, forKey: kFormattedAddressLines)
-    addressDict.setObject(self.subThoroughfare, forKey: kSubThoroughfare)
-    addressDict.setObject("", forKey: kPostCodeExtension)
-    addressDict.setObject(self.locality, forKey: kCity)
-    
-    
-    addressDict.setObject(self.postalCode, forKey: kZIP)
-    addressDict.setObject(self.country, forKey: kCountry)
-    addressDict.setObject(self.ISOcountryCode, forKey: kCountryCode)
-    
-    
-    var lat = self.latitude.doubleValue
-    var lng = self.longitude.doubleValue
-    var coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lng)
-    
-    var placemark = MKPlacemark(coordinate: coordinate, addressDictionary: addressDict as! [String : AnyObject])
+    let placemark = MKPlacemark(coordinate: coordinate, addressDictionary: addressDict)
     
     return (placemark as CLPlacemark)
   }

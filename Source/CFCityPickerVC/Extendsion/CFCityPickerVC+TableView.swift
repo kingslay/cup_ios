@@ -74,10 +74,6 @@ extension CFCityPickerVC: UITableViewDataSource,UITableViewDelegate{
         citySelected(cityModel)
     }
     
-    
-    
-    
-    
     /** 定位处理 */
     func locationPrepare(){
         
@@ -296,7 +292,7 @@ extension CFCityPickerVC: UITableViewDataSource,UITableViewDelegate{
         return 44
     }
     
-    func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]! {
+    func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
         return indexHandle()
     }
     

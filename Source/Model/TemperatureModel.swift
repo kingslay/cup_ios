@@ -18,7 +18,7 @@ class TemperatureModel: NSObject,Model,Storable {
         didSet(newValue){
             if newValue {
                 CupProvider.request(.Temperature(self.explanation,self.temperature)).subscribeNext {_ in
-                }
+                    }.addDisposableTo(self.ks_disposableBag)
             }
         }
     }

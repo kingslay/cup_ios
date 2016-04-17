@@ -94,14 +94,12 @@ class CFCPContentView: UIView{
     
     /** 添加按钮 */
     func btnsPrepare(){
-        
         if cityModles == nil {return}
-        
         for cityModel in cityModles{
             
             let itemBtn = ItemBtn()
             itemBtn.setTitle(cityModel.name, forState: UIControlState.Normal)
-            itemBtn.addTarget(self, action: "btnClick:", forControlEvents: UIControlEvents.TouchUpInside)
+            itemBtn.addTarget(self, action: #selector(btnClick(_:)), forControlEvents: UIControlEvents.TouchUpInside)
             btns.append(itemBtn)
             itemBtn.cityModel = cityModel
             self.addSubview(itemBtn)
