@@ -17,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        Bugly.startWithAppId("900026229")
+
         SMSSDK.registerApp("c1013d64d3ff", withSecret: "528dd34e0cb571afea389ae783053243")
 //        staticIdentifier = "80208298-6E62-076C-A59B-C0E0A1C9949C"
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
