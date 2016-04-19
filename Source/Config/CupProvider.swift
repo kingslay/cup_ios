@@ -98,8 +98,7 @@ extension CupMoya {
     return "Half measures are as bad as nothing at all.".dataUsingEncoding(NSUTF8StringEncoding)!
   }
 }
-
-let CupProvider = RxMoyaProvider<CupMoya>(endpointClosure: { (let target) -> Endpoint<CupMoya> in
+let endpointClosure = { (target: CupMoya) -> Endpoint<CupMoya> in
     let url = target.baseURL.URLByAppendingPathComponent(target.path).absoluteString
     switch target {
     case .Login(_,_),.PhoneLogin(_):
@@ -108,14 +107,16 @@ let CupProvider = RxMoyaProvider<CupMoya>(endpointClosure: { (let target) -> End
         return Endpoint(URL: url, sampleResponseClosure: {.NetworkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters, parameterEncoding: .JSON)
         
     }
-    },manager:CupMoya.sharedManager(), plugins: [CredentialsPlugin {
-        switch $0 {
-        case CupMoya.Login(_, _),CupMoya.Regist(_,_),CupMoya.PhoneLogin(_):
-            return nil
-        default:
-            return NSURLCredential(user: staticAccount!.phone!, password: "phone", persistence: .ForSession)
-        }
-        }])
+}
+
+let CupProvider = RxMoyaProvider<CupMoya>(endpointClosure:endpointClosure ,manager:CupMoya.sharedManager(), plugins: [CredentialsPlugin {
+    switch $0 {
+    case CupMoya.Login(_, _),CupMoya.Regist(_,_),CupMoya.PhoneLogin(_):
+        return nil
+    default:
+        return NSURLCredential(user: staticAccount!.phone!, password: "phone", persistence: .ForSession)
+    }
+}])
 
 
 func uploadImage(imagePath:NSURL, headers: [String: String]? = nil){
