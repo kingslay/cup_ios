@@ -39,6 +39,7 @@ class CupViewController: UITableViewController {
         self.temperatureArray = TemperatureModel.getTemperatures()
         if let selectedIndex = self.selectedIndex {
             self.temperatureArray[selectedIndex].open = true
+            self.sendTemperature()
         }
         self.tableView.reloadData()
     }
@@ -104,6 +105,7 @@ extension CupViewController {
                 model.open = on
                 tableView.reloadData()
                 self.selectedIndex = indexPath.row
+                self.pleaseWait("正在下达指令 请稍后")
                 self.sendTemperature()
             } else {
                 model.open = on
@@ -249,52 +251,59 @@ extension CupViewController {
         }
         return nil
     }
-    func peripheral(peripheral: CBPeripheral, didUpdateValueForCharacteristic characteristic: CBCharacteristic, error: NSError?)
-    {
-        if let data = characteristic.value {
-            let bytes = UnsafePointer<UInt8>(data.bytes)
-            if bytes[0] == 0x3a {
-                ///设置温度
-                if bytes[1] == 0x88 {
-                    Async.main(after: 1){
-                        self.clearAllNotice()
-                    }
-                    if let selectedIndex = self.selectedIndex {
-                        let temperature = self.temperatureArray[selectedIndex].temperature
-                        self.headerView?.meTemperaturelabel.text = "\(temperature)"
-                        self.headerView?.meExplanation.text = self.temperatureArray[selectedIndex].explanation
-                        if let text = self.headerView?.cupTemperaturelabel.text,cupTemperature = Int(text) {
-                            if abs(cupTemperature - temperature) <= 1 {
-                                self.headerView?.cupTemperatureImageView.image = R.image.已恒温()
-                                let alertController = UIAlertController(title: "亲! 水温已到达最适宜度数!", message: "请及时享用哦。", preferredStyle: .Alert)
-                                let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default, handler: nil)
-                                alertController.addAction(okAction)
-                                presentViewController(alertController, animated: true, completion: nil)
-                            }else{
-                                self.headerView?.cupTemperatureImageView.image = R.image.恒温中()
-                            }
-                        }
-                    }
-                }else if bytes[1] == 0x44 {
-                    self.noticeError("校验码错误")
-                }else if bytes[1] == 0x01 || bytes[1] == 0x02 {
-                    //查询温度
-                    endRefreshing()
-                    var cupTemperature: UInt16 = 0
-                    data.getBytes(&cupTemperature, range: NSMakeRange(2,2))
-                    cupTemperature =  (cupTemperature / 10)
-                    self.headerView?.cupTemperaturelabel.text = "\(cupTemperature)"
-                    if let selectedIndex = self.selectedIndex {
-                        let temperature = self.temperatureArray[selectedIndex].temperature
-                        if abs(Int(cupTemperature) - temperature) <= 1  {
-                            self.headerView?.cupTemperatureImageView.image = R.image.已恒温()
-                            let alertController = UIAlertController(title: "亲! 水温已到达最适宜度数!", message: "请及时享用哦。", preferredStyle: .Alert)
-                            let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default, handler: nil)
-                            alertController.addAction(okAction)
-                            presentViewController(alertController, animated: true, completion: nil)
-                        }
-                    }
+    func peripheral(peripheral: CBPeripheral, didUpdateValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
+        guard let data = characteristic.value else {
+            return
+        }
+        let bytes = UnsafePointer<UInt8>(data.bytes)
+        guard  bytes[0] == 0x3a else {
+            return
+        }
+        ///设置温度返回
+        if bytes[1] == 0x88 {
+            Async.main(after: 1){
+                self.clearAllNotice()
+            }
+            guard let selectedIndex = self.selectedIndex else {
+                return
+            }
+            let temperature = self.temperatureArray[selectedIndex].temperature
+            self.headerView?.meTemperaturelabel.text = "\(temperature)"
+            self.headerView?.meExplanation.text = self.temperatureArray[selectedIndex].explanation
+            if let text = self.headerView?.cupTemperaturelabel.text,cupTemperature = Int(text) {
+                if abs(cupTemperature - temperature) <= 1 {
+                    self.headerView?.cupTemperatureImageView.image = R.image.已恒温()
+                    let alertController = UIAlertController(title: "亲! 水温已到达最适宜度数!", message: "请及时享用哦。", preferredStyle: .Alert)
+                    let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default, handler: nil)
+                    alertController.addAction(okAction)
+                    presentViewController(alertController, animated: true, completion: nil)
+                }else{
+                    self.headerView?.cupTemperatureImageView.image = R.image.恒温中()
                 }
+                
+            }
+        }else if bytes[1] == 0x44 {
+            self.noticeError("校验码错误")
+        }else if bytes[1] == 0x01 || bytes[1] == 0x02 {
+            //0x01是达到设置的温度 蓝牙自动返回
+            //查询温度返回
+            if bytes[1] == 0x02  {
+                endRefreshing()
+            }
+            var cupTemperature: UInt16 = 0
+            data.getBytes(&cupTemperature, range: NSMakeRange(2,2))
+            cupTemperature =  (cupTemperature / 10)
+            self.headerView?.cupTemperaturelabel.text = "\(cupTemperature)"
+            guard let selectedIndex = self.selectedIndex else {
+                return
+            }
+            let temperature = self.temperatureArray[selectedIndex].temperature
+            if abs(Int(cupTemperature) - temperature) <= 1  {
+                self.headerView?.cupTemperatureImageView.image = R.image.已恒温()
+                let alertController = UIAlertController(title: "亲! 水温已到达最适宜度数!", message: "请及时享用哦。", preferredStyle: .Alert)
+                let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default, handler: nil)
+                alertController.addAction(okAction)
+                presentViewController(alertController, animated: true, completion: nil)
             }
         }
     }
@@ -310,7 +319,6 @@ extension CupViewController {
         }
     }
     func sendTemperature(){
-        self.pleaseWait("正在下达指令 请稍后")
         if let characteristic = self.characteristic.value, selectedIndex = self.selectedIndex {
             let data = NSMutableData()
             data.appendUInt8(0x3a)
