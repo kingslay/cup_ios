@@ -108,15 +108,15 @@ let endpointClosure = { (target: CupMoya) -> Endpoint<CupMoya> in
         
     }
 }
-
-let CupProvider = RxMoyaProvider<CupMoya>(endpointClosure:endpointClosure ,manager:CupMoya.sharedManager(), plugins: [CredentialsPlugin {
+let credentialsPlugin = CredentialsPlugin {
     switch $0 {
     case CupMoya.Login(_, _),CupMoya.Regist(_,_),CupMoya.PhoneLogin(_):
         return nil
     default:
         return NSURLCredential(user: staticAccount!.phone!, password: "phone", persistence: .ForSession)
     }
-}])
+}
+let CupProvider = RxMoyaProvider<CupMoya>(endpointClosure:endpointClosure ,manager:CupMoya.sharedManager(), plugins: [credentialsPlugin])
 
 
 func uploadImage(imagePath:NSURL, headers: [String: String]? = nil){
