@@ -8,12 +8,15 @@
 
 import UIKit
 import KSJSONHelp
-class TemperatureModel: NSObject,Model,Storable {
+class TemperatureModel: NSObject,Model,Storable,PrimaryKeys {
     override required init() {
         super.init()
     }
     var explanation:String = ""
     var temperature:Int = 50
+    static func primaryKeys() -> Set<String> {
+        return ["explanation","temperature"]
+    }
     var open = false {
         didSet(newValue){
             if newValue {
@@ -22,30 +25,21 @@ class TemperatureModel: NSObject,Model,Storable {
             }
         }
     }
-    static func addTemperature(model: TemperatureModel) {
-        var array = getTemperatures()
-        array.append(model)
-        TemperatureModel.setObjectArray(array, forKey: "temperatureArray")
-    }
-  static func removeAtIndex(index: Int) {
-    var array = getTemperatures()
-    if array.count > index {
-      array.removeAtIndex(index)
-    }
-    TemperatureModel.setObjectArray(array, forKey: "temperatureArray")
-  }
     static func getTemperatures() -> [TemperatureModel] {
-        if let array = TemperatureModel.objectArray(forKey: "temperatureArray") {
+        if let array = TemperatureModel.fetch(nil) where array.count > 0 {
             return array
         }else{
             let first = TemperatureModel()
             first.explanation = "早上第一杯水温"
             first.temperature = 45
+            first.save()
             let second = TemperatureModel()
             second.explanation = "泡咖啡"
-            second.temperature = 75
+            second.temperature = 70
+            second.save()
             return [first,second]
         }
     }
+    
     
 }

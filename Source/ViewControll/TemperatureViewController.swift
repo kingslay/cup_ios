@@ -13,11 +13,18 @@ class TemperatureViewController: UIViewController {
     @IBOutlet weak var temperaturePickerView: UIPickerView!
     @IBOutlet weak var explanationTextField: UITextField!
     var pickerData = [Array(21...70).map{"\($0)度"}]
+    var model: TemperatureModel?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.ks_autoAdjustKeyBoard()
-
         // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if let model = model {
+            explanationTextField.text = model.explanation
+            temperaturePickerView.selectRow(model.temperature-21, inComponent: 0, animated: false)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,10 +40,11 @@ class TemperatureViewController: UIViewController {
             if text.length > 10 {
                 text = text[0..<10]
             }
-            let model = TemperatureModel()
+            self.model?.delete()
+            let model = self.model ?? TemperatureModel()
             model.explanation = text
             model.temperature = temperaturePickerView.selectedRowInComponent(0)+21
-            TemperatureModel.addTemperature(model)
+            model.save()
             self.dismissViewControllerAnimated(true, completion: nil)
         }else{
             self.noticeInfo("温度描述不能为空")

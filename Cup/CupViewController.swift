@@ -28,7 +28,10 @@ class CupViewController: UITableViewController {
         self.setTableHeaderView()
         self.tableView.estimatedRowHeight = 45
         self.setUpCentral()
-//        self.tableView.scrollEnabled = false
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(askTemperature), forControlEvents: UIControlEvents.ValueChanged)
+        //修改下拉刷新标题
+        refreshControl?.attributedTitle = NSAttributedString(string: "释放刷新")
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -38,6 +41,10 @@ class CupViewController: UITableViewController {
             self.temperatureArray[selectedIndex].open = true
         }
         self.tableView.reloadData()
+    }
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        endRefreshing()
     }
     
     func setTableHeaderView() {
@@ -143,14 +150,22 @@ extension CupViewController {
     }
 
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        let topAction = UITableViewRowAction(style: .Default, title: "删除") {
+        let model = self.temperatureArray[indexPath.row]
+        let editAction = UITableViewRowAction(style: .Default, title: "编辑") {
+           (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
+            let vc = R.nib.temperatureViewController.firstView(owner: nil, options: nil)!
+            vc.model = model
+            self.navigationController?.presentViewController(vc, animated: true, completion: nil)
+        }
+        let deleteAction = UITableViewRowAction(style: .Default, title: "删除") {[unowned self]
             (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
+            model.delete()
             self.temperatureArray.removeAtIndex(indexPath.row)
             self.tableView.reloadData()
-            TemperatureModel.removeAtIndex(indexPath.row)
         }
-        topAction.backgroundColor = Colors.black
-        return [topAction]
+        editAction.backgroundColor = Colors.black
+        deleteAction.backgroundColor = Colors.black
+        return [deleteAction,editAction]
     }
 }
 extension CupViewController {
@@ -239,6 +254,7 @@ extension CupViewController {
         if let data = characteristic.value {
             let bytes = UnsafePointer<UInt8>(data.bytes)
             if bytes[0] == 0x3a {
+                ///设置温度
                 if bytes[1] == 0x88 {
                     Async.main(after: 1){
                         self.clearAllNotice()
@@ -262,6 +278,8 @@ extension CupViewController {
                 }else if bytes[1] == 0x44 {
                     self.noticeError("校验码错误")
                 }else if bytes[1] == 0x01 || bytes[1] == 0x02 {
+                    //查询温度
+                    endRefreshing()
                     var cupTemperature: UInt16 = 0
                     data.getBytes(&cupTemperature, range: NSMakeRange(2,2))
                     cupTemperature =  (cupTemperature / 10)
@@ -306,7 +324,7 @@ extension CupViewController {
             self.peripheral?.writeValue(data, forCharacteristic: characteristic, type: .WithResponse)
         }
     }
-    func askTemperature(){
+    func askTemperature() {
         if let characteristic = self.characteristic.value {
             let data = NSMutableData()
             data.appendUInt8(0x3a)
@@ -317,5 +335,12 @@ extension CupViewController {
             data.appendUInt8(0x0a)
             self.peripheral?.writeValue(data, forCharacteristic: characteristic, type: .WithResponse)
         }
+        refreshControl?.attributedTitle = NSAttributedString(string: "刷新中")
+    }
+}
+extension UITableViewController {
+    func endRefreshing() {
+        refreshControl?.endRefreshing()
+        refreshControl?.attributedTitle = NSAttributedString(string: "释放刷新")
     }
 }
