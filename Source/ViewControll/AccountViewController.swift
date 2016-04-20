@@ -105,7 +105,7 @@ class AccountViewController: UITableViewController {
             pickerView.callBackBlock = {
                 [unowned cell] in
                 staticAccount?.height = Double($0[0]+60) + Double($0[1])/10
-                cell.valueTextField.text = "\(staticAccount!.height!)kg"
+                cell.valueTextField.text = "\(staticAccount!.height!)cm"
             }
         case (1,3):
             cell.valueTextField.userInteractionEnabled = true
