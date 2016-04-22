@@ -39,7 +39,7 @@ class FirmwareViewController: UIViewController {
             UIApplication.sharedApplication().cancelAllLocalNotifications()
             NSUserDefaults.standardUserDefaults().removeObjectForKey("ClockModelClose")
             NSUserDefaults.standardUserDefaults().removeObjectForKey("clockArray")
-            TemperatureModel.delete([])
+            TemperatureModel.delete(dic: [:])
             UIApplication.sharedApplication().keyWindow!.rootViewController = R.storyboard.sMS.initialViewController()
         }.addDisposableTo(self.disposeBag)
         self.cancelButton.rx_tap.subscribeNext{ [unowned self] in
