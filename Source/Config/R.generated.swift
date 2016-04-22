@@ -602,7 +602,6 @@ struct _R: Rswift.Validatable {
       let name = "SMS"
       
       static func validate() throws {
-        if UIImage(named: "logo") == nil { throw ValidationError(description: "[R.swift] Image named 'logo' is used in storyboard 'SMS', but couldn't be loaded.") }
         if UIImage(named: "photo") == nil { throw ValidationError(description: "[R.swift] Image named 'photo' is used in storyboard 'SMS', but couldn't be loaded.") }
       }
       

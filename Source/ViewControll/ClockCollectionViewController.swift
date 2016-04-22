@@ -106,17 +106,22 @@ extension ClockCollectionViewController {
             }
             cell.timeTextField.text = clockModel.description
         }.addDisposableTo(cell.disposeBag)
-        datePicker.date = NSDate()
+        let components = NSDate().components
+        components.timeZone = NSTimeZone.localTimeZone()
+        components.hour = clockModel.hour
+        components.minute = clockModel.minute
+        datePicker.date = components.date!
         return cell
     }
     
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: R.nib.clockCollectionHeaderView, forIndexPath: indexPath)!
-        let view = UIView(frame: CGRectMake(0,204,self.view.ks_width,self.view.ks_height))
+        let view = UIView(frame: CGRectMake(0,header.ks_height ,self.view.ks_width,self.view.ks_height))
         view.alpha = 0.5
         view.backgroundColor = UIColor.blackColor()
         self.close.asObservable().subscribeNext{ [unowned self]  in
             if $0 {
+                view.ks_top = (header.ks_height - collectionView.contentOffset.y)
                 self.view.addSubview(view)
                 header.headerImageView.image = R.image.clock_close()
             }else{

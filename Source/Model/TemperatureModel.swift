@@ -30,14 +30,18 @@ class TemperatureModel: NSObject,Model,Storable,PrimaryKeys {
             return array
         }else{
             let first = TemperatureModel()
-            first.explanation = "早上第一杯水温"
+            first.explanation = "早上的第一杯水"
             first.temperature = 45
             first.save()
             let second = TemperatureModel()
-            second.explanation = "泡咖啡"
-            second.temperature = 70
+            second.explanation = "工作喝水"
+            second.temperature = 55
             second.save()
-            return [first,second]
+            let third = TemperatureModel()
+            third.explanation = "运动后喝水"
+            third.temperature = 50
+            third.save()
+            return [first,second,third]
         }
     }
     
