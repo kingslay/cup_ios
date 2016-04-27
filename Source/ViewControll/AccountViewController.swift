@@ -232,29 +232,53 @@ class AccountViewController: UITableViewController {
 //            self.presentViewController(alertController, animated: true, completion: nil)
 
         case (1,0):
-            let alertController = UIAlertController(title: nil, message: "水杯场景", preferredStyle: .Alert)
-            alertController.addTextFieldWithConfigurationHandler(nil)
-            let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default) {
-                (action: UIAlertAction!) -> Void in
-                if let text = alertController.textFields?.first?.text {
-                    staticAccount?.scene = text
-                    cell.valueTextField.text = text
-                }
+            let sheetController = UIAlertController(title: nil, message: "水杯场景", preferredStyle: .ActionSheet)
+            sheetController.addAction(UIAlertAction(title: "取消", style: .Cancel, handler: nil))
+            ["办公室","家里","户外","车载"].forEach {
+                sheetController.addAction(UIAlertAction(title: $0, style: UIAlertActionStyle.Default) {
+                    (action: UIAlertAction!) in
+                    staticAccount?.scene = action.title
+                    cell.valueTextField.text = action.title
+                    })
             }
-            alertController.addAction(okAction)
-            self.presentViewController(alertController, animated: true, completion: nil)
+            sheetController.addAction(UIAlertAction(title: "其他", style: UIAlertActionStyle.Default) { [unowned self] (action: UIAlertAction!) in
+                 let alertController = UIAlertController(title: nil, message: "水杯场景", preferredStyle: .Alert)
+                alertController.addTextFieldWithConfigurationHandler(nil)
+                let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default) {
+                    (action: UIAlertAction!) -> Void in
+                    if let text = alertController.textFields?.first?.text where text.characters.count > 0 {
+                        staticAccount?.scene = text
+                        cell.valueTextField.text = text
+                    }
+                }
+                alertController.addAction(okAction)
+                self.presentViewController(alertController, animated: true, completion: nil)
+                })
+            self.presentViewController(sheetController, animated: true, completion: nil)
         case (1,1):
-            let alertController = UIAlertController(title: nil, message: "体质", preferredStyle: .Alert)
-            alertController.addTextFieldWithConfigurationHandler(nil)
-            let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default) {
-                (action: UIAlertAction!) -> Void in
-                if let text = alertController.textFields?.first?.text {
-                    staticAccount?.constitution = text
-                    cell.valueTextField.text = text
-                }
+            let sheetController = UIAlertController(title: nil, message: "体质", preferredStyle: .ActionSheet)
+            sheetController.addAction(UIAlertAction(title: "取消", style: .Cancel, handler: nil))
+            ["易出汗","少出汗","正常"].forEach {
+                sheetController.addAction(UIAlertAction(title: $0, style: UIAlertActionStyle.Default) {
+                    (action: UIAlertAction!) in
+                    staticAccount?.scene = action.title
+                    cell.valueTextField.text = action.title
+                    })
             }
-            alertController.addAction(okAction)
-            self.presentViewController(alertController, animated: true, completion: nil)
+            sheetController.addAction(UIAlertAction(title: "其他", style: UIAlertActionStyle.Default) { [unowned self] (action: UIAlertAction!) in
+                let alertController = UIAlertController(title: nil, message: "体质", preferredStyle: .Alert)
+                alertController.addTextFieldWithConfigurationHandler(nil)
+                let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default) {
+                    (action: UIAlertAction!) -> Void in
+                    if let text = alertController.textFields?.first?.text where text.characters.count > 0 {
+                        staticAccount?.constitution = text
+                        cell.valueTextField.text = text
+                    }
+                }
+                alertController.addAction(okAction)
+                self.presentViewController(alertController, animated: true, completion: nil)
+                })
+            self.presentViewController(sheetController, animated: true, completion: nil)
         default:
             break
         }
