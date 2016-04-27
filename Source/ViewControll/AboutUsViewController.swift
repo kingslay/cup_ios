@@ -26,7 +26,7 @@ class AboutUsViewController: UITableViewController {
             make.centerX.equalTo(tableHeaderView)
         }
         let lable = UILabel()
-        lable.text = "杭州未蓝智能科技有限公司"
+        lable.text = "红黄蓝工作室"
 //        \n杭州市萧山区兴五路237号\n0571－87703609"
         lable.numberOfLines = -1
         lable.textAlignment = .Center
@@ -57,10 +57,10 @@ extension AboutUsViewController {
         return cell
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row == 0 {
-            UIApplication.sharedApplication().openURL(NSURL(string: "http://www.8amcup.com")!)
-        } else {
-            UIApplication.sharedApplication().openURL(NSURL(string: "https://shop152288103.taobao.com")!)
-        }
+//        if indexPath.row == 0 {
+//            UIApplication.sharedApplication().openURL(NSURL(string: "http://www.8amcup.com")!)
+//        } else {
+//            UIApplication.sharedApplication().openURL(NSURL(string: "https://shop152288103.taobao.com")!)
+//        }
     }
 }
