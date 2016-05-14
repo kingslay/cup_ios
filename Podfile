@@ -15,4 +15,6 @@ pod 'AlamofireImage'
 pod 'SnapKit'
 pod 'AsyncSwift'
 pod 'Bugly'
+pod 'Gifu'
+pod 'libWeChatSDK',:git => "git@github.com:kingslay/libWeChatSDK.git"
 

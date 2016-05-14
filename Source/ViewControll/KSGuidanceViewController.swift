@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Gifu
 class KSGuidanceViewController: UIViewController {
     
     var scrollView:  UIScrollView!
@@ -32,10 +32,8 @@ class KSGuidanceViewController: UIViewController {
         scrollView.scrollsToTop = false
         
         for i in 0..<numOfPages {
-            let imageView = UIImageView(image: UIImage(named: "Guidance\(i + 1)"))
-            
-            imageView.frame = CGRectMake(frame.size.width * CGFloat(i), 0, frame.size.width, frame.size.height)
-            
+            let imageView = AnimatableImageView(frame: CGRect(x: frame.size.width * CGFloat(i), y: 0, width: frame.size.width, height: frame.size.height))
+            imageView.animateWithImage(named: "\(i + 1).gif")
             scrollView.addSubview(imageView)
         }
         

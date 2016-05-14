@@ -26,10 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let userDefaults = NSUserDefaults.standardUserDefaults()
         var appVersion = userDefaults.stringForKey("appVersion")
-        //先不需要引导图
-        appVersion = currentAppVersion
         // 如果appVersion为nil说明是第一次启动；如果appVersion不等于currentAppVersion说明是更新了
-        if appVersion == nil || appVersion != currentAppVersion {
+        if appVersion == nil {
             userDefaults.setValue(currentAppVersion, forKey: "appVersion")
             self.window?.rootViewController = R.nib.kSGuidanceViewController.firstView(owner: nil, options: nil)!
         }else{

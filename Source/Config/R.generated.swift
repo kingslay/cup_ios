@@ -11,6 +11,7 @@ struct R: Rswift.Validatable {
     try intern.validate()
   }
   
+  /// This `R.color` struct is generated, and contains static references to 0 color palettes.
   struct color {
     private init() {}
   }
@@ -357,6 +358,16 @@ struct R: Rswift.Validatable {
     /// `UIStoryboard(name: "SMS", bundle: ...)`
     static func sMS(_: Void) -> UIStoryboard {
       return UIStoryboard(resource: R.storyboard.sMS)
+    }
+    
+    private init() {}
+  }
+  
+  /// This `R.string` struct is generated, and contains static references to 1 localization tables.
+  struct string {
+    /// This `R.string.sMS_SDKLocalizable` struct is generated, and contains static references to 0 localization keys.
+    struct sMS_SDKLocalizable {
+      private init() {}
     }
     
     private init() {}

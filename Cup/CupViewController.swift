@@ -99,14 +99,21 @@ extension CupViewController {
         cell.openSwitch.rx_controlEvent(.TouchUpInside).subscribeNext{ [unowned cell,unowned self] in
             let on = cell.openSwitch.on
             if on {
-                self.temperatureArray.forEach{
-                    $0.open = false
+                if self.characteristic.value == nil {
+                    self.alterCentralViewController()
+                    Async.main(after: 0.35) {
+                        cell.openSwitch.on = false
+                    }
+                } else {
+                    self.temperatureArray.forEach{
+                        $0.open = false
+                    }
+                    model.open = on
+                    tableView.reloadData()
+                    self.selectedIndex = indexPath.row
+                    self.pleaseWait("正在下达指令 请稍后")
+                    self.sendTemperature()
                 }
-                model.open = on
-                tableView.reloadData()
-                self.selectedIndex = indexPath.row
-                self.pleaseWait("正在下达指令 请稍后")
-                self.sendTemperature()
             } else {
                 model.open = on
                 self.selectedIndex = nil
@@ -182,15 +189,7 @@ extension CupViewController {
                 didDiscoverPeripheral(peripherals[0])
             }
         }else{
-            let alertController = UIAlertController(title: "您还没有关联水杯设备,是否现在进行关联", message: nil, preferredStyle: .Alert)
-            let okAction = UIAlertAction(title: "是", style: UIAlertActionStyle.Default){
-                (action: UIAlertAction!) -> Void in
-                self.navigationController?.pushViewController(CentralViewController(), animated: true)
-            }
-            let cancelAction = UIAlertAction(title: "否", style: .Cancel, handler: nil)
-            alertController.addAction(okAction)
-            alertController.addAction(cancelAction)
-            presentViewController(alertController, animated: true, completion: nil)
+            alterCentralViewController()
         }
     }
     @objc private func durationTimerElapsed() {
@@ -318,7 +317,19 @@ extension CupViewController {
             self.central.connectPeripheral(peripheral, options: nil)
         }
     }
-    func sendTemperature(){
+    func alterCentralViewController() {
+        let alertController = UIAlertController(title: "您还没有关联水杯设备,是否现在进行关联", message: nil, preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: "是", style: UIAlertActionStyle.Default){
+            (action: UIAlertAction!) -> Void in
+            self.navigationController?.pushViewController(CentralViewController(), animated: true)
+        }
+        let cancelAction = UIAlertAction(title: "否", style: .Cancel, handler: nil)
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        presentViewController(alertController, animated: true, completion: nil)
+        
+    }
+    func sendTemperature() {
         if let characteristic = self.characteristic.value, selectedIndex = self.selectedIndex {
             let data = NSMutableData()
             data.appendUInt8(0x3a)
