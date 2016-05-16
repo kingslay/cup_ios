@@ -12,7 +12,7 @@ import Alamofire
 import AlamofireImage
 import KSJSONHelp
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
 
     var window: UIWindow?
 
@@ -56,6 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().translucent = false
         configureAlamofireManager()
         SMSSDK.registerApp("c1013d64d3ff", withSecret: "528dd34e0cb571afea389ae783053243")
+        WXApi.registerApp("wxfc361b137c76f916")
         return true
     }
 
@@ -80,6 +81,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
+        WXApi.handleOpenURL(url, delegate: self)
+        return true
+    }
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        WXApi.handleOpenURL(url, delegate: self)
+        return true
     }
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
       if application.applicationIconBadgeNumber > 0 {

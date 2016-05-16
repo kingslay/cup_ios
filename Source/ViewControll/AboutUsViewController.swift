@@ -51,16 +51,24 @@ extension AboutUsViewController {
         cell.accessoryType = .DisclosureIndicator
         if indexPath.row == 0 {
             cell.textLabel?.text = "进入官网"
-        }else{
+        }else if indexPath.row == 1 {
             cell.textLabel?.text = "购买"
+        } else {
+            cell.textLabel?.text = "关注微信"
         }
         return cell
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == 0 {
             UIApplication.sharedApplication().openURL(NSURL(string: "http://www.8amcup.com")!)
-        } else {
+        } else if indexPath.row == 1 {
             UIApplication.sharedApplication().openURL(NSURL(string: "https://shop152288103.taobao.com")!)
+        } else {
+            let req = JumpToBizProfileReq()
+            req.username = "gh_a221cc270ebb"
+            req.profileType = 0
+            req.extMsg = ""
+            WXApi.sendReq(req)
         }
     }
 }
