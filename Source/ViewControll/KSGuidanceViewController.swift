@@ -31,7 +31,7 @@ class KSGuidanceViewController: UIViewController {
         scrollView.showsVerticalScrollIndicator = false
         scrollView.scrollsToTop = false
         var count = 1
-        if frame.size.width > 320 {
+        if frame.size.height > 480 {
             count = 5
         }
         for i in 0..<numOfPages {
