@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
         var appVersion = userDefaults.stringForKey("appVersion")
         // 如果appVersion为nil说明是第一次启动；如果appVersion不等于currentAppVersion说明是更新了
         if appVersion == nil {
-            userDefaults.setValue(currentAppVersion, forKey: "appVersion")
+//            userDefaults.setValue(currentAppVersion, forKey: "appVersion")
             self.window?.rootViewController = R.nib.kSGuidanceViewController.firstView(owner: nil, options: nil)!
         }else{
             if let dic = NSUserDefaults.standardUserDefaults().objectForKey("sharedAccount") as? [String:AnyObject] {

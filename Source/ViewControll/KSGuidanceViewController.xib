@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -17,13 +17,14 @@
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L4R-aT-a04">
-                        <rect key="frame" x="270" y="483" width="60" height="40"/>
+                        <rect key="frame" x="200" y="541.5" width="200" height="40"/>
                         <color key="backgroundColor" red="0.89019607840000003" green="0.0" blue="0.56470588239999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="60" id="1Mq-et-NCN"/>
+                            <constraint firstAttribute="width" constant="200" id="1Mq-et-NCN"/>
                             <constraint firstAttribute="height" constant="40" id="J5o-cp-wko"/>
                         </constraints>
-                        <state key="normal" title="开始">
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <state key="normal" title="健康生活由此开始">
                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <userDefinedRuntimeAttributes>
@@ -33,14 +34,14 @@
                         </userDefinedRuntimeAttributes>
                     </button>
                     <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="SNH-RF-KPe">
-                        <rect key="frame" x="272.5" y="543" width="55" height="37"/>
+                        <rect key="frame" x="272" y="543" width="55" height="37"/>
                     </pageControl>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="L4R-aT-a04" firstAttribute="centerX" secondItem="SNH-RF-KPe" secondAttribute="centerX" id="49S-eA-7Sv"/>
                     <constraint firstItem="X9P-wc-dKN" firstAttribute="top" secondItem="SNH-RF-KPe" secondAttribute="bottom" constant="20" id="N6C-Ns-Nzo"/>
-                    <constraint firstItem="SNH-RF-KPe" firstAttribute="top" secondItem="L4R-aT-a04" secondAttribute="bottom" constant="20" id="gGz-8k-wj0"/>
+                    <constraint firstItem="SNH-RF-KPe" firstAttribute="centerY" secondItem="L4R-aT-a04" secondAttribute="centerY" id="gGz-8k-wj0"/>
                     <constraint firstItem="X9P-wc-dKN" firstAttribute="top" secondItem="SNH-RF-KPe" secondAttribute="bottom" constant="20" id="l5D-H9-cau"/>
                     <constraint firstItem="SNH-RF-KPe" firstAttribute="centerX" secondItem="6Ax-0L-Wk7" secondAttribute="centerX" id="q2I-4f-stb"/>
                 </constraints>

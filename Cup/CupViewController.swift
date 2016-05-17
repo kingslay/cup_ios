@@ -37,9 +37,28 @@ class CupViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.temperatureArray = TemperatureModel.getTemperatures()
-        if let selectedIndex = self.selectedIndex {
-            self.temperatureArray[selectedIndex].open = true
+        if let _ = self.selectedIndex {
+            var i = 0
+            var hasSet = false
+            self.temperatureArray.forEach {
+                if $0.open {
+                    if !hasSet {
+                        self.selectedIndex = i
+                        hasSet = true
+                    } else {
+                        $0.open = false
+                    }
+                }
+                i+=1
+            }
             self.sendTemperature()
+        } else {
+            self.temperatureArray.forEach {
+                if $0.open {
+                    $0.open = false
+                    $0.save()
+                }
+            }
         }
         self.tableView.reloadData()
     }

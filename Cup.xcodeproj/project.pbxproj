@@ -20,10 +20,6 @@
 		3C1BDF911BF0D5C7003E34F8 /* SMSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1BDF901BF0D5C7003E34F8 /* SMSViewController.swift */; };
 		3C1BDF941BF235AA003E34F8 /* TemperatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1BDF921BF235AA003E34F8 /* TemperatureViewController.swift */; };
 		3C1BDF951BF235AA003E34F8 /* TemperatureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C1BDF931BF235AA003E34F8 /* TemperatureViewController.xib */; };
-		3C335AB71CE738CC000171AF /* 1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3C335AB31CE738CC000171AF /* 1.gif */; };
-		3C335AB81CE738CC000171AF /* 2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3C335AB41CE738CC000171AF /* 2.gif */; };
-		3C335AB91CE738CC000171AF /* 3.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3C335AB51CE738CC000171AF /* 3.gif */; };
-		3C335ABA1CE738CC000171AF /* 4.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3C335AB61CE738CC000171AF /* 4.gif */; };
 		3C3947441BE9012300E7FE90 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C3947431BE9012300E7FE90 /* Images.xcassets */; };
 		3C3947AA1BEA44F800E7FE90 /* CFCityPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3947941BEA44F800E7FE90 /* CFCityPickerVC.swift */; };
 		3C3947AB1BEA44F800E7FE90 /* City.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C3947951BEA44F800E7FE90 /* City.plist */; };
@@ -47,6 +43,14 @@
 		3C80A5E11BCA5A9D0050B6B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C80A5DF1BCA5A9D0050B6B6 /* LaunchScreen.storyboard */; };
 		3C80A5EC1BCA5A9D0050B6B6 /* CupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C80A5EB1BCA5A9D0050B6B6 /* CupTests.swift */; };
 		3CC57E031BE7BA490050E64E /* KSPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC57E021BE7BA490050E64E /* KSPickerView.swift */; };
+		3CDF8A7A1CEB02E500B2675B /* 1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3CDF8A721CEB02E500B2675B /* 1.gif */; };
+		3CDF8A7B1CEB02E500B2675B /* 2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3CDF8A731CEB02E500B2675B /* 2.gif */; };
+		3CDF8A7C1CEB02E500B2675B /* 3.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3CDF8A741CEB02E500B2675B /* 3.gif */; };
+		3CDF8A7D1CEB02E500B2675B /* 4.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3CDF8A751CEB02E500B2675B /* 4.gif */; };
+		3CDF8A7E1CEB02E500B2675B /* 5.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3CDF8A761CEB02E500B2675B /* 5.gif */; };
+		3CDF8A7F1CEB02E500B2675B /* 6.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3CDF8A771CEB02E500B2675B /* 6.gif */; };
+		3CDF8A801CEB02E500B2675B /* 7.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3CDF8A781CEB02E500B2675B /* 7.gif */; };
+		3CDF8A811CEB02E500B2675B /* 8.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3CDF8A791CEB02E500B2675B /* 8.gif */; };
 		3CECE6811BF38A0400C43890 /* FirmwareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CECE67F1BF38A0400C43890 /* FirmwareViewController.swift */; };
 		3CECE6821BF38A0400C43890 /* FirmwareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CECE6801BF38A0400C43890 /* FirmwareViewController.xib */; };
 		3CECE6851BF3996500C43890 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CECE6831BF3996500C43890 /* AboutUsViewController.swift */; };
@@ -109,10 +113,6 @@
 		3C1BDF901BF0D5C7003E34F8 /* SMSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSViewController.swift; sourceTree = "<group>"; };
 		3C1BDF921BF235AA003E34F8 /* TemperatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemperatureViewController.swift; sourceTree = "<group>"; };
 		3C1BDF931BF235AA003E34F8 /* TemperatureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemperatureViewController.xib; sourceTree = "<group>"; };
-		3C335AB31CE738CC000171AF /* 1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 1.gif; sourceTree = "<group>"; };
-		3C335AB41CE738CC000171AF /* 2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 2.gif; sourceTree = "<group>"; };
-		3C335AB51CE738CC000171AF /* 3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 3.gif; sourceTree = "<group>"; };
-		3C335AB61CE738CC000171AF /* 4.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 4.gif; sourceTree = "<group>"; };
 		3C3947431BE9012300E7FE90 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3C3947941BEA44F800E7FE90 /* CFCityPickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFCityPickerVC.swift; sourceTree = "<group>"; };
 		3C3947951BEA44F800E7FE90 /* City.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = City.plist; sourceTree = "<group>"; };
@@ -140,6 +140,14 @@
 		3C80A5EB1BCA5A9D0050B6B6 /* CupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CupTests.swift; sourceTree = "<group>"; };
 		3C80A5ED1BCA5A9D0050B6B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3CC57E021BE7BA490050E64E /* KSPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KSPickerView.swift; sourceTree = "<group>"; };
+		3CDF8A721CEB02E500B2675B /* 1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 1.gif; sourceTree = "<group>"; };
+		3CDF8A731CEB02E500B2675B /* 2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 2.gif; sourceTree = "<group>"; };
+		3CDF8A741CEB02E500B2675B /* 3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 3.gif; sourceTree = "<group>"; };
+		3CDF8A751CEB02E500B2675B /* 4.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 4.gif; sourceTree = "<group>"; };
+		3CDF8A761CEB02E500B2675B /* 5.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 5.gif; sourceTree = "<group>"; };
+		3CDF8A771CEB02E500B2675B /* 6.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 6.gif; sourceTree = "<group>"; };
+		3CDF8A781CEB02E500B2675B /* 7.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 7.gif; sourceTree = "<group>"; };
+		3CDF8A791CEB02E500B2675B /* 8.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 8.gif; sourceTree = "<group>"; };
 		3CECE67F1BF38A0400C43890 /* FirmwareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirmwareViewController.swift; sourceTree = "<group>"; };
 		3CECE6801BF38A0400C43890 /* FirmwareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirmwareViewController.xib; sourceTree = "<group>"; };
 		3CECE6831BF3996500C43890 /* AboutUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
@@ -217,10 +225,14 @@
 		3C335AB21CE738CC000171AF /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				3C335AB31CE738CC000171AF /* 1.gif */,
-				3C335AB41CE738CC000171AF /* 2.gif */,
-				3C335AB51CE738CC000171AF /* 3.gif */,
-				3C335AB61CE738CC000171AF /* 4.gif */,
+				3CDF8A721CEB02E500B2675B /* 1.gif */,
+				3CDF8A731CEB02E500B2675B /* 2.gif */,
+				3CDF8A741CEB02E500B2675B /* 3.gif */,
+				3CDF8A751CEB02E500B2675B /* 4.gif */,
+				3CDF8A761CEB02E500B2675B /* 5.gif */,
+				3CDF8A771CEB02E500B2675B /* 6.gif */,
+				3CDF8A781CEB02E500B2675B /* 7.gif */,
+				3CDF8A791CEB02E500B2675B /* 8.gif */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -556,28 +568,32 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CDF8A811CEB02E500B2675B /* 8.gif in Resources */,
+				3CDF8A801CEB02E500B2675B /* 7.gif in Resources */,
+				3CDF8A7E1CEB02E500B2675B /* 5.gif in Resources */,
 				3C80A5E11BCA5A9D0050B6B6 /* LaunchScreen.storyboard in Resources */,
 				3C3947B31BEA44F800E7FE90 /* img.bundle in Resources */,
 				3C1BDF951BF235AA003E34F8 /* TemperatureViewController.xib in Resources */,
 				CBF5E3711BF1F1CE002D4F8F /* TemperatureTableViewCell.xib in Resources */,
+				3CDF8A7A1CEB02E500B2675B /* 1.gif in Resources */,
 				3C3947B91BEA44F800E7FE90 /* HeaderItemView.xib in Resources */,
 				3C3947B51BEA44F800E7FE90 /* CFCityCell.xib in Resources */,
 				CB3CF8951BE9DD6E008D577E /* KSGuidanceViewController.xib in Resources */,
 				3CECE6821BF38A0400C43890 /* FirmwareViewController.xib in Resources */,
 				CB3CF88D1BE9B0AC008D577E /* Login.storyboard in Resources */,
 				3C1BDF8F1BF0D090003E34F8 /* SMS.storyboard in Resources */,
-				3C335AB81CE738CC000171AF /* 2.gif in Resources */,
+				3CDF8A7F1CEB02E500B2675B /* 6.gif in Resources */,
 				CBE1DC3B1BEC81F900E1FF29 /* MineTableViewCell.xib in Resources */,
-				3C335ABA1CE738CC000171AF /* 4.gif in Resources */,
-				3C335AB91CE738CC000171AF /* 3.gif in Resources */,
-				3C335AB71CE738CC000171AF /* 1.gif in Resources */,
+				3CDF8A7D1CEB02E500B2675B /* 4.gif in Resources */,
 				3C3947441BE9012300E7FE90 /* Images.xcassets in Resources */,
 				3C1BDF8A1BF0CA60003E34F8 /* SMS_SDKLocalizable.strings in Resources */,
 				CBBCA4001BF18A30002E04F7 /* ClockCollectionHeaderView.xib in Resources */,
 				3C3947AF1BEA44F800E7FE90 /* CitySearchResultVC.xib in Resources */,
 				3CECE6861BF3996500C43890 /* AboutUsViewController.xib in Resources */,
+				3CDF8A7B1CEB02E500B2675B /* 2.gif in Resources */,
 				CBE1DC291BE9EE5B00E1FF29 /* Main.storyboard in Resources */,
 				CBF5E3751BF1F6E3002D4F8F /* CupHeaderView.xib in Resources */,
+				3CDF8A7C1CEB02E500B2675B /* 3.gif in Resources */,
 				3C3947AB1BEA44F800E7FE90 /* City.plist in Resources */,
 				CBE1DC311BE9F92200E1FF29 /* AccountTableViewCell.xib in Resources */,
 				CB89F7B41BE70B2700FD21FD /* ClockCollectionViewCell.xib in Resources */,

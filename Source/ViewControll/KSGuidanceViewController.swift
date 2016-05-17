@@ -30,10 +30,14 @@ class KSGuidanceViewController: UIViewController {
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
         scrollView.scrollsToTop = false
-        
+        var count = 1
+        if frame.size.width > 320 {
+            count = 5
+        }
         for i in 0..<numOfPages {
+            
             let imageView = AnimatableImageView(frame: CGRect(x: frame.size.width * CGFloat(i), y: 0, width: frame.size.width, height: frame.size.height))
-            imageView.animateWithImage(named: "\(i + 1).gif")
+            imageView.animateWithImage(named: "\(i + count).gif")
             scrollView.addSubview(imageView)
         }
         
