@@ -377,7 +377,7 @@ struct R: Rswift.Validatable {
 }
 
 struct _R: Rswift.Validatable {
-  static let hostingBundle = NSBundle(identifier: "im.meiyou.IMYTTQ1") ?? NSBundle.mainBundle()
+  static let hostingBundle = NSBundle(identifier: "com.weilancup.8am") ?? NSBundle.mainBundle()
   
   static func validate() throws {
     try storyboard.validate()
