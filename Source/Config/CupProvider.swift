@@ -97,6 +97,9 @@ extension CupMoya {
   public var sampleData: NSData {
     return "Half measures are as bad as nothing at all.".dataUsingEncoding(NSUTF8StringEncoding)!
   }
+    public var multipartBody:[Moya.MultipartFormData]? {
+        return nil
+    }
 }
 let endpointClosure = { (target: CupMoya) -> Endpoint<CupMoya> in
     let url = target.baseURL.URLByAppendingPathComponent(target.path).absoluteString

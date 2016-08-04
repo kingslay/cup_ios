@@ -2,7 +2,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 inhibit_all_warnings!
 platform:ios, "8.0"
 use_frameworks!
-
+target :Cup do
 pod 'KSSwiftExtension'
 pod 'KSJSONHelp'
 pod 'R.swift'
@@ -16,5 +16,7 @@ pod 'SnapKit'
 pod 'AsyncSwift'
 pod 'Bugly'
 pod 'Gifu'
-pod 'libWeChatSDK',:git => "git@github.com:kingslay/libWeChatSDK.git"
-
+pod 'MonkeyKing'
+pod 'Charts'
+#pod 'libWeChatSDK',:git => "git@github.com:kingslay/libWeChatSDK.git"
+end

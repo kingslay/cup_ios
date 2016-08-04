@@ -5,7 +5,7 @@ import Foundation
 import Rswift
 import UIKit
 
-/// This `R` struct is code generateted, and contains references to static resources.
+/// This `R` struct is code generated, and contains references to static resources.
 struct R: Rswift.Validatable {
   static func validate() throws {
     try intern.validate()
@@ -377,6 +377,7 @@ struct R: Rswift.Validatable {
 }
 
 struct _R: Rswift.Validatable {
+  static let applicationLocale = hostingBundle.preferredLocalizations.first.flatMap(NSLocale.init) ?? NSLocale.currentLocale()
   static let hostingBundle = NSBundle(identifier: "com.weilancup.8am") ?? NSBundle.mainBundle()
   
   static func validate() throws {

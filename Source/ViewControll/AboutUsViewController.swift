@@ -53,8 +53,6 @@ extension AboutUsViewController {
             cell.textLabel?.text = "进入官网"
         }else if indexPath.row == 1 {
             cell.textLabel?.text = "购买"
-        } else {
-            cell.textLabel?.text = "关注微信"
         }
         return cell
     }
@@ -63,12 +61,6 @@ extension AboutUsViewController {
             UIApplication.sharedApplication().openURL(NSURL(string: "http://www.8amcup.com")!)
         } else if indexPath.row == 1 {
             UIApplication.sharedApplication().openURL(NSURL(string: "https://shop152288103.taobao.com")!)
-        } else {
-            let req = JumpToBizProfileReq()
-            req.username = "gh_a221cc270ebb"
-            req.profileType = 0
-            req.extMsg = ""
-            WXApi.sendReq(req)
         }
     }
 }

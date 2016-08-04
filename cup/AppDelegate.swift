@@ -11,14 +11,15 @@ import KSSwiftExtension
 import Alamofire
 import AlamofireImage
 import KSJSONHelp
+import MonkeyKing
+
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Bugly.startWithAppId("900026229")
-//        staticIdentifier = "80208298-6E62-076C-A59B-C0E0A1C9949C"
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         // 得到当前应用的版本号
         let infoDictionary = NSBundle.mainBundle().infoDictionary
@@ -56,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
         UITabBar.appearance().translucent = false
         configureAlamofireManager()
         SMSSDK.registerApp("c1013d64d3ff", withSecret: "528dd34e0cb571afea389ae783053243")
-        WXApi.registerApp("wxfc361b137c76f916")
+        MonkeyKing.registerAccount(.WeChat(appID: "wxfc361b137c76f916",appKey: nil))
         return true
     }
 
@@ -82,13 +83,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
-        WXApi.handleOpenURL(url, delegate: self)
-        return true
-    }
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-        WXApi.handleOpenURL(url, delegate: self)
-        return true
+        if MonkeyKing.handleOpenURL(url) {
+            return true
+        }
+        return false
     }
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
       if application.applicationIconBadgeNumber > 0 {

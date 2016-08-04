@@ -65,7 +65,7 @@ class UserLoginViewController: UIViewController,UITextFieldDelegate{
             }, onError: {
                 self.clearAllNotice()
                 self.navigationController?.view.userInteractionEnabled = true
-                if let error = $0 as? Moya.Error, let response = error.nsError.userInfo["data"] as? Moya.Response {
+                if let error = $0 as? Moya.Error, let response = error.response {
                     self.noticeError(JSON(data: response.data)["message"].stringValue, autoClear: true)
                 }
                 

@@ -10,5 +10,4 @@
 #define Bridging_Header_h
 #import <SMS_SDK/SMSSDK.h>
 #import <Bugly/Bugly.h>
-#import "WXApi.h"
 #endif /* Bridging_Header_h */
