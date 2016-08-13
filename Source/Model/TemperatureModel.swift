@@ -8,7 +8,7 @@
 
 import UIKit
 import KSJSONHelp
-class TemperatureModel: NSObject,Model,Storable,PrimaryKeys {
+class TemperatureModel: NSObject,Model,Storable,PrimaryKeyProtocol {
     override required init() {
         super.init()
     }

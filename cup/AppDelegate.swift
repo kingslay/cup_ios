@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        Database.driver = SQLiteDriver()
         Bugly.startWithAppId("900026229")
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         // 得到当前应用的版本号

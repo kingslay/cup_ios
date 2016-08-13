@@ -58,13 +58,13 @@ class ClockModel: NSObject,Model,Storable {
     static func addClock(model: ClockModel) {
         var array = getClocks()
         array.append(model)
-        ClockModel.setObjectArray(array, forKey: "clockArray")
+        ClockModel.saveValuesToDefaults(array, forKey: "clockArray")
         if model.open {
             model.addUILocalNotification()
         }
     }
     static func getClocks() -> [ClockModel] {
-        if let array = ClockModel.objectArray(forKey: "clockArray") {
+        if let array = ClockModel.loadValuesFromDefaults(forKey: "clockArray") {
             return array
         } else {
             var array: [ClockModel] = []
