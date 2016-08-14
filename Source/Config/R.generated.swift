@@ -43,7 +43,7 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 22 images.
+  /// This `R.image` struct is generated, and contains static references to 27 images.
   struct image {
     /// Image `clock`.
     static let clock = ImageResource(bundle: _R.hostingBundle, name: "clock")
@@ -81,6 +81,16 @@ struct R: Rswift.Validatable {
     static let photo = ImageResource(bundle: _R.hostingBundle, name: "photo")
     /// Image `plus`.
     static let plus = ImageResource(bundle: _R.hostingBundle, name: "plus")
+    /// Image `share_friend`.
+    static let share_friend = ImageResource(bundle: _R.hostingBundle, name: "share_friend")
+    /// Image `share_qzone`.
+    static let share_qzone = ImageResource(bundle: _R.hostingBundle, name: "share_qzone")
+    /// Image `share_sina`.
+    static let share_sina = ImageResource(bundle: _R.hostingBundle, name: "share_sina")
+    /// Image `share_tencent`.
+    static let share_tencent = ImageResource(bundle: _R.hostingBundle, name: "share_tencent")
+    /// Image `share_weixin`.
+    static let share_weixin = ImageResource(bundle: _R.hostingBundle, name: "share_weixin")
     /// Image `tata_close`.
     static let tata_close = ImageResource(bundle: _R.hostingBundle, name: "tata_close")
     /// Image `已恒温`.
@@ -180,6 +190,31 @@ struct R: Rswift.Validatable {
       return UIImage(resource: R.image.plus, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "share_friend", bundle: ..., traitCollection: ...)`
+    static func share_friend(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.share_friend, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "share_qzone", bundle: ..., traitCollection: ...)`
+    static func share_qzone(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.share_qzone, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "share_sina", bundle: ..., traitCollection: ...)`
+    static func share_sina(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.share_sina, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "share_tencent", bundle: ..., traitCollection: ...)`
+    static func share_tencent(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.share_tencent, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "share_weixin", bundle: ..., traitCollection: ...)`
+    static func share_weixin(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.share_weixin, compatibleWithTraitCollection: traitCollection)
+    }
+    
     /// `UIImage(named: "tata_close", bundle: ..., traitCollection: ...)`
     static func tata_close(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.tata_close, compatibleWithTraitCollection: traitCollection)
@@ -211,7 +246,7 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.nib` struct is generated, and contains static references to 13 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 14 nibs.
   struct nib {
     /// Nib `AboutUsViewController`.
     static let aboutUsViewController = _R.nib._AboutUsViewController()
@@ -235,6 +270,8 @@ struct R: Rswift.Validatable {
     static let kSGuidanceViewController = _R.nib._KSGuidanceViewController()
     /// Nib `MineTableViewCell`.
     static let mineTableViewCell = _R.nib._MineTableViewCell()
+    /// Nib `ShareSheet`.
+    static let shareSheet = _R.nib._ShareSheet()
     /// Nib `TemperatureTableViewCell`.
     static let temperatureTableViewCell = _R.nib._TemperatureTableViewCell()
     /// Nib `TemperatureViewController`.
@@ -293,6 +330,11 @@ struct R: Rswift.Validatable {
     /// `UINib(name: "MineTableViewCell", bundle: ...)`
     static func mineTableViewCell(_: Void) -> UINib {
       return UINib(resource: R.nib.mineTableViewCell)
+    }
+    
+    /// `UINib(name: "ShareSheet", bundle: ...)`
+    static func shareSheet(_: Void) -> UINib {
+      return UINib(resource: R.nib.shareSheet)
     }
     
     /// `UINib(name: "TemperatureTableViewCell", bundle: ...)`
@@ -513,6 +555,17 @@ struct _R: Rswift.Validatable {
       
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> MineTableViewCell? {
         return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? MineTableViewCell
+      }
+      
+      private init() {}
+    }
+    
+    struct _ShareSheet: NibResourceType {
+      let bundle = _R.hostingBundle
+      let name = "ShareSheet"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> ShareSheet? {
+        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? ShareSheet
       }
       
       private init() {}

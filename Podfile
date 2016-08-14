@@ -18,5 +18,7 @@ pod 'Bugly'
 pod 'Gifu'
 pod 'MonkeyKing'
 pod 'Charts'
+pod 'JTAppleCalendar'
+
 #pod 'libWeChatSDK',:git => "git@github.com:kingslay/libWeChatSDK.git"
 end

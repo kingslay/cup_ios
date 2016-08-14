@@ -43,6 +43,11 @@
 		3C80A5E11BCA5A9D0050B6B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C80A5DF1BCA5A9D0050B6B6 /* LaunchScreen.storyboard */; };
 		3C80A5EC1BCA5A9D0050B6B6 /* CupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C80A5EB1BCA5A9D0050B6B6 /* CupTests.swift */; };
 		3CC57E031BE7BA490050E64E /* KSPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC57E021BE7BA490050E64E /* KSPickerView.swift */; };
+		3CCCA7131D5F57D100AFC6A1 /* WaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCCA7121D5F57D100AFC6A1 /* WaterViewController.swift */; };
+		3CCCA7151D5F586900AFC6A1 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCCA7141D5F586900AFC6A1 /* ShareViewController.swift */; };
+		3CCCA7171D5F672800AFC6A1 /* ShareSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CCCA7161D5F672800AFC6A1 /* ShareSheet.xib */; };
+		3CCCA7191D5F67F800AFC6A1 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCCA7181D5F67F800AFC6A1 /* ShareSheet.swift */; };
+		3CCCA71B1D60080D00AFC6A1 /* WaterCycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCCA71A1D60080D00AFC6A1 /* WaterCycleView.swift */; };
 		3CDF8A7A1CEB02E500B2675B /* 1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3CDF8A721CEB02E500B2675B /* 1.gif */; };
 		3CDF8A7B1CEB02E500B2675B /* 2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3CDF8A731CEB02E500B2675B /* 2.gif */; };
 		3CDF8A7C1CEB02E500B2675B /* 3.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3CDF8A741CEB02E500B2675B /* 3.gif */; };
@@ -139,6 +144,11 @@
 		3C80A5EB1BCA5A9D0050B6B6 /* CupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CupTests.swift; sourceTree = "<group>"; };
 		3C80A5ED1BCA5A9D0050B6B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3CC57E021BE7BA490050E64E /* KSPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KSPickerView.swift; sourceTree = "<group>"; };
+		3CCCA7121D5F57D100AFC6A1 /* WaterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterViewController.swift; sourceTree = "<group>"; };
+		3CCCA7141D5F586900AFC6A1 /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		3CCCA7161D5F672800AFC6A1 /* ShareSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareSheet.xib; sourceTree = "<group>"; };
+		3CCCA7181D5F67F800AFC6A1 /* ShareSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
+		3CCCA71A1D60080D00AFC6A1 /* WaterCycleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterCycleView.swift; sourceTree = "<group>"; };
 		3CDF8A721CEB02E500B2675B /* 1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 1.gif; sourceTree = "<group>"; };
 		3CDF8A731CEB02E500B2675B /* 2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 2.gif; sourceTree = "<group>"; };
 		3CDF8A741CEB02E500B2675B /* 3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 3.gif; sourceTree = "<group>"; };
@@ -407,6 +417,8 @@
 		CB89F7AB1BE707BF00FD21FD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3CCCA7181D5F67F800AFC6A1 /* ShareSheet.swift */,
+				3CCCA7161D5F672800AFC6A1 /* ShareSheet.xib */,
 				3C76DDF61BF63924004C1BF4 /* NavigationAccessoryView.swift */,
 				3CC57E021BE7BA490050E64E /* KSPickerView.swift */,
 				CB6EF3EF1BF09FDD0040BF6E /* IndicatorView.swift */,
@@ -415,6 +427,7 @@
 				CBBCA3FE1BF18A30002E04F7 /* ClockCollectionHeaderView.xib */,
 				CBF5E3681BF1DAE0002D4F8F /* CupHeaderView.swift */,
 				CBF5E3741BF1F6E3002D4F8F /* CupHeaderView.xib */,
+				3CCCA71A1D60080D00AFC6A1 /* WaterCycleView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -437,8 +450,10 @@
 		CB89F7AD1BE707BF00FD21FD /* ViewControll */ = {
 			isa = PBXGroup;
 			children = (
+				3CCCA7141D5F586900AFC6A1 /* ShareViewController.swift */,
 				CB3CF8921BE9DD6E008D577E /* KSGuidanceViewController.swift */,
 				CB3CF8931BE9DD6E008D577E /* KSGuidanceViewController.xib */,
+				3CCCA7121D5F57D100AFC6A1 /* WaterViewController.swift */,
 				CB3CF8881BE9B04F008D577E /* UserLoginViewController.swift */,
 				CB3CF88A1BE9B071008D577E /* UserRegistViewController.swift */,
 				CB3CF88C1BE9B0AC008D577E /* Login.storyboard */,
@@ -583,6 +598,7 @@
 				CB3CF8951BE9DD6E008D577E /* KSGuidanceViewController.xib in Resources */,
 				3CECE6821BF38A0400C43890 /* FirmwareViewController.xib in Resources */,
 				CB3CF88D1BE9B0AC008D577E /* Login.storyboard in Resources */,
+				3CCCA7171D5F672800AFC6A1 /* ShareSheet.xib in Resources */,
 				3C1BDF8F1BF0D090003E34F8 /* SMS.storyboard in Resources */,
 				3CDF8A7F1CEB02E500B2675B /* 6.gif in Resources */,
 				CBE1DC3B1BEC81F900E1FF29 /* MineTableViewCell.xib in Resources */,
@@ -678,6 +694,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CCCA7151D5F586900AFC6A1 /* ShareViewController.swift in Sources */,
 				CB6EF3F01BF09FDD0040BF6E /* IndicatorView.swift in Sources */,
 				3C3947B11BEA44F800E7FE90 /* CFCityPickerVC+TableView.swift in Sources */,
 				CBBCA3FF1BF18A30002E04F7 /* ClockCollectionHeaderView.swift in Sources */,
@@ -686,8 +703,10 @@
 				CB3CF8891BE9B04F008D577E /* UserLoginViewController.swift in Sources */,
 				CBE1DC2D1BE9F81C00E1FF29 /* AccountViewController.swift in Sources */,
 				CBE1DC3A1BEC81F900E1FF29 /* MineTableViewCell.swift in Sources */,
+				3CCCA71B1D60080D00AFC6A1 /* WaterCycleView.swift in Sources */,
 				3C3947B61BEA44F800E7FE90 /* CityMaskView.swift in Sources */,
 				CBE1DC301BE9F92200E1FF29 /* AccountTableViewCell.swift in Sources */,
+				3CCCA7191D5F67F800AFC6A1 /* ShareSheet.swift in Sources */,
 				3C3947B01BEA44F800E7FE90 /* CFCityPickerVC+Main.swift in Sources */,
 				3C80A5D51BCA5A9C0050B6B6 /* AppDelegate.swift in Sources */,
 				CBF5E3701BF1F1CE002D4F8F /* TemperatureTableViewCell.swift in Sources */,
@@ -707,6 +726,7 @@
 				3C80A5D71BCA5A9C0050B6B6 /* CupViewController.swift in Sources */,
 				3C76DDF71BF63924004C1BF4 /* NavigationAccessoryView.swift in Sources */,
 				CB89F7BB1BE710EE00FD21FD /* TabBarViewController.swift in Sources */,
+				3CCCA7131D5F57D100AFC6A1 /* WaterViewController.swift in Sources */,
 				3CC57E031BE7BA490050E64E /* KSPickerView.swift in Sources */,
 				CB89F7C41BE73CD300FD21FD /* CupProvider.swift in Sources */,
 				3C3947AD1BEA44F800E7FE90 /* LocationManager.swift in Sources */,
