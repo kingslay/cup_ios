@@ -59,7 +59,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         configureAlamofireManager()
         SMSSDK.registerApp("c1013d64d3ff", withSecret: "528dd34e0cb571afea389ae783053243")
         MonkeyKing.registerAccount(.WeChat(appID: "wxfc361b137c76f916",appKey: nil))
-        MonkeyKing.registerAccount(.QQ(appID: "wxfc361b137c76f916"))
+        //appKey DDbYXy3a8zJH2aeA
+        MonkeyKing.registerAccount(.QQ(appID: "1105615474"))
         MonkeyKing.registerAccount(.Weibo(appID: "wxfc361b137c76f916", appKey: "wxfc361b137c76f916", redirectURL: "wxfc361b137c76f916"))
         return true
     }

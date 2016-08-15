@@ -47,7 +47,8 @@ public class ShareSheet: UIView {
             let info: MonkeyKing.Info = (title: "Session",
                 description: "Hello Session",
                 thumbnail: image,
-                media: .URL(NSURL(string: "http://www.apple.com/cn")!))
+                media: .Image(image!)
+            )
             var message: MonkeyKing.Message?
             switch view {
             case self.weiboButton:
