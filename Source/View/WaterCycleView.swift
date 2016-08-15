@@ -11,7 +11,11 @@ import KSSwiftExtension
 class WaterCycleView: UIView {
     var progress: CGFloat {
         didSet{
-            self.setNeedsDisplay()
+            CATransaction.begin()
+            CATransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn))
+            CATransaction.setAnimationDuration(0.5)
+            self.progressLayer.strokeEnd = progress/100.0;
+            CATransaction.commit()
         }
     }
     let label: UILabel = {
@@ -21,28 +25,40 @@ class WaterCycleView: UIView {
         label.text = "Hello, World!"
         return label
     }()
+    let trackLayer: CAShapeLayer = {
+        let layer = CAShapeLayer()
+        layer.fillColor = UIColor.clearColor().CGColor
+        layer.strokeColor = UIColor.redColor().CGColor
+        layer.opacity = 0.25
+        layer.lineCap = kCALineCapRound
+        layer.lineWidth = 10
+        return layer
+    }()
+    let progressLayer: CAShapeLayer = {
+        let layer = CAShapeLayer()
+        layer.fillColor = UIColor.clearColor().CGColor
+        layer.strokeColor = UIColor.blackColor().CGColor
+        layer.lineCap = kCALineCapRound
+        layer.lineWidth = 10
+        layer.strokeEnd = 0
+        return layer
+    }()
     override init(frame: CGRect) {
-        self.progress = 0.1
+        self.progress = 50
         super.init(frame: frame)
         self.backgroundColor = UIColor.whiteColor()
         self.label.center = CGPoint(x: self.ks_width/2, y: self.ks_height/2)
         self.addSubview(self.label)
+         let path = UIBezierPath(arcCenter: center, radius: 90, startAngle: CGFloat(-210*M_PI/180), endAngle: CGFloat(30.0*M_PI/180), clockwise: true)
+        self.trackLayer.path = path.CGPath
+        self.progressLayer.path = path.CGPath
+        self.layer.addSublayer(self.trackLayer)
+        self.layer.addSublayer(self.progressLayer)
+        self.progressLayer.strokeEnd = progress/100.0
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    override func drawRect(rect: CGRect) {
-        super.drawRect(rect)
-        let ctx = UIGraphicsGetCurrentContext()
-        let center = self.center
-        let startAngle = -CGFloat(M_PI+M_PI_2)
-        let endAngle = startAngle + CGFloat(M_PI*2)*self.progress
-        let path = UIBezierPath(arcCenter: center, radius: 90, startAngle: startAngle, endAngle: endAngle, clockwise: true)
-        CGContextSetLineWidth(ctx,10)
-        UIColor.redColor().setStroke()
-        CGContextAddPath(ctx,path.CGPath)
-        CGContextStrokePath(ctx);  //渲染
     }
 
 }
