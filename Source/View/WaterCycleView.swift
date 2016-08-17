@@ -9,13 +9,10 @@
 import UIKit
 import KSSwiftExtension
 class WaterCycleView: UIView {
-    var progress: CGFloat {
-        didSet{
-            CATransaction.begin()
-            CATransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn))
-            CATransaction.setAnimationDuration(0.5)
-            self.progressLayer.strokeEnd = progress/100.0;
-            CATransaction.commit()
+    var progress: CGFloat = 0 {
+        didSet {
+            self.progressLayer.strokeEnd = self.progress;
+            gradientLayer.mask = self.progressLayer
         }
     }
     let label: UILabel = {
@@ -43,22 +40,39 @@ class WaterCycleView: UIView {
         layer.strokeEnd = 0
         return layer
     }()
+    let gradientLayer = CALayer()
     override init(frame: CGRect) {
-        self.progress = 50
         super.init(frame: frame)
         self.backgroundColor = UIColor.whiteColor()
         self.label.center = CGPoint(x: self.ks_width/2, y: self.ks_height/2)
         self.addSubview(self.label)
-         let path = UIBezierPath(arcCenter: center, radius: 90, startAngle: CGFloat(-210*M_PI/180), endAngle: CGFloat(30.0*M_PI/180), clockwise: true)
+        let path = UIBezierPath(arcCenter: center, radius: 90, startAngle: CGFloat(-210*M_PI/180), endAngle: CGFloat(30.0*M_PI/180), clockwise: true)
         self.trackLayer.path = path.CGPath
         self.progressLayer.path = path.CGPath
         self.layer.addSublayer(self.trackLayer)
-        self.layer.addSublayer(self.progressLayer)
-        self.progressLayer.strokeEnd = progress/100.0
+        self.setUpGradientLayer()
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    func setUpGradientLayer() {
+        let gradientLayer1 = CAGradientLayer()
+        gradientLayer1.colors = [UIColor.blueColor().CGColor,UIColor.yellowColor().CGColor]
+        gradientLayer1.frame = CGRect(x: 0, y: 0, width: self.ks_width/2, height: self.ks_height)
+        gradientLayer1.locations = [0.5,0.9,1]
+        gradientLayer1.startPoint = CGPoint(x: 0.5, y: 1)
+        gradientLayer1.endPoint = CGPoint(x: 0.5, y: 0)
+        gradientLayer.addSublayer(gradientLayer1)
+        let gradientLayer2 = CAGradientLayer()
+        gradientLayer2.colors = [UIColor.blackColor().CGColor,UIColor.yellowColor().CGColor]
+        gradientLayer2.frame = CGRect(x: self.ks_width/2, y: 0, width: self.ks_width/2, height: self.ks_height)
+        gradientLayer2.locations = [0.1,0.5,1]
+        gradientLayer2.startPoint = CGPoint(x: 0.5, y: 0)
+        gradientLayer2.endPoint = CGPoint(x: 0.5, y: 1)
+        gradientLayer.addSublayer(gradientLayer2)
+        gradientLayer.mask = self.progressLayer
+        self.layer.addSublayer(gradientLayer)
     }
 
 }

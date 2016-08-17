@@ -48,6 +48,7 @@
 		3CCCA7171D5F672800AFC6A1 /* ShareSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CCCA7161D5F672800AFC6A1 /* ShareSheet.xib */; };
 		3CCCA7191D5F67F800AFC6A1 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCCA7181D5F67F800AFC6A1 /* ShareSheet.swift */; };
 		3CCCA71B1D60080D00AFC6A1 /* WaterCycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCCA71A1D60080D00AFC6A1 /* WaterCycleView.swift */; };
+		3CCF7EF31D635B77004B664F /* WaterHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF7EF21D635B77004B664F /* WaterHistoryViewController.swift */; };
 		3CDF8A7A1CEB02E500B2675B /* 1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3CDF8A721CEB02E500B2675B /* 1.gif */; };
 		3CDF8A7B1CEB02E500B2675B /* 2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3CDF8A731CEB02E500B2675B /* 2.gif */; };
 		3CDF8A7C1CEB02E500B2675B /* 3.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3CDF8A741CEB02E500B2675B /* 3.gif */; };
@@ -149,6 +150,7 @@
 		3CCCA7161D5F672800AFC6A1 /* ShareSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareSheet.xib; sourceTree = "<group>"; };
 		3CCCA7181D5F67F800AFC6A1 /* ShareSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 		3CCCA71A1D60080D00AFC6A1 /* WaterCycleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterCycleView.swift; sourceTree = "<group>"; };
+		3CCF7EF21D635B77004B664F /* WaterHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterHistoryViewController.swift; sourceTree = "<group>"; };
 		3CDF8A721CEB02E500B2675B /* 1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 1.gif; sourceTree = "<group>"; };
 		3CDF8A731CEB02E500B2675B /* 2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 2.gif; sourceTree = "<group>"; };
 		3CDF8A741CEB02E500B2675B /* 3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 3.gif; sourceTree = "<group>"; };
@@ -454,6 +456,7 @@
 				CB3CF8921BE9DD6E008D577E /* KSGuidanceViewController.swift */,
 				CB3CF8931BE9DD6E008D577E /* KSGuidanceViewController.xib */,
 				3CCCA7121D5F57D100AFC6A1 /* WaterViewController.swift */,
+				3CCF7EF21D635B77004B664F /* WaterHistoryViewController.swift */,
 				CB3CF8881BE9B04F008D577E /* UserLoginViewController.swift */,
 				CB3CF88A1BE9B071008D577E /* UserRegistViewController.swift */,
 				CB3CF88C1BE9B0AC008D577E /* Login.storyboard */,
@@ -694,6 +697,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CCF7EF31D635B77004B664F /* WaterHistoryViewController.swift in Sources */,
 				3CCCA7151D5F586900AFC6A1 /* ShareViewController.swift in Sources */,
 				CB6EF3F01BF09FDD0040BF6E /* IndicatorView.swift in Sources */,
 				3C3947B11BEA44F800E7FE90 /* CFCityPickerVC+TableView.swift in Sources */,
