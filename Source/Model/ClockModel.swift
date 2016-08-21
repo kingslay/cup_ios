@@ -37,7 +37,7 @@ class ClockModel: NSObject,Model,Storable {
         localNotification.applicationIconBadgeNumber = 1
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
         CupProvider.request(.Clock(self.description)).subscribeNext {_ in
-        }.addDisposableTo(self.ks_disposableBag)
+        }.addDisposableTo(self.ks.disposableBag)
     }
     func removeUILocalNotification(){
         if let localNotifications = UIApplication.sharedApplication().scheduledLocalNotifications {

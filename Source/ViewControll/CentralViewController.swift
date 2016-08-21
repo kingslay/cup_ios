@@ -88,7 +88,7 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
         if self.discoveries.count == 0 {
             self.indicatorView.startAnimating()
         }
-    }.addDisposableTo(self.ks_disposableBag)
+    }.addDisposableTo(self.ks.disposableBag)
   }
   deinit {
     central.stopScan()

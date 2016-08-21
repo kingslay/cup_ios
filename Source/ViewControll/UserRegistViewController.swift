@@ -57,7 +57,7 @@ class UserRegistViewController: UIViewController,UITextFieldDelegate {
             staticAccount = AccountModel(from: json as! [String : AnyObject])
             AccountModel.localSave()
             if staticIdentifier == nil {
-                self.navigationController?.pushViewController(CentralViewController())
+                self.navigationController?.ks.pushViewController(CentralViewController())
             }else{
                 UIApplication.sharedApplication().keyWindow!.rootViewController = R.storyboard.main.initialViewController()
             }

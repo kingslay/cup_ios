@@ -8,7 +8,7 @@
 
 import UIKit
 import MonkeyKing
-
+import KSSwiftExtension
 public class ShareSheet: UIView {
     @IBOutlet weak var containView: UIView!
     @IBOutlet weak var qqSpaceButton: UIButton!
@@ -30,14 +30,14 @@ public class ShareSheet: UIView {
         self.sendSubviewToBack(self.backgroundView)
     }
     public func showIn(view: UIView) {
-        image = UIImage.ks_imageFrom(view)
+        image = Swifty<UIImage>.imageFrom(view)
         self.frame = view.bounds
         view .addSubview(self)
         self.backgroundView.alpha = 0
-        self.containView.ks_top = self.ks_bottom
+        self.containView.ks.top(self.ks.bottom)
         UIView.animateWithDuration(0.25) { 
             self.backgroundView.alpha = 1
-            self.containView.ks_top = self.ks_bottom - self.containView.ks_height
+            self.containView.ks.top(self.ks.bottom - self.containView.ks.height)
         }
         let tapGestureRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(shareButtonTouchUpInside(_:)))
         self.addGestureRecognizer(tapGestureRecognizer)
@@ -70,7 +70,7 @@ public class ShareSheet: UIView {
             }
         }
         UIView.animateWithDuration(0.25) {
-            self.containView.ks_top = self.ks_bottom
+            self.containView.ks.top(self.ks.bottom)
             self.backgroundView.alpha = 0
         }
     }

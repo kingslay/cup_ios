@@ -31,8 +31,8 @@ class WaterViewController: ShareViewController {
         let tapGesture = UITapGestureRecognizer()
         self.chartView.addGestureRecognizer(tapGesture)
         tapGesture.rx_event.subscribeNext{ [unowned self](_) in
-            self.navigationController?.pushViewController(WaterHistoryViewController())
-        }.addDisposableTo(self.ks_disposableBag)
+            self.navigationController?.ks.pushViewController(WaterHistoryViewController())
+        }.addDisposableTo(self.ks.disposableBag)
         self.setUpChartData()
     }
     func setUpChartData() {

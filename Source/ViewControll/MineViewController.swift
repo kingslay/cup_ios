@@ -81,10 +81,10 @@ class MineViewController: UITableViewController {
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 0 {
-            self.navigationController?.pushViewController(AccountViewController())
+            self.navigationController?.ks.pushViewController(AccountViewController())
         }else{
             if indexPath.row == 0 {
-                self.navigationController?.pushViewController(R.nib.aboutUsViewController.firstView(owner: nil, options: nil)!)
+                self.navigationController?.ks.pushViewController(R.nib.aboutUsViewController.firstView(owner: nil, options: nil)!)
                 return
             }
             let vc = R.nib.firmwareViewController.firstView(owner: nil, options: nil)!
@@ -96,7 +96,7 @@ class MineViewController: UITableViewController {
             }else if indexPath.row == 3{
                 vc.updateButton.hidden = false
             }
-            self.navigationController?.pushViewController(vc)
+            self.navigationController?.ks.pushViewController(vc)
         }
     }
     

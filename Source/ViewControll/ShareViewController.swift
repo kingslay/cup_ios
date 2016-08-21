@@ -11,7 +11,7 @@ import Charts
 import KSSwiftExtension
 class ShareViewController: UIViewController {
     let chartView: LineChartView = {
-        let chartView = LineChartView(frame: CGRect(x: 0, y:0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT/2))
+        let chartView = LineChartView(frame: CGRect(x: 0, y:0, width: KS.SCREEN_WIDTH, height: KS.SCREEN_HEIGHT/2))
         chartView.descriptionText = "";
         chartView.scaleXEnabled = false
         chartView.scaleYEnabled = false

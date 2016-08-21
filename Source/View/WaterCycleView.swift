@@ -44,7 +44,7 @@ class WaterCycleView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.whiteColor()
-        self.label.center = CGPoint(x: self.ks_width/2, y: self.ks_height/2)
+        self.label.center = CGPoint(x: self.ks.width/2, y: self.ks.height/2)
         self.addSubview(self.label)
         let path = UIBezierPath(arcCenter: center, radius: 90, startAngle: CGFloat(-210*M_PI/180), endAngle: CGFloat(30.0*M_PI/180), clockwise: true)
         self.trackLayer.path = path.CGPath
@@ -59,14 +59,14 @@ class WaterCycleView: UIView {
     func setUpGradientLayer() {
         let gradientLayer1 = CAGradientLayer()
         gradientLayer1.colors = [UIColor.blueColor().CGColor,UIColor.yellowColor().CGColor]
-        gradientLayer1.frame = CGRect(x: 0, y: 0, width: self.ks_width/2, height: self.ks_height)
+        gradientLayer1.frame = CGRect(x: 0, y: 0, width: self.ks.width/2, height: self.ks.height)
         gradientLayer1.locations = [0.5,0.9,1]
         gradientLayer1.startPoint = CGPoint(x: 0.5, y: 1)
         gradientLayer1.endPoint = CGPoint(x: 0.5, y: 0)
         gradientLayer.addSublayer(gradientLayer1)
         let gradientLayer2 = CAGradientLayer()
         gradientLayer2.colors = [UIColor.blackColor().CGColor,UIColor.yellowColor().CGColor]
-        gradientLayer2.frame = CGRect(x: self.ks_width/2, y: 0, width: self.ks_width/2, height: self.ks_height)
+        gradientLayer2.frame = CGRect(x: self.ks.width/2, y: 0, width: self.ks.width/2, height: self.ks.height)
         gradientLayer2.locations = [0.1,0.5,1]
         gradientLayer2.startPoint = CGPoint(x: 0.5, y: 0)
         gradientLayer2.endPoint = CGPoint(x: 0.5, y: 1)

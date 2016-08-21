@@ -52,7 +52,7 @@ class KSGuidanceViewController: UIViewController {
         self.view.bringSubviewToFront(startButton)
         self.startButton.rx_tap.subscribeNext{
             UIApplication.sharedApplication().keyWindow?.rootViewController =  R.storyboard.sMS.initialViewController()
-        }.addDisposableTo(self.ks_disposableBag)
+        }.addDisposableTo(self.ks.disposableBag)
     }
 
     override func didReceiveMemoryWarning() {

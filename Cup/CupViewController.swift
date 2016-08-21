@@ -68,9 +68,9 @@ class CupViewController: UITableViewController {
     }
     
     func setTableHeaderView() {
-        headerView?.ks_height = 204
+        headerView?.ks.height(204)
         self.tableView.tableHeaderView = headerView
-        let view = UIView(frame: CGRectMake(0,204,self.view.ks_width,self.view.ks_height))
+        let view = UIView(frame: CGRectMake(0,204,self.view.ks.width,self.view.ks.height))
         view.alpha = 0.5
         view.backgroundColor = UIColor.blackColor()
         self.view.addSubview(view)
@@ -245,12 +245,12 @@ extension CupViewController {
             self.timer?.fire()
             //连接通过之后，发送一下。让杯子叫一下
             let data = NSMutableData()
-            data.appendUInt8(0x3a)
-            data.appendUInt8(0x11)
-            data.appendUInt16(0x00)
-            data.appendUInt16(0x00)
-            data.appendUInt8(0x11)
-            data.appendUInt8(0x0a)
+            data.ks.appendUInt8(0x3a)
+            data.ks.appendUInt8(0x11)
+            data.ks.appendUInt16(0x00)
+            data.ks.appendUInt16(0x00)
+            data.ks.appendUInt8(0x11)
+            data.ks.appendUInt8(0x0a)
             self.peripheral?.writeValue(data, forCharacteristic: characteristic, type: .WithResponse)
         }
     }
@@ -351,26 +351,26 @@ extension CupViewController {
     func sendTemperature() {
         if let characteristic = self.characteristic.value, selectedIndex = self.selectedIndex {
             let data = NSMutableData()
-            data.appendUInt8(0x3a)
-            data.appendUInt8(0x01)
+            data.ks.appendUInt8(0x3a)
+            data.ks.appendUInt8(0x01)
             var val = UInt16(self.temperatureArray[selectedIndex].temperature * 10)
             data.appendBytes(&val, length: sizeofValue(val))
-            data.appendUInt16(0x00)
+            data.ks.appendUInt16(0x00)
             let bytes = UnsafePointer<UInt8>(data.bytes)
-            data.appendUInt8(bytes[1] + bytes[2] + bytes[3] + bytes[4] + bytes[5])
-            data.appendUInt8(0x0a)
+            data.ks.appendUInt8(bytes[1] + bytes[2] + bytes[3] + bytes[4] + bytes[5])
+            data.ks.appendUInt8(0x0a)
             self.peripheral?.writeValue(data, forCharacteristic: characteristic, type: .WithResponse)
         }
     }
     func askTemperature() {
         if let characteristic = self.characteristic.value {
             let data = NSMutableData()
-            data.appendUInt8(0x3a)
-            data.appendUInt8(0x02)
-            data.appendUInt16(0x00)
-            data.appendUInt16(0x00)
-            data.appendUInt8(0x02)
-            data.appendUInt8(0x0a)
+            data.ks.appendUInt8(0x3a)
+            data.ks.appendUInt8(0x02)
+            data.ks.appendUInt16(0x00)
+            data.ks.appendUInt16(0x00)
+            data.ks.appendUInt8(0x02)
+            data.ks.appendUInt8(0x0a)
             self.peripheral?.writeValue(data, forCharacteristic: characteristic, type: .WithResponse)
         }
         refreshControl?.attributedTitle = NSAttributedString(string: "刷新中")

@@ -42,9 +42,9 @@ class ClockCollectionViewController: UICollectionViewController {
         self.collectionView?.registerNib(R.nib.clockCollectionHeaderView, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader)
         clockArray = ClockModel.getClocks()
         let flowLayout  = self.collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
-        flowLayout.headerReferenceSize = CGSizeMake(SCREEN_WIDTH, 204)
-        let width = SCREEN_WIDTH/3
-        var height = (self.view.ks_height - 108 - 204)/3
+        flowLayout.headerReferenceSize = CGSizeMake(KS.SCREEN_WIDTH, 204)
+        let width = KS.SCREEN_WIDTH/3
+        var height = (self.view.ks.height - 108 - 204)/3
         if height < 80 {
             height = 80
         }else{
@@ -116,12 +116,12 @@ extension ClockCollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: R.nib.clockCollectionHeaderView, forIndexPath: indexPath)!
-        let view = UIView(frame: CGRectMake(0,header.ks_height ,self.view.ks_width,self.view.ks_height))
+        let view = UIView(frame: CGRectMake(0,header.ks.height ,self.view.ks.width,self.view.ks.height))
         view.alpha = 0.5
         view.backgroundColor = UIColor.blackColor()
         self.close.asObservable().subscribeNext{ [unowned self]  in
             if $0 {
-                view.ks_top = (header.ks_height - collectionView.contentOffset.y)
+                view.ks.top(header.ks.height - collectionView.contentOffset.y)
                 self.view.addSubview(view)
                 header.headerImageView.image = R.image.clock_close()
             }else{

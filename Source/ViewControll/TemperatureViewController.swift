@@ -16,7 +16,7 @@ class TemperatureViewController: UIViewController {
     var model: TemperatureModel?
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.ks_autoAdjustKeyBoard()
+        self.ks.autoAdjustKeyBoard()
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(animated: Bool) {

@@ -11,11 +11,11 @@ import UIKit
 public class IndicatorView: UIView {
     let ovalLayer = CAShapeLayer()
     var ovalPathSmall: UIBezierPath {
-        return UIBezierPath(ovalInRect: CGRect(x: self.ks_centerX, y: self.ks_centerY, width: 0.0, height: 0.0))
+        return UIBezierPath(ovalInRect: CGRect(x: self.ks.centerX, y: self.ks.centerY, width: 0.0, height: 0.0))
     }
     
     var ovalPathLarge: UIBezierPath {
-        return UIBezierPath(ovalInRect: CGRect(x: self.ks_centerX-100, y: self.ks_centerY-100, width: 200, height: 200))
+        return UIBezierPath(ovalInRect: CGRect(x: self.ks.centerX-100, y: self.ks.centerY-100, width: 200, height: 200))
     }
 
     override init(frame: CGRect) {

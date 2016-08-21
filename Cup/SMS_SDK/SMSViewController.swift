@@ -24,7 +24,7 @@ class SMSViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.view.backgroundColor = Colors.background
-    let image = UIColor.ks_createImage(Colors.red)
+    let image = Swifty<UIColor>.createImage(Colors.red)
     self.verificationButton.setBackgroundImage(image, forState: .Normal)
     self.loginButton.setBackgroundImage(image, forState: .Normal)
     self.loginButton.enabled = true
@@ -64,9 +64,9 @@ class SMSViewController: UIViewController {
         }
       
       }.addDisposableTo(disposeBag)
-    self.ks_autoAdjustKeyBoard()
+    self.ks.autoAdjustKeyBoard()
   }
-    override func ks_relatedViewFor(inputView: UIView) -> UIView {
+    override func relatedViewFor(inputView: UIView) -> UIView {
         return self.loginButton
     }
   func setVerificationButtonText(){

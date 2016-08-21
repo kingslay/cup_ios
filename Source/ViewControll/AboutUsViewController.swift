@@ -14,7 +14,7 @@ class AboutUsViewController: UITableViewController {
         super.viewDidLoad()
         self.tableView.backgroundColor = Colors.background
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        let tableHeaderView = UIView(frame: CGRectMake(0,0,SCREEN_WIDTH,221))
+        let tableHeaderView = UIView(frame: CGRectMake(0,0,KS.SCREEN_WIDTH,221))
         tableHeaderView.backgroundColor = UIColor.whiteColor()
         let image = UIImageView(image: R.image.logo())
         tableHeaderView.addSubview(image)
@@ -32,8 +32,8 @@ class AboutUsViewController: UITableViewController {
         lable.textAlignment = .Center
         lable.sizeToFit()
         self.view.addSubview(lable)
-        lable.ks_centerX = self.view.ks_centerX
-        lable.ks_bottom = self.view.ks_bottom - 100;
+        lable.ks.centerX(self.view.ks.centerX)
+        lable.ks.bottom(self.view.ks.bottom - 100)
     }
 
     override func didReceiveMemoryWarning() {
