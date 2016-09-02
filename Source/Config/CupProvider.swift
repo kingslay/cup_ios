@@ -38,7 +38,8 @@ public enum CupMoya: TargetType  {
                 validateHost: true
             ),
             // 不验证证书链，总是让 TLS 握手成功
-            "121.199.75.79": .DisableEvaluation
+            "121.199.75.79": .DisableEvaluation,
+            "114.55.91.36": .DisableEvaluation
         ]
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
         configuration.HTTPAdditionalHeaders = Manager.defaultHTTPHeaders
@@ -48,7 +49,7 @@ public enum CupMoya: TargetType  {
         )
     }
 }
-let host = "https://121.199.75.79:8282"
+let host = "https://114.55.91.36:8282"
 //let host = "http://localhost:8280"
 
 extension CupMoya {

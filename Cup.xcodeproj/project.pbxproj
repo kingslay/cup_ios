@@ -550,7 +550,7 @@
 				TargetAttributes = {
 					3C80A5D01BCA5A9C0050B6B6 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 3GSRGS3539;
+						DevelopmentTeam = T63J6SF7QS;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -880,7 +880,7 @@
 				);
 				INFOPLIST_FILE = Cup/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.weilancup.8am;
+				PRODUCT_BUNDLE_IDENTIFIER = im.meiyou.IMYTTQ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Cup/Bridging-Header.h";
@@ -902,7 +902,7 @@
 				);
 				INFOPLIST_FILE = Cup/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.weilancup.8am;
+				PRODUCT_BUNDLE_IDENTIFIER = im.meiyou.IMYTTQ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Cup/Bridging-Header.h";
