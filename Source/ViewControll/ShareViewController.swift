@@ -32,7 +32,7 @@ class ShareViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.whiteColor()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: R.image.logo(), style: .Plain, target: self, action: #selector(showShareSheet(_:)))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: R.image.icon_share(), style: .Plain, target: self, action: #selector(showShareSheet(_:)))
     }
 
     func showShareSheet(view: UIView) {

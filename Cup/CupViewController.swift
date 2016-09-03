@@ -130,7 +130,7 @@ extension CupViewController {
                     model.open = on
                     tableView.reloadData()
                     self.selectedIndex = indexPath.row
-                    self.pleaseWait("正在下达指令 请稍后")
+                    self.ks.pleaseWait("正在下达指令 请稍后")
                     self.sendTemperature()
                 }
             } else {
@@ -152,7 +152,7 @@ extension CupViewController {
             make.centerY.equalTo(headerView)
         }
         let button = UIButton()
-        button.setImage(UIImage(named: R.image.plus.name), forState: .Normal)
+        button.setImage(UIImage(named: R.image.icon_add.name), forState: .Normal)
         headerView.addSubview(button)
         button.snp_makeConstraints { (make) -> Void in
             make.width.height.equalTo(27)
@@ -280,7 +280,7 @@ extension CupViewController {
         ///设置温度返回
         if bytes[1] == 0x88 {
             Async.main(after: 1){
-                self.clearAllNotice()
+                self.ks.clearAllNotice()
             }
             guard let selectedIndex = self.selectedIndex else {
                 return
@@ -290,18 +290,18 @@ extension CupViewController {
             self.headerView?.meExplanation.text = self.temperatureArray[selectedIndex].explanation
             if let text = self.headerView?.cupTemperaturelabel.text,cupTemperature = Int(text) {
                 if abs(cupTemperature - temperature) <= 1 {
-                    self.headerView?.cupTemperatureImageView.image = R.image.已恒温()
+                    //self.headerView?.cupTemperatureImageView.image = R.image.已恒温()
                     let alertController = UIAlertController(title: "亲! 水温已到达最适宜度数!", message: "请及时享用哦。", preferredStyle: .Alert)
                     let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default, handler: nil)
                     alertController.addAction(okAction)
                     presentViewController(alertController, animated: true, completion: nil)
                 }else{
-                    self.headerView?.cupTemperatureImageView.image = R.image.恒温中()
+                    //self.headerView?.cupTemperatureImageView.image = R.image.恒温中()
                 }
                 
             }
         }else if bytes[1] == 0x44 {
-            self.noticeError("校验码错误")
+            self.ks.noticeError("校验码错误")
         }else if bytes[1] == 0x01 || bytes[1] == 0x02 {
             //0x01是达到设置的温度 蓝牙自动返回
             //查询温度返回
@@ -317,7 +317,7 @@ extension CupViewController {
             }
             let temperature = self.temperatureArray[selectedIndex].temperature
             if abs(Int(cupTemperature) - temperature) <= 1  {
-                self.headerView?.cupTemperatureImageView.image = R.image.已恒温()
+//                self.headerView?.cupTemperatureImageView.image = R.image.已恒温()
                 let alertController = UIAlertController(title: "亲! 水温已到达最适宜度数!", message: "请及时享用哦。", preferredStyle: .Alert)
                 let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default, handler: nil)
                 alertController.addAction(okAction)

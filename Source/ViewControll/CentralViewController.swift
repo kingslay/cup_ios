@@ -59,25 +59,25 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
       make.bottom.equalTo(-20)
     }
     discoveriesTableView.tableHeaderView = headerView
-    let footerView = UIView()
-    let imageView = UIImageView(image: R.image.cup_adaptation())
-    footerView.addSubview(imageView)
-    imageView.snp_makeConstraints { (make) -> Void in
-      make.top.equalTo(30)
-      make.centerX.equalTo(0)
-    }
-    let footerLabel = UILabel()
-    footerLabel.text = "灯光闪烁表示已连接"
-    footerLabel.font = UIFont.systemFontOfSize(16)
-    footerLabel.sizeToFit()
-    footerView.addSubview(footerLabel)
-    footerLabel.snp_makeConstraints { (make) -> Void in
-      make.top.equalTo(imageView.snp_bottom).offset(28)
-      make.centerX.equalTo(0)
-    }
-    discoveriesTableView.tableFooterView = footerView
+//    let footerView = UIView()
+//    let imageView = UIImageView(image: R.image.cup_adaptation())
+//    footerView.addSubview(imageView)
+//    imageView.snp_makeConstraints { (make) -> Void in
+//      make.top.equalTo(30)
+//      make.centerX.equalTo(0)
+//    }
+//    let footerLabel = UILabel()
+//    footerLabel.text = "灯光闪烁表示已连接"
+//    footerLabel.font = UIFont.systemFontOfSize(16)
+//    footerLabel.sizeToFit()
+//    footerView.addSubview(footerLabel)
+//    footerLabel.snp_makeConstraints { (make) -> Void in
+//      make.top.equalTo(imageView.snp_bottom).offset(28)
+//      make.centerX.equalTo(0)
+//    }
+//    discoveriesTableView.tableFooterView = footerView
+//    footerView.hidden = true
     headerView.hidden = true
-    footerView.hidden = true
   }
   override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(animated)
@@ -145,7 +145,7 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
   }
   override func centralManager(central: CBCentralManager, didFailToConnectPeripheral peripheral: CBPeripheral, error: NSError?) {
     if let error = error {
-      self.noticeError("连接失败: \(error)")
+      self.ks.noticeError("连接失败: \(error)")
       if let _ = discoveries.remove(peripheral) {
         discoveriesTableView.reloadData()
       }

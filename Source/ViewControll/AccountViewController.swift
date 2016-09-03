@@ -91,9 +91,9 @@ class AccountViewController: UITableViewController {
             cell.valueTextField.hidden = true
             cell.headerImageView.hidden = false
             if let url = value {
-                cell.headerImageView.af_setImageWithURL(NSURL(string: url)!,placeholderImage: R.image.mine_photo(),filter: AspectScaledToFillSizeCircleFilter(size: CGSizeMake(62, 62)))
+                cell.headerImageView.af_setImageWithURL(NSURL(string: url)!,placeholderImage: R.image.label_icon_Personal_initial(),filter: AspectScaledToFillSizeCircleFilter(size: CGSizeMake(62, 62)))
             }else{
-                 cell.headerImageView.image = R.image.mine_photo()!.af_imageRoundedIntoCircle()
+                 cell.headerImageView.image = R.image.label_icon_Personal_initial()!.af_imageRoundedIntoCircle()
             }
         case (1,2):
             cell.valueTextField.userInteractionEnabled = true
@@ -170,13 +170,13 @@ class AccountViewController: UITableViewController {
                         AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: nil)
                         break
                     case .Denied:
-                        self.noticeInfo("请在iPhone的“设置-隐私-相机”选项中，允许访问你的相机",autoClear: true)
+                        self.ks.noticeInfo("请在iPhone的“设置-隐私-相机”选项中，允许访问你的相机",autoClear: true)
                         break
                     default:
                         break
                     }
                 }else{
-                    self.noticeInfo("您的设备没有摄像头!", autoClear: true)
+                    self.ks.noticeInfo("您的设备没有摄像头!", autoClear: true)
                     imagePickerController.sourceType = .PhotoLibrary
                 }
                 self.presentViewController(imagePickerController, animated: true, completion: nil)
@@ -225,7 +225,7 @@ class AccountViewController: UITableViewController {
                     staticAccount?.phone = phone
                     cell.valueTextField.text = staticAccount?.phone
                 }else{
-                    self.noticeInfo("手机号码错误")
+                    self.ks.noticeInfo("手机号码错误")
                 }
             }
             alertController.addAction(okAction)

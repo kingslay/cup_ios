@@ -21,22 +21,6 @@
 		3C1BDF941BF235AA003E34F8 /* TemperatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1BDF921BF235AA003E34F8 /* TemperatureViewController.swift */; };
 		3C1BDF951BF235AA003E34F8 /* TemperatureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C1BDF931BF235AA003E34F8 /* TemperatureViewController.xib */; };
 		3C3947441BE9012300E7FE90 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C3947431BE9012300E7FE90 /* Images.xcassets */; };
-		3C3947AA1BEA44F800E7FE90 /* CFCityPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3947941BEA44F800E7FE90 /* CFCityPickerVC.swift */; };
-		3C3947AB1BEA44F800E7FE90 /* City.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C3947951BEA44F800E7FE90 /* City.plist */; };
-		3C3947AC1BEA44F800E7FE90 /* CFCityPickerVCCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3947971BEA44F800E7FE90 /* CFCityPickerVCCommon.swift */; };
-		3C3947AD1BEA44F800E7FE90 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3947981BEA44F800E7FE90 /* LocationManager.swift */; };
-		3C3947AE1BEA44F800E7FE90 /* CitySearchResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C39479A1BEA44F800E7FE90 /* CitySearchResultVC.swift */; };
-		3C3947AF1BEA44F800E7FE90 /* CitySearchResultVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C39479B1BEA44F800E7FE90 /* CitySearchResultVC.xib */; };
-		3C3947B01BEA44F800E7FE90 /* CFCityPickerVC+Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C39479D1BEA44F800E7FE90 /* CFCityPickerVC+Main.swift */; };
-		3C3947B11BEA44F800E7FE90 /* CFCityPickerVC+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C39479E1BEA44F800E7FE90 /* CFCityPickerVC+TableView.swift */; };
-		3C3947B21BEA44F800E7FE90 /* CityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3947A01BEA44F800E7FE90 /* CityModel.swift */; };
-		3C3947B31BEA44F800E7FE90 /* img.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3C3947A21BEA44F800E7FE90 /* img.bundle */; };
-		3C3947B41BEA44F800E7FE90 /* CFCityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3947A41BEA44F800E7FE90 /* CFCityCell.swift */; };
-		3C3947B51BEA44F800E7FE90 /* CFCityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C3947A51BEA44F800E7FE90 /* CFCityCell.xib */; };
-		3C3947B61BEA44F800E7FE90 /* CityMaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3947A61BEA44F800E7FE90 /* CityMaskView.swift */; };
-		3C3947B71BEA44F800E7FE90 /* CitySearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3947A71BEA44F800E7FE90 /* CitySearchBar.swift */; };
-		3C3947B81BEA44F800E7FE90 /* HeaderItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3947A81BEA44F800E7FE90 /* HeaderItemView.swift */; };
-		3C3947B91BEA44F800E7FE90 /* HeaderItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C3947A91BEA44F800E7FE90 /* HeaderItemView.xib */; };
 		3C76DDF71BF63924004C1BF4 /* NavigationAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C76DDF61BF63924004C1BF4 /* NavigationAccessoryView.swift */; };
 		3C80A5D51BCA5A9C0050B6B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C80A5D41BCA5A9C0050B6B6 /* AppDelegate.swift */; };
 		3C80A5D71BCA5A9C0050B6B6 /* CupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C80A5D61BCA5A9C0050B6B6 /* CupViewController.swift */; };
@@ -119,22 +103,6 @@
 		3C1BDF921BF235AA003E34F8 /* TemperatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemperatureViewController.swift; sourceTree = "<group>"; };
 		3C1BDF931BF235AA003E34F8 /* TemperatureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemperatureViewController.xib; sourceTree = "<group>"; };
 		3C3947431BE9012300E7FE90 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		3C3947941BEA44F800E7FE90 /* CFCityPickerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFCityPickerVC.swift; sourceTree = "<group>"; };
-		3C3947951BEA44F800E7FE90 /* City.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = City.plist; sourceTree = "<group>"; };
-		3C3947971BEA44F800E7FE90 /* CFCityPickerVCCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFCityPickerVCCommon.swift; sourceTree = "<group>"; };
-		3C3947981BEA44F800E7FE90 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		3C39479A1BEA44F800E7FE90 /* CitySearchResultVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitySearchResultVC.swift; sourceTree = "<group>"; };
-		3C39479B1BEA44F800E7FE90 /* CitySearchResultVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CitySearchResultVC.xib; sourceTree = "<group>"; };
-		3C39479D1BEA44F800E7FE90 /* CFCityPickerVC+Main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CFCityPickerVC+Main.swift"; sourceTree = "<group>"; };
-		3C39479E1BEA44F800E7FE90 /* CFCityPickerVC+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CFCityPickerVC+TableView.swift"; sourceTree = "<group>"; };
-		3C3947A01BEA44F800E7FE90 /* CityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityModel.swift; sourceTree = "<group>"; };
-		3C3947A21BEA44F800E7FE90 /* img.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = img.bundle; sourceTree = "<group>"; };
-		3C3947A41BEA44F800E7FE90 /* CFCityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFCityCell.swift; sourceTree = "<group>"; };
-		3C3947A51BEA44F800E7FE90 /* CFCityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CFCityCell.xib; sourceTree = "<group>"; };
-		3C3947A61BEA44F800E7FE90 /* CityMaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityMaskView.swift; sourceTree = "<group>"; };
-		3C3947A71BEA44F800E7FE90 /* CitySearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitySearchBar.swift; sourceTree = "<group>"; };
-		3C3947A81BEA44F800E7FE90 /* HeaderItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderItemView.swift; sourceTree = "<group>"; };
-		3C3947A91BEA44F800E7FE90 /* HeaderItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderItemView.xib; sourceTree = "<group>"; };
 		3C76DDF61BF63924004C1BF4 /* NavigationAccessoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationAccessoryView.swift; sourceTree = "<group>"; };
 		3C80A5D11BCA5A9C0050B6B6 /* Cup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C80A5D41BCA5A9C0050B6B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -250,77 +218,6 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
-		3C3947931BEA44F800E7FE90 /* CFCityPickerVC */ = {
-			isa = PBXGroup;
-			children = (
-				3C3947941BEA44F800E7FE90 /* CFCityPickerVC.swift */,
-				3C3947951BEA44F800E7FE90 /* City.plist */,
-				3C3947961BEA44F800E7FE90 /* Common */,
-				3C3947991BEA44F800E7FE90 /* Controller */,
-				3C39479C1BEA44F800E7FE90 /* Extendsion */,
-				3C39479F1BEA44F800E7FE90 /* Model */,
-				3C3947A11BEA44F800E7FE90 /* Resource */,
-				3C3947A31BEA44F800E7FE90 /* View */,
-			);
-			path = CFCityPickerVC;
-			sourceTree = "<group>";
-		};
-		3C3947961BEA44F800E7FE90 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				3C3947971BEA44F800E7FE90 /* CFCityPickerVCCommon.swift */,
-				3C3947981BEA44F800E7FE90 /* LocationManager.swift */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
-		3C3947991BEA44F800E7FE90 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				3C39479A1BEA44F800E7FE90 /* CitySearchResultVC.swift */,
-				3C39479B1BEA44F800E7FE90 /* CitySearchResultVC.xib */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		3C39479C1BEA44F800E7FE90 /* Extendsion */ = {
-			isa = PBXGroup;
-			children = (
-				3C39479D1BEA44F800E7FE90 /* CFCityPickerVC+Main.swift */,
-				3C39479E1BEA44F800E7FE90 /* CFCityPickerVC+TableView.swift */,
-			);
-			path = Extendsion;
-			sourceTree = "<group>";
-		};
-		3C39479F1BEA44F800E7FE90 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				3C3947A01BEA44F800E7FE90 /* CityModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		3C3947A11BEA44F800E7FE90 /* Resource */ = {
-			isa = PBXGroup;
-			children = (
-				3C3947A21BEA44F800E7FE90 /* img.bundle */,
-			);
-			path = Resource;
-			sourceTree = "<group>";
-		};
-		3C3947A31BEA44F800E7FE90 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				3C3947A41BEA44F800E7FE90 /* CFCityCell.swift */,
-				3C3947A51BEA44F800E7FE90 /* CFCityCell.xib */,
-				3C3947A61BEA44F800E7FE90 /* CityMaskView.swift */,
-				3C3947A71BEA44F800E7FE90 /* CitySearchBar.swift */,
-				3C3947A81BEA44F800E7FE90 /* HeaderItemView.swift */,
-				3C3947A91BEA44F800E7FE90 /* HeaderItemView.xib */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		3C80A5C81BCA5A9C0050B6B6 = {
 			isa = PBXGroup;
 			children = (
@@ -378,7 +275,6 @@
 		CB89F7A71BE707BF00FD21FD /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				3C3947931BEA44F800E7FE90 /* CFCityPickerVC */,
 				CB89F7A81BE707BF00FD21FD /* Config */,
 				CB89F7A91BE707BF00FD21FD /* Model */,
 				CB89F7AA1BE707BF00FD21FD /* Utils */,
@@ -592,12 +488,9 @@
 				3CDF8A801CEB02E500B2675B /* 7.gif in Resources */,
 				3CDF8A7E1CEB02E500B2675B /* 5.gif in Resources */,
 				3C80A5E11BCA5A9D0050B6B6 /* LaunchScreen.storyboard in Resources */,
-				3C3947B31BEA44F800E7FE90 /* img.bundle in Resources */,
 				3C1BDF951BF235AA003E34F8 /* TemperatureViewController.xib in Resources */,
 				CBF5E3711BF1F1CE002D4F8F /* TemperatureTableViewCell.xib in Resources */,
 				3CDF8A7A1CEB02E500B2675B /* 1.gif in Resources */,
-				3C3947B91BEA44F800E7FE90 /* HeaderItemView.xib in Resources */,
-				3C3947B51BEA44F800E7FE90 /* CFCityCell.xib in Resources */,
 				CB3CF8951BE9DD6E008D577E /* KSGuidanceViewController.xib in Resources */,
 				3CECE6821BF38A0400C43890 /* FirmwareViewController.xib in Resources */,
 				CB3CF88D1BE9B0AC008D577E /* Login.storyboard in Resources */,
@@ -609,13 +502,11 @@
 				3C3947441BE9012300E7FE90 /* Images.xcassets in Resources */,
 				3C1BDF8A1BF0CA60003E34F8 /* SMS_SDKLocalizable.strings in Resources */,
 				CBBCA4001BF18A30002E04F7 /* ClockCollectionHeaderView.xib in Resources */,
-				3C3947AF1BEA44F800E7FE90 /* CitySearchResultVC.xib in Resources */,
 				3CECE6861BF3996500C43890 /* AboutUsViewController.xib in Resources */,
 				3CDF8A7B1CEB02E500B2675B /* 2.gif in Resources */,
 				CBE1DC291BE9EE5B00E1FF29 /* Main.storyboard in Resources */,
 				CBF5E3751BF1F6E3002D4F8F /* CupHeaderView.xib in Resources */,
 				3CDF8A7C1CEB02E500B2675B /* 3.gif in Resources */,
-				3C3947AB1BEA44F800E7FE90 /* City.plist in Resources */,
 				CBE1DC311BE9F92200E1FF29 /* AccountTableViewCell.xib in Resources */,
 				CB89F7B41BE70B2700FD21FD /* ClockCollectionViewCell.xib in Resources */,
 			);
@@ -700,7 +591,6 @@
 				3CCF7EF31D635B77004B664F /* WaterHistoryViewController.swift in Sources */,
 				3CCCA7151D5F586900AFC6A1 /* ShareViewController.swift in Sources */,
 				CB6EF3F01BF09FDD0040BF6E /* IndicatorView.swift in Sources */,
-				3C3947B11BEA44F800E7FE90 /* CFCityPickerVC+TableView.swift in Sources */,
 				CBBCA3FF1BF18A30002E04F7 /* ClockCollectionHeaderView.swift in Sources */,
 				3CECE6851BF3996500C43890 /* AboutUsViewController.swift in Sources */,
 				CBE1DC331BEA04ED00E1FF29 /* AccountModel.swift in Sources */,
@@ -708,32 +598,22 @@
 				CBE1DC2D1BE9F81C00E1FF29 /* AccountViewController.swift in Sources */,
 				CBE1DC3A1BEC81F900E1FF29 /* MineTableViewCell.swift in Sources */,
 				3CCCA71B1D60080D00AFC6A1 /* WaterCycleView.swift in Sources */,
-				3C3947B61BEA44F800E7FE90 /* CityMaskView.swift in Sources */,
 				CBE1DC301BE9F92200E1FF29 /* AccountTableViewCell.swift in Sources */,
 				3CCCA7191D5F67F800AFC6A1 /* ShareSheet.swift in Sources */,
-				3C3947B01BEA44F800E7FE90 /* CFCityPickerVC+Main.swift in Sources */,
 				3C80A5D51BCA5A9C0050B6B6 /* AppDelegate.swift in Sources */,
 				CBF5E3701BF1F1CE002D4F8F /* TemperatureTableViewCell.swift in Sources */,
-				3C3947AE1BEA44F800E7FE90 /* CitySearchResultVC.swift in Sources */,
-				3C3947B71BEA44F800E7FE90 /* CitySearchBar.swift in Sources */,
-				3C3947B41BEA44F800E7FE90 /* CFCityCell.swift in Sources */,
 				CBF5E36D1BF1ED3E002D4F8F /* TemperatureModel.swift in Sources */,
 				CBE9E7C51BE88A1B00CE922B /* ClockModel.swift in Sources */,
-				3C3947B81BEA44F800E7FE90 /* HeaderItemView.swift in Sources */,
-				3C3947B21BEA44F800E7FE90 /* CityModel.swift in Sources */,
 				CB3CF8941BE9DD6E008D577E /* KSGuidanceViewController.swift in Sources */,
 				3CECE6811BF38A0400C43890 /* FirmwareViewController.swift in Sources */,
 				CB89F7B71BE7101200FD21FD /* ClockCollectionViewController.swift in Sources */,
-				3C3947AA1BEA44F800E7FE90 /* CFCityPickerVC.swift in Sources */,
 				CB3CF88B1BE9B071008D577E /* UserRegistViewController.swift in Sources */,
-				3C3947AC1BEA44F800E7FE90 /* CFCityPickerVCCommon.swift in Sources */,
 				3C80A5D71BCA5A9C0050B6B6 /* CupViewController.swift in Sources */,
 				3C76DDF71BF63924004C1BF4 /* NavigationAccessoryView.swift in Sources */,
 				CB89F7BB1BE710EE00FD21FD /* TabBarViewController.swift in Sources */,
 				3CCCA7131D5F57D100AFC6A1 /* WaterViewController.swift in Sources */,
 				3CC57E031BE7BA490050E64E /* KSPickerView.swift in Sources */,
 				CB89F7C41BE73CD300FD21FD /* CupProvider.swift in Sources */,
-				3C3947AD1BEA44F800E7FE90 /* LocationManager.swift in Sources */,
 				CB89F7B31BE70B2700FD21FD /* ClockCollectionViewCell.swift in Sources */,
 				3C1BD86D1BEB8DA9003E34F8 /* Colors.swift in Sources */,
 				CBF5E3691BF1DAE0002D4F8F /* CupHeaderView.swift in Sources */,

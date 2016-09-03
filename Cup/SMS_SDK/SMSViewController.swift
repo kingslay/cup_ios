@@ -30,9 +30,9 @@ class SMSViewController: UIViewController {
     self.loginButton.enabled = true
     self.verificationButton.rx_tap.subscribeNext { [unowned self] in
       if let phone = self.phoneTextField.text where phone.checkMobileNumble() {
-        self.pleaseWait("发送验证码中")
+        self.ks.pleaseWait("发送验证码中")
         SMSSDK.getVerificationCodeByMethod(SMSGetCodeMethodSMS, phoneNumber: phone, zone: "86", customIdentifier: nil, result: {
-          self.clearAllNotice()
+          self.ks.clearAllNotice()
           if let error = $0 {
             let alert = UIAlertController(title: nil, message: "\(error.userInfo["getVerificationCode"]!)", preferredStyle: .Alert)
             self.presentViewController(alert, animated: true, completion: nil)
@@ -45,7 +45,7 @@ class SMSViewController: UIViewController {
           }
         })
       }else{
-        self.noticeError("手机号码错误，请重新输入", autoClear: true)
+        self.ks.noticeError("手机号码错误，请重新输入", autoClear: true)
       }
       
       }.addDisposableTo(disposeBag)
@@ -56,7 +56,7 @@ class SMSViewController: UIViewController {
         } else {
             SMSSDK.commitVerificationCode(self.verificationTextField.text, phoneNumber: self.phoneTextField.text, zone: "86", result: {
                 if let error = $0 {
-                    self.noticeError("\(error.userInfo["commitVerificationCode"]!)", autoClear: true)
+                    self.ks.noticeError("\(error.userInfo["commitVerificationCode"]!)", autoClear: true)
                 }else{
                     self.phonelogin()
                 }
@@ -80,12 +80,12 @@ class SMSViewController: UIViewController {
     }
   }
   func phonelogin() {
-    self.pleaseWait("正在登录中")
+    self.ks.pleaseWait("正在登录中")
     self.verificationButton.enabled = true
     self.timer?.invalidate()
     self.view.userInteractionEnabled = false
     CupProvider.request(.PhoneLogin(self.phoneTextField.text!)).filterSuccessfulStatusCodes().mapJSON().observeOn(MainScheduler.instance).subscribe(onNext: { (let json) -> Void in
-      self.clearAllNotice()
+      self.ks.clearAllNotice()
         staticAccount = AccountModel(from: json as! [String : AnyObject])
       AccountModel.localSave()
 //      if staticIdentifier == nil {
@@ -94,10 +94,10 @@ class SMSViewController: UIViewController {
         UIApplication.sharedApplication().keyWindow!.rootViewController = R.storyboard.main.initialViewController()
 //      }
       }, onError: {
-        self.clearAllNotice()
+        self.ks.clearAllNotice()
         self.view.userInteractionEnabled = true
         if let error = $0 as? NSError, let response = error.userInfo["data"] as? Moya.Response {
-          self.noticeError(JSON(data: response.data)["message"].stringValue, autoClear: true)
+          self.ks.noticeError(JSON(data: response.data)["message"].stringValue, autoClear: true)
         }
         
     }).addDisposableTo(disposeBag)

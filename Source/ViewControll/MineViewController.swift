@@ -42,9 +42,9 @@ class MineViewController: UITableViewController {
         cell.accessoryType = .DisclosureIndicator
         if indexPath.section == 0 {
             if let str = staticAccount?.avatar,url = NSURL(string: str) {
-                cell.imageView!.af_setImageWithURL(url, placeholderImage: R.image.mine_photo(),filter: AspectScaledToFillSizeCircleFilter(size: CGSizeMake(62, 62)))
+                cell.imageView!.af_setImageWithURL(url, placeholderImage: R.image.label_icon_Personal_initial(),filter: AspectScaledToFillSizeCircleFilter(size: CGSizeMake(62, 62)))
             }else{
-                cell.imageView!.image = R.image.mine_photo()!.af_imageRoundedIntoCircle()
+                cell.imageView!.image = R.image.label_icon_Personal_initial()!.af_imageRoundedIntoCircle()
             }
             cell.textLabel?.text = "个人信息"
             return cell

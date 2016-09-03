@@ -3,8 +3,9 @@ inhibit_all_warnings!
 platform:ios, "8.0"
 use_frameworks!
 target :Cup do
-pod 'KSSwiftExtension/RxCocoa'
-pod 'KSJSONHelp/SQLite'
+pod 'KSSwiftExtension/RxCocoa', :path => "../KSSwiftExtension"
+pod 'KSSwiftExtension/ViewKit', :path => "../KSSwiftExtension"
+pod 'KSJSONHelp/SQLiteStandalone', :path => "../KSJSONHelp"
 pod 'R.swift'
 pod 'Moya/RxSwift'
 pod 'RxCocoa'

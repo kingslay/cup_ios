@@ -47,7 +47,7 @@ class TemperatureViewController: UIViewController {
             model.save()
             self.dismissViewControllerAnimated(true, completion: nil)
         }else{
-            self.noticeInfo("温度描述不能为空")
+            self.ks.noticeInfo("温度描述不能为空")
         }
     }
     @IBAction func textFieldDidEndOnExit(sender: UIResponder) {

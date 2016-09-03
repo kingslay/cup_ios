@@ -16,25 +16,8 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.file` struct is generated, and contains static references to 2 files.
+  /// This `R.file` struct is generated, and contains static references to 0 files.
   struct file {
-    /// Resource file `City.plist`.
-    static let cityPlist = FileResource(bundle: _R.hostingBundle, name: "City", pathExtension: "plist")
-    /// Resource file `img.bundle`.
-    static let imgBundle = FileResource(bundle: _R.hostingBundle, name: "img", pathExtension: "bundle")
-    
-    /// `bundle.URLForResource("City", withExtension: "plist")`
-    static func cityPlist(_: Void) -> NSURL? {
-      let fileResource = R.file.cityPlist
-      return fileResource.bundle.URLForResource(fileResource)
-    }
-    
-    /// `bundle.URLForResource("img", withExtension: "bundle")`
-    static func imgBundle(_: Void) -> NSURL? {
-      let fileResource = R.file.imgBundle
-      return fileResource.bundle.URLForResource(fileResource)
-    }
-    
     private init() {}
   }
   
@@ -43,196 +26,462 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 27 images.
+  /// This `R.image` struct is generated, and contains static references to 65 images.
   struct image {
-    /// Image `clock`.
-    static let clock = ImageResource(bundle: _R.hostingBundle, name: "clock")
-    /// Image `clock_close`.
-    static let clock_close = ImageResource(bundle: _R.hostingBundle, name: "clock_close")
-    /// Image `clock_open`.
-    static let clock_open = ImageResource(bundle: _R.hostingBundle, name: "clock_open")
-    /// Image `clock_up`.
-    static let clock_up = ImageResource(bundle: _R.hostingBundle, name: "clock_up")
-    /// Image `cup`.
-    static let cup = ImageResource(bundle: _R.hostingBundle, name: "cup")
-    /// Image `cup_adaptation`.
-    static let cup_adaptation = ImageResource(bundle: _R.hostingBundle, name: "cup_adaptation")
-    /// Image `cup_level`.
-    static let cup_level = ImageResource(bundle: _R.hostingBundle, name: "cup_level")
-    /// Image `cup_up`.
-    static let cup_up = ImageResource(bundle: _R.hostingBundle, name: "cup_up")
-    /// Image `Guidance1`.
-    static let guidance1 = ImageResource(bundle: _R.hostingBundle, name: "Guidance1")
-    /// Image `Guidance2`.
-    static let guidance2 = ImageResource(bundle: _R.hostingBundle, name: "Guidance2")
-    /// Image `Guidance3`.
-    static let guidance3 = ImageResource(bundle: _R.hostingBundle, name: "Guidance3")
-    /// Image `Guidance4`.
-    static let guidance4 = ImageResource(bundle: _R.hostingBundle, name: "Guidance4")
-    /// Image `logo`.
-    static let logo = ImageResource(bundle: _R.hostingBundle, name: "logo")
-    /// Image `me`.
-    static let me = ImageResource(bundle: _R.hostingBundle, name: "me")
-    /// Image `me_up`.
-    static let me_up = ImageResource(bundle: _R.hostingBundle, name: "me_up")
-    /// Image `mine_photo`.
-    static let mine_photo = ImageResource(bundle: _R.hostingBundle, name: "mine_photo")
-    /// Image `photo`.
-    static let photo = ImageResource(bundle: _R.hostingBundle, name: "photo")
-    /// Image `plus`.
-    static let plus = ImageResource(bundle: _R.hostingBundle, name: "plus")
-    /// Image `share_friend`.
-    static let share_friend = ImageResource(bundle: _R.hostingBundle, name: "share_friend")
-    /// Image `share_qzone`.
-    static let share_qzone = ImageResource(bundle: _R.hostingBundle, name: "share_qzone")
-    /// Image `share_sina`.
-    static let share_sina = ImageResource(bundle: _R.hostingBundle, name: "share_sina")
-    /// Image `share_tencent`.
-    static let share_tencent = ImageResource(bundle: _R.hostingBundle, name: "share_tencent")
-    /// Image `share_weixin`.
-    static let share_weixin = ImageResource(bundle: _R.hostingBundle, name: "share_weixin")
-    /// Image `tata_close`.
-    static let tata_close = ImageResource(bundle: _R.hostingBundle, name: "tata_close")
-    /// Image `已恒温`.
-    static let 已恒温 = ImageResource(bundle: _R.hostingBundle, name: "已恒温")
-    /// Image `恒温中`.
-    static let 恒温中 = ImageResource(bundle: _R.hostingBundle, name: "恒温中")
-    /// Image `自然温`.
-    static let 自然温 = ImageResource(bundle: _R.hostingBundle, name: "自然温")
+    /// Image `LOGO`.
+    static let lOGO = ImageResource(bundle: _R.hostingBundle, name: "LOGO")
+    /// Image `bar_icon_back`.
+    static let bar_icon_back = ImageResource(bundle: _R.hostingBundle, name: "bar_icon_back")
+    /// Image `bar_icon_√`.
+    static let bar_icon_ = ImageResource(bundle: _R.hostingBundle, name: "bar_icon_√")
+    /// Image `bg_water`.
+    static let bg_water = ImageResource(bundle: _R.hostingBundle, name: "bg_water")
+    /// Image `bounced_success`.
+    static let bounced_success = ImageResource(bundle: _R.hostingBundle, name: "bounced_success")
+    /// Image `button_day11`.
+    static let button_day11 = ImageResource(bundle: _R.hostingBundle, name: "button_day11")
+    /// Image `button_day1`.
+    static let button_day1 = ImageResource(bundle: _R.hostingBundle, name: "button_day1")
+    /// Image `button_day22`.
+    static let button_day22 = ImageResource(bundle: _R.hostingBundle, name: "button_day22")
+    /// Image `button_day2`.
+    static let button_day2 = ImageResource(bundle: _R.hostingBundle, name: "button_day2")
+    /// Image `button_day33`.
+    static let button_day33 = ImageResource(bundle: _R.hostingBundle, name: "button_day33")
+    /// Image `button_day3`.
+    static let button_day3 = ImageResource(bundle: _R.hostingBundle, name: "button_day3")
+    /// Image `button_day44`.
+    static let button_day44 = ImageResource(bundle: _R.hostingBundle, name: "button_day44")
+    /// Image `button_day4`.
+    static let button_day4 = ImageResource(bundle: _R.hostingBundle, name: "button_day4")
+    /// Image `button_day55`.
+    static let button_day55 = ImageResource(bundle: _R.hostingBundle, name: "button_day55")
+    /// Image `button_day5`.
+    static let button_day5 = ImageResource(bundle: _R.hostingBundle, name: "button_day5")
+    /// Image `button_day66`.
+    static let button_day66 = ImageResource(bundle: _R.hostingBundle, name: "button_day66")
+    /// Image `button_day6`.
+    static let button_day6 = ImageResource(bundle: _R.hostingBundle, name: "button_day6")
+    /// Image `button_day77`.
+    static let button_day77 = ImageResource(bundle: _R.hostingBundle, name: "button_day77")
+    /// Image `button_day7`.
+    static let button_day7 = ImageResource(bundle: _R.hostingBundle, name: "button_day7")
+    /// Image `button_man1`.
+    static let button_man1 = ImageResource(bundle: _R.hostingBundle, name: "button_man1")
+    /// Image `button_man2`.
+    static let button_man2 = ImageResource(bundle: _R.hostingBundle, name: "button_man2")
+    /// Image `button_woman1`.
+    static let button_woman1 = ImageResource(bundle: _R.hostingBundle, name: "button_woman1")
+    /// Image `button_woman2`.
+    static let button_woman2 = ImageResource(bundle: _R.hostingBundle, name: "button_woman2")
+    /// Image `icon_Battery_charging`.
+    static let icon_Battery_charging = ImageResource(bundle: _R.hostingBundle, name: "icon_Battery_charging")
+    /// Image `icon_Battery_hight`.
+    static let icon_Battery_hight = ImageResource(bundle: _R.hostingBundle, name: "icon_Battery_hight")
+    /// Image `icon_Battery_low`.
+    static let icon_Battery_low = ImageResource(bundle: _R.hostingBundle, name: "icon_Battery_low")
+    /// Image `icon_Clock_initial`.
+    static let icon_Clock_initial = ImageResource(bundle: _R.hostingBundle, name: "icon_Clock_initial")
+    /// Image `icon_Head`.
+    static let icon_Head = ImageResource(bundle: _R.hostingBundle, name: "icon_Head")
+    /// Image `icon_about`.
+    static let icon_about = ImageResource(bundle: _R.hostingBundle, name: "icon_about")
+    /// Image `icon_account`.
+    static let icon_account = ImageResource(bundle: _R.hostingBundle, name: "icon_account")
+    /// Image `icon_add`.
+    static let icon_add = ImageResource(bundle: _R.hostingBundle, name: "icon_add")
+    /// Image `icon_buy`.
+    static let icon_buy = ImageResource(bundle: _R.hostingBundle, name: "icon_buy")
+    /// Image `icon_calendar-L2`.
+    static let icon_calendarL2 = ImageResource(bundle: _R.hostingBundle, name: "icon_calendar-L2")
+    /// Image `icon_calendar-L`.
+    static let icon_calendarL = ImageResource(bundle: _R.hostingBundle, name: "icon_calendar-L")
+    /// Image `icon_calendar-R2`.
+    static let icon_calendarR2 = ImageResource(bundle: _R.hostingBundle, name: "icon_calendar-R2")
+    /// Image `icon_calendar-R`.
+    static let icon_calendarR = ImageResource(bundle: _R.hostingBundle, name: "icon_calendar-R")
+    /// Image `icon_calendar`.
+    static let icon_calendar = ImageResource(bundle: _R.hostingBundle, name: "icon_calendar")
+    /// Image `icon_clock-remind-1`.
+    static let icon_clockRemind1 = ImageResource(bundle: _R.hostingBundle, name: "icon_clock-remind-1")
+    /// Image `icon_clock-remind-2`.
+    static let icon_clockRemind2 = ImageResource(bundle: _R.hostingBundle, name: "icon_clock-remind-2")
+    /// Image `icon_exit`.
+    static let icon_exit = ImageResource(bundle: _R.hostingBundle, name: "icon_exit")
+    /// Image `icon_gender`.
+    static let icon_gender = ImageResource(bundle: _R.hostingBundle, name: "icon_gender")
+    /// Image `icon_height`.
+    static let icon_height = ImageResource(bundle: _R.hostingBundle, name: "icon_height")
+    /// Image `icon_next`.
+    static let icon_next = ImageResource(bundle: _R.hostingBundle, name: "icon_next")
+    /// Image `icon_nickname`.
+    static let icon_nickname = ImageResource(bundle: _R.hostingBundle, name: "icon_nickname")
+    /// Image `icon_pairing`.
+    static let icon_pairing = ImageResource(bundle: _R.hostingBundle, name: "icon_pairing")
+    /// Image `icon_phone`.
+    static let icon_phone = ImageResource(bundle: _R.hostingBundle, name: "icon_phone")
+    /// Image `icon_plan`.
+    static let icon_plan = ImageResource(bundle: _R.hostingBundle, name: "icon_plan")
+    /// Image `icon_share`.
+    static let icon_share = ImageResource(bundle: _R.hostingBundle, name: "icon_share")
+    /// Image `icon_warn`.
+    static let icon_warn = ImageResource(bundle: _R.hostingBundle, name: "icon_warn")
+    /// Image `icon_web`.
+    static let icon_web = ImageResource(bundle: _R.hostingBundle, name: "icon_web")
+    /// Image `ion_Password`.
+    static let ion_Password = ImageResource(bundle: _R.hostingBundle, name: "ion_Password")
+    /// Image `label_icon_Clock_initial`.
+    static let label_icon_Clock_initial = ImageResource(bundle: _R.hostingBundle, name: "label_icon_Clock_initial")
+    /// Image `label_icon_Personal_initial`.
+    static let label_icon_Personal_initial = ImageResource(bundle: _R.hostingBundle, name: "label_icon_Personal_initial")
+    /// Image `label_icon_Personal`.
+    static let label_icon_Personal = ImageResource(bundle: _R.hostingBundle, name: "label_icon_Personal")
+    /// Image `label_icon_Record_initial`.
+    static let label_icon_Record_initial = ImageResource(bundle: _R.hostingBundle, name: "label_icon_Record_initial")
+    /// Image `label_icon_Record`.
+    static let label_icon_Record = ImageResource(bundle: _R.hostingBundle, name: "label_icon_Record")
+    /// Image `logo-1`.
+    static let logo1 = ImageResource(bundle: _R.hostingBundle, name: "logo-1")
+    /// Image `logo-2`.
+    static let logo2 = ImageResource(bundle: _R.hostingBundle, name: "logo-2")
+    /// Image `record_icon_day_initial`.
+    static let record_icon_day_initial = ImageResource(bundle: _R.hostingBundle, name: "record_icon_day_initial")
+    /// Image `record_icon_day`.
+    static let record_icon_day = ImageResource(bundle: _R.hostingBundle, name: "record_icon_day")
+    /// Image `record_icon_month_initial`.
+    static let record_icon_month_initial = ImageResource(bundle: _R.hostingBundle, name: "record_icon_month_initial")
+    /// Image `record_icon_month`.
+    static let record_icon_month = ImageResource(bundle: _R.hostingBundle, name: "record_icon_month")
+    /// Image `record_icon_time`.
+    static let record_icon_time = ImageResource(bundle: _R.hostingBundle, name: "record_icon_time")
+    /// Image `record_icon_week_initial`.
+    static let record_icon_week_initial = ImageResource(bundle: _R.hostingBundle, name: "record_icon_week_initial")
+    /// Image `record_icon_week`.
+    static let record_icon_week = ImageResource(bundle: _R.hostingBundle, name: "record_icon_week")
     
-    /// `UIImage(named: "clock", bundle: ..., traitCollection: ...)`
-    static func clock(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.clock, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "LOGO", bundle: ..., traitCollection: ...)`
+    static func lOGO(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.lOGO, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "clock_close", bundle: ..., traitCollection: ...)`
-    static func clock_close(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.clock_close, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "bar_icon_back", bundle: ..., traitCollection: ...)`
+    static func bar_icon_back(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.bar_icon_back, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "clock_open", bundle: ..., traitCollection: ...)`
-    static func clock_open(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.clock_open, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "bar_icon_√", bundle: ..., traitCollection: ...)`
+    static func bar_icon_(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.bar_icon_, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "clock_up", bundle: ..., traitCollection: ...)`
-    static func clock_up(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.clock_up, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "bg_water", bundle: ..., traitCollection: ...)`
+    static func bg_water(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.bg_water, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "cup", bundle: ..., traitCollection: ...)`
-    static func cup(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.cup, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "bounced_success", bundle: ..., traitCollection: ...)`
+    static func bounced_success(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.bounced_success, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "cup_adaptation", bundle: ..., traitCollection: ...)`
-    static func cup_adaptation(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.cup_adaptation, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "button_day1", bundle: ..., traitCollection: ...)`
+    static func button_day1(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.button_day1, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "cup_level", bundle: ..., traitCollection: ...)`
-    static func cup_level(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.cup_level, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "button_day11", bundle: ..., traitCollection: ...)`
+    static func button_day11(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.button_day11, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "cup_up", bundle: ..., traitCollection: ...)`
-    static func cup_up(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.cup_up, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "button_day2", bundle: ..., traitCollection: ...)`
+    static func button_day2(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.button_day2, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "Guidance1", bundle: ..., traitCollection: ...)`
-    static func guidance1(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.guidance1, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "button_day22", bundle: ..., traitCollection: ...)`
+    static func button_day22(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.button_day22, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "Guidance2", bundle: ..., traitCollection: ...)`
-    static func guidance2(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.guidance2, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "button_day3", bundle: ..., traitCollection: ...)`
+    static func button_day3(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.button_day3, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "Guidance3", bundle: ..., traitCollection: ...)`
-    static func guidance3(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.guidance3, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "button_day33", bundle: ..., traitCollection: ...)`
+    static func button_day33(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.button_day33, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "Guidance4", bundle: ..., traitCollection: ...)`
-    static func guidance4(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.guidance4, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "button_day4", bundle: ..., traitCollection: ...)`
+    static func button_day4(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.button_day4, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "logo", bundle: ..., traitCollection: ...)`
-    static func logo(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.logo, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "button_day44", bundle: ..., traitCollection: ...)`
+    static func button_day44(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.button_day44, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "me", bundle: ..., traitCollection: ...)`
-    static func me(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.me, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "button_day5", bundle: ..., traitCollection: ...)`
+    static func button_day5(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.button_day5, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "me_up", bundle: ..., traitCollection: ...)`
-    static func me_up(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.me_up, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "button_day55", bundle: ..., traitCollection: ...)`
+    static func button_day55(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.button_day55, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "mine_photo", bundle: ..., traitCollection: ...)`
-    static func mine_photo(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.mine_photo, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "button_day6", bundle: ..., traitCollection: ...)`
+    static func button_day6(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.button_day6, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "photo", bundle: ..., traitCollection: ...)`
-    static func photo(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.photo, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "button_day66", bundle: ..., traitCollection: ...)`
+    static func button_day66(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.button_day66, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "plus", bundle: ..., traitCollection: ...)`
-    static func plus(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.plus, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "button_day7", bundle: ..., traitCollection: ...)`
+    static func button_day7(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.button_day7, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "share_friend", bundle: ..., traitCollection: ...)`
-    static func share_friend(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.share_friend, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "button_day77", bundle: ..., traitCollection: ...)`
+    static func button_day77(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.button_day77, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "share_qzone", bundle: ..., traitCollection: ...)`
-    static func share_qzone(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.share_qzone, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "button_man1", bundle: ..., traitCollection: ...)`
+    static func button_man1(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.button_man1, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "share_sina", bundle: ..., traitCollection: ...)`
-    static func share_sina(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.share_sina, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "button_man2", bundle: ..., traitCollection: ...)`
+    static func button_man2(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.button_man2, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "share_tencent", bundle: ..., traitCollection: ...)`
-    static func share_tencent(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.share_tencent, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "button_woman1", bundle: ..., traitCollection: ...)`
+    static func button_woman1(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.button_woman1, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "share_weixin", bundle: ..., traitCollection: ...)`
-    static func share_weixin(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.share_weixin, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "button_woman2", bundle: ..., traitCollection: ...)`
+    static func button_woman2(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.button_woman2, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "tata_close", bundle: ..., traitCollection: ...)`
-    static func tata_close(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.tata_close, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "icon_Battery_charging", bundle: ..., traitCollection: ...)`
+    static func icon_Battery_charging(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.icon_Battery_charging, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "已恒温", bundle: ..., traitCollection: ...)`
-    static func 已恒温(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.已恒温, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "icon_Battery_hight", bundle: ..., traitCollection: ...)`
+    static func icon_Battery_hight(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.icon_Battery_hight, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "恒温中", bundle: ..., traitCollection: ...)`
-    static func 恒温中(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.恒温中, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "icon_Battery_low", bundle: ..., traitCollection: ...)`
+    static func icon_Battery_low(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.icon_Battery_low, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "自然温", bundle: ..., traitCollection: ...)`
-    static func 自然温(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.自然温, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "icon_Clock_initial", bundle: ..., traitCollection: ...)`
+    static func icon_Clock_initial(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.icon_Clock_initial, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_Head", bundle: ..., traitCollection: ...)`
+    static func icon_Head(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.icon_Head, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_about", bundle: ..., traitCollection: ...)`
+    static func icon_about(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.icon_about, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_account", bundle: ..., traitCollection: ...)`
+    static func icon_account(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.icon_account, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_add", bundle: ..., traitCollection: ...)`
+    static func icon_add(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.icon_add, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_buy", bundle: ..., traitCollection: ...)`
+    static func icon_buy(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.icon_buy, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_calendar", bundle: ..., traitCollection: ...)`
+    static func icon_calendar(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.icon_calendar, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_calendar-L", bundle: ..., traitCollection: ...)`
+    static func icon_calendarL(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.icon_calendarL, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_calendar-L2", bundle: ..., traitCollection: ...)`
+    static func icon_calendarL2(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.icon_calendarL2, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_calendar-R", bundle: ..., traitCollection: ...)`
+    static func icon_calendarR(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.icon_calendarR, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_calendar-R2", bundle: ..., traitCollection: ...)`
+    static func icon_calendarR2(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.icon_calendarR2, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_clock-remind-1", bundle: ..., traitCollection: ...)`
+    static func icon_clockRemind1(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.icon_clockRemind1, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_clock-remind-2", bundle: ..., traitCollection: ...)`
+    static func icon_clockRemind2(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.icon_clockRemind2, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_exit", bundle: ..., traitCollection: ...)`
+    static func icon_exit(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.icon_exit, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_gender", bundle: ..., traitCollection: ...)`
+    static func icon_gender(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.icon_gender, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_height", bundle: ..., traitCollection: ...)`
+    static func icon_height(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.icon_height, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_next", bundle: ..., traitCollection: ...)`
+    static func icon_next(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.icon_next, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_nickname", bundle: ..., traitCollection: ...)`
+    static func icon_nickname(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.icon_nickname, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_pairing", bundle: ..., traitCollection: ...)`
+    static func icon_pairing(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.icon_pairing, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_phone", bundle: ..., traitCollection: ...)`
+    static func icon_phone(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.icon_phone, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_plan", bundle: ..., traitCollection: ...)`
+    static func icon_plan(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.icon_plan, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_share", bundle: ..., traitCollection: ...)`
+    static func icon_share(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.icon_share, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_warn", bundle: ..., traitCollection: ...)`
+    static func icon_warn(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.icon_warn, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_web", bundle: ..., traitCollection: ...)`
+    static func icon_web(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.icon_web, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "ion_Password", bundle: ..., traitCollection: ...)`
+    static func ion_Password(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.ion_Password, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "label_icon_Clock_initial", bundle: ..., traitCollection: ...)`
+    static func label_icon_Clock_initial(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.label_icon_Clock_initial, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "label_icon_Personal", bundle: ..., traitCollection: ...)`
+    static func label_icon_Personal(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.label_icon_Personal, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "label_icon_Personal_initial", bundle: ..., traitCollection: ...)`
+    static func label_icon_Personal_initial(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.label_icon_Personal_initial, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "label_icon_Record", bundle: ..., traitCollection: ...)`
+    static func label_icon_Record(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.label_icon_Record, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "label_icon_Record_initial", bundle: ..., traitCollection: ...)`
+    static func label_icon_Record_initial(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.label_icon_Record_initial, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "logo-1", bundle: ..., traitCollection: ...)`
+    static func logo1(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.logo1, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "logo-2", bundle: ..., traitCollection: ...)`
+    static func logo2(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.logo2, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "record_icon_day", bundle: ..., traitCollection: ...)`
+    static func record_icon_day(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.record_icon_day, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "record_icon_day_initial", bundle: ..., traitCollection: ...)`
+    static func record_icon_day_initial(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.record_icon_day_initial, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "record_icon_month", bundle: ..., traitCollection: ...)`
+    static func record_icon_month(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.record_icon_month, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "record_icon_month_initial", bundle: ..., traitCollection: ...)`
+    static func record_icon_month_initial(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.record_icon_month_initial, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "record_icon_time", bundle: ..., traitCollection: ...)`
+    static func record_icon_time(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.record_icon_time, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "record_icon_week", bundle: ..., traitCollection: ...)`
+    static func record_icon_week(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.record_icon_week, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "record_icon_week_initial", bundle: ..., traitCollection: ...)`
+    static func record_icon_week_initial(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.record_icon_week_initial, compatibleWithTraitCollection: traitCollection)
     }
     
     private init() {}
@@ -246,16 +495,12 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.nib` struct is generated, and contains static references to 14 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 11 nibs.
   struct nib {
     /// Nib `AboutUsViewController`.
     static let aboutUsViewController = _R.nib._AboutUsViewController()
     /// Nib `AccountTableViewCell`.
     static let accountTableViewCell = _R.nib._AccountTableViewCell()
-    /// Nib `CFCityCell`.
-    static let cFCityCell = _R.nib._CFCityCell()
-    /// Nib `CitySearchResultVC`.
-    static let citySearchResultVC = _R.nib._CitySearchResultVC()
     /// Nib `ClockCollectionHeaderView`.
     static let clockCollectionHeaderView = _R.nib._ClockCollectionHeaderView()
     /// Nib `ClockCollectionViewCell`.
@@ -264,8 +509,6 @@ struct R: Rswift.Validatable {
     static let cupHeaderView = _R.nib._CupHeaderView()
     /// Nib `FirmwareViewController`.
     static let firmwareViewController = _R.nib._FirmwareViewController()
-    /// Nib `HeaderItemView`.
-    static let headerItemView = _R.nib._HeaderItemView()
     /// Nib `KSGuidanceViewController`.
     static let kSGuidanceViewController = _R.nib._KSGuidanceViewController()
     /// Nib `MineTableViewCell`.
@@ -287,16 +530,6 @@ struct R: Rswift.Validatable {
       return UINib(resource: R.nib.accountTableViewCell)
     }
     
-    /// `UINib(name: "CFCityCell", bundle: ...)`
-    static func cFCityCell(_: Void) -> UINib {
-      return UINib(resource: R.nib.cFCityCell)
-    }
-    
-    /// `UINib(name: "CitySearchResultVC", bundle: ...)`
-    static func citySearchResultVC(_: Void) -> UINib {
-      return UINib(resource: R.nib.citySearchResultVC)
-    }
-    
     /// `UINib(name: "ClockCollectionHeaderView", bundle: ...)`
     static func clockCollectionHeaderView(_: Void) -> UINib {
       return UINib(resource: R.nib.clockCollectionHeaderView)
@@ -315,11 +548,6 @@ struct R: Rswift.Validatable {
     /// `UINib(name: "FirmwareViewController", bundle: ...)`
     static func firmwareViewController(_: Void) -> UINib {
       return UINib(resource: R.nib.firmwareViewController)
-    }
-    
-    /// `UINib(name: "HeaderItemView", bundle: ...)`
-    static func headerItemView(_: Void) -> UINib {
-      return UINib(resource: R.nib.headerItemView)
     }
     
     /// `UINib(name: "KSGuidanceViewController", bundle: ...)`
@@ -452,28 +680,6 @@ struct _R: Rswift.Validatable {
       private init() {}
     }
     
-    struct _CFCityCell: NibResourceType {
-      let bundle = _R.hostingBundle
-      let name = "CFCityCell"
-      
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> CFCityCell? {
-        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? CFCityCell
-      }
-      
-      private init() {}
-    }
-    
-    struct _CitySearchResultVC: NibResourceType {
-      let bundle = _R.hostingBundle
-      let name = "CitySearchResultVC"
-      
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> UIView? {
-        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? UIView
-      }
-      
-      private init() {}
-    }
-    
     struct _ClockCollectionHeaderView: NibResourceType, ReuseIdentifierType {
       typealias ReusableType = ClockCollectionHeaderView
       
@@ -519,17 +725,6 @@ struct _R: Rswift.Validatable {
       
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> FirmwareViewController? {
         return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? FirmwareViewController
-      }
-      
-      private init() {}
-    }
-    
-    struct _HeaderItemView: NibResourceType {
-      let bundle = _R.hostingBundle
-      let name = "HeaderItemView"
-      
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> HeaderItemView? {
-        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? HeaderItemView
       }
       
       private init() {}
@@ -614,7 +809,7 @@ struct _R: Rswift.Validatable {
       let name = "LaunchScreen"
       
       static func validate() throws {
-        if UIImage(named: "logo") == nil { throw ValidationError(description: "[R.swift] Image named 'logo' is used in storyboard 'LaunchScreen', but couldn't be loaded.") }
+        if UIImage(named: "LOGO") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'LOGO' is used in storyboard 'LaunchScreen', but couldn't be loaded.") }
       }
       
       private init() {}
@@ -637,9 +832,9 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
-        if UIImage(named: "logo") == nil { throw ValidationError(description: "[R.swift] Image named 'logo' is used in storyboard 'Login', but couldn't be loaded.") }
-        if _R.storyboard.login().login() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'login' could not be loaded from storyboard 'Login' as 'UserLoginViewController'.") }
-        if _R.storyboard.login().register() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'register' could not be loaded from storyboard 'Login' as 'UserRegistViewController'.") }
+        if UIImage(named: "logo") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'logo' is used in storyboard 'Login', but couldn't be loaded.") }
+        if _R.storyboard.login().login() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'login' could not be loaded from storyboard 'Login' as 'UserLoginViewController'.") }
+        if _R.storyboard.login().register() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'register' could not be loaded from storyboard 'Login' as 'UserRegistViewController'.") }
       }
       
       private init() {}
@@ -652,9 +847,12 @@ struct _R: Rswift.Validatable {
       let name = "Main"
       
       static func validate() throws {
-        if UIImage(named: "clock") == nil { throw ValidationError(description: "[R.swift] Image named 'clock' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "cup") == nil { throw ValidationError(description: "[R.swift] Image named 'cup' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "me") == nil { throw ValidationError(description: "[R.swift] Image named 'me' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "label_icon_Personal") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'label_icon_Personal' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "label_icon_Record_initial") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'label_icon_Record_initial' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "label_icon_Clock_initial") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'label_icon_Clock_initial' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "label_icon_Clock") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'label_icon_Clock' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "label_icon_Personal_initial") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'label_icon_Personal_initial' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "label_icon_Record") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'label_icon_Record' is used in storyboard 'Main', but couldn't be loaded.") }
       }
       
       private init() {}
@@ -667,8 +865,10 @@ struct _R: Rswift.Validatable {
       let name = "SMS"
       
       static func validate() throws {
-        if UIImage(named: "logo") == nil { throw ValidationError(description: "[R.swift] Image named 'logo' is used in storyboard 'SMS', but couldn't be loaded.") }
-        if UIImage(named: "photo") == nil { throw ValidationError(description: "[R.swift] Image named 'photo' is used in storyboard 'SMS', but couldn't be loaded.") }
+        if UIImage(named: "LOGO") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'LOGO' is used in storyboard 'SMS', but couldn't be loaded.") }
+        if UIImage(named: "ion_Password") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'ion_Password' is used in storyboard 'SMS', but couldn't be loaded.") }
+        if UIImage(named: "bg_water") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'bg_water' is used in storyboard 'SMS', but couldn't be loaded.") }
+        if UIImage(named: "icon_phone") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'icon_phone' is used in storyboard 'SMS', but couldn't be loaded.") }
       }
       
       private init() {}

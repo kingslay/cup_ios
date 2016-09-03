@@ -44,17 +44,17 @@ class UserLoginViewController: UIViewController,UITextFieldDelegate{
     //MARK: action
     @IBAction func login(sender: UIButton?) {
         guard let userName = self.userNameTextField.text where userName.characters.count > 0 else{
-            self.noticeError("用户名不能为空",autoClear: true)
+            self.ks.noticeError("用户名不能为空",autoClear: true)
             return
         }
         guard let password = self.userPassTextField.text where password.characters.count > 0 else{
-            self.noticeError("密码不能为空",autoClear: true)
+            self.ks.noticeError("密码不能为空",autoClear: true)
             return
         }
         self.navigationController?.view.userInteractionEnabled = false
-        self.pleaseWait("正在登录中")
+        self.ks.pleaseWait("正在登录中")
         CupProvider.request(.Login(userName,password)).filterSuccessfulStatusCodes().mapJSON().observeOn(MainScheduler.instance).subscribe(onNext: { (let json) -> Void in
-            self.clearAllNotice()
+            self.ks.clearAllNotice()
             staticAccount = AccountModel(from: json as! [String : AnyObject])
             AccountModel.localSave()
 //            if staticIdentifier == nil {
@@ -63,10 +63,10 @@ class UserLoginViewController: UIViewController,UITextFieldDelegate{
                 UIApplication.sharedApplication().keyWindow!.rootViewController = R.storyboard.main.initialViewController()
 //            }
             }, onError: {
-                self.clearAllNotice()
+                self.ks.clearAllNotice()
                 self.navigationController?.view.userInteractionEnabled = true
                 if let error = $0 as? Moya.Error, let response = error.response {
-                    self.noticeError(JSON(data: response.data)["message"].stringValue, autoClear: true)
+                    self.ks.noticeError(JSON(data: response.data)["message"].stringValue, autoClear: true)
                 }
                 
         }).addDisposableTo(disposeBag)

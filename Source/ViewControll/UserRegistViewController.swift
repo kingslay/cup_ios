@@ -39,21 +39,21 @@ class UserRegistViewController: UIViewController,UITextFieldDelegate {
     //MARK: action
     @IBAction func register(sender: UIButton?) {
         guard let userName = self.userNameTextField.text where userName.characters.count > 0 else{
-            self.noticeError("用户名不能为空",autoClear: true)
+            self.ks.noticeError("用户名不能为空",autoClear: true)
             return
         }
         guard let password = self.userPassTextField.text where password.characters.count > 0 else{
-            self.noticeError("密码不能为空",autoClear: true)
+            self.ks.noticeError("密码不能为空",autoClear: true)
             return
         }
         guard let confirmPassword = self.confirmUserPassTextField.text where confirmPassword == password else{
-            self.noticeError("密码不一致请重新输入",autoClear: true)
+            self.ks.noticeError("密码不一致请重新输入",autoClear: true)
             return
         }
-        self.pleaseWait("正在登录中")
+        self.ks.pleaseWait("正在登录中")
         self.navigationController?.view.userInteractionEnabled = false
         CupProvider.request(.Regist(userName,password)).filterSuccessfulStatusCodes().mapJSON().observeOn(MainScheduler.instance).subscribe(onNext: { (let json) -> Void in
-            self.clearAllNotice()
+            self.ks.clearAllNotice()
             staticAccount = AccountModel(from: json as! [String : AnyObject])
             AccountModel.localSave()
             if staticIdentifier == nil {
@@ -62,10 +62,10 @@ class UserRegistViewController: UIViewController,UITextFieldDelegate {
                 UIApplication.sharedApplication().keyWindow!.rootViewController = R.storyboard.main.initialViewController()
             }
             }, onError: {
-                self.clearAllNotice()
+                self.ks.clearAllNotice()
                 self.navigationController?.view.userInteractionEnabled = true
                 if let error = $0 as? NSError, let response = error.userInfo["data"] as? Moya.Response {
-                    self.noticeError(JSON(data: response.data)["message"].stringValue, autoClear: true)
+                    self.ks.noticeError(JSON(data: response.data)["message"].stringValue, autoClear: true)
                 }
                 
         }).addDisposableTo(disposeBag)

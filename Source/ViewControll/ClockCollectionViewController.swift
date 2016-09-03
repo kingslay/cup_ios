@@ -123,10 +123,8 @@ extension ClockCollectionViewController {
             if $0 {
                 view.ks.top(header.ks.height - collectionView.contentOffset.y)
                 self.view.addSubview(view)
-                header.headerImageView.image = R.image.clock_close()
             }else{
                 view.removeFromSuperview()
-                header.headerImageView.image = R.image.clock_open()
             }
             }.addDisposableTo(disposeBag)
         let tapGestureRecognizer = UITapGestureRecognizer()
@@ -136,10 +134,10 @@ extension ClockCollectionViewController {
             self.close.value = !self.close.value
             ClockModel.close = self.close.value
             if  self.close.value {
-                self.noticeOnlyText("闹钟功能已禁用")
+                self.ks.noticeOnlyText("闹钟功能已禁用")
                 UIApplication.sharedApplication().cancelAllLocalNotifications()
             }else{
-                self.noticeOnlyText("闹钟功能已开启")
+                self.ks.noticeOnlyText("闹钟功能已开启")
             }
             self.clockArray.forEach{
                 if $0.open && !self.close.value {
