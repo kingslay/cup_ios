@@ -80,8 +80,6 @@ struct R: Rswift.Validatable {
     static let icon_Battery_hight = ImageResource(bundle: _R.hostingBundle, name: "icon_Battery_hight")
     /// Image `icon_Battery_low`.
     static let icon_Battery_low = ImageResource(bundle: _R.hostingBundle, name: "icon_Battery_low")
-    /// Image `icon_Clock_initial`.
-    static let icon_Clock_initial = ImageResource(bundle: _R.hostingBundle, name: "icon_Clock_initial")
     /// Image `icon_Head`.
     static let icon_Head = ImageResource(bundle: _R.hostingBundle, name: "icon_Head")
     /// Image `icon_about`.
@@ -132,6 +130,8 @@ struct R: Rswift.Validatable {
     static let ion_Password = ImageResource(bundle: _R.hostingBundle, name: "ion_Password")
     /// Image `label_icon_Clock_initial`.
     static let label_icon_Clock_initial = ImageResource(bundle: _R.hostingBundle, name: "label_icon_Clock_initial")
+    /// Image `label_icon_Clock`.
+    static let label_icon_Clock = ImageResource(bundle: _R.hostingBundle, name: "label_icon_Clock")
     /// Image `label_icon_Personal_initial`.
     static let label_icon_Personal_initial = ImageResource(bundle: _R.hostingBundle, name: "label_icon_Personal_initial")
     /// Image `label_icon_Personal`.
@@ -289,11 +289,6 @@ struct R: Rswift.Validatable {
       return UIImage(resource: R.image.icon_Battery_low, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "icon_Clock_initial", bundle: ..., traitCollection: ...)`
-    static func icon_Clock_initial(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.icon_Clock_initial, compatibleWithTraitCollection: traitCollection)
-    }
-    
     /// `UIImage(named: "icon_Head", bundle: ..., traitCollection: ...)`
     static func icon_Head(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.icon_Head, compatibleWithTraitCollection: traitCollection)
@@ -414,6 +409,11 @@ struct R: Rswift.Validatable {
       return UIImage(resource: R.image.ion_Password, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "label_icon_Clock", bundle: ..., traitCollection: ...)`
+    static func label_icon_Clock(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.label_icon_Clock, compatibleWithTraitCollection: traitCollection)
+    }
+    
     /// `UIImage(named: "label_icon_Clock_initial", bundle: ..., traitCollection: ...)`
     static func label_icon_Clock_initial(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.label_icon_Clock_initial, compatibleWithTraitCollection: traitCollection)
@@ -495,16 +495,22 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.nib` struct is generated, and contains static references to 11 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 14 nibs.
   struct nib {
     /// Nib `AboutUsViewController`.
     static let aboutUsViewController = _R.nib._AboutUsViewController()
     /// Nib `AccountTableViewCell`.
     static let accountTableViewCell = _R.nib._AccountTableViewCell()
+    /// Nib `AddClockViewController`.
+    static let addClockViewController = _R.nib._AddClockViewController()
     /// Nib `ClockCollectionHeaderView`.
     static let clockCollectionHeaderView = _R.nib._ClockCollectionHeaderView()
     /// Nib `ClockCollectionViewCell`.
     static let clockCollectionViewCell = _R.nib._ClockCollectionViewCell()
+    /// Nib `ClockHeaderView`.
+    static let clockHeaderView = _R.nib._ClockHeaderView()
+    /// Nib `ClockTableViewCell`.
+    static let clockTableViewCell = _R.nib._ClockTableViewCell()
     /// Nib `CupHeaderView`.
     static let cupHeaderView = _R.nib._CupHeaderView()
     /// Nib `FirmwareViewController`.
@@ -530,6 +536,11 @@ struct R: Rswift.Validatable {
       return UINib(resource: R.nib.accountTableViewCell)
     }
     
+    /// `UINib(name: "AddClockViewController", bundle: ...)`
+    static func addClockViewController(_: Void) -> UINib {
+      return UINib(resource: R.nib.addClockViewController)
+    }
+    
     /// `UINib(name: "ClockCollectionHeaderView", bundle: ...)`
     static func clockCollectionHeaderView(_: Void) -> UINib {
       return UINib(resource: R.nib.clockCollectionHeaderView)
@@ -538,6 +549,16 @@ struct R: Rswift.Validatable {
     /// `UINib(name: "ClockCollectionViewCell", bundle: ...)`
     static func clockCollectionViewCell(_: Void) -> UINib {
       return UINib(resource: R.nib.clockCollectionViewCell)
+    }
+    
+    /// `UINib(name: "ClockHeaderView", bundle: ...)`
+    static func clockHeaderView(_: Void) -> UINib {
+      return UINib(resource: R.nib.clockHeaderView)
+    }
+    
+    /// `UINib(name: "ClockTableViewCell", bundle: ...)`
+    static func clockTableViewCell(_: Void) -> UINib {
+      return UINib(resource: R.nib.clockTableViewCell)
     }
     
     /// `UINib(name: "CupHeaderView", bundle: ...)`
@@ -578,7 +599,7 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 5 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 6 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `AccountTableViewCell`.
     static let accountTableViewCell: ReuseIdentifier<AccountTableViewCell> = ReuseIdentifier(identifier: "AccountTableViewCell")
@@ -586,6 +607,8 @@ struct R: Rswift.Validatable {
     static let clockCollectionHeaderView: ReuseIdentifier<ClockCollectionHeaderView> = ReuseIdentifier(identifier: "ClockCollectionHeaderView")
     /// Reuse identifier `ClockCollectionViewCell`.
     static let clockCollectionViewCell: ReuseIdentifier<ClockCollectionViewCell> = ReuseIdentifier(identifier: "ClockCollectionViewCell")
+    /// Reuse identifier `ClockTableViewCell`.
+    static let clockTableViewCell: ReuseIdentifier<ClockTableViewCell> = ReuseIdentifier(identifier: "ClockTableViewCell")
     /// Reuse identifier `MineTableViewCell`.
     static let mineTableViewCell: ReuseIdentifier<MineTableViewCell> = ReuseIdentifier(identifier: "MineTableViewCell")
     /// Reuse identifier `TemperatureTableViewCell`.
@@ -680,6 +703,17 @@ struct _R: Rswift.Validatable {
       private init() {}
     }
     
+    struct _AddClockViewController: NibResourceType {
+      let bundle = _R.hostingBundle
+      let name = "AddClockViewController"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> UIView? {
+        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? UIView
+      }
+      
+      private init() {}
+    }
+    
     struct _ClockCollectionHeaderView: NibResourceType, ReuseIdentifierType {
       typealias ReusableType = ClockCollectionHeaderView
       
@@ -703,6 +737,31 @@ struct _R: Rswift.Validatable {
       
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> ClockCollectionViewCell? {
         return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? ClockCollectionViewCell
+      }
+      
+      private init() {}
+    }
+    
+    struct _ClockHeaderView: NibResourceType {
+      let bundle = _R.hostingBundle
+      let name = "ClockHeaderView"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> ClockHeaderView? {
+        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? ClockHeaderView
+      }
+      
+      private init() {}
+    }
+    
+    struct _ClockTableViewCell: NibResourceType, ReuseIdentifierType {
+      typealias ReusableType = ClockTableViewCell
+      
+      let bundle = _R.hostingBundle
+      let identifier = "ClockTableViewCell"
+      let name = "ClockTableViewCell"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> ClockTableViewCell? {
+        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? ClockTableViewCell
       }
       
       private init() {}

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="M2K-A1-37p">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="M2K-A1-37p">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -20,9 +20,9 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G8p-RX-phd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1024" y="686"/>
+            <point key="canvasLocation" x="546.13333333333333" y="615.33333333333337"/>
         </scene>
-        <!--Water View Controller-->
+        <!--饮水状况-->
         <scene sceneID="uka-nI-8sx">
             <objects>
                 <viewController id="7s5-8D-umf" customClass="WaterViewController" customModule="Cup" customModuleProvider="target" sceneMemberID="viewController">
@@ -31,50 +31,15 @@
                         <viewControllerLayoutGuide type="bottom" id="Lcn-WP-cYx"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="DSm-kW-ZQn">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="sFb-I7-fRt"/>
+                    <navigationItem key="navigationItem" title="饮水状况" id="sFb-I7-fRt"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zrb-HF-F5v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1728" y="680"/>
-        </scene>
-        <!--恒温提醒-->
-        <scene sceneID="6nh-HD-OUd">
-            <objects>
-                <tableViewController id="Tta-VS-PWa" customClass="CupViewController" customModule="Cup" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="usV-fa-tiG">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="XLw-zd-qQH">
-                            <rect key="frame" x="0.0" y="72" width="600" height="0.0"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </view>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="mgh-81-cuU">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mgh-81-cuU" id="0cw-tF-hU9">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Tta-VS-PWa" id="5wo-f8-6MN"/>
-                            <outlet property="delegate" destination="Tta-VS-PWa" id="38A-ei-Q2I"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="恒温提醒" id="a9h-Ha-gSn"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oqw-P7-aSP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2405" y="666"/>
+            <point key="canvasLocation" x="939" y="634"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CSD-U0-Z3M">
@@ -86,32 +51,61 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="ATZ-DN-X49" kind="relationship" relationship="rootViewController" id="U57-IM-KJf"/>
+                        <segue destination="sNu-C4-M4D" kind="relationship" relationship="rootViewController" id="rYY-YE-IwW"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aS2-mz-xZ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1024" y="3"/>
+            <point key="canvasLocation" x="546.13333333333333" y="2.8399999999999999"/>
+        </scene>
+        <!--喝水提醒-->
+        <scene sceneID="rTk-ae-k11">
+            <objects>
+                <tableViewController id="sNu-C4-M4D" customClass="ClockTableViewController" customModule="Cup" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="7xZ-57-Cz8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Vxq-Cf-qv9">
+                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vxq-Cf-qv9" id="Tme-5Y-gqV">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="sNu-C4-M4D" id="aNa-Ua-xFC"/>
+                            <outlet property="delegate" destination="sNu-C4-M4D" id="Lli-On-eLR"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="喝水提醒" id="OaM-zZ-gL1"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fyh-BK-PuT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="939" y="-7"/>
         </scene>
         <!--个人中心-->
         <scene sceneID="JFz-NF-08c">
             <objects>
                 <tableViewController id="Wyg-1t-UTh" customClass="MineViewController" customModule="Cup" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="fW5-3Z-22z">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="a0B-dS-a2v">
-                            <rect key="frame" x="0.0" y="172" width="600" height="0.0"/>
+                            <rect key="frame" x="0.0" y="172" width="320" height="0.0"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="NpU-FC-NKn">
-                                <rect key="frame" x="0.0" y="92" width="600" height="80"/>
+                                <rect key="frame" x="0.0" y="92" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NpU-FC-NKn" id="yko-ce-OOI">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="79.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -126,7 +120,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nsh-fZ-EDF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1735" y="1384"/>
+            <point key="canvasLocation" x="925.33333333333337" y="1310.1866666666667"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0Bf-CD-xCF">
@@ -143,41 +137,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T6o-sI-o8e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1024" y="1384"/>
-        </scene>
-        <!--饮水状况-->
-        <scene sceneID="wrt-d8-wPS">
-            <objects>
-                <collectionViewController id="ATZ-DN-X49" customClass="ClockCollectionViewController" customModule="Cup" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="zGz-mF-KkB">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="xoP-EL-40W">
-                            <size key="itemSize" width="0.0" height="0.0"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Uxq-7q-Tv4">
-                                <rect key="frame" x="300" y="64" width="0.0" height="0.0"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="ATZ-DN-X49" id="7tT-a7-ew0"/>
-                            <outlet property="delegate" destination="ATZ-DN-X49" id="PhG-lJ-68S"/>
-                        </connections>
-                    </collectionView>
-                    <navigationItem key="navigationItem" title="饮水状况" id="EtN-8N-vpM"/>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zju-D7-vEg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1728" y="3"/>
+            <point key="canvasLocation" x="546.13333333333333" y="1310.1866666666667"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="goS-nR-ar8">
@@ -196,11 +156,11 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hnb-fc-UQ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="192" y="623"/>
+            <point key="canvasLocation" x="102.40000000000001" y="589.77333333333331"/>
         </scene>
     </scenes>
     <resources>
-        <image name="label_icon_Clock" width="26" height="26"/>
+        <image name="label_icon_Clock" width="22" height="22"/>
         <image name="label_icon_Clock_initial" width="22" height="22"/>
         <image name="label_icon_Personal" width="20" height="22"/>
         <image name="label_icon_Personal_initial" width="20" height="22"/>

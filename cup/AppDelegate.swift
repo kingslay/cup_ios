@@ -36,25 +36,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let dic = NSUserDefaults.standardUserDefaults().objectForKey("sharedAccount") as? [String:AnyObject] {
                 staticAccount = AccountModel(from: dic)
               self.window?.rootViewController = R.storyboard.main.initialViewController()
-//                if staticIdentifier != nil {
-//                }else{
-//                    self.window?.rootViewController = CentralViewController()
-//                }
             }else{
                 self.window?.rootViewController = R.storyboard.sMS.initialViewController()
             }
         }
         self.window?.makeKeyAndVisible()
-        UIApplication.sharedApplication().keyWindow?.tintColor = Colors.red
+//        UIApplication.sharedApplication().keyWindow?.tintColor = Colors.red
+        UIBarButtonItem.appearance().tintColor = Colors.background
         UISwitch.appearance().onTintColor = Colors.red
         UISwitch.appearance().tintColor = Colors.black
         UIApplication.sharedApplication().statusBarStyle = .LightContent
-        UINavigationBar.appearance().barTintColor = Colors.black
-        UINavigationBar.appearance().backgroundColor = Colors.black
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        UINavigationBar.appearance().barTintColor = Colors.red
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: Colors.background]
         //状态栏不透明，这样颜色比较饱满
         UINavigationBar.appearance().translucent = false
-        UITabBar.appearance().barTintColor = Colors.black
+        UITabBar.appearance().barTintColor = Colors.white
+        UITabBar.appearance().tintColor = Colors.red
         UITabBar.appearance().translucent = false
         configureAlamofireManager()
         SMSSDK.registerApp("c1013d64d3ff", withSecret: "528dd34e0cb571afea389ae783053243")

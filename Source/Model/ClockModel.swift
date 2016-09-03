@@ -10,6 +10,7 @@ import UIKit
 import KSJSONHelp
 import SwiftDate
 class ClockModel: NSObject,Model,Storable {
+    var explanation:String = ""
     var hour:Int
     var minute :Int
     var open = true
@@ -56,26 +57,16 @@ class ClockModel: NSObject,Model,Storable {
     }
     
     static func addClock(model: ClockModel) {
-        var array = getClocks()
-        array.append(model)
-        ClockModel.saveValuesToDefaults(array, forKey: "clockArray")
+        model.save()
         if model.open {
             model.addUILocalNotification()
         }
     }
     static func getClocks() -> [ClockModel] {
-        if let array = ClockModel.loadValuesFromDefaults(forKey: "clockArray") {
+        if let array = ClockModel.fetch(nil) where array.count > 0 {
             return array
         } else {
-            var array: [ClockModel] = []
-            for _ in 1...9 {
-                let model = ClockModel()
-                model.hour = 8
-                model.minute = 0
-                model.open = false
-                array.append(model)
-            }
-            return array
+            return []
         }
     }
     static var close: Bool {

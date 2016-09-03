@@ -26,6 +26,13 @@
 		3C80A5D71BCA5A9C0050B6B6 /* CupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C80A5D61BCA5A9C0050B6B6 /* CupViewController.swift */; };
 		3C80A5E11BCA5A9D0050B6B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C80A5DF1BCA5A9D0050B6B6 /* LaunchScreen.storyboard */; };
 		3C80A5EC1BCA5A9D0050B6B6 /* CupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C80A5EB1BCA5A9D0050B6B6 /* CupTests.swift */; };
+		3C9BFFAB1D7AA3F2007C0E89 /* ClockTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BFFAA1D7AA3F2007C0E89 /* ClockTableViewController.swift */; };
+		3C9BFFAE1D7AA69F007C0E89 /* ClockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BFFAC1D7AA69F007C0E89 /* ClockTableViewCell.swift */; };
+		3C9BFFAF1D7AA69F007C0E89 /* ClockTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C9BFFAD1D7AA69F007C0E89 /* ClockTableViewCell.xib */; };
+		3C9BFFB11D7ABA56007C0E89 /* ClockHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BFFB01D7ABA56007C0E89 /* ClockHeaderView.swift */; };
+		3C9BFFB31D7ABA65007C0E89 /* ClockHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C9BFFB21D7ABA65007C0E89 /* ClockHeaderView.xib */; };
+		3C9BFFB61D7ADC39007C0E89 /* AddClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BFFB41D7ADC39007C0E89 /* AddClockViewController.swift */; };
+		3C9BFFB71D7ADC39007C0E89 /* AddClockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C9BFFB51D7ADC39007C0E89 /* AddClockViewController.xib */; };
 		3CC57E031BE7BA490050E64E /* KSPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC57E021BE7BA490050E64E /* KSPickerView.swift */; };
 		3CCCA7131D5F57D100AFC6A1 /* WaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCCA7121D5F57D100AFC6A1 /* WaterViewController.swift */; };
 		3CCCA7151D5F586900AFC6A1 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCCA7141D5F586900AFC6A1 /* ShareViewController.swift */; };
@@ -112,6 +119,13 @@
 		3C80A5E71BCA5A9D0050B6B6 /* CupTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CupTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C80A5EB1BCA5A9D0050B6B6 /* CupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CupTests.swift; sourceTree = "<group>"; };
 		3C80A5ED1BCA5A9D0050B6B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C9BFFAA1D7AA3F2007C0E89 /* ClockTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockTableViewController.swift; sourceTree = "<group>"; };
+		3C9BFFAC1D7AA69F007C0E89 /* ClockTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockTableViewCell.swift; sourceTree = "<group>"; };
+		3C9BFFAD1D7AA69F007C0E89 /* ClockTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClockTableViewCell.xib; sourceTree = "<group>"; };
+		3C9BFFB01D7ABA56007C0E89 /* ClockHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockHeaderView.swift; sourceTree = "<group>"; };
+		3C9BFFB21D7ABA65007C0E89 /* ClockHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClockHeaderView.xib; sourceTree = "<group>"; };
+		3C9BFFB41D7ADC39007C0E89 /* AddClockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddClockViewController.swift; sourceTree = "<group>"; };
+		3C9BFFB51D7ADC39007C0E89 /* AddClockViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddClockViewController.xib; sourceTree = "<group>"; };
 		3CC57E021BE7BA490050E64E /* KSPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KSPickerView.swift; sourceTree = "<group>"; };
 		3CCCA7121D5F57D100AFC6A1 /* WaterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterViewController.swift; sourceTree = "<group>"; };
 		3CCCA7141D5F586900AFC6A1 /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
@@ -263,6 +277,49 @@
 			path = CupTests;
 			sourceTree = "<group>";
 		};
+		3C9BFFA61D7AA338007C0E89 /* Clock */ = {
+			isa = PBXGroup;
+			children = (
+				CB89F7B51BE7101200FD21FD /* ClockCollectionViewController.swift */,
+				3C9BFFAA1D7AA3F2007C0E89 /* ClockTableViewController.swift */,
+				3C9BFFB41D7ADC39007C0E89 /* AddClockViewController.swift */,
+				3C9BFFB51D7ADC39007C0E89 /* AddClockViewController.xib */,
+			);
+			name = Clock;
+			sourceTree = "<group>";
+		};
+		3C9BFFA71D7AA36A007C0E89 /* Water */ = {
+			isa = PBXGroup;
+			children = (
+				3CCCA7121D5F57D100AFC6A1 /* WaterViewController.swift */,
+				3CCF7EF21D635B77004B664F /* WaterHistoryViewController.swift */,
+			);
+			name = Water;
+			sourceTree = "<group>";
+		};
+		3C9BFFA81D7AA37A007C0E89 /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				CBE1DC2A1BE9F06E00E1FF29 /* MineViewController.swift */,
+				CBE1DC2C1BE9F81C00E1FF29 /* AccountViewController.swift */,
+				3CECE67F1BF38A0400C43890 /* FirmwareViewController.swift */,
+				3CECE6801BF38A0400C43890 /* FirmwareViewController.xib */,
+				3CECE6831BF3996500C43890 /* AboutUsViewController.swift */,
+				3CECE6841BF3996500C43890 /* AboutUsViewController.xib */,
+			);
+			name = Mine;
+			sourceTree = "<group>";
+		};
+		3C9BFFA91D7AA3B3007C0E89 /* Temperature */ = {
+			isa = PBXGroup;
+			children = (
+				3C80A5D61BCA5A9C0050B6B6 /* CupViewController.swift */,
+				3C1BDF921BF235AA003E34F8 /* TemperatureViewController.swift */,
+				3C1BDF931BF235AA003E34F8 /* TemperatureViewController.xib */,
+			);
+			name = Temperature;
+			sourceTree = "<group>";
+		};
 		8C257F83C8BA78DADEE5FC8D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -326,6 +383,8 @@
 				CBF5E3681BF1DAE0002D4F8F /* CupHeaderView.swift */,
 				CBF5E3741BF1F6E3002D4F8F /* CupHeaderView.xib */,
 				3CCCA71A1D60080D00AFC6A1 /* WaterCycleView.swift */,
+				3C9BFFB01D7ABA56007C0E89 /* ClockHeaderView.swift */,
+				3C9BFFB21D7ABA65007C0E89 /* ClockHeaderView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -341,6 +400,8 @@
 				CBE1DC391BEC81F900E1FF29 /* MineTableViewCell.xib */,
 				CBF5E36E1BF1F1CE002D4F8F /* TemperatureTableViewCell.swift */,
 				CBF5E36F1BF1F1CE002D4F8F /* TemperatureTableViewCell.xib */,
+				3C9BFFAC1D7AA69F007C0E89 /* ClockTableViewCell.swift */,
+				3C9BFFAD1D7AA69F007C0E89 /* ClockTableViewCell.xib */,
 			);
 			path = ViewCell;
 			sourceTree = "<group>";
@@ -348,27 +409,19 @@
 		CB89F7AD1BE707BF00FD21FD /* ViewControll */ = {
 			isa = PBXGroup;
 			children = (
+				3C9BFFA91D7AA3B3007C0E89 /* Temperature */,
+				3C9BFFA81D7AA37A007C0E89 /* Mine */,
+				3C9BFFA71D7AA36A007C0E89 /* Water */,
+				3C9BFFA61D7AA338007C0E89 /* Clock */,
 				3CCCA7141D5F586900AFC6A1 /* ShareViewController.swift */,
 				CB3CF8921BE9DD6E008D577E /* KSGuidanceViewController.swift */,
 				CB3CF8931BE9DD6E008D577E /* KSGuidanceViewController.xib */,
-				3CCCA7121D5F57D100AFC6A1 /* WaterViewController.swift */,
-				3CCF7EF21D635B77004B664F /* WaterHistoryViewController.swift */,
 				CB3CF8881BE9B04F008D577E /* UserLoginViewController.swift */,
 				CB3CF88A1BE9B071008D577E /* UserRegistViewController.swift */,
 				CB3CF88C1BE9B0AC008D577E /* Login.storyboard */,
 				3C1BD8661BEB8B47003E34F8 /* CentralViewController.swift */,
-				3C80A5D61BCA5A9C0050B6B6 /* CupViewController.swift */,
-				CB89F7B51BE7101200FD21FD /* ClockCollectionViewController.swift */,
 				CB89F7B91BE710EE00FD21FD /* TabBarViewController.swift */,
-				CBE1DC2A1BE9F06E00E1FF29 /* MineViewController.swift */,
 				CBE1DC281BE9EE5B00E1FF29 /* Main.storyboard */,
-				CBE1DC2C1BE9F81C00E1FF29 /* AccountViewController.swift */,
-				3C1BDF921BF235AA003E34F8 /* TemperatureViewController.swift */,
-				3C1BDF931BF235AA003E34F8 /* TemperatureViewController.xib */,
-				3CECE67F1BF38A0400C43890 /* FirmwareViewController.swift */,
-				3CECE6801BF38A0400C43890 /* FirmwareViewController.xib */,
-				3CECE6831BF3996500C43890 /* AboutUsViewController.swift */,
-				3CECE6841BF3996500C43890 /* AboutUsViewController.xib */,
 			);
 			path = ViewControll;
 			sourceTree = "<group>";
@@ -494,6 +547,8 @@
 				CB3CF8951BE9DD6E008D577E /* KSGuidanceViewController.xib in Resources */,
 				3CECE6821BF38A0400C43890 /* FirmwareViewController.xib in Resources */,
 				CB3CF88D1BE9B0AC008D577E /* Login.storyboard in Resources */,
+				3C9BFFB31D7ABA65007C0E89 /* ClockHeaderView.xib in Resources */,
+				3C9BFFAF1D7AA69F007C0E89 /* ClockTableViewCell.xib in Resources */,
 				3CCCA7171D5F672800AFC6A1 /* ShareSheet.xib in Resources */,
 				3C1BDF8F1BF0D090003E34F8 /* SMS.storyboard in Resources */,
 				3CDF8A7F1CEB02E500B2675B /* 6.gif in Resources */,
@@ -501,6 +556,7 @@
 				3CDF8A7D1CEB02E500B2675B /* 4.gif in Resources */,
 				3C3947441BE9012300E7FE90 /* Images.xcassets in Resources */,
 				3C1BDF8A1BF0CA60003E34F8 /* SMS_SDKLocalizable.strings in Resources */,
+				3C9BFFB71D7ADC39007C0E89 /* AddClockViewController.xib in Resources */,
 				CBBCA4001BF18A30002E04F7 /* ClockCollectionHeaderView.xib in Resources */,
 				3CECE6861BF3996500C43890 /* AboutUsViewController.xib in Resources */,
 				3CDF8A7B1CEB02E500B2675B /* 2.gif in Resources */,
@@ -594,10 +650,13 @@
 				CBBCA3FF1BF18A30002E04F7 /* ClockCollectionHeaderView.swift in Sources */,
 				3CECE6851BF3996500C43890 /* AboutUsViewController.swift in Sources */,
 				CBE1DC331BEA04ED00E1FF29 /* AccountModel.swift in Sources */,
+				3C9BFFAB1D7AA3F2007C0E89 /* ClockTableViewController.swift in Sources */,
 				CB3CF8891BE9B04F008D577E /* UserLoginViewController.swift in Sources */,
 				CBE1DC2D1BE9F81C00E1FF29 /* AccountViewController.swift in Sources */,
 				CBE1DC3A1BEC81F900E1FF29 /* MineTableViewCell.swift in Sources */,
 				3CCCA71B1D60080D00AFC6A1 /* WaterCycleView.swift in Sources */,
+				3C9BFFB61D7ADC39007C0E89 /* AddClockViewController.swift in Sources */,
+				3C9BFFB11D7ABA56007C0E89 /* ClockHeaderView.swift in Sources */,
 				CBE1DC301BE9F92200E1FF29 /* AccountTableViewCell.swift in Sources */,
 				3CCCA7191D5F67F800AFC6A1 /* ShareSheet.swift in Sources */,
 				3C80A5D51BCA5A9C0050B6B6 /* AppDelegate.swift in Sources */,
@@ -617,6 +676,7 @@
 				CB89F7B31BE70B2700FD21FD /* ClockCollectionViewCell.swift in Sources */,
 				3C1BD86D1BEB8DA9003E34F8 /* Colors.swift in Sources */,
 				CBF5E3691BF1DAE0002D4F8F /* CupHeaderView.swift in Sources */,
+				3C9BFFAE1D7AA69F007C0E89 /* ClockTableViewCell.swift in Sources */,
 				3C1BDF911BF0D5C7003E34F8 /* SMSViewController.swift in Sources */,
 				CB89F7C01BE7150A00FD21FD /* R.generated.swift in Sources */,
 				3C1BD8671BEB8B47003E34F8 /* CentralViewController.swift in Sources */,

@@ -22,10 +22,10 @@ class ClockCollectionViewController: UICollectionViewController {
         [unowned self] in
         let naview = NavigationAccessoryView(frame: CGRectMake(0, 0, self.view.frame.width, 44.0))
         naview.doneButton.target = self
-        naview.doneButton.action = #selector(navigationDone(_:))
+        naview.doneButton.action = #selector(navigationDone)
         return naview
         }()
-    func navigationDone(sender: UIBarButtonItem) {
+    func navigationDone() {
         self.view.endEditing(true)
         ClockModel.saveValuesToDefaults(clockArray, forKey: "clockArray")
     }
@@ -105,7 +105,7 @@ extension ClockCollectionViewController {
                 clockModel.addUILocalNotification()
             }
             cell.timeTextField.text = clockModel.description
-        }.addDisposableTo(cell.disposeBag)
+        }.addDisposableTo(cell.ks.prepareForReusedisposableBag)
         let components = NSDate().components
         components.timeZone = NSTimeZone.localTimeZone()
         components.hour = clockModel.hour
