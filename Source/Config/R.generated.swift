@@ -707,8 +707,8 @@ struct _R: Rswift.Validatable {
       let bundle = _R.hostingBundle
       let name = "AddClockViewController"
       
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> UIView? {
-        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? UIView
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> AddClockViewController? {
+        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? AddClockViewController
       }
       
       private init() {}

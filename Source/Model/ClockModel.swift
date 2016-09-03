@@ -9,7 +9,7 @@
 import UIKit
 import KSJSONHelp
 import SwiftDate
-class ClockModel: NSObject,Model,Storable {
+class ClockModel: NSObject,Model,Storable,PrimaryKeyProtocol {
     var explanation:String = ""
     var hour:Int
     var minute :Int
@@ -77,4 +77,8 @@ class ClockModel: NSObject,Model,Storable {
             NSUserDefaults.standardUserDefaults().setBool(newValue, forKey: "ClockModelClose")
         }
     }
+    static func primaryKeys() -> Set<String> {
+        return ["hour","minute","explanation"]
+    }
+
 }

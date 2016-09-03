@@ -46,6 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UISwitch.appearance().onTintColor = Colors.red
         UISwitch.appearance().tintColor = Colors.black
         UIApplication.sharedApplication().statusBarStyle = .LightContent
+        UINavigationBar.appearance().tintColor = Colors.background
         UINavigationBar.appearance().barTintColor = Colors.red
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: Colors.background]
         //状态栏不透明，这样颜色比较饱满
