@@ -99,23 +99,23 @@ class WaterCycleView: UIView {
     private let gradientLayer = CALayer()
     override init(frame: CGRect) {
         super.init(frame: frame)
-        let path = UIBezierPath(arcCenter: center, radius: 110, startAngle: CGFloat(-250*M_PI/180), endAngle: CGFloat(70*M_PI/180), clockwise: true)
+        let path = UIBezierPath(arcCenter: center, radius: frame.height/2-trackLayer.lineWidth, startAngle: CGFloat(-240*M_PI/180), endAngle: CGFloat(60*M_PI/180), clockwise: true)
         trackLayer.path = path.CGPath
         progressLayer.path = path.CGPath
         layer.addSublayer(self.trackLayer)
         setUpGradientLayer()
         waterLabel.center = CGPoint(x: self.ks.width/2, y: self.ks.height/2)
         addSubview(waterLabel)
-        waterRateLabel.ks.bottom(waterLabel.ks.top-10)
+        waterRateLabel.ks.bottom(waterLabel.ks.top-5)
         waterRateLabel.ks.centerX(waterLabel.ks.centerX)
         addSubview(waterRateLabel)
-        waterplanLabel.ks.top(waterLabel.ks.bottom+10)
+        waterplanLabel.ks.top(waterLabel.ks.bottom+5)
         waterplanLabel.ks.centerX(waterLabel.ks.centerX)
         addSubview(waterplanLabel)
-        batteryRateLabel.ks.top(waterplanLabel.ks.bottom+15)
+        batteryRateLabel.ks.top(waterplanLabel.ks.bottom+5)
         batteryRateLabel.ks.centerX(waterLabel.ks.centerX)
         addSubview(batteryRateLabel)
-        batteryRateImageView.ks.top(batteryRateLabel.ks.bottom+5)
+        batteryRateImageView.ks.top(batteryRateLabel.ks.bottom+3)
         batteryRateImageView.ks.centerX(waterLabel.ks.centerX)
         addSubview(batteryRateImageView)
     }

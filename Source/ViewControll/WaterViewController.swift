@@ -13,6 +13,7 @@ import CoreBluetooth
 import Async
 import KSSwiftExtension
 import Charts
+import SwiftDate
 class WaterViewController: ShareViewController {
     var central: CBCentralManager!
     var peripheral: CBPeripheral?
@@ -20,20 +21,31 @@ class WaterViewController: ShareViewController {
     var selectedIndex: Int?
     var timer: NSTimer?
     var durationTimer: NSTimer?
-
+    var dateButton = UIButton()
     var waterCycleView: WaterCycleView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpCentral()
-        self.waterCycleView = WaterCycleView(frame: CGRect(x: 0, y: 5, width: KS.SCREEN_WIDTH, height: 250))
+        self.waterCycleView = WaterCycleView(frame: CGRect(x: 0, y: 0, width: KS.SCREEN_WIDTH, height: 230))
         waterCycleView.waterplan = CGFloat(staticAccount?.waterplan?.floatValue ?? 2300)
         waterCycleView.water = 1200
         waterCycleView.batteryRate = 100
-        self.view.addSubview(self.waterCycleView)
-        self.view.addSubview(self.chartView)
-        self.chartView.snp_makeConstraints { (make) in
+        view.addSubview(waterCycleView)
+        dateButton.setImage(R.image.icon_calendar(), forState: .Normal)
+        dateButton.titleLabel?.font = UIFont.systemFontOfSize(15)
+        dateButton.setTitleColor(Colors.pink, forState: .Normal)
+        dateButton.setTitle(NSDate().ks.stringFromFormat(" yyyy年MM月dd日"), forState: .Normal)
+        dateButton.sizeToFit()
+        view.addSubview(dateButton)
+        dateButton.snp_makeConstraints { (make) in
+            make.top.equalTo(waterCycleView.ks.bottom)
+            make.left.equalToSuperview()
             make.width.equalToSuperview()
-            make.top.equalTo(self.waterCycleView.ks.bottom)
+        }
+        view.addSubview(chartView)
+        chartView.snp_makeConstraints { (make) in
+            make.width.equalToSuperview()
+            make.top.equalTo(dateButton.snp_bottom)
             make.bottom.equalToSuperview()
         }
         let tapGesture = UITapGestureRecognizer()
@@ -56,11 +68,11 @@ class WaterViewController: ShareViewController {
             set.mode = .CubicBezier
             set.lineDashLengths = [5, 2.5]
             set.highlightLineDashLengths = [5, 2.5]
-            set.setColor(UIColor.blackColor())
-            set.setCircleColor(UIColor.blackColor())
+            set.setColor(Colors.red)
+            set.setCircleColor(Colors.red)
             set.lineWidth = 1.0
-            set.circleRadius = 3.0
-            let gradientColors = [ChartColorTemplates.colorFromString("#00ff0000").CGColor,ChartColorTemplates.colorFromString("#ffff0000").CGColor]
+            set.circleRadius = 2.0
+            let gradientColors = [Colors.white.CGColor,Colors.red.CGColor]
             set.fillAlpha = 1
             set.fill = ChartFill.fillWithLinearGradient(CGGradientCreateWithColors(nil, gradientColors, nil)!, angle: 90)
             set.drawFilledEnabled = true

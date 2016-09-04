@@ -17,21 +17,21 @@ class ShareViewController: UIViewController {
         chartView.scaleYEnabled = false
 //        chartView.drawBarShadowEnabled = false
         chartView.xAxis.labelPosition = .Bottom
+        chartView.xAxis.labelTextColor = Colors.pink
         chartView.xAxis.drawGridLinesEnabled = false
         let valueFormatter = NSNumberFormatter()
         valueFormatter.maximumFractionDigits = 1
-        valueFormatter.positiveSuffix = " ml"
+        valueFormatter.positiveSuffix = "ml"
         chartView.leftAxis.valueFormatter = valueFormatter
         chartView.leftAxis.axisMinValue = 0
-        chartView.rightAxis.valueFormatter = valueFormatter
-        chartView.rightAxis.axisMinValue = 0
+        chartView.leftAxis.labelTextColor = Colors.pink
+        chartView.rightAxis.enabled = false
         chartView.legend.enabled = false
         return chartView
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.whiteColor()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: R.image.icon_share(), style: .Plain, target: self, action: #selector(showShareSheet(_:)))
     }
 
