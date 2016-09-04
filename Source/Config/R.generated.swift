@@ -26,7 +26,7 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 65 images.
+  /// This `R.image` struct is generated, and contains static references to 70 images.
   struct image {
     /// Image `LOGO`.
     static let lOGO = ImageResource(bundle: _R.hostingBundle, name: "LOGO")
@@ -158,6 +158,16 @@ struct R: Rswift.Validatable {
     static let record_icon_week_initial = ImageResource(bundle: _R.hostingBundle, name: "record_icon_week_initial")
     /// Image `record_icon_week`.
     static let record_icon_week = ImageResource(bundle: _R.hostingBundle, name: "record_icon_week")
+    /// Image `share_friend`.
+    static let share_friend = ImageResource(bundle: _R.hostingBundle, name: "share_friend")
+    /// Image `share_qzone`.
+    static let share_qzone = ImageResource(bundle: _R.hostingBundle, name: "share_qzone")
+    /// Image `share_sina`.
+    static let share_sina = ImageResource(bundle: _R.hostingBundle, name: "share_sina")
+    /// Image `share_tencent`.
+    static let share_tencent = ImageResource(bundle: _R.hostingBundle, name: "share_tencent")
+    /// Image `share_weixin`.
+    static let share_weixin = ImageResource(bundle: _R.hostingBundle, name: "share_weixin")
     
     /// `UIImage(named: "LOGO", bundle: ..., traitCollection: ...)`
     static func lOGO(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
@@ -482,6 +492,31 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "record_icon_week_initial", bundle: ..., traitCollection: ...)`
     static func record_icon_week_initial(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.record_icon_week_initial, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "share_friend", bundle: ..., traitCollection: ...)`
+    static func share_friend(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.share_friend, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "share_qzone", bundle: ..., traitCollection: ...)`
+    static func share_qzone(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.share_qzone, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "share_sina", bundle: ..., traitCollection: ...)`
+    static func share_sina(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.share_sina, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "share_tencent", bundle: ..., traitCollection: ...)`
+    static func share_tencent(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.share_tencent, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "share_weixin", bundle: ..., traitCollection: ...)`
+    static func share_weixin(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.share_weixin, compatibleWithTraitCollection: traitCollection)
     }
     
     private init() {}

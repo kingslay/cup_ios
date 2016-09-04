@@ -25,13 +25,15 @@ class WaterViewController: ShareViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpCentral()
-        self.waterCycleView = WaterCycleView(frame: CGRect(x: 0, y: 25, width: KS.SCREEN_WIDTH, height: 345))
-        self.waterCycleView.progress = 0.8
+        self.waterCycleView = WaterCycleView(frame: CGRect(x: 0, y: 5, width: KS.SCREEN_WIDTH, height: 250))
+        waterCycleView.waterplan = CGFloat(staticAccount?.waterplan?.floatValue ?? 2300)
+        waterCycleView.water = 1200
+        waterCycleView.batteryRate = 100
         self.view.addSubview(self.waterCycleView)
         self.view.addSubview(self.chartView)
         self.chartView.snp_makeConstraints { (make) in
             make.width.equalToSuperview()
-            make.height.equalToSuperview().multipliedBy(0.5)
+            make.top.equalTo(self.waterCycleView.ks.bottom)
             make.bottom.equalToSuperview()
         }
         let tapGesture = UITapGestureRecognizer()

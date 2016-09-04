@@ -9,20 +9,77 @@
 import UIKit
 import KSSwiftExtension
 class WaterCycleView: UIView {
-    var progress: CGFloat = 0 {
+    var water: CGFloat = 0 {
         didSet {
-            self.progressLayer.strokeEnd = self.progress;
-            gradientLayer.mask = self.progressLayer
+            waterLabel.text = "\(Int(water))"
+            progress = water/waterplan
         }
     }
-    let label: UILabel = {
+    var waterplan: CGFloat = 2300 {
+        didSet {
+            waterplanLabel.text = "目标 \(Int(waterplan))ml"
+            progress = water/waterplan
+        }
+    }
+    var batteryRate: NSInteger = 100 {
+        didSet {
+            if batteryRate >= 100 {
+                self.batteryRateLabel.text = "100%"
+                self.batteryRateImageView.image = R.image.icon_Battery_charging()
+            } else if batteryRate > 20 {
+                self.batteryRateLabel.text = "\(batteryRate)%"
+                self.batteryRateImageView.image = R.image.icon_Battery_hight()
+            } else {
+                self.batteryRateLabel.text = "\(batteryRate)%"
+                self.batteryRateImageView.image = R.image.icon_Battery_low()
+            }
+        }
+    }
+    private var progress: CGFloat = 0 {
+        didSet {
+            progressLayer.strokeEnd = self.progress;
+            gradientLayer.mask = self.progressLayer
+            waterRateLabel.text = "完成\(Int(progress*100.0))％"
+        }
+    }
+    private let waterRateLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         label.textAlignment = .Center
-        label.textColor = .blackColor()
-        label.text = "Hello, World!"
+        label.textColor = Colors.red
+        label.font = UIFont.systemFontOfSize(18)
+        label.text = "1234567890"
+        label.sizeToFit()
         return label
     }()
-    let trackLayer: CAShapeLayer = {
+    private let waterLabel: UILabel = {
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        label.textAlignment = .Center
+        label.textColor = Colors.red
+        label.font = UIFont.systemFontOfSize(49)
+        label.text = "1234567890"
+        label.sizeToFit()
+        return label
+    }()
+    private let waterplanLabel: UILabel = {
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        label.textAlignment = .Center
+        label.textColor = Colors.pink
+        label.font = UIFont.systemFontOfSize(18)
+        label.text = "目标123456ml"
+        label.sizeToFit()
+        return label
+    }()
+    private let batteryRateLabel: UILabel = {
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        label.textAlignment = .Center
+        label.textColor = Swifty<UIColor>.colorFrom("#7dd833")
+        label.font = UIFont.systemFontOfSize(15)
+        label.text = "1234567890"
+        label.sizeToFit()
+        return label
+    }()
+    private let batteryRateImageView = UIImageView(image: R.image.icon_Battery_charging())
+    private let trackLayer: CAShapeLayer = {
         let layer = CAShapeLayer()
         layer.fillColor = UIColor.clearColor().CGColor
         layer.strokeColor = Swifty<UIColor>.colorFrom("#ffd1d8").CGColor
@@ -30,7 +87,7 @@ class WaterCycleView: UIView {
         layer.lineWidth = 22
         return layer
     }()
-    let progressLayer: CAShapeLayer = {
+    private let progressLayer: CAShapeLayer = {
         let layer = CAShapeLayer()
         layer.fillColor = UIColor.clearColor().CGColor
         layer.strokeColor = UIColor.blackColor().CGColor
@@ -39,17 +96,28 @@ class WaterCycleView: UIView {
         layer.strokeEnd = 0
         return layer
     }()
-    let gradientLayer = CALayer()
+    private let gradientLayer = CALayer()
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.whiteColor()
-        self.label.center = CGPoint(x: self.ks.width/2, y: self.ks.height/2)
-        self.addSubview(self.label)
-        let path = UIBezierPath(arcCenter: center, radius: 120, startAngle: CGFloat(-250*M_PI/180), endAngle: CGFloat(70*M_PI/180), clockwise: true)
-        self.trackLayer.path = path.CGPath
-        self.progressLayer.path = path.CGPath
-        self.layer.addSublayer(self.trackLayer)
-        self.setUpGradientLayer()
+        let path = UIBezierPath(arcCenter: center, radius: 110, startAngle: CGFloat(-250*M_PI/180), endAngle: CGFloat(70*M_PI/180), clockwise: true)
+        trackLayer.path = path.CGPath
+        progressLayer.path = path.CGPath
+        layer.addSublayer(self.trackLayer)
+        setUpGradientLayer()
+        waterLabel.center = CGPoint(x: self.ks.width/2, y: self.ks.height/2)
+        addSubview(waterLabel)
+        waterRateLabel.ks.bottom(waterLabel.ks.top-10)
+        waterRateLabel.ks.centerX(waterLabel.ks.centerX)
+        addSubview(waterRateLabel)
+        waterplanLabel.ks.top(waterLabel.ks.bottom+10)
+        waterplanLabel.ks.centerX(waterLabel.ks.centerX)
+        addSubview(waterplanLabel)
+        batteryRateLabel.ks.top(waterplanLabel.ks.bottom+15)
+        batteryRateLabel.ks.centerX(waterLabel.ks.centerX)
+        addSubview(batteryRateLabel)
+        batteryRateImageView.ks.top(batteryRateLabel.ks.bottom+5)
+        batteryRateImageView.ks.centerX(waterLabel.ks.centerX)
+        addSubview(batteryRateImageView)
     }
 
     required init?(coder aDecoder: NSCoder) {
