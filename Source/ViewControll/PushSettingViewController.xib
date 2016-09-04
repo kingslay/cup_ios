@@ -42,14 +42,14 @@
                             <constraint firstAttribute="trailing" secondItem="pKh-jF-bUE" secondAttribute="trailing" constant="10" id="uxG-yq-jKX"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="如果您要关闭或开启新消息通知，请在设置的“设置－通知”功能中，找到应用程序进行更改" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tz6-0u-kTO">
-                        <rect key="frame" x="20" y="112" width="280" height="36"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="如果您要关闭或开启新消息通知，请在设置的“设置－通知”功能中，找到应用程序进行更改" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tz6-0u-kTO">
+                        <rect key="frame" x="20" y="112" width="280" height="54"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.57254901960000004" green="0.4431372549" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1kh-hF-qh0">
-                        <rect key="frame" x="0.0" y="188" width="320" height="51"/>
+                        <rect key="frame" x="0.0" y="206" width="320" height="51"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="APP推送" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lb8-se-UDy">
                                 <rect key="frame" x="10" y="15" width="66" height="20.5"/>

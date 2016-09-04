@@ -495,7 +495,7 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.nib` struct is generated, and contains static references to 16 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 17 nibs.
   struct nib {
     /// Nib `AboutUsViewController`.
     static let aboutUsViewController = _R.nib._AboutUsViewController()
@@ -529,6 +529,8 @@ struct R: Rswift.Validatable {
     static let temperatureTableViewCell = _R.nib._TemperatureTableViewCell()
     /// Nib `TemperatureViewController`.
     static let temperatureViewController = _R.nib._TemperatureViewController()
+    /// Nib `WaterplanViewController`.
+    static let waterplanViewController = _R.nib._WaterplanViewController()
     
     /// `UINib(name: "AboutUsViewController", bundle: ...)`
     static func aboutUsViewController(_: Void) -> UINib {
@@ -608,6 +610,11 @@ struct R: Rswift.Validatable {
     /// `UINib(name: "TemperatureViewController", bundle: ...)`
     static func temperatureViewController(_: Void) -> UINib {
       return UINib(resource: R.nib.temperatureViewController)
+    }
+    
+    /// `UINib(name: "WaterplanViewController", bundle: ...)`
+    static func waterplanViewController(_: Void) -> UINib {
+      return UINib(resource: R.nib.waterplanViewController)
     }
     
     private init() {}
@@ -881,6 +888,17 @@ struct _R: Rswift.Validatable {
       
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> TemperatureViewController? {
         return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? TemperatureViewController
+      }
+      
+      private init() {}
+    }
+    
+    struct _WaterplanViewController: NibResourceType {
+      let bundle = _R.hostingBundle
+      let name = "WaterplanViewController"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> WaterplanViewController? {
+        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? WaterplanViewController
       }
       
       private init() {}

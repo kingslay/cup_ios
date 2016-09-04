@@ -37,6 +37,8 @@
 		3C9BFFBB1D7C00A1007C0E89 /* AccoutBindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BFFBA1D7C00A1007C0E89 /* AccoutBindViewController.swift */; };
 		3C9BFFBE1D7C02BF007C0E89 /* PushSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BFFBC1D7C02BF007C0E89 /* PushSettingViewController.swift */; };
 		3C9BFFBF1D7C02BF007C0E89 /* PushSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C9BFFBD1D7C02BF007C0E89 /* PushSettingViewController.xib */; };
+		3C9BFFC21D7C19FC007C0E89 /* WaterplanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BFFC01D7C19FC007C0E89 /* WaterplanViewController.swift */; };
+		3C9BFFC31D7C19FC007C0E89 /* WaterplanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C9BFFC11D7C19FC007C0E89 /* WaterplanViewController.xib */; };
 		3CC57E031BE7BA490050E64E /* KSPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC57E021BE7BA490050E64E /* KSPickerView.swift */; };
 		3CCCA7131D5F57D100AFC6A1 /* WaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCCA7121D5F57D100AFC6A1 /* WaterViewController.swift */; };
 		3CCCA7151D5F586900AFC6A1 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCCA7141D5F586900AFC6A1 /* ShareViewController.swift */; };
@@ -134,6 +136,8 @@
 		3C9BFFBA1D7C00A1007C0E89 /* AccoutBindViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccoutBindViewController.swift; sourceTree = "<group>"; };
 		3C9BFFBC1D7C02BF007C0E89 /* PushSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushSettingViewController.swift; sourceTree = "<group>"; };
 		3C9BFFBD1D7C02BF007C0E89 /* PushSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PushSettingViewController.xib; sourceTree = "<group>"; };
+		3C9BFFC01D7C19FC007C0E89 /* WaterplanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterplanViewController.swift; sourceTree = "<group>"; };
+		3C9BFFC11D7C19FC007C0E89 /* WaterplanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaterplanViewController.xib; sourceTree = "<group>"; };
 		3CC57E021BE7BA490050E64E /* KSPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KSPickerView.swift; sourceTree = "<group>"; };
 		3CCCA7121D5F57D100AFC6A1 /* WaterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterViewController.swift; sourceTree = "<group>"; };
 		3CCCA7141D5F586900AFC6A1 /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
@@ -318,6 +322,8 @@
 				3CECE6801BF38A0400C43890 /* FirmwareViewController.xib */,
 				3CECE6831BF3996500C43890 /* AboutUsViewController.swift */,
 				3CECE6841BF3996500C43890 /* AboutUsViewController.xib */,
+				3C9BFFC01D7C19FC007C0E89 /* WaterplanViewController.swift */,
+				3C9BFFC11D7C19FC007C0E89 /* WaterplanViewController.xib */,
 			);
 			name = Mine;
 			sourceTree = "<group>";
@@ -552,6 +558,7 @@
 				3CDF8A811CEB02E500B2675B /* 8.gif in Resources */,
 				3CDF8A801CEB02E500B2675B /* 7.gif in Resources */,
 				3CDF8A7E1CEB02E500B2675B /* 5.gif in Resources */,
+				3C9BFFC31D7C19FC007C0E89 /* WaterplanViewController.xib in Resources */,
 				3C80A5E11BCA5A9D0050B6B6 /* LaunchScreen.storyboard in Resources */,
 				3C1BDF951BF235AA003E34F8 /* TemperatureViewController.xib in Resources */,
 				CBF5E3711BF1F1CE002D4F8F /* TemperatureTableViewCell.xib in Resources */,
@@ -666,6 +673,7 @@
 				CBE1DC331BEA04ED00E1FF29 /* AccountModel.swift in Sources */,
 				3C9BFFAB1D7AA3F2007C0E89 /* ClockTableViewController.swift in Sources */,
 				CB3CF8891BE9B04F008D577E /* UserLoginViewController.swift in Sources */,
+				3C9BFFC21D7C19FC007C0E89 /* WaterplanViewController.swift in Sources */,
 				CBE1DC2D1BE9F81C00E1FF29 /* AccountViewController.swift in Sources */,
 				CBE1DC3A1BEC81F900E1FF29 /* MineTableViewCell.swift in Sources */,
 				3CCCA71B1D60080D00AFC6A1 /* WaterCycleView.swift in Sources */,

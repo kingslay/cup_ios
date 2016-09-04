@@ -184,6 +184,9 @@ extension MineViewController {
             }
             alertController.addAction(okAction)
             self.presentViewController(alertController, animated: true, completion: nil)
+        case(0,4):
+            let vc = R.nib.waterplanViewController.firstView(owner: nil, options: nil)!
+            self.navigationController?.ks.pushViewController(vc)
         case(1,0):
             let vc = R.nib.accoutBindViewController.firstView(owner: nil, options: nil)!
             vc.phoneLabel.text = staticAccount?.phone
