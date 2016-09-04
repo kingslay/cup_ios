@@ -25,9 +25,7 @@ class WaterViewController: ShareViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpCentral()
-        var frame = self.view.frame
-        frame.size.height = 200
-        self.waterCycleView = WaterCycleView(frame: frame)
+        self.waterCycleView = WaterCycleView(frame: CGRect(x: 0, y: 25, width: KS.SCREEN_WIDTH, height: 345))
         self.waterCycleView.progress = 0.8
         self.view.addSubview(self.waterCycleView)
         self.view.addSubview(self.chartView)

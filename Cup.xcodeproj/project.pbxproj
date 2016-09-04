@@ -33,6 +33,10 @@
 		3C9BFFB31D7ABA65007C0E89 /* ClockHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C9BFFB21D7ABA65007C0E89 /* ClockHeaderView.xib */; };
 		3C9BFFB61D7ADC39007C0E89 /* AddClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BFFB41D7ADC39007C0E89 /* AddClockViewController.swift */; };
 		3C9BFFB71D7ADC39007C0E89 /* AddClockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C9BFFB51D7ADC39007C0E89 /* AddClockViewController.xib */; };
+		3C9BFFB91D7C0092007C0E89 /* AccoutBindViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C9BFFB81D7C0092007C0E89 /* AccoutBindViewController.xib */; };
+		3C9BFFBB1D7C00A1007C0E89 /* AccoutBindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BFFBA1D7C00A1007C0E89 /* AccoutBindViewController.swift */; };
+		3C9BFFBE1D7C02BF007C0E89 /* PushSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BFFBC1D7C02BF007C0E89 /* PushSettingViewController.swift */; };
+		3C9BFFBF1D7C02BF007C0E89 /* PushSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C9BFFBD1D7C02BF007C0E89 /* PushSettingViewController.xib */; };
 		3CC57E031BE7BA490050E64E /* KSPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC57E021BE7BA490050E64E /* KSPickerView.swift */; };
 		3CCCA7131D5F57D100AFC6A1 /* WaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCCA7121D5F57D100AFC6A1 /* WaterViewController.swift */; };
 		3CCCA7151D5F586900AFC6A1 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCCA7141D5F586900AFC6A1 /* ShareViewController.swift */; };
@@ -126,6 +130,10 @@
 		3C9BFFB21D7ABA65007C0E89 /* ClockHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClockHeaderView.xib; sourceTree = "<group>"; };
 		3C9BFFB41D7ADC39007C0E89 /* AddClockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddClockViewController.swift; sourceTree = "<group>"; };
 		3C9BFFB51D7ADC39007C0E89 /* AddClockViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddClockViewController.xib; sourceTree = "<group>"; };
+		3C9BFFB81D7C0092007C0E89 /* AccoutBindViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccoutBindViewController.xib; sourceTree = "<group>"; };
+		3C9BFFBA1D7C00A1007C0E89 /* AccoutBindViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccoutBindViewController.swift; sourceTree = "<group>"; };
+		3C9BFFBC1D7C02BF007C0E89 /* PushSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushSettingViewController.swift; sourceTree = "<group>"; };
+		3C9BFFBD1D7C02BF007C0E89 /* PushSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PushSettingViewController.xib; sourceTree = "<group>"; };
 		3CC57E021BE7BA490050E64E /* KSPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KSPickerView.swift; sourceTree = "<group>"; };
 		3CCCA7121D5F57D100AFC6A1 /* WaterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterViewController.swift; sourceTree = "<group>"; };
 		3CCCA7141D5F586900AFC6A1 /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
@@ -301,6 +309,10 @@
 			isa = PBXGroup;
 			children = (
 				CBE1DC2A1BE9F06E00E1FF29 /* MineViewController.swift */,
+				3C9BFFBA1D7C00A1007C0E89 /* AccoutBindViewController.swift */,
+				3C9BFFB81D7C0092007C0E89 /* AccoutBindViewController.xib */,
+				3C9BFFBC1D7C02BF007C0E89 /* PushSettingViewController.swift */,
+				3C9BFFBD1D7C02BF007C0E89 /* PushSettingViewController.xib */,
 				CBE1DC2C1BE9F81C00E1FF29 /* AccountViewController.swift */,
 				3CECE67F1BF38A0400C43890 /* FirmwareViewController.swift */,
 				3CECE6801BF38A0400C43890 /* FirmwareViewController.xib */,
@@ -543,6 +555,7 @@
 				3C80A5E11BCA5A9D0050B6B6 /* LaunchScreen.storyboard in Resources */,
 				3C1BDF951BF235AA003E34F8 /* TemperatureViewController.xib in Resources */,
 				CBF5E3711BF1F1CE002D4F8F /* TemperatureTableViewCell.xib in Resources */,
+				3C9BFFB91D7C0092007C0E89 /* AccoutBindViewController.xib in Resources */,
 				3CDF8A7A1CEB02E500B2675B /* 1.gif in Resources */,
 				CB3CF8951BE9DD6E008D577E /* KSGuidanceViewController.xib in Resources */,
 				3CECE6821BF38A0400C43890 /* FirmwareViewController.xib in Resources */,
@@ -555,6 +568,7 @@
 				CBE1DC3B1BEC81F900E1FF29 /* MineTableViewCell.xib in Resources */,
 				3CDF8A7D1CEB02E500B2675B /* 4.gif in Resources */,
 				3C3947441BE9012300E7FE90 /* Images.xcassets in Resources */,
+				3C9BFFBF1D7C02BF007C0E89 /* PushSettingViewController.xib in Resources */,
 				3C1BDF8A1BF0CA60003E34F8 /* SMS_SDKLocalizable.strings in Resources */,
 				3C9BFFB71D7ADC39007C0E89 /* AddClockViewController.xib in Resources */,
 				CBBCA4001BF18A30002E04F7 /* ClockCollectionHeaderView.xib in Resources */,
@@ -659,9 +673,11 @@
 				3C9BFFB11D7ABA56007C0E89 /* ClockHeaderView.swift in Sources */,
 				CBE1DC301BE9F92200E1FF29 /* AccountTableViewCell.swift in Sources */,
 				3CCCA7191D5F67F800AFC6A1 /* ShareSheet.swift in Sources */,
+				3C9BFFBE1D7C02BF007C0E89 /* PushSettingViewController.swift in Sources */,
 				3C80A5D51BCA5A9C0050B6B6 /* AppDelegate.swift in Sources */,
 				CBF5E3701BF1F1CE002D4F8F /* TemperatureTableViewCell.swift in Sources */,
 				CBF5E36D1BF1ED3E002D4F8F /* TemperatureModel.swift in Sources */,
+				3C9BFFBB1D7C00A1007C0E89 /* AccoutBindViewController.swift in Sources */,
 				CBE9E7C51BE88A1B00CE922B /* ClockModel.swift in Sources */,
 				CB3CF8941BE9DD6E008D577E /* KSGuidanceViewController.swift in Sources */,
 				3CECE6811BF38A0400C43890 /* FirmwareViewController.swift in Sources */,

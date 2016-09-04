@@ -20,6 +20,7 @@ public class NavigationAccessoryView: UIToolbar {
         super.init(frame: CGRectMake(0, 0, frame.size.width, 44.0))
         autoresizingMask = .FlexibleWidth
         fixedSpace.width = 22.0
+        doneButton.tintColor = Colors.red
         setItems([fixedSpace, flexibleSpace, doneButton], animated: false)
     }
     required public init?(coder aDecoder: NSCoder) {

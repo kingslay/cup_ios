@@ -1,55 +1,79 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MineTableViewCell" rowHeight="70" id="KGk-i7-Jjw" customClass="MineTableViewCell" customModule="Cup" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="85"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MineTableViewCell" rowHeight="51" id="KGk-i7-Jjw" customClass="MineTableViewCell" customModule="Cup" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="51"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="84.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="50.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="bmx-1O-7Ab">
-                        <rect key="frame" x="10" y="11" width="62" height="62"/>
-                        <animations/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_Head" translatesAutoresizingMaskIntoConstraints="NO" id="9CT-E6-yGH">
+                        <rect key="frame" x="15" y="16" width="20" height="20"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的头像" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Fl-zt-uXj">
+                        <rect key="frame" x="45" y="15.5" width="64" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="0.57254901960000004" green="0.4431372549" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="label_icon_Personal_initial" translatesAutoresizingMaskIntoConstraints="NO" id="bmx-1O-7Ab">
+                        <rect key="frame" x="260" y="5.5" width="40" height="40"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="62" id="fhB-ci-UI1"/>
-                            <constraint firstAttribute="width" constant="62" id="iJ2-jc-LdB"/>
+                            <constraint firstAttribute="height" constant="40" id="fhB-ci-UI1"/>
+                            <constraint firstAttribute="width" constant="40" id="iJ2-jc-LdB"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                <real key="value" value="31"/>
+                                <real key="value" value="20"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Fl-zt-uXj">
-                        <rect key="frame" x="92" y="32" width="42" height="20.5"/>
-                        <animations/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="peN-iE-GhK">
+                        <rect key="frame" x="129" y="0.0" width="171" height="50.5"/>
+                        <color key="textColor" red="0.57254901960000004" green="0.4431372549" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
                 </subviews>
-                <animations/>
                 <constraints>
                     <constraint firstItem="7Fl-zt-uXj" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="2tl-BO-NcI"/>
+                    <constraint firstItem="7Fl-zt-uXj" firstAttribute="leading" secondItem="9CT-E6-yGH" secondAttribute="trailing" constant="10" id="4Km-xl-1Fe"/>
+                    <constraint firstItem="peN-iE-GhK" firstAttribute="leading" secondItem="7Fl-zt-uXj" secondAttribute="trailing" constant="20" id="7Bi-cE-SQj"/>
+                    <constraint firstAttribute="trailing" secondItem="peN-iE-GhK" secondAttribute="trailing" constant="20" id="Dok-uM-8OT"/>
+                    <constraint firstItem="peN-iE-GhK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="FBp-m9-W4k"/>
+                    <constraint firstAttribute="trailing" secondItem="bmx-1O-7Ab" secondAttribute="trailing" constant="20" id="JCu-pX-TCg"/>
+                    <constraint firstItem="9CT-E6-yGH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="RDG-8N-0wi"/>
+                    <constraint firstItem="9CT-E6-yGH" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="WpB-u1-GUq"/>
                     <constraint firstItem="bmx-1O-7Ab" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ZL0-Kk-NWN"/>
+                    <constraint firstAttribute="bottom" secondItem="peN-iE-GhK" secondAttribute="bottom" id="fHg-X1-TCd"/>
                     <constraint firstItem="bmx-1O-7Ab" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="qBa-j9-Du8"/>
                     <constraint firstItem="7Fl-zt-uXj" firstAttribute="leading" secondItem="bmx-1O-7Ab" secondAttribute="trailing" constant="20" id="qg6-xT-dDY"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="qg6-xT-dDY"/>
+                        <exclude reference="qBa-j9-Du8"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
-            <animations/>
             <connections>
                 <outlet property="headerImageView" destination="bmx-1O-7Ab" id="0FH-Pf-2uE"/>
-                <outlet property="imageView" destination="bmx-1O-7Ab" id="C3T-rc-dlt"/>
-                <outlet property="nickNameLabel" destination="7Fl-zt-uXj" id="zbe-py-1LO"/>
+                <outlet property="iconImageView" destination="9CT-E6-yGH" id="Al4-WR-3Y0"/>
+                <outlet property="titleLabel" destination="7Fl-zt-uXj" id="s4L-dY-rcu"/>
+                <outlet property="valueTextField" destination="peN-iE-GhK" id="IMs-db-FPj"/>
             </connections>
-            <point key="canvasLocation" x="393" y="315.5"/>
+            <point key="canvasLocation" x="310" y="385.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="icon_Head" width="20" height="20"/>
+        <image name="label_icon_Personal_initial" width="20" height="22"/>
+    </resources>
 </document>

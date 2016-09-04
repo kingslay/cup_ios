@@ -66,6 +66,11 @@ class AccountModel: NSObject,Model,Storable {
             AccountModel.localSave()
         }
     }
+    var waterplan: NSNumber? {
+        didSet{
+            AccountModel.localSave()
+        }
+    }
     
     var birthday: String? {
         didSet{

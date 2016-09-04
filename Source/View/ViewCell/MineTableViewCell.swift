@@ -9,10 +9,11 @@
 import UIKit
 
 class MineTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var nickNameLabel: UILabel!
+    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var headerImageView: UIImageView!
-    
+    @IBOutlet weak var valueTextField: UITextField!
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }

@@ -25,10 +25,9 @@ class WaterCycleView: UIView {
     let trackLayer: CAShapeLayer = {
         let layer = CAShapeLayer()
         layer.fillColor = UIColor.clearColor().CGColor
-        layer.strokeColor = UIColor.redColor().CGColor
-        layer.opacity = 0.25
+        layer.strokeColor = Swifty<UIColor>.colorFrom("#ffd1d8").CGColor
         layer.lineCap = kCALineCapRound
-        layer.lineWidth = 10
+        layer.lineWidth = 22
         return layer
     }()
     let progressLayer: CAShapeLayer = {
@@ -36,7 +35,7 @@ class WaterCycleView: UIView {
         layer.fillColor = UIColor.clearColor().CGColor
         layer.strokeColor = UIColor.blackColor().CGColor
         layer.lineCap = kCALineCapRound
-        layer.lineWidth = 10
+        layer.lineWidth = 22
         layer.strokeEnd = 0
         return layer
     }()
@@ -46,7 +45,7 @@ class WaterCycleView: UIView {
         self.backgroundColor = UIColor.whiteColor()
         self.label.center = CGPoint(x: self.ks.width/2, y: self.ks.height/2)
         self.addSubview(self.label)
-        let path = UIBezierPath(arcCenter: center, radius: 90, startAngle: CGFloat(-210*M_PI/180), endAngle: CGFloat(30.0*M_PI/180), clockwise: true)
+        let path = UIBezierPath(arcCenter: center, radius: 120, startAngle: CGFloat(-250*M_PI/180), endAngle: CGFloat(70*M_PI/180), clockwise: true)
         self.trackLayer.path = path.CGPath
         self.progressLayer.path = path.CGPath
         self.layer.addSublayer(self.trackLayer)
@@ -58,14 +57,14 @@ class WaterCycleView: UIView {
     }
     func setUpGradientLayer() {
         let gradientLayer1 = CAGradientLayer()
-        gradientLayer1.colors = [UIColor.blueColor().CGColor,UIColor.yellowColor().CGColor]
+        gradientLayer1.colors = [Swifty<UIColor>.colorFrom("#da251c").CGColor,Swifty<UIColor>.colorFrom("#ff9958").CGColor]
         gradientLayer1.frame = CGRect(x: 0, y: 0, width: self.ks.width/2, height: self.ks.height)
         gradientLayer1.locations = [0.5,0.9,1]
         gradientLayer1.startPoint = CGPoint(x: 0.5, y: 1)
         gradientLayer1.endPoint = CGPoint(x: 0.5, y: 0)
         gradientLayer.addSublayer(gradientLayer1)
         let gradientLayer2 = CAGradientLayer()
-        gradientLayer2.colors = [UIColor.blackColor().CGColor,UIColor.yellowColor().CGColor]
+        gradientLayer2.colors = [Swifty<UIColor>.colorFrom("#ff9958").CGColor,Swifty<UIColor>.colorFrom("#da251c").CGColor]
         gradientLayer2.frame = CGRect(x: self.ks.width/2, y: 0, width: self.ks.width/2, height: self.ks.height)
         gradientLayer2.locations = [0.1,0.5,1]
         gradientLayer2.startPoint = CGPoint(x: 0.5, y: 0)

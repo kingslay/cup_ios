@@ -495,12 +495,14 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.nib` struct is generated, and contains static references to 14 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 16 nibs.
   struct nib {
     /// Nib `AboutUsViewController`.
     static let aboutUsViewController = _R.nib._AboutUsViewController()
     /// Nib `AccountTableViewCell`.
     static let accountTableViewCell = _R.nib._AccountTableViewCell()
+    /// Nib `AccoutBindViewController`.
+    static let accoutBindViewController = _R.nib._AccoutBindViewController()
     /// Nib `AddClockViewController`.
     static let addClockViewController = _R.nib._AddClockViewController()
     /// Nib `ClockCollectionHeaderView`.
@@ -519,6 +521,8 @@ struct R: Rswift.Validatable {
     static let kSGuidanceViewController = _R.nib._KSGuidanceViewController()
     /// Nib `MineTableViewCell`.
     static let mineTableViewCell = _R.nib._MineTableViewCell()
+    /// Nib `PushSettingViewController`.
+    static let pushSettingViewController = _R.nib._PushSettingViewController()
     /// Nib `ShareSheet`.
     static let shareSheet = _R.nib._ShareSheet()
     /// Nib `TemperatureTableViewCell`.
@@ -534,6 +538,11 @@ struct R: Rswift.Validatable {
     /// `UINib(name: "AccountTableViewCell", bundle: ...)`
     static func accountTableViewCell(_: Void) -> UINib {
       return UINib(resource: R.nib.accountTableViewCell)
+    }
+    
+    /// `UINib(name: "AccoutBindViewController", bundle: ...)`
+    static func accoutBindViewController(_: Void) -> UINib {
+      return UINib(resource: R.nib.accoutBindViewController)
     }
     
     /// `UINib(name: "AddClockViewController", bundle: ...)`
@@ -579,6 +588,11 @@ struct R: Rswift.Validatable {
     /// `UINib(name: "MineTableViewCell", bundle: ...)`
     static func mineTableViewCell(_: Void) -> UINib {
       return UINib(resource: R.nib.mineTableViewCell)
+    }
+    
+    /// `UINib(name: "PushSettingViewController", bundle: ...)`
+    static func pushSettingViewController(_: Void) -> UINib {
+      return UINib(resource: R.nib.pushSettingViewController)
     }
     
     /// `UINib(name: "ShareSheet", bundle: ...)`
@@ -703,6 +717,17 @@ struct _R: Rswift.Validatable {
       private init() {}
     }
     
+    struct _AccoutBindViewController: NibResourceType {
+      let bundle = _R.hostingBundle
+      let name = "AccoutBindViewController"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> AccoutBindViewController? {
+        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? AccoutBindViewController
+      }
+      
+      private init() {}
+    }
+    
     struct _AddClockViewController: NibResourceType {
       let bundle = _R.hostingBundle
       let name = "AddClockViewController"
@@ -809,6 +834,17 @@ struct _R: Rswift.Validatable {
       
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> MineTableViewCell? {
         return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? MineTableViewCell
+      }
+      
+      private init() {}
+    }
+    
+    struct _PushSettingViewController: NibResourceType {
+      let bundle = _R.hostingBundle
+      let name = "PushSettingViewController"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> PushSettingViewController? {
+        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? PushSettingViewController
       }
       
       private init() {}

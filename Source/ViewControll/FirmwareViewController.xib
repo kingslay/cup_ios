@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -17,18 +17,18 @@
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WqJ-Z0-ioe">
-                        <rect key="frame" x="0.0" y="20" width="320" height="80"/>
+                        <rect key="frame" x="0.0" y="40" width="320" height="80"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clc29" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Eg-4j-Md0">
                                 <rect key="frame" x="10" y="15" width="45.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.57254901960000004" green="0.4431372549" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="序列号:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKh-jF-bUE">
                                 <rect key="frame" x="10" y="45" width="300" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.57254901960000004" green="0.4431372549" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -43,10 +43,10 @@
                         </constraints>
                     </view>
                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T1i-Fo-2s7">
-                        <rect key="frame" x="60" y="180" width="200" height="30"/>
-                        <color key="backgroundColor" red="0.89019607840000003" green="0.0" blue="0.56470588239999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <rect key="frame" x="38" y="160" width="244" height="45"/>
+                        <color key="backgroundColor" red="0.85490196080000003" green="0.1450980392" blue="0.074509803920000006" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="QtJ-Sh-o8T"/>
+                            <constraint firstAttribute="height" constant="45" id="QtJ-Sh-o8T"/>
                         </constraints>
                         <state key="normal" title="升级">
                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -58,10 +58,10 @@
                         </userDefinedRuntimeAttributes>
                     </button>
                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dai-91-uh4">
-                        <rect key="frame" x="50" y="180" width="60" height="30"/>
+                        <rect key="frame" x="50" y="200" width="60" height="45"/>
                         <color key="backgroundColor" red="0.89019607840000003" green="0.0" blue="0.56470588239999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="NTd-nB-X0v"/>
+                            <constraint firstAttribute="height" constant="45" id="NTd-nB-X0v"/>
                             <constraint firstAttribute="width" constant="60" id="Uql-Xq-oMk"/>
                         </constraints>
                         <state key="normal" title="继续">
@@ -74,11 +74,11 @@
                         </userDefinedRuntimeAttributes>
                     </button>
                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WHc-cs-5UV">
-                        <rect key="frame" x="210" y="180" width="60" height="30"/>
+                        <rect key="frame" x="210" y="200" width="60" height="45"/>
                         <color key="backgroundColor" red="0.89019607840000003" green="0.0" blue="0.56470588239999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="60" id="5bX-FO-oLF"/>
-                            <constraint firstAttribute="height" constant="30" id="PoS-tu-ilh"/>
+                            <constraint firstAttribute="height" constant="45" id="PoS-tu-ilh"/>
                         </constraints>
                         <state key="normal" title="取消">
                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -90,26 +90,26 @@
                         </userDefinedRuntimeAttributes>
                     </button>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="恢复出厂设置将会清空系统里的数据并解除与当前帐号绑定关系，是否继续操作？" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tz6-0u-kTO">
-                        <rect key="frame" x="20" y="121" width="280" height="36"/>
+                        <rect key="frame" x="20" y="141" width="280" height="36"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
-                <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
-                    <constraint firstItem="T1i-Fo-2s7" firstAttribute="leading" secondItem="Y9p-sO-rHz" secondAttribute="leading" constant="60" id="8VT-qg-s5l"/>
+                    <constraint firstItem="T1i-Fo-2s7" firstAttribute="leading" secondItem="Y9p-sO-rHz" secondAttribute="leading" constant="38" id="8VT-qg-s5l"/>
                     <constraint firstAttribute="trailing" secondItem="WHc-cs-5UV" secondAttribute="trailing" constant="50" id="8kh-gO-ZXW"/>
                     <constraint firstItem="WHc-cs-5UV" firstAttribute="centerY" secondItem="Dai-91-uh4" secondAttribute="centerY" id="9Es-wL-phm"/>
                     <constraint firstAttribute="trailing" secondItem="WqJ-Z0-ioe" secondAttribute="trailing" id="J2f-Hc-s0b"/>
                     <constraint firstItem="WqJ-Z0-ioe" firstAttribute="leading" secondItem="Y9p-sO-rHz" secondAttribute="leading" id="Zh3-Uo-UyJ"/>
-                    <constraint firstItem="WqJ-Z0-ioe" firstAttribute="top" secondItem="CAi-SY-5sI" secondAttribute="bottom" id="d3G-9q-mHp"/>
+                    <constraint firstItem="WqJ-Z0-ioe" firstAttribute="top" secondItem="CAi-SY-5sI" secondAttribute="bottom" constant="20" id="d3G-9q-mHp"/>
                     <constraint firstItem="T1i-Fo-2s7" firstAttribute="centerX" secondItem="Y9p-sO-rHz" secondAttribute="centerX" id="sN4-p6-zXY"/>
                     <constraint firstItem="Dai-91-uh4" firstAttribute="leading" secondItem="Y9p-sO-rHz" secondAttribute="leading" constant="50" id="seT-kG-FXz"/>
                     <constraint firstItem="Dai-91-uh4" firstAttribute="top" secondItem="WqJ-Z0-ioe" secondAttribute="bottom" constant="80" id="wNM-ix-0iU"/>
                     <constraint firstItem="tz6-0u-kTO" firstAttribute="centerX" secondItem="Y9p-sO-rHz" secondAttribute="centerX" id="xX0-vM-Twr"/>
                     <constraint firstItem="tz6-0u-kTO" firstAttribute="top" secondItem="WqJ-Z0-ioe" secondAttribute="bottom" constant="21" id="yRC-p8-Ad3"/>
-                    <constraint firstItem="T1i-Fo-2s7" firstAttribute="top" secondItem="WqJ-Z0-ioe" secondAttribute="bottom" constant="80" id="ysl-Ur-Kz8"/>
+                    <constraint firstItem="T1i-Fo-2s7" firstAttribute="top" secondItem="WqJ-Z0-ioe" secondAttribute="bottom" constant="40" id="ysl-Ur-Kz8"/>
                     <constraint firstItem="tz6-0u-kTO" firstAttribute="leading" secondItem="Y9p-sO-rHz" secondAttribute="leading" constant="20" id="zQs-R5-js1"/>
                 </constraints>
             </view>

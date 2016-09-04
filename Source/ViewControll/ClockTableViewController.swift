@@ -17,6 +17,7 @@ class ClockTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.registerNib(R.nib.clockTableViewCell)
+        self.tableView.rowHeight = 92
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: R.image.icon_add(), style: .Plain, target: self, action: #selector(addClock))
         tableHeaderView.openSwitch.on = !close.value
         tableHeaderView.openSwitch.rx_value.subscribeNext { [unowned self] in
@@ -78,9 +79,6 @@ extension ClockTableViewController {
             cell.openSwitch.on = clockModel.open
         }
         return cell
-    }
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 92
     }
 
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath){
