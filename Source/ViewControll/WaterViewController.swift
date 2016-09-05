@@ -14,6 +14,7 @@ import Async
 import KSSwiftExtension
 import Charts
 import SwiftDate
+import CVCalendar
 class WaterViewController: ShareViewController {
     var central: CBCentralManager!
     var peripheral: CBPeripheral?
@@ -21,7 +22,8 @@ class WaterViewController: ShareViewController {
     var selectedIndex: Int?
     var timer: NSTimer?
     var durationTimer: NSTimer?
-    var dateButton = UIButton()
+    lazy var dateButton = UIButton()
+    var calendarView: CalendarView!
     var waterCycleView: WaterCycleView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,9 +34,10 @@ class WaterViewController: ShareViewController {
         waterCycleView.batteryRate = 100
         view.addSubview(waterCycleView)
         dateButton.setImage(R.image.icon_calendar(), forState: .Normal)
+        dateButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
         dateButton.titleLabel?.font = UIFont.systemFontOfSize(15)
         dateButton.setTitleColor(Colors.pink, forState: .Normal)
-        dateButton.setTitle(NSDate().ks.stringFromFormat(" yyyy年MM月dd日"), forState: .Normal)
+        dateButton.setTitle(NSDate().ks.stringFromFormat("yyyy年MM月dd日"), forState: .Normal)
         dateButton.sizeToFit()
         view.addSubview(dateButton)
         dateButton.snp_makeConstraints { (make) in
@@ -54,6 +57,18 @@ class WaterViewController: ShareViewController {
             self.navigationController?.ks.pushViewController(WaterHistoryViewController())
         }.addDisposableTo(self.ks.disposableBag)
         self.setUpChartData()
+        calendarView = CalendarView(frame: view.bounds)
+        view.addSubview(calendarView)
+        calendarView.ks.top(view.ks.bottom)
+        dateButton.rx_tap.subscribeNext { [unowned self]_ in
+            UIView.animateWithDuration(0.35, animations: {
+                self.calendarView.ks.bottom(self.view.ks.bottom)
+            })
+            }.addDisposableTo(ks.disposableBag)
+        calendarView.update = { [unowned self] date in
+            self.calendarView.ks.top(self.view.ks.bottom)
+            self.dateButton.setTitle(date.convertedDate()?.ks.stringFromFormat("yyyy年MM月dd日"), forState: .Normal)
+        }
     }
     func setUpChartData() {
         let xVals = (0..<24).map{String($0) as? String}
@@ -80,6 +95,10 @@ class WaterViewController: ShareViewController {
             let data = LineChartData(xVals: xVals, dataSets: [set])
             chartView.data = data
         }
+    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        calendarView.commitCalendarViewUpdate()
     }
 
 }

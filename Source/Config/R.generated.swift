@@ -26,7 +26,7 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 70 images.
+  /// This `R.image` struct is generated, and contains static references to 74 images.
   struct image {
     /// Image `LOGO`.
     static let lOGO = ImageResource(bundle: _R.hostingBundle, name: "LOGO")
@@ -88,6 +88,8 @@ struct R: Rswift.Validatable {
     static let icon_account = ImageResource(bundle: _R.hostingBundle, name: "icon_account")
     /// Image `icon_add`.
     static let icon_add = ImageResource(bundle: _R.hostingBundle, name: "icon_add")
+    /// Image `icon_age`.
+    static let icon_age = ImageResource(bundle: _R.hostingBundle, name: "icon_age")
     /// Image `icon_buy`.
     static let icon_buy = ImageResource(bundle: _R.hostingBundle, name: "icon_buy")
     /// Image `icon_calendar-L2`.
@@ -110,6 +112,8 @@ struct R: Rswift.Validatable {
     static let icon_gender = ImageResource(bundle: _R.hostingBundle, name: "icon_gender")
     /// Image `icon_height`.
     static let icon_height = ImageResource(bundle: _R.hostingBundle, name: "icon_height")
+    /// Image `icon_modify`.
+    static let icon_modify = ImageResource(bundle: _R.hostingBundle, name: "icon_modify")
     /// Image `icon_next`.
     static let icon_next = ImageResource(bundle: _R.hostingBundle, name: "icon_next")
     /// Image `icon_nickname`.
@@ -126,6 +130,8 @@ struct R: Rswift.Validatable {
     static let icon_warn = ImageResource(bundle: _R.hostingBundle, name: "icon_warn")
     /// Image `icon_web`.
     static let icon_web = ImageResource(bundle: _R.hostingBundle, name: "icon_web")
+    /// Image `icon_weight`.
+    static let icon_weight = ImageResource(bundle: _R.hostingBundle, name: "icon_weight")
     /// Image `ion_Password`.
     static let ion_Password = ImageResource(bundle: _R.hostingBundle, name: "ion_Password")
     /// Image `label_icon_Clock_initial`.
@@ -168,6 +174,8 @@ struct R: Rswift.Validatable {
     static let share_tencent = ImageResource(bundle: _R.hostingBundle, name: "share_tencent")
     /// Image `share_weixin`.
     static let share_weixin = ImageResource(bundle: _R.hostingBundle, name: "share_weixin")
+    /// Image `默认头像`.
+    static let 默认头像 = ImageResource(bundle: _R.hostingBundle, name: "默认头像")
     
     /// `UIImage(named: "LOGO", bundle: ..., traitCollection: ...)`
     static func lOGO(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
@@ -319,6 +327,11 @@ struct R: Rswift.Validatable {
       return UIImage(resource: R.image.icon_add, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "icon_age", bundle: ..., traitCollection: ...)`
+    static func icon_age(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.icon_age, compatibleWithTraitCollection: traitCollection)
+    }
+    
     /// `UIImage(named: "icon_buy", bundle: ..., traitCollection: ...)`
     static func icon_buy(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.icon_buy, compatibleWithTraitCollection: traitCollection)
@@ -374,6 +387,11 @@ struct R: Rswift.Validatable {
       return UIImage(resource: R.image.icon_height, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "icon_modify", bundle: ..., traitCollection: ...)`
+    static func icon_modify(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.icon_modify, compatibleWithTraitCollection: traitCollection)
+    }
+    
     /// `UIImage(named: "icon_next", bundle: ..., traitCollection: ...)`
     static func icon_next(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.icon_next, compatibleWithTraitCollection: traitCollection)
@@ -412,6 +430,11 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "icon_web", bundle: ..., traitCollection: ...)`
     static func icon_web(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.icon_web, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "icon_weight", bundle: ..., traitCollection: ...)`
+    static func icon_weight(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.icon_weight, compatibleWithTraitCollection: traitCollection)
     }
     
     /// `UIImage(named: "ion_Password", bundle: ..., traitCollection: ...)`
@@ -517,6 +540,11 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "share_weixin", bundle: ..., traitCollection: ...)`
     static func share_weixin(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.share_weixin, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "默认头像", bundle: ..., traitCollection: ...)`
+    static func 默认头像(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.默认头像, compatibleWithTraitCollection: traitCollection)
     }
     
     private init() {}

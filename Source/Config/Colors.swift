@@ -26,7 +26,7 @@ import UIKit
 import KSSwiftExtension
 
 internal struct Colors {
-    internal static let background = Swifty<UIColor>.colorFrom("#fafafa")
+    internal static let background = Swifty<UIColor>.colorFrom("#f5f5f5")
     internal static let white = Swifty<UIColor>.colorFrom("#ffffff")
     internal static let red = Swifty<UIColor>.colorFrom("#da2513")
     internal static let black = Swifty<UIColor>.colorFrom("#cccccc")

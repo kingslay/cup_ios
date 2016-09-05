@@ -17,6 +17,7 @@ class ClockTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.registerNib(R.nib.clockTableViewCell)
+        self.tableView.backgroundColor = Colors.background
         self.tableView.rowHeight = 92
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: R.image.icon_add(), style: .Plain, target: self, action: #selector(addClock))
         tableHeaderView.openSwitch.on = !close.value
@@ -30,6 +31,7 @@ class ClockTableViewController: UITableViewController {
             ClockModel.close = self.close.value
             self.tableView.reloadData()
             }.addDisposableTo(self.ks.disposableBag)
+        self.tableView.tableFooterView = UIView()
         //        let fittingSize = tableHeaderView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
 
     }

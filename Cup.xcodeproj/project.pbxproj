@@ -39,6 +39,7 @@
 		3C9BFFBF1D7C02BF007C0E89 /* PushSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C9BFFBD1D7C02BF007C0E89 /* PushSettingViewController.xib */; };
 		3C9BFFC21D7C19FC007C0E89 /* WaterplanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BFFC01D7C19FC007C0E89 /* WaterplanViewController.swift */; };
 		3C9BFFC31D7C19FC007C0E89 /* WaterplanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C9BFFC11D7C19FC007C0E89 /* WaterplanViewController.xib */; };
+		3C9BFFC51D7C77FB007C0E89 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BFFC41D7C77FB007C0E89 /* CalendarView.swift */; };
 		3CC57E031BE7BA490050E64E /* KSPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC57E021BE7BA490050E64E /* KSPickerView.swift */; };
 		3CCCA7131D5F57D100AFC6A1 /* WaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCCA7121D5F57D100AFC6A1 /* WaterViewController.swift */; };
 		3CCCA7151D5F586900AFC6A1 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCCA7141D5F586900AFC6A1 /* ShareViewController.swift */; };
@@ -138,6 +139,7 @@
 		3C9BFFBD1D7C02BF007C0E89 /* PushSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PushSettingViewController.xib; sourceTree = "<group>"; };
 		3C9BFFC01D7C19FC007C0E89 /* WaterplanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterplanViewController.swift; sourceTree = "<group>"; };
 		3C9BFFC11D7C19FC007C0E89 /* WaterplanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaterplanViewController.xib; sourceTree = "<group>"; };
+		3C9BFFC41D7C77FB007C0E89 /* CalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		3CC57E021BE7BA490050E64E /* KSPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KSPickerView.swift; sourceTree = "<group>"; };
 		3CCCA7121D5F57D100AFC6A1 /* WaterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterViewController.swift; sourceTree = "<group>"; };
 		3CCCA7141D5F586900AFC6A1 /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
@@ -403,6 +405,7 @@
 				3CCCA71A1D60080D00AFC6A1 /* WaterCycleView.swift */,
 				3C9BFFB01D7ABA56007C0E89 /* ClockHeaderView.swift */,
 				3C9BFFB21D7ABA65007C0E89 /* ClockHeaderView.xib */,
+				3C9BFFC41D7C77FB007C0E89 /* CalendarView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -673,6 +676,7 @@
 				CBE1DC331BEA04ED00E1FF29 /* AccountModel.swift in Sources */,
 				3C9BFFAB1D7AA3F2007C0E89 /* ClockTableViewController.swift in Sources */,
 				CB3CF8891BE9B04F008D577E /* UserLoginViewController.swift in Sources */,
+				3C9BFFC51D7C77FB007C0E89 /* CalendarView.swift in Sources */,
 				3C9BFFC21D7C19FC007C0E89 /* WaterplanViewController.swift in Sources */,
 				CBE1DC2D1BE9F81C00E1FF29 /* AccountViewController.swift in Sources */,
 				CBE1DC3A1BEC81F900E1FF29 /* MineTableViewCell.swift in Sources */,
