@@ -41,7 +41,6 @@ class AccountModel: NSObject,Model,Storable {
             AccountModel.localSave()
         }
     }
-
     //场景
     var scene: String? {
         didSet{
@@ -54,31 +53,27 @@ class AccountModel: NSObject,Model,Storable {
             AccountModel.localSave()
         }
     }
-
     var height: NSNumber? {
         didSet{
             AccountModel.localSave()
         }
     }
-
     var weight: NSNumber? {
         didSet{
             AccountModel.localSave()
         }
     }
+    //饮水目标
     var waterplan: NSNumber? {
         didSet{
             AccountModel.localSave()
         }
     }
-    
     var birthday: String? {
         didSet{
             AccountModel.localSave()
         }
     }
-    
-    
     class func localSave() {
         if let account = staticAccount {
             NSUserDefaults.standardUserDefaults().setObject(account.dictionary, forKey: "sharedAccount")
@@ -88,14 +83,32 @@ class AccountModel: NSObject,Model,Storable {
         CupProvider.request(.SaveMe).subscribeNext {_ in
         }
     }
+    var proposalWater: NSNumber?
+    func calculateProposalWater() {
+        var age = 18
+        if let birthday = self.birthday,let year = Int(birthday[0..<4]) {
+            age = NSDate().year - year
+        }
+        var bmi = 2100/21.0
+        if age < 10 {
+            bmi = 1050/17
+        } else if age < 16 {
+            bmi = 1800/19
+        }
+        let weight = (self.weight ?? 60).doubleValue
+        let height = (self.height ?? 160).doubleValue/100.0
+        let proposalWater = (35.0*weight + bmi * weight/(height*height))/2
+        self.proposalWater = proposalWater;
+    }
 }
 var staticAccount: AccountModel?
 var staticIdentifier: String? {
-get{
-    return NSUserDefaults.standardUserDefaults().stringForKey("sharedIdentifier")
+    get{
+        return NSUserDefaults.standardUserDefaults().stringForKey("sharedIdentifier")
+    }
+    set{
+        NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: "sharedIdentifier")
+        NSUserDefaults.standardUserDefaults().synchronize()
+    }
 }
-set{
-    NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: "sharedIdentifier")
-    NSUserDefaults.standardUserDefaults().synchronize()
-}
-}
+

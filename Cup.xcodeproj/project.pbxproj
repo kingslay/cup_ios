@@ -21,6 +21,8 @@
 		3C1BDF941BF235AA003E34F8 /* TemperatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1BDF921BF235AA003E34F8 /* TemperatureViewController.swift */; };
 		3C1BDF951BF235AA003E34F8 /* TemperatureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C1BDF931BF235AA003E34F8 /* TemperatureViewController.xib */; };
 		3C3947441BE9012300E7FE90 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C3947431BE9012300E7FE90 /* Images.xcassets */; };
+		3C5F31121D7DC42600F77355 /* WaterHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5F31101D7DC42600F77355 /* WaterHistoryTableViewCell.swift */; };
+		3C5F31131D7DC42600F77355 /* WaterHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C5F31111D7DC42600F77355 /* WaterHistoryTableViewCell.xib */; };
 		3C76DDF71BF63924004C1BF4 /* NavigationAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C76DDF61BF63924004C1BF4 /* NavigationAccessoryView.swift */; };
 		3C80A5D51BCA5A9C0050B6B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C80A5D41BCA5A9C0050B6B6 /* AppDelegate.swift */; };
 		3C80A5D71BCA5A9C0050B6B6 /* CupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C80A5D61BCA5A9C0050B6B6 /* CupViewController.swift */; };
@@ -117,6 +119,8 @@
 		3C1BDF921BF235AA003E34F8 /* TemperatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemperatureViewController.swift; sourceTree = "<group>"; };
 		3C1BDF931BF235AA003E34F8 /* TemperatureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemperatureViewController.xib; sourceTree = "<group>"; };
 		3C3947431BE9012300E7FE90 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3C5F31101D7DC42600F77355 /* WaterHistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterHistoryTableViewCell.swift; sourceTree = "<group>"; };
+		3C5F31111D7DC42600F77355 /* WaterHistoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaterHistoryTableViewCell.xib; sourceTree = "<group>"; };
 		3C76DDF61BF63924004C1BF4 /* NavigationAccessoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationAccessoryView.swift; sourceTree = "<group>"; };
 		3C80A5D11BCA5A9C0050B6B6 /* Cup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C80A5D41BCA5A9C0050B6B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -315,11 +319,11 @@
 			isa = PBXGroup;
 			children = (
 				CBE1DC2A1BE9F06E00E1FF29 /* MineViewController.swift */,
+				CBE1DC2C1BE9F81C00E1FF29 /* AccountViewController.swift */,
 				3C9BFFBA1D7C00A1007C0E89 /* AccoutBindViewController.swift */,
 				3C9BFFB81D7C0092007C0E89 /* AccoutBindViewController.xib */,
 				3C9BFFBC1D7C02BF007C0E89 /* PushSettingViewController.swift */,
 				3C9BFFBD1D7C02BF007C0E89 /* PushSettingViewController.xib */,
-				CBE1DC2C1BE9F81C00E1FF29 /* AccountViewController.swift */,
 				3CECE67F1BF38A0400C43890 /* FirmwareViewController.swift */,
 				3CECE6801BF38A0400C43890 /* FirmwareViewController.xib */,
 				3CECE6831BF3996500C43890 /* AboutUsViewController.swift */,
@@ -392,12 +396,12 @@
 		CB89F7AB1BE707BF00FD21FD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CB89F7AC1BE707BF00FD21FD /* ViewCell */,
 				3CCCA7181D5F67F800AFC6A1 /* ShareSheet.swift */,
 				3CCCA7161D5F672800AFC6A1 /* ShareSheet.xib */,
 				3C76DDF61BF63924004C1BF4 /* NavigationAccessoryView.swift */,
 				3CC57E021BE7BA490050E64E /* KSPickerView.swift */,
 				CB6EF3EF1BF09FDD0040BF6E /* IndicatorView.swift */,
-				CB89F7AC1BE707BF00FD21FD /* ViewCell */,
 				CBBCA3FD1BF18A30002E04F7 /* ClockCollectionHeaderView.swift */,
 				CBBCA3FE1BF18A30002E04F7 /* ClockCollectionHeaderView.xib */,
 				CBF5E3681BF1DAE0002D4F8F /* CupHeaderView.swift */,
@@ -423,6 +427,8 @@
 				CBF5E36F1BF1F1CE002D4F8F /* TemperatureTableViewCell.xib */,
 				3C9BFFAC1D7AA69F007C0E89 /* ClockTableViewCell.swift */,
 				3C9BFFAD1D7AA69F007C0E89 /* ClockTableViewCell.xib */,
+				3C5F31101D7DC42600F77355 /* WaterHistoryTableViewCell.swift */,
+				3C5F31111D7DC42600F77355 /* WaterHistoryTableViewCell.xib */,
 			);
 			path = ViewCell;
 			sourceTree = "<group>";
@@ -564,6 +570,7 @@
 				3C9BFFC31D7C19FC007C0E89 /* WaterplanViewController.xib in Resources */,
 				3C80A5E11BCA5A9D0050B6B6 /* LaunchScreen.storyboard in Resources */,
 				3C1BDF951BF235AA003E34F8 /* TemperatureViewController.xib in Resources */,
+				3C5F31131D7DC42600F77355 /* WaterHistoryTableViewCell.xib in Resources */,
 				CBF5E3711BF1F1CE002D4F8F /* TemperatureTableViewCell.xib in Resources */,
 				3C9BFFB91D7C0092007C0E89 /* AccoutBindViewController.xib in Resources */,
 				3CDF8A7A1CEB02E500B2675B /* 1.gif in Resources */,
@@ -710,6 +717,7 @@
 				3C1BD8671BEB8B47003E34F8 /* CentralViewController.swift in Sources */,
 				CBE1DC2B1BE9F06E00E1FF29 /* MineViewController.swift in Sources */,
 				3C1BDF941BF235AA003E34F8 /* TemperatureViewController.swift in Sources */,
+				3C5F31121D7DC42600F77355 /* WaterHistoryTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -848,7 +856,7 @@
 				);
 				INFOPLIST_FILE = Cup/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = im.meiyou.IMYTTQ;
+				PRODUCT_BUNDLE_IDENTIFIER = im.meiyou.IMYTTQ1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Cup/Bridging-Header.h";
@@ -861,7 +869,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -870,7 +878,7 @@
 				);
 				INFOPLIST_FILE = Cup/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = im.meiyou.IMYTTQ;
+				PRODUCT_BUNDLE_IDENTIFIER = im.meiyou.IMYTTQ1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Cup/Bridging-Header.h";

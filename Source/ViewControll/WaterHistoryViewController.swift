@@ -8,17 +8,19 @@
 
 import UIKit
 
-class WaterHistoryViewController: ShareViewController,UITableViewDataSource,UITableViewDelegate {
-    let segmented: UISegmentedControl = {
-        let segmented = UISegmentedControl(items: ["日","周","月"])
-        return segmented
-    }()
+class WaterHistoryViewController: ShareViewController {
+    let segmented = UISegmentedControl(items: ["日","周","月"])
     let tableView = UITableView()
     override func viewDidLoad() {
         super.viewDidLoad()
-        segmented.frame = CGRect(x: 100, y: 0, width: 200, height: 20)
+        self.view.backgroundColor = Colors.white
+        segmented.frame = CGRect(x: 10, y: 10, width: self.view.ks.width-20, height: 20)
+        segmented.selectedSegmentIndex = 0
+        segmented.addTarget(self, action: #selector(valueChanged), forControlEvents: .ValueChanged)
         self.view.addSubview(segmented)
         self.view.addSubview(tableView)
+        tableView.registerNib(R.nib.waterHistoryTableViewCell)
+        self.tableView.rowHeight = 51
         self.tableView.dataSource = self
         self.tableView.delegate = self
         tableView.snp_makeConstraints { (make) in
@@ -28,16 +30,19 @@ class WaterHistoryViewController: ShareViewController,UITableViewDataSource,UITa
             make.bottom.equalToSuperview()
         }
         self.tableView.tableHeaderView = self.chartView
+        self.tableView.tableFooterView = UIView()
     }
+    func valueChanged(seg: UISegmentedControl) {
+
+    }
+}
+extension WaterHistoryViewController: UITableViewDataSource,UITableViewDelegate {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 1
     }
-
-    // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
-    // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
-
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCellWithIdentifier(R.nib.waterHistoryTableViewCell)!
+        return cell
     }
-
+    
 }

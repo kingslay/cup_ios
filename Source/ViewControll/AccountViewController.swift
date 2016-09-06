@@ -13,7 +13,7 @@ import AlamofireImage
 import RxCocoa
 
 class AccountViewController: UITableViewController {
-    var datas :[[(String,String,String?)]]!
+    var datas :[[(UIImage?,String,String,String?)]]!
     lazy var navigationAccessoryView : NavigationAccessoryView = {
         [unowned self] in
         let naview = NavigationAccessoryView(frame: CGRectMake(0, 0, self.view.frame.width, 44.0))
@@ -33,20 +33,18 @@ class AccountViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initData()
-        self.tableView.registerNib(R.nib.accountTableViewCell)
+        self.tableView.registerNib(R.nib.mineTableViewCell)
+        self.tableView.rowHeight = 51
         self.tableView.backgroundColor = Colors.background
         self.tableView.tableFooterView = UIView()
     }
     func initData(){
-        datas = [[("我的头像","未添加",staticAccount?.avatar),
-            ("我的昵称","未添加",staticAccount?.nickname),
-            ("性别","男",staticAccount?.sex),
-            ("帐号安全","",staticAccount?.phone)],
-            [("水杯场景","",staticAccount?.scene),
-                ("体质","",staticAccount?.constitution),
-                ("身高","身高是多少呢",staticAccount?.height != nil ? "\(staticAccount!.height!)cm" : nil),
-                ("体重","体重是多少呢",staticAccount?.weight != nil ? "\(staticAccount!.weight!)kg" : nil),
-                ("生日","生日是什么时候",staticAccount?.birthday)]]
+        datas = [[(R.image.icon_Head(),"我的头像","未添加",staticAccount?.avatar),
+            (R.image.icon_nickname(),"昵称","未添加",staticAccount?.nickname),
+            (R.image.icon_gender(),"性别","男",staticAccount?.sex),
+            (R.image.icon_height(),"身高(cm)","身高是多少呢",staticAccount?.height != nil ? "\(staticAccount!.height!)" : nil),
+            (R.image.icon_weight(),"体重","体重是多少呢",staticAccount?.weight != nil ? "\(staticAccount!.weight!)kg" : nil),
+            (R.image.icon_age(),"生日","生日是什么时候",staticAccount?.birthday)]]
     }
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
@@ -59,9 +57,10 @@ class AccountViewController: UITableViewController {
         initData()
         self.tableView.reloadData()
     }
-    
+}
+extension AccountViewController {
+
     // MARK: - Table view data source
-    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return datas.count
@@ -72,12 +71,12 @@ class AccountViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(R.nib.accountTableViewCell, forIndexPath: indexPath)!
-        cell.accessoryType = .DisclosureIndicator
+        let cell = tableView.dequeueReusableCellWithIdentifier(R.nib.mineTableViewCell, forIndexPath: indexPath)!
         cell.valueTextField.hidden = false
         cell.headerImageView.hidden = true
         cell.selectionStyle = .None
-        let (title,placeholder,value) = datas[indexPath.section][indexPath.row]
+        let (image,title,placeholder,value) = datas[indexPath.section][indexPath.row]
+        cell.iconImageView.image = image
         cell.titleLabel.text = title
         cell.valueTextField.textColor = Colors.red
         if let value = value {
@@ -95,7 +94,7 @@ class AccountViewController: UITableViewController {
             }else{
                  cell.headerImageView.image = R.image.label_icon_Personal_initial()!.af_imageRoundedIntoCircle()
             }
-        case (1,2):
+        case (0,3):
             cell.valueTextField.userInteractionEnabled = true
             cell.valueTextField.inputAccessoryView = navigationAccessoryView
             let pickerView = KSPickerView()
@@ -107,7 +106,7 @@ class AccountViewController: UITableViewController {
                 staticAccount?.height = Double($0[0]+60) + Double($0[1])/10
                 cell.valueTextField.text = "\(staticAccount!.height!)cm"
             }
-        case (1,3):
+        case (0,4):
             cell.valueTextField.userInteractionEnabled = true
             cell.valueTextField.inputAccessoryView = navigationAccessoryView
             let pickerView = KSPickerView()
@@ -120,7 +119,7 @@ class AccountViewController: UITableViewController {
                 cell.valueTextField.text = "\(staticAccount!.weight!)kg"
             }
 
-        case (1,4):
+        case (0,5):
             cell.valueTextField.userInteractionEnabled = true
             cell.valueTextField.inputAccessoryView = navigationAccessoryView
             let datePicker = UIDatePicker()
@@ -137,18 +136,11 @@ class AccountViewController: UITableViewController {
         }
         return cell
     }
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.row == 0 && indexPath.section == 0 {
-            return 72
-        } else {
-            return 45
-        }
-    }
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 20
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! AccountTableViewCell
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! MineTableViewCell
         switch (indexPath.section,indexPath.row) {
         case (0,0):
             let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
@@ -213,7 +205,7 @@ class AccountViewController: UITableViewController {
             alertController.addAction(womenAction)
 
             self.presentViewController(alertController, animated: true, completion: nil)
-        case (0,3):
+        case (1,3):
             let alertController = UIAlertController(title: nil, message: "请输入手机号码", preferredStyle: .Alert)
             alertController.addTextFieldWithConfigurationHandler(){
               $0.keyboardType = .NumberPad
@@ -289,7 +281,7 @@ extension AccountViewController: UIImagePickerControllerDelegate, UINavigationCo
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if var image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             image = image.af_imageAspectScaledToFillSize(CGSizeMake(320/KS.SCREEN_SCALE, 320/KS.SCREEN_SCALE))
-            let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! AccountTableViewCell
+            let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! MineTableViewCell
             cell.valueTextField.hidden = true
             cell.headerImageView.hidden = false
             cell.headerImageView.image = image.af_imageAspectScaledToFillSize(CGSizeMake(62, 62)).af_imageRoundedIntoCircle()

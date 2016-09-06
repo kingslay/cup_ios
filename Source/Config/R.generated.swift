@@ -558,7 +558,7 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.nib` struct is generated, and contains static references to 17 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 18 nibs.
   struct nib {
     /// Nib `AboutUsViewController`.
     static let aboutUsViewController = _R.nib._AboutUsViewController()
@@ -592,6 +592,8 @@ struct R: Rswift.Validatable {
     static let temperatureTableViewCell = _R.nib._TemperatureTableViewCell()
     /// Nib `TemperatureViewController`.
     static let temperatureViewController = _R.nib._TemperatureViewController()
+    /// Nib `WaterHistoryTableViewCell`.
+    static let waterHistoryTableViewCell = _R.nib._WaterHistoryTableViewCell()
     /// Nib `WaterplanViewController`.
     static let waterplanViewController = _R.nib._WaterplanViewController()
     
@@ -675,6 +677,11 @@ struct R: Rswift.Validatable {
       return UINib(resource: R.nib.temperatureViewController)
     }
     
+    /// `UINib(name: "WaterHistoryTableViewCell", bundle: ...)`
+    static func waterHistoryTableViewCell(_: Void) -> UINib {
+      return UINib(resource: R.nib.waterHistoryTableViewCell)
+    }
+    
     /// `UINib(name: "WaterplanViewController", bundle: ...)`
     static func waterplanViewController(_: Void) -> UINib {
       return UINib(resource: R.nib.waterplanViewController)
@@ -683,7 +690,7 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 6 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 7 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `AccountTableViewCell`.
     static let accountTableViewCell: ReuseIdentifier<AccountTableViewCell> = ReuseIdentifier(identifier: "AccountTableViewCell")
@@ -697,6 +704,8 @@ struct R: Rswift.Validatable {
     static let mineTableViewCell: ReuseIdentifier<MineTableViewCell> = ReuseIdentifier(identifier: "MineTableViewCell")
     /// Reuse identifier `TemperatureTableViewCell`.
     static let temperatureTableViewCell: ReuseIdentifier<TemperatureTableViewCell> = ReuseIdentifier(identifier: "TemperatureTableViewCell")
+    /// Reuse identifier `WaterHistoryTableViewCell`.
+    static let waterHistoryTableViewCell: ReuseIdentifier<WaterHistoryTableViewCell> = ReuseIdentifier(identifier: "WaterHistoryTableViewCell")
     
     private init() {}
   }
@@ -755,7 +764,7 @@ struct R: Rswift.Validatable {
 
 struct _R: Rswift.Validatable {
   static let applicationLocale = hostingBundle.preferredLocalizations.first.flatMap(NSLocale.init) ?? NSLocale.currentLocale()
-  static let hostingBundle = NSBundle(identifier: "im.meiyou.IMYTTQ") ?? NSBundle.mainBundle()
+  static let hostingBundle = NSBundle(identifier: "im.meiyou.IMYTTQ1") ?? NSBundle.mainBundle()
   
   static func validate() throws {
     try storyboard.validate()
@@ -951,6 +960,20 @@ struct _R: Rswift.Validatable {
       
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> TemperatureViewController? {
         return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? TemperatureViewController
+      }
+      
+      private init() {}
+    }
+    
+    struct _WaterHistoryTableViewCell: NibResourceType, ReuseIdentifierType {
+      typealias ReusableType = WaterHistoryTableViewCell
+      
+      let bundle = _R.hostingBundle
+      let identifier = "WaterHistoryTableViewCell"
+      let name = "WaterHistoryTableViewCell"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> WaterHistoryTableViewCell? {
+        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? WaterHistoryTableViewCell
       }
       
       private init() {}

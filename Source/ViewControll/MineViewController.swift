@@ -17,7 +17,7 @@ class MineViewController: UITableViewController {
         naview.doneButton.target = self
         naview.doneButton.action = #selector(navigationDone)
         return naview
-        }()
+    }()
     func navigationDone() {
         tableView?.endEditing(true)
     }
@@ -57,10 +57,7 @@ class MineViewController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
     func initData(){
-        datas = [[(R.image.icon_Head(),"我的头像",staticAccount?.avatar),
-            (R.image.icon_nickname(),"昵称",staticAccount?.nickname),
-            (R.image.icon_gender(),"性别",staticAccount?.sex),
-            (R.image.icon_height(),"身高(cm)",staticAccount?.height != nil ? "\(staticAccount!.height!)" : nil),
+        datas = [[(R.image.icon_modify(),"个人资料修改",staticAccount?.avatar),
             (R.image.icon_plan(),"饮水计划(ml)",staticAccount?.waterplan != nil ? "\(staticAccount!.waterplan!)" : nil)],
                  [(R.image.icon_account(),"帐号绑定",nil),
                     (R.image.icon_warn(),"提醒设置",nil),
@@ -87,6 +84,7 @@ extension MineViewController {
         cell.titleLabel.text = title
         cell.headerImageView.hidden = true
         cell.valueTextField.hidden = true;
+        cell.accessoryType = .DisclosureIndicator
         if indexPath.section == 0 {
             switch indexPath.row {
             case 0:
@@ -94,30 +92,8 @@ extension MineViewController {
                 if let str = value,url = NSURL(string: str) {
                     cell.headerImageView!.af_setImageWithURL(url, placeholderImage: R.image.label_icon_Personal_initial(),filter: AspectScaledToFillSizeCircleFilter(size: CGSizeMake(41, 41)))
                 }
-            case 1,3,4:
-                cell.valueTextField.hidden = false
-                cell.valueTextField.userInteractionEnabled = false
-                cell.valueTextField.text = value
-                if indexPath.row == 1 {
-                    cell.valueTextField.placeholder = "未添加"
-                } else if indexPath.row == 3 {
-                    cell.valueTextField.placeholder = "身高是多少呢"
-                    cell.valueTextField.userInteractionEnabled = true
-                    cell.valueTextField.inputAccessoryView = navigationAccessoryView
-                    let pickerView = KSPickerView()
-                    pickerView.pickerData = [Array(60...250).map{"\($0)"},Array(0...9).map{".\($0)cm"}]
-                    pickerView.selectRow(100, inComponent: 0, animated: false)
-                    cell.valueTextField.inputView = pickerView
-                    pickerView.callBackBlock = {
-                        [unowned cell] in
-                        staticAccount?.height = Double($0[0]+60) + Double($0[1])/10
-                        cell.valueTextField.text = "\(staticAccount!.height!)"
-                    }
-
-                }else if indexPath.row == 4 {
-                    cell.valueTextField.placeholder = ""
-                    cell.accessoryType = .DisclosureIndicator
-                }
+            case 1:
+                cell.valueTextField.placeholder = ""
             default:
                 break
             }
@@ -134,57 +110,10 @@ extension MineViewController {
         }
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! MineTableViewCell
         switch (indexPath.section,indexPath.row) {
         case (0,0):
-            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-            let albumAction = UIAlertAction(title: "从相册选择", style: UIAlertActionStyle.Default) {
-                (action: UIAlertAction!) -> Void in
-                let imagePickerController = UIImagePickerController()
-                imagePickerController.delegate = self
-                imagePickerController.sourceType = .SavedPhotosAlbum
-                self.presentViewController(imagePickerController, animated: true, completion: nil)
-            }
-            let pictureAction = UIAlertAction(title: "拍照", style: UIAlertActionStyle.Default) {
-                (action: UIAlertAction!) -> Void in
-                let imagePickerController = UIImagePickerController()
-                imagePickerController.delegate = self
-                if UIImagePickerController.isSourceTypeAvailable(.Camera) {
-                    imagePickerController.sourceType = .Camera
-                    switch AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo) {
-                    case .NotDetermined:
-                        AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: nil)
-                        break
-                    case .Denied:
-                        self.ks.noticeInfo("请在iPhone的“设置-隐私-相机”选项中，允许访问你的相机",autoClear: true)
-                        break
-                    default:
-                        break
-                    }
-                }else{
-                    self.ks.noticeInfo("您的设备没有摄像头!", autoClear: true)
-                    imagePickerController.sourceType = .PhotoLibrary
-                }
-                self.presentViewController(imagePickerController, animated: true, completion: nil)
-            }
-            let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel) { _ in
-                cell.selected = false
-            }
-            alertController.addAction(albumAction)
-            alertController.addAction(pictureAction)
-            alertController.addAction(cancelAction)
-            self.presentViewController(alertController, animated: true, completion: nil)
-        case(0,1):
-            let alertController = UIAlertController(title: nil, message: "请输入昵称", preferredStyle: .Alert)
-            alertController.addTextFieldWithConfigurationHandler(nil)
-            let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default) {
-                (action: UIAlertAction!) -> Void in
-                staticAccount?.nickname = alertController.textFields?.first?.text
-                cell.valueTextField.text = staticAccount?.nickname
-            }
-            alertController.addAction(okAction)
-            self.presentViewController(alertController, animated: true, completion: nil)
-        case(0,4):
+            self.navigationController?.ks.pushViewController(AccountViewController())
+        case (0,1):
             let vc = R.nib.waterplanViewController.firstView(owner: nil, options: nil)!
             self.navigationController?.ks.pushViewController(vc)
         case(1,0):
@@ -209,25 +138,5 @@ extension MineViewController {
             break;
         }
     }
-
-}
-extension MineViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        if var image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            image = image.af_imageAspectScaledToFillSize(CGSizeMake(320/KS.SCREEN_SCALE, 320/KS.SCREEN_SCALE))
-            let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! MineTableViewCell
-            cell.headerImageView.hidden = false
-            cell.headerImageView.image = image.af_imageAspectScaledToFillSize(CGSizeMake(62, 62)).af_imageRoundedIntoCircle()
-            saveImage(image, imageName: "\(staticAccount!.accountid).jpg")
-            self.parentViewController?.dismissViewControllerAnimated(true, completion: nil)
-        }
-    }
-    func saveImage(currentImage: UIImage,imageName: String){
-        let imageData: NSData = UIImageJPEGRepresentation(currentImage, 1)!
-        let fullPath = ((NSHomeDirectory() as NSString).stringByAppendingPathComponent("Documents") as NSString)
-            .stringByAppendingPathComponent(imageName)
-        imageData.writeToFile(fullPath, atomically: false)
-        staticAccount?.avatar = "file:"+fullPath
-        uploadImage(NSURL(fileURLWithPath: fullPath))
-    }
+    
 }

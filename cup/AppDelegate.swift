@@ -42,6 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         self.window?.makeKeyAndVisible()
 //        UIApplication.sharedApplication().keyWindow?.tintColor = Colors.red
+        UISegmentedControl.appearance().tintColor = Colors.red
         UIBarButtonItem.appearance().tintColor = Colors.background
         UISwitch.appearance().onTintColor = Colors.red
         UISwitch.appearance().tintColor = Colors.black
