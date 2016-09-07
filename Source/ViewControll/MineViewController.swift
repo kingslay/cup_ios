@@ -85,7 +85,7 @@ extension MineViewController {
             case 0:
                 cell.headerImageView.hidden = false
                 if let str = value,url = NSURL(string: str) {
-                    cell.headerImageView!.af_setImageWithURL(url, placeholderImage: R.image.label_icon_Personal_initial(),filter: AspectScaledToFillSizeCircleFilter(size: CGSizeMake(41, 41)))
+                    cell.headerImageView!.af_setImageWithURL(url, placeholderImage: R.image.默认头像(),filter: AspectScaledToFillSizeCircleFilter(size: CGSizeMake(41, 41)))
                 }
             case 1:
                 cell.valueTextField.placeholder = ""

@@ -32,11 +32,36 @@ class ShareViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = Colors.background
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: R.image.icon_share(), style: .Plain, target: self, action: #selector(showShareSheet(_:)))
     }
 
     func showShareSheet(view: UIView) {
         let sheet = R.nib.shareSheet.firstView(owner: nil)
         sheet?.showIn(self.view)
+    }
+    func setUpChartData(xVals:[String?],yVals:[BarChartDataEntry]) {
+        if let set = chartView.data?.dataSets[0] as? BarChartDataSet {
+            set.yVals = yVals
+            chartView.data?.xVals = xVals
+            chartView.data?.notifyDataChanged()
+            chartView.notifyDataSetChanged()
+        } else {
+            let set = LineChartDataSet(yVals: yVals, label: nil)
+            set.mode = .CubicBezier
+            set.lineDashLengths = [5, 2.5]
+            set.highlightLineDashLengths = [5, 2.5]
+            set.setColor(Colors.red)
+            set.setCircleColor(Colors.red)
+            set.lineWidth = 1.0
+            set.circleRadius = 2.0
+            let gradientColors = [Colors.white.CGColor,Colors.red.CGColor]
+            set.fillAlpha = 1
+            set.fill = ChartFill.fillWithLinearGradient(CGGradientCreateWithColors(nil, gradientColors, nil)!, angle: 90)
+            set.drawFilledEnabled = true
+            set.drawValuesEnabled = false
+            let data = LineChartData(xVals: xVals, dataSets: [set])
+            chartView.data = data
+        }
     }
 }

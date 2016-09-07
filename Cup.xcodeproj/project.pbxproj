@@ -49,6 +49,7 @@
 		3CCCA7191D5F67F800AFC6A1 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCCA7181D5F67F800AFC6A1 /* ShareSheet.swift */; };
 		3CCCA71B1D60080D00AFC6A1 /* WaterCycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCCA71A1D60080D00AFC6A1 /* WaterCycleView.swift */; };
 		3CCF7EF31D635B77004B664F /* WaterHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF7EF21D635B77004B664F /* WaterHistoryViewController.swift */; };
+		3CDDAAF41D8000ED0004938C /* WaterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDDAAF31D8000ED0004938C /* WaterModel.swift */; };
 		3CDF8A7A1CEB02E500B2675B /* 1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3CDF8A721CEB02E500B2675B /* 1.gif */; };
 		3CDF8A7B1CEB02E500B2675B /* 2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3CDF8A731CEB02E500B2675B /* 2.gif */; };
 		3CDF8A7C1CEB02E500B2675B /* 3.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3CDF8A741CEB02E500B2675B /* 3.gif */; };
@@ -151,6 +152,7 @@
 		3CCCA7181D5F67F800AFC6A1 /* ShareSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 		3CCCA71A1D60080D00AFC6A1 /* WaterCycleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterCycleView.swift; sourceTree = "<group>"; };
 		3CCF7EF21D635B77004B664F /* WaterHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterHistoryViewController.swift; sourceTree = "<group>"; };
+		3CDDAAF31D8000ED0004938C /* WaterModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterModel.swift; sourceTree = "<group>"; };
 		3CDF8A721CEB02E500B2675B /* 1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 1.gif; sourceTree = "<group>"; };
 		3CDF8A731CEB02E500B2675B /* 2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 2.gif; sourceTree = "<group>"; };
 		3CDF8A741CEB02E500B2675B /* 3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 3.gif; sourceTree = "<group>"; };
@@ -382,6 +384,7 @@
 				CBE9E7C41BE88A1B00CE922B /* ClockModel.swift */,
 				CBE1DC321BEA04ED00E1FF29 /* AccountModel.swift */,
 				CBF5E36C1BF1ED3E002D4F8F /* TemperatureModel.swift */,
+				3CDDAAF31D8000ED0004938C /* WaterModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -436,10 +439,10 @@
 		CB89F7AD1BE707BF00FD21FD /* ViewControll */ = {
 			isa = PBXGroup;
 			children = (
-				3C9BFFA91D7AA3B3007C0E89 /* Temperature */,
-				3C9BFFA81D7AA37A007C0E89 /* Mine */,
-				3C9BFFA71D7AA36A007C0E89 /* Water */,
 				3C9BFFA61D7AA338007C0E89 /* Clock */,
+				3C9BFFA71D7AA36A007C0E89 /* Water */,
+				3C9BFFA81D7AA37A007C0E89 /* Mine */,
+				3C9BFFA91D7AA3B3007C0E89 /* Temperature */,
 				3CCCA7141D5F586900AFC6A1 /* ShareViewController.swift */,
 				CB3CF8921BE9DD6E008D577E /* KSGuidanceViewController.swift */,
 				CB3CF8931BE9DD6E008D577E /* KSGuidanceViewController.xib */,
@@ -686,6 +689,7 @@
 				3C9BFFC51D7C77FB007C0E89 /* CalendarView.swift in Sources */,
 				3C9BFFC21D7C19FC007C0E89 /* WaterplanViewController.swift in Sources */,
 				CBE1DC2D1BE9F81C00E1FF29 /* AccountViewController.swift in Sources */,
+				3CDDAAF41D8000ED0004938C /* WaterModel.swift in Sources */,
 				CBE1DC3A1BEC81F900E1FF29 /* MineTableViewCell.swift in Sources */,
 				3CCCA71B1D60080D00AFC6A1 /* WaterCycleView.swift in Sources */,
 				3C9BFFB61D7ADC39007C0E89 /* AddClockViewController.swift in Sources */,

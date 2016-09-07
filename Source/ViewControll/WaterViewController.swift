@@ -25,20 +25,22 @@ class WaterViewController: ShareViewController {
     lazy var dateButton = UIButton()
     var calendarView: CalendarView!
     var waterCycleView: WaterCycleView!
+    var currentDate = NSDate() {
+        didSet{
+            self.dateButton.setTitle(currentDate.ks.stringFromFormat("yyyy年MM月dd日"), forState: .Normal)
+            self.setUpChartData(currentDate)
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpCentral()
         self.waterCycleView = WaterCycleView(frame: CGRect(x: 0, y: 0, width: KS.SCREEN_WIDTH, height: 230))
-        waterCycleView.waterplan = CGFloat(staticAccount?.waterplan?.floatValue ?? 2300)
-        waterCycleView.water = 1200
         waterCycleView.batteryRate = 100
         view.addSubview(waterCycleView)
         dateButton.setImage(R.image.icon_calendar(), forState: .Normal)
         dateButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
         dateButton.titleLabel?.font = UIFont.systemFontOfSize(15)
         dateButton.setTitleColor(Colors.pink, forState: .Normal)
-        dateButton.setTitle(NSDate().ks.stringFromFormat("yyyy年MM月dd日"), forState: .Normal)
-        dateButton.sizeToFit()
         view.addSubview(dateButton)
         dateButton.snp_makeConstraints { (make) in
             make.top.equalTo(waterCycleView.ks.bottom)
@@ -47,16 +49,18 @@ class WaterViewController: ShareViewController {
         }
         view.addSubview(chartView)
         chartView.snp_makeConstraints { (make) in
-            make.width.equalToSuperview()
             make.top.equalTo(dateButton.snp_bottom)
-            make.bottom.equalToSuperview()
+            make.left.equalToSuperview().offset(10)
+            make.right.equalToSuperview().offset(-10)
+            make.bottom.equalToSuperview().offset(-10)
         }
         let tapGesture = UITapGestureRecognizer()
         self.chartView.addGestureRecognizer(tapGesture)
         tapGesture.rx_event.subscribeNext{ [unowned self](_) in
-            self.navigationController?.ks.pushViewController(WaterHistoryViewController())
+            let vc = WaterHistoryViewController()
+            vc.currentDate = self.currentDate
+            self.navigationController?.ks.pushViewController(vc)
         }.addDisposableTo(self.ks.disposableBag)
-        self.setUpChartData()
         calendarView = CalendarView(frame: view.bounds)
         view.addSubview(calendarView)
         calendarView.ks.top(view.ks.bottom)
@@ -67,34 +71,28 @@ class WaterViewController: ShareViewController {
             }.addDisposableTo(ks.disposableBag)
         calendarView.update = { [unowned self] date in
             self.calendarView.ks.top(self.view.ks.bottom)
-            self.dateButton.setTitle(date.convertedDate()?.ks.stringFromFormat("yyyy年MM月dd日"), forState: .Normal)
+            self.currentDate = date.convertedDate()!
         }
+        currentDate = NSDate()
     }
-    func setUpChartData() {
-        let xVals = (0..<24).map{String($0) as? String}
-        let yVals = (0..<24).map{BarChartDataEntry(value: Double(arc4random_uniform(100)), xIndex: $0)}
-        if let set = chartView.data?.dataSets[0] as? BarChartDataSet {
-            set.yVals = yVals
-            chartView.data?.xVals = xVals
-            chartView.data?.notifyDataChanged()
-            chartView.notifyDataSetChanged()
-        } else {
-            let set = LineChartDataSet(yVals: yVals, label: nil)
-            set.mode = .CubicBezier
-            set.lineDashLengths = [5, 2.5]
-            set.highlightLineDashLengths = [5, 2.5]
-            set.setColor(Colors.red)
-            set.setCircleColor(Colors.red)
-            set.lineWidth = 1.0
-            set.circleRadius = 2.0
-            let gradientColors = [Colors.white.CGColor,Colors.red.CGColor]
-            set.fillAlpha = 1
-            set.fill = ChartFill.fillWithLinearGradient(CGGradientCreateWithColors(nil, gradientColors, nil)!, angle: 90)
-            set.drawFilledEnabled = true
-            set.drawValuesEnabled = false
-            let data = LineChartData(xVals: xVals, dataSets: [set])
-            chartView.data = data
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+         waterCycleView.waterplan = CGFloat(staticAccount?.waterplan?.floatValue ?? staticAccount!.calculateProposalWater())
+    }
+    func setUpChartData(date: NSDate) {
+        WaterModel.save(NSDate(), amount: 129)
+        var xVals = [String?]()
+        var yVals = [BarChartDataEntry]()
+        var water = 0
+        if let models = WaterModel.fetch(dic: ["year":date.year,"month":date.month,"day":date.day]) {
+            for (index,model) in models.enumerate() {
+                xVals.append("\(model.hour.ks.format("%02d")):\(model.minute.ks.format("%02d"))")
+                yVals.append(BarChartDataEntry(value: Double(model.amount), xIndex: index))
+                water = water + model.amount
+            }
         }
+        waterCycleView.water = CGFloat(water)
+        setUpChartData(xVals,yVals: yVals)
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()

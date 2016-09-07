@@ -90,9 +90,9 @@ extension AccountViewController {
             cell.valueTextField.hidden = true
             cell.headerImageView.hidden = false
             if let url = value {
-                cell.headerImageView.af_setImageWithURL(NSURL(string: url)!,placeholderImage: R.image.label_icon_Personal_initial(),filter: AspectScaledToFillSizeCircleFilter(size: CGSizeMake(62, 62)))
+                cell.headerImageView.af_setImageWithURL(NSURL(string: url)!,placeholderImage: R.image.默认头像(),filter: AspectScaledToFillSizeCircleFilter(size: CGSizeMake(62, 62)))
             }else{
-                 cell.headerImageView.image = R.image.label_icon_Personal_initial()!.af_imageRoundedIntoCircle()
+                 cell.headerImageView.image = R.image.默认头像()
             }
         case (0,3):
             cell.valueTextField.userInteractionEnabled = true
