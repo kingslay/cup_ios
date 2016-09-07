@@ -50,8 +50,8 @@ class WaterViewController: ShareViewController {
         view.addSubview(chartView)
         chartView.snp_makeConstraints { (make) in
             make.top.equalTo(dateButton.snp_bottom)
-            make.left.equalToSuperview().offset(10)
-            make.right.equalToSuperview().offset(-10)
+            make.left.equalToSuperview().offset(5)
+            make.right.equalToSuperview().offset(-5)
             make.bottom.equalToSuperview().offset(-10)
         }
         let tapGesture = UITapGestureRecognizer()
@@ -80,7 +80,7 @@ class WaterViewController: ShareViewController {
          waterCycleView.waterplan = CGFloat(staticAccount?.waterplan?.floatValue ?? staticAccount!.calculateProposalWater())
     }
     func setUpChartData(date: NSDate) {
-        WaterModel.save(NSDate(), amount: 129)
+//        WaterModel.save(NSDate(), amount: 80)
         var xVals = [String?]()
         var yVals = [BarChartDataEntry]()
         var water = 0

@@ -60,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         MonkeyKing.registerAccount(.WeChat(appID: "wxfc361b137c76f916",appKey: nil))
         //appKey DDbYXy3a8zJH2aeA
         MonkeyKing.registerAccount(.QQ(appID: "1105615474"))
-        MonkeyKing.registerAccount(.Weibo(appID: "wxfc361b137c76f916", appKey: "wxfc361b137c76f916", redirectURL: "wxfc361b137c76f916"))
+        MonkeyKing.registerAccount(.Weibo(appID: "3083484688", appKey: "cb5afe0602f54f3fd82aea937020c1c2", redirectURL: "wxfc361b137c76f916"))
         return true
     }
 

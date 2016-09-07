@@ -11,7 +11,7 @@ import Charts
 import KSSwiftExtension
 class ShareViewController: UIViewController {
     let chartView: LineChartView = {
-        let chartView = LineChartView(frame: CGRect(x: 0, y:0, width: KS.SCREEN_WIDTH, height: KS.SCREEN_HEIGHT/2))
+        let chartView = LineChartView(frame: CGRect(x: 10, y:0, width: KS.SCREEN_WIDTH-20, height: KS.SCREEN_HEIGHT/2))
         chartView.descriptionText = "";
         chartView.scaleXEnabled = false
         chartView.scaleYEnabled = false
@@ -25,6 +25,8 @@ class ShareViewController: UIViewController {
         chartView.leftAxis.valueFormatter = valueFormatter
         chartView.leftAxis.axisMinValue = 0
         chartView.leftAxis.labelTextColor = Colors.pink
+        chartView.leftAxis.drawGridLinesEnabled = true
+        chartView.leftAxis.labelCount = 5
         chartView.rightAxis.enabled = false
         chartView.legend.enabled = false
         return chartView
@@ -56,7 +58,7 @@ class ShareViewController: UIViewController {
             set.lineWidth = 1.0
             set.circleRadius = 2.0
             let gradientColors = [Colors.white.CGColor,Colors.red.CGColor]
-            set.fillAlpha = 1
+            set.fillAlpha = 0.8
             set.fill = ChartFill.fillWithLinearGradient(CGGradientCreateWithColors(nil, gradientColors, nil)!, angle: 90)
             set.drawFilledEnabled = true
             set.drawValuesEnabled = false

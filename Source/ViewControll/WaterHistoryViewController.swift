@@ -25,7 +25,7 @@ class WaterHistoryViewController: ShareViewController {
                 case 0:
                     xVals.append("\(model.hour.ks.format("%02d")):\(model.minute.ks.format("%02d"))")
                 case 1,2:
-                    xVals.append("\(model.month.ks.format("%02d"))月\(model.day.ks.format("%02d"))日")
+                    xVals.append("\(model.month)月\(model.day)日")
                 default:
                     break
                 }
@@ -54,14 +54,15 @@ class WaterHistoryViewController: ShareViewController {
             make.width.equalToSuperview()
             make.bottom.equalToSuperview()
         }
-        let tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.ks.width, height: view.ks.height/2))
+        let tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.ks.width, height: view.ks.height/3))
         tableHeaderView.addSubview(chartView)
         chartView.snp_makeConstraints { (make) in
             make.top.equalToSuperview()
-            make.left.equalToSuperview().offset(10)
-            make.right.equalToSuperview().offset(-15)
+            make.left.equalToSuperview().offset(5)
+            make.right.equalToSuperview().offset(-5)
             make.bottom.equalToSuperview().offset(-10)
         }
+        tableHeaderView.ks.showBorder(.bottom, color: Colors.black)
         self.tableView.tableHeaderView = tableHeaderView
         self.tableView.tableFooterView = UIView()
         valueChanged(segmented)
@@ -125,13 +126,13 @@ extension WaterHistoryViewController: UITableViewDataSource,UITableViewDelegate 
         return cell
     }
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 20
+        return 30
     }
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
-        let label = UILabel()
+        view.backgroundColor = Colors.white
+        let label = UILabel(frame: CGRect(x: 15, y: 10, width: 0, height: 0))
         view.addSubview(label)
-        label.ks.left(15)
         label.font = UIFont.systemFontOfSize(15)
         label.textColor = Colors.red
         switch segmented.selectedSegmentIndex {
