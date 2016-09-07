@@ -16,14 +16,28 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您每天需要的饮水量（根据您的个人信息）推荐值约为2300 ml" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJf-gi-SgA">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJf-gi-SgA">
                         <rect key="frame" x="10" y="30" width="300" height="80"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="80" id="geO-NF-e3d"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <color key="textColor" red="0.85490196080000003" green="0.1450980392" blue="0.074509803920000006" alpha="1" colorSpace="calibratedRGB"/>
+                        <attributedString key="attributedText">
+                            <fragment content="您每天需要的饮水量（根据您的个人信息）推荐值约为">
+                                <attributes>
+                                    <color key="NSColor" red="0.85490196080000003" green="0.1450980392" blue="0.074509803920000006" alpha="1" colorSpace="calibratedRGB"/>
+                                    <font key="NSFont" size="16" name="PingFangSC-Regular"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                            <fragment content="2300 ml">
+                                <attributes>
+                                    <color key="NSColor" red="0.85490196080000003" green="0.1450980392" blue="0.074509803920000006" alpha="1" colorSpace="calibratedRGB"/>
+                                    <font key="NSFont" size="18" name="HelveticaNeue"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
                         <nil key="highlightedColor"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -42,6 +56,12 @@
                         <rect key="frame" x="80" y="202.5" width="160" height="340.5"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2300ml" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d31-Su-86I">
+                        <rect key="frame" x="245" y="362.5" width="70" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <color key="textColor" red="0.85490196080000003" green="0.1450980392" blue="0.074509803920000006" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
@@ -49,10 +69,13 @@
                     <constraint firstAttribute="trailing" secondItem="sd4-94-JVy" secondAttribute="trailing" constant="80" id="AGf-pc-1Px"/>
                     <constraint firstItem="sd4-94-JVy" firstAttribute="top" secondItem="hdW-b4-O4P" secondAttribute="bottom" constant="25" id="EGL-2H-CYg"/>
                     <constraint firstItem="IJf-gi-SgA" firstAttribute="top" secondItem="7aY-6r-cmZ" secondAttribute="bottom" constant="10" id="IZh-l4-rJn"/>
+                    <constraint firstItem="d31-Su-86I" firstAttribute="centerY" secondItem="sd4-94-JVy" secondAttribute="centerY" id="LHy-D4-aPy"/>
+                    <constraint firstItem="d31-Su-86I" firstAttribute="leading" secondItem="sd4-94-JVy" secondAttribute="trailing" constant="5" id="cMr-Mf-Dd5"/>
                     <constraint firstItem="IJf-gi-SgA" firstAttribute="leading" secondItem="skw-cK-VTv" secondAttribute="leading" constant="10" id="dWV-nf-3iB"/>
                     <constraint firstItem="hdW-b4-O4P" firstAttribute="leading" secondItem="skw-cK-VTv" secondAttribute="leading" constant="10" id="fM7-wN-WvE"/>
                     <constraint firstItem="sd4-94-JVy" firstAttribute="leading" secondItem="skw-cK-VTv" secondAttribute="leading" constant="80" id="h1q-10-Wpm"/>
                     <constraint firstAttribute="trailing" secondItem="hdW-b4-O4P" secondAttribute="trailing" constant="10" id="lGy-oy-DVg"/>
+                    <constraint firstAttribute="trailing" secondItem="d31-Su-86I" secondAttribute="trailing" constant="5" id="phR-qe-YCz"/>
                     <constraint firstItem="hdW-b4-O4P" firstAttribute="top" secondItem="IJf-gi-SgA" secondAttribute="bottom" constant="10" id="t2D-O8-17K"/>
                     <constraint firstAttribute="trailing" secondItem="IJf-gi-SgA" secondAttribute="trailing" constant="10" id="yZG-gi-07X"/>
                 </constraints>
@@ -60,6 +83,7 @@
             <connections>
                 <outlet property="rulerView" destination="sd4-94-JVy" id="juk-ag-6kO"/>
                 <outlet property="titileLabel" destination="IJf-gi-SgA" id="WV0-wO-OVJ"/>
+                <outlet property="waterLabel" destination="d31-Su-86I" id="sLx-6U-eQa"/>
             </connections>
             <point key="canvasLocation" x="351" y="403"/>
         </viewController>

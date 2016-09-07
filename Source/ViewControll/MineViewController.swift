@@ -51,11 +51,6 @@ class MineViewController: UITableViewController {
         alertController.addAction(okAction)
         self.presentViewController(alertController, animated: true, completion: nil)
     }
-    //    override func viewWillAppear(animated: Bool) {
-    //    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     func initData(){
         datas = [[(R.image.icon_modify(),"个人资料修改",staticAccount?.avatar),
             (R.image.icon_plan(),"饮水计划(ml)",staticAccount?.waterplan != nil ? "\(staticAccount!.waterplan!)" : nil)],

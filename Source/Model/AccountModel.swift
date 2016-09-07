@@ -83,8 +83,7 @@ class AccountModel: NSObject,Model,Storable {
         CupProvider.request(.SaveMe).subscribeNext {_ in
         }
     }
-    var proposalWater: NSNumber?
-    func calculateProposalWater() {
+    func calculateProposalWater() -> Int {
         var age = 18
         if let birthday = self.birthday,let year = Int(birthday[0..<4]) {
             age = NSDate().year - year
@@ -96,9 +95,9 @@ class AccountModel: NSObject,Model,Storable {
             bmi = 1800/19
         }
         let weight = (self.weight ?? 60).doubleValue
-        let height = (self.height ?? 160).doubleValue/100.0
+        let height = (self.height ?? 170).doubleValue/100.0
         let proposalWater = (35.0*weight + bmi * weight/(height*height))/2
-        self.proposalWater = proposalWater;
+        return Int(proposalWater);
     }
 }
 var staticAccount: AccountModel?
