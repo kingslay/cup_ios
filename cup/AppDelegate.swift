@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Database.driver = SQLiteDriver()
-        Bugly.startWithAppId("900026229")
+        Bugly.startWithAppId("971cdd61af")
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         // 得到当前应用的版本号
         let infoDictionary = NSBundle.mainBundle().infoDictionary
@@ -41,9 +41,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         self.window?.makeKeyAndVisible()
-//        UIApplication.sharedApplication().keyWindow?.tintColor = Colors.red
+        UIApplication.sharedApplication().keyWindow?.tintColor = Colors.red
         UISegmentedControl.appearance().tintColor = Colors.red
         UIBarButtonItem.appearance().tintColor = Colors.background
+        UINavigationBar.appearance()
         UISwitch.appearance().onTintColor = Colors.red
         UISwitch.appearance().tintColor = Colors.black
         UIApplication.sharedApplication().statusBarStyle = .LightContent
@@ -56,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().tintColor = Colors.red
         UITabBar.appearance().translucent = false
         configureAlamofireManager()
-        SMSSDK.registerApp("c1013d64d3ff", withSecret: "528dd34e0cb571afea389ae783053243")
+        SMSSDK.registerApp("16ece37bd2580", withSecret: "3e403d5017a8b968bc86b461f1f9d543")
         MonkeyKing.registerAccount(.WeChat(appID: "wxfc361b137c76f916",appKey: nil))
         //appKey DDbYXy3a8zJH2aeA
         MonkeyKing.registerAccount(.QQ(appID: "1105615474"))

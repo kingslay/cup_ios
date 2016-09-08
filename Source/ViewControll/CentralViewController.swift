@@ -50,8 +50,9 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
     view.addSubview(discoveriesTableView)
     let headerView = UIView(frame: CGRectMake(0,0,self.view.frame.width,245))
     let headerLabel = UILabel()
-    headerLabel.text = "发现水杯"
-    headerLabel.font = UIFont.systemFontOfSize(23)
+    headerLabel.text = "发现智能水杯"
+    headerLabel.font = UIFont.systemFontOfSize(24)
+    headerLabel.textColor = Colors.red
     headerLabel.sizeToFit()
     headerView.addSubview(headerLabel)
     headerLabel.snp_makeConstraints { (make) -> Void in
@@ -59,24 +60,6 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
       make.bottom.equalTo(-20)
     }
     discoveriesTableView.tableHeaderView = headerView
-//    let footerView = UIView()
-//    let imageView = UIImageView(image: R.image.cup_adaptation())
-//    footerView.addSubview(imageView)
-//    imageView.snp_makeConstraints { (make) -> Void in
-//      make.top.equalTo(30)
-//      make.centerX.equalTo(0)
-//    }
-//    let footerLabel = UILabel()
-//    footerLabel.text = "灯光闪烁表示已连接"
-//    footerLabel.font = UIFont.systemFontOfSize(16)
-//    footerLabel.sizeToFit()
-//    footerView.addSubview(footerLabel)
-//    footerLabel.snp_makeConstraints { (make) -> Void in
-//      make.top.equalTo(imageView.snp_bottom).offset(28)
-//      make.centerX.equalTo(0)
-//    }
-//    discoveriesTableView.tableFooterView = footerView
-//    footerView.hidden = true
     headerView.hidden = true
   }
   override func viewDidAppear(animated: Bool) {
@@ -125,6 +108,8 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
   
   internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(discoveriesTableViewCellIdentifier, forIndexPath: indexPath)
+    cell.textLabel?.font = UIFont.systemFontOfSize(12)
+    cell.textLabel?.textColor = Colors.pink
     let discovery = discoveries[discoveries.startIndex.advancedBy(indexPath.row)]
     cell.textLabel?.text = discovery.name
     return cell

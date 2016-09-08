@@ -32,7 +32,7 @@ class WaterplanViewController: UIViewController {
         }
     }
     func complete() {
-        staticAccount?.waterplan = rulerView.currentValue
+        staticAccount?.waterplan = Int(rulerView.currentValue)
         self.navigationController?.popViewControllerAnimated(false)
     }
 }

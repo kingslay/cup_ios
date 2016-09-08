@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" initialViewController="01J-lp-oVM">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -14,36 +14,28 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LOGO" translatesAutoresizingMaskIntoConstraints="NO" id="3hv-sn-927">
-                                <rect key="frame" x="218.5" y="280.5" width="163" height="39"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="jyA-8w-5og"/>
-                                    <constraint firstAttribute="height" constant="100" id="pv3-v8-Wku"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="jyA-8w-5og"/>
-                                        <exclude reference="pv3-v8-Wku"/>
-                                    </mask>
-                                </variation>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="闪屏" translatesAutoresizingMaskIntoConstraints="NO" id="3hv-sn-927">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="3hv-sn-927" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="NLY-V5-n1v"/>
-                            <constraint firstItem="3hv-sn-927" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="UeA-vI-PK8"/>
+                            <constraint firstItem="3hv-sn-927" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="-20" id="0sL-jd-8Sa"/>
+                            <constraint firstItem="3hv-sn-927" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="dQ1-U4-hmF"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="3hv-sn-927" secondAttribute="bottom" id="fAl-Wb-cSQ"/>
+                            <constraint firstAttribute="trailing" secondItem="3hv-sn-927" secondAttribute="trailing" id="ibQ-ap-ZRu"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="28.266666666666666" y="355"/>
         </scene>
     </scenes>
     <resources>
-        <image name="LOGO" width="163" height="39"/>
+        <image name="闪屏" width="375" height="667"/>
     </resources>
 </document>

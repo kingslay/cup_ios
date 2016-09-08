@@ -40,7 +40,7 @@ class ShareViewController: UIViewController {
 
     func showShareSheet(view: UIView) {
         let sheet = R.nib.shareSheet.firstView(owner: nil)
-        sheet?.showIn(self.view)
+        sheet?.showIn(UIApplication.sharedApplication().keyWindow!)
     }
     func setUpChartData(xVals:[String?],yVals:[BarChartDataEntry]) {
         if let set = chartView.data?.dataSets[0] as? BarChartDataSet {

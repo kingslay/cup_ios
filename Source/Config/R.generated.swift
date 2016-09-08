@@ -26,7 +26,7 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 74 images.
+  /// This `R.image` struct is generated, and contains static references to 55 images.
   struct image {
     /// Image `LOGO`.
     static let lOGO = ImageResource(bundle: _R.hostingBundle, name: "LOGO")
@@ -38,34 +38,6 @@ struct R: Rswift.Validatable {
     static let bg_water = ImageResource(bundle: _R.hostingBundle, name: "bg_water")
     /// Image `bounced_success`.
     static let bounced_success = ImageResource(bundle: _R.hostingBundle, name: "bounced_success")
-    /// Image `button_day11`.
-    static let button_day11 = ImageResource(bundle: _R.hostingBundle, name: "button_day11")
-    /// Image `button_day1`.
-    static let button_day1 = ImageResource(bundle: _R.hostingBundle, name: "button_day1")
-    /// Image `button_day22`.
-    static let button_day22 = ImageResource(bundle: _R.hostingBundle, name: "button_day22")
-    /// Image `button_day2`.
-    static let button_day2 = ImageResource(bundle: _R.hostingBundle, name: "button_day2")
-    /// Image `button_day33`.
-    static let button_day33 = ImageResource(bundle: _R.hostingBundle, name: "button_day33")
-    /// Image `button_day3`.
-    static let button_day3 = ImageResource(bundle: _R.hostingBundle, name: "button_day3")
-    /// Image `button_day44`.
-    static let button_day44 = ImageResource(bundle: _R.hostingBundle, name: "button_day44")
-    /// Image `button_day4`.
-    static let button_day4 = ImageResource(bundle: _R.hostingBundle, name: "button_day4")
-    /// Image `button_day55`.
-    static let button_day55 = ImageResource(bundle: _R.hostingBundle, name: "button_day55")
-    /// Image `button_day5`.
-    static let button_day5 = ImageResource(bundle: _R.hostingBundle, name: "button_day5")
-    /// Image `button_day66`.
-    static let button_day66 = ImageResource(bundle: _R.hostingBundle, name: "button_day66")
-    /// Image `button_day6`.
-    static let button_day6 = ImageResource(bundle: _R.hostingBundle, name: "button_day6")
-    /// Image `button_day77`.
-    static let button_day77 = ImageResource(bundle: _R.hostingBundle, name: "button_day77")
-    /// Image `button_day7`.
-    static let button_day7 = ImageResource(bundle: _R.hostingBundle, name: "button_day7")
     /// Image `button_man1`.
     static let button_man1 = ImageResource(bundle: _R.hostingBundle, name: "button_man1")
     /// Image `button_man2`.
@@ -150,20 +122,8 @@ struct R: Rswift.Validatable {
     static let logo1 = ImageResource(bundle: _R.hostingBundle, name: "logo-1")
     /// Image `logo-2`.
     static let logo2 = ImageResource(bundle: _R.hostingBundle, name: "logo-2")
-    /// Image `record_icon_day_initial`.
-    static let record_icon_day_initial = ImageResource(bundle: _R.hostingBundle, name: "record_icon_day_initial")
-    /// Image `record_icon_day`.
-    static let record_icon_day = ImageResource(bundle: _R.hostingBundle, name: "record_icon_day")
-    /// Image `record_icon_month_initial`.
-    static let record_icon_month_initial = ImageResource(bundle: _R.hostingBundle, name: "record_icon_month_initial")
-    /// Image `record_icon_month`.
-    static let record_icon_month = ImageResource(bundle: _R.hostingBundle, name: "record_icon_month")
     /// Image `record_icon_time`.
     static let record_icon_time = ImageResource(bundle: _R.hostingBundle, name: "record_icon_time")
-    /// Image `record_icon_week_initial`.
-    static let record_icon_week_initial = ImageResource(bundle: _R.hostingBundle, name: "record_icon_week_initial")
-    /// Image `record_icon_week`.
-    static let record_icon_week = ImageResource(bundle: _R.hostingBundle, name: "record_icon_week")
     /// Image `share_friend`.
     static let share_friend = ImageResource(bundle: _R.hostingBundle, name: "share_friend")
     /// Image `share_qzone`.
@@ -174,6 +134,8 @@ struct R: Rswift.Validatable {
     static let share_tencent = ImageResource(bundle: _R.hostingBundle, name: "share_tencent")
     /// Image `share_weixin`.
     static let share_weixin = ImageResource(bundle: _R.hostingBundle, name: "share_weixin")
+    /// Image `闪屏`.
+    static let 闪屏 = ImageResource(bundle: _R.hostingBundle, name: "闪屏")
     /// Image `默认头像`.
     static let 默认头像 = ImageResource(bundle: _R.hostingBundle, name: "默认头像")
     
@@ -200,76 +162,6 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "bounced_success", bundle: ..., traitCollection: ...)`
     static func bounced_success(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.bounced_success, compatibleWithTraitCollection: traitCollection)
-    }
-    
-    /// `UIImage(named: "button_day1", bundle: ..., traitCollection: ...)`
-    static func button_day1(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.button_day1, compatibleWithTraitCollection: traitCollection)
-    }
-    
-    /// `UIImage(named: "button_day11", bundle: ..., traitCollection: ...)`
-    static func button_day11(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.button_day11, compatibleWithTraitCollection: traitCollection)
-    }
-    
-    /// `UIImage(named: "button_day2", bundle: ..., traitCollection: ...)`
-    static func button_day2(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.button_day2, compatibleWithTraitCollection: traitCollection)
-    }
-    
-    /// `UIImage(named: "button_day22", bundle: ..., traitCollection: ...)`
-    static func button_day22(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.button_day22, compatibleWithTraitCollection: traitCollection)
-    }
-    
-    /// `UIImage(named: "button_day3", bundle: ..., traitCollection: ...)`
-    static func button_day3(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.button_day3, compatibleWithTraitCollection: traitCollection)
-    }
-    
-    /// `UIImage(named: "button_day33", bundle: ..., traitCollection: ...)`
-    static func button_day33(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.button_day33, compatibleWithTraitCollection: traitCollection)
-    }
-    
-    /// `UIImage(named: "button_day4", bundle: ..., traitCollection: ...)`
-    static func button_day4(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.button_day4, compatibleWithTraitCollection: traitCollection)
-    }
-    
-    /// `UIImage(named: "button_day44", bundle: ..., traitCollection: ...)`
-    static func button_day44(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.button_day44, compatibleWithTraitCollection: traitCollection)
-    }
-    
-    /// `UIImage(named: "button_day5", bundle: ..., traitCollection: ...)`
-    static func button_day5(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.button_day5, compatibleWithTraitCollection: traitCollection)
-    }
-    
-    /// `UIImage(named: "button_day55", bundle: ..., traitCollection: ...)`
-    static func button_day55(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.button_day55, compatibleWithTraitCollection: traitCollection)
-    }
-    
-    /// `UIImage(named: "button_day6", bundle: ..., traitCollection: ...)`
-    static func button_day6(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.button_day6, compatibleWithTraitCollection: traitCollection)
-    }
-    
-    /// `UIImage(named: "button_day66", bundle: ..., traitCollection: ...)`
-    static func button_day66(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.button_day66, compatibleWithTraitCollection: traitCollection)
-    }
-    
-    /// `UIImage(named: "button_day7", bundle: ..., traitCollection: ...)`
-    static func button_day7(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.button_day7, compatibleWithTraitCollection: traitCollection)
-    }
-    
-    /// `UIImage(named: "button_day77", bundle: ..., traitCollection: ...)`
-    static func button_day77(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.button_day77, compatibleWithTraitCollection: traitCollection)
     }
     
     /// `UIImage(named: "button_man1", bundle: ..., traitCollection: ...)`
@@ -482,39 +374,9 @@ struct R: Rswift.Validatable {
       return UIImage(resource: R.image.logo2, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "record_icon_day", bundle: ..., traitCollection: ...)`
-    static func record_icon_day(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.record_icon_day, compatibleWithTraitCollection: traitCollection)
-    }
-    
-    /// `UIImage(named: "record_icon_day_initial", bundle: ..., traitCollection: ...)`
-    static func record_icon_day_initial(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.record_icon_day_initial, compatibleWithTraitCollection: traitCollection)
-    }
-    
-    /// `UIImage(named: "record_icon_month", bundle: ..., traitCollection: ...)`
-    static func record_icon_month(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.record_icon_month, compatibleWithTraitCollection: traitCollection)
-    }
-    
-    /// `UIImage(named: "record_icon_month_initial", bundle: ..., traitCollection: ...)`
-    static func record_icon_month_initial(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.record_icon_month_initial, compatibleWithTraitCollection: traitCollection)
-    }
-    
     /// `UIImage(named: "record_icon_time", bundle: ..., traitCollection: ...)`
     static func record_icon_time(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.record_icon_time, compatibleWithTraitCollection: traitCollection)
-    }
-    
-    /// `UIImage(named: "record_icon_week", bundle: ..., traitCollection: ...)`
-    static func record_icon_week(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.record_icon_week, compatibleWithTraitCollection: traitCollection)
-    }
-    
-    /// `UIImage(named: "record_icon_week_initial", bundle: ..., traitCollection: ...)`
-    static func record_icon_week_initial(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.record_icon_week_initial, compatibleWithTraitCollection: traitCollection)
     }
     
     /// `UIImage(named: "share_friend", bundle: ..., traitCollection: ...)`
@@ -540,6 +402,11 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "share_weixin", bundle: ..., traitCollection: ...)`
     static func share_weixin(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.share_weixin, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "闪屏", bundle: ..., traitCollection: ...)`
+    static func 闪屏(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.闪屏, compatibleWithTraitCollection: traitCollection)
     }
     
     /// `UIImage(named: "默认头像", bundle: ..., traitCollection: ...)`
@@ -1008,7 +875,7 @@ struct _R: Rswift.Validatable {
       let name = "LaunchScreen"
       
       static func validate() throws {
-        if UIImage(named: "LOGO") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'LOGO' is used in storyboard 'LaunchScreen', but couldn't be loaded.") }
+        if UIImage(named: "闪屏") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named '闪屏' is used in storyboard 'LaunchScreen', but couldn't be loaded.") }
       }
       
       private init() {}

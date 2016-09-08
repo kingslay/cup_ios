@@ -39,17 +39,21 @@ class WaterHistoryViewController: ShareViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.backgroundColor = Colors.white
-        segmented.frame = CGRect(x: 10, y: 10, width: self.view.ks.width-20, height: 20)
+//        segmented.frame = CGRect(x: 10, y: 10, width: self.view.ks.width-20, height: 20)
+        //        self.view.addSubview(segmented)
+        segmented.ks.width(self.view.ks.width)
         segmented.addTarget(self, action: #selector(valueChanged), forControlEvents: .ValueChanged)
+        segmented.tintColor = Colors.white
         segmented.selectedSegmentIndex = 0
-        self.view.addSubview(segmented)
+        self.navigationItem.titleView = segmented
         self.view.addSubview(tableView)
         tableView.registerNib(R.nib.waterHistoryTableViewCell)
         self.tableView.rowHeight = 51
         self.tableView.dataSource = self
         self.tableView.delegate = self
         tableView.snp_makeConstraints { (make) in
-            make.top.equalTo(segmented.snp_bottom).offset(10)
+//            make.top.equalTo(segmented.snp_bottom).offset(10)
+            make.top.equalToSuperview()
             make.left.equalTo(0)
             make.width.equalToSuperview()
             make.bottom.equalToSuperview()

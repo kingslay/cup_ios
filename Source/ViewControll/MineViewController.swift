@@ -11,7 +11,7 @@ import AVFoundation
 import AlamofireImage
 import KSSwiftExtension
 class MineViewController: UITableViewController {
-    var datas :[[(UIImage?,String,String?)]]!
+    var datas :[[(UIImage?,String)]]!
     lazy var navigationAccessoryView : NavigationAccessoryView = {
         let naview = NavigationAccessoryView(frame: CGRectMake(0, 0, self.view.frame.width, 44.0))
         naview.doneButton.target = self
@@ -27,8 +27,17 @@ class MineViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: R.image.icon_exit(), style: .Plain, target: self, action: #selector(exitAccount))
         self.tableView.backgroundColor = Colors.background
         self.tableView.registerNib(R.nib.mineTableViewCell)
-        initData()
         self.tableView.rowHeight = 51
+        datas = [[(R.image.icon_modify(),"个人资料修改"),
+                (R.image.icon_plan(),"饮水计划(ml)")],
+                 [(R.image.icon_account(),"帐号绑定"),
+                    (R.image.icon_warn(),"提醒设置"),
+                    (R.image.icon_pairing(),"配对信息"),
+                    (R.image.icon_nickname(),"固件升级"),
+                    (R.image.icon_about(),"关于")]]
+    }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         self.tableView.reloadData()
     }
     func exitAccount() {
@@ -51,16 +60,6 @@ class MineViewController: UITableViewController {
         alertController.addAction(okAction)
         self.presentViewController(alertController, animated: true, completion: nil)
     }
-    func initData(){
-        datas = [[(R.image.icon_modify(),"个人资料修改",staticAccount?.avatar),
-            (R.image.icon_plan(),"饮水计划(ml)",staticAccount?.waterplan != nil ? "\(staticAccount!.waterplan!)" : nil)],
-                 [(R.image.icon_account(),"帐号绑定",nil),
-                    (R.image.icon_warn(),"提醒设置",nil),
-                    (R.image.icon_pairing(),"配对信息",nil),
-                    (R.image.icon_nickname(),"固件升级",nil),
-                    (R.image.icon_about(),"关于",nil)]]
-    }
-
 }
 extension MineViewController {
     // MARK: - Table view data source
@@ -74,26 +73,27 @@ extension MineViewController {
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(R.nib.mineTableViewCell)!
-        let (image,title,value) = datas[indexPath.section][indexPath.row]
+        let (image,title) = datas[indexPath.section][indexPath.row]
         cell.iconImageView.image = image
         cell.titleLabel.text = title
         cell.headerImageView.hidden = true
-        cell.valueTextField.hidden = true;
+        cell.valueTextField.hidden = true
         cell.accessoryType = .DisclosureIndicator
         if indexPath.section == 0 {
             switch indexPath.row {
             case 0:
                 cell.headerImageView.hidden = false
-                if let str = value,url = NSURL(string: str) {
+                if let str = staticAccount?.avatar,url = NSURL(string: str) {
                     cell.headerImageView!.af_setImageWithURL(url, placeholderImage: R.image.默认头像(),filter: AspectScaledToFillSizeCircleFilter(size: CGSizeMake(41, 41)))
                 }
             case 1:
-                cell.valueTextField.placeholder = ""
+                cell.valueTextField.hidden = false
+                if let value = staticAccount?.waterplan {
+                    cell.valueTextField.text = "\(value)"
+                }
             default:
                 break
             }
-        } else {
-            cell.accessoryType = .DisclosureIndicator
         }
         return cell
     }

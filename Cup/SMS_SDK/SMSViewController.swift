@@ -34,8 +34,7 @@ class SMSViewController: UIViewController {
         SMSSDK.getVerificationCodeByMethod(SMSGetCodeMethodSMS, phoneNumber: phone, zone: "86", customIdentifier: nil, result: {
           self.ks.clearAllNotice()
           if let error = $0 {
-            let alert = UIAlertController(title: nil, message: "\(error.userInfo["getVerificationCode"]!)", preferredStyle: .Alert)
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.ks.noticeError("\(error.userInfo["getVerificationCode"]!)", autoClear: true)
           }else{
             self.loginButton.enabled = true
             self.verificationTextField.becomeFirstResponder()

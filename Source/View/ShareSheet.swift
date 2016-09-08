@@ -35,7 +35,7 @@ public class ShareSheet: UIView {
         view .addSubview(self)
         self.backgroundView.alpha = 0
         self.containView.ks.top(self.ks.bottom)
-        UIView.animateWithDuration(0.25) { 
+        UIView.animateWithDuration(0.25) {
             self.backgroundView.alpha = 1
             self.containView.ks.top(self.ks.bottom - self.containView.ks.height)
         }
@@ -45,9 +45,9 @@ public class ShareSheet: UIView {
     @IBAction func shareButtonTouchUpInside(view: UIView?) {
         if let view = view where view !== self.cancelButton {
             let info: MonkeyKing.Info = (title: "Session",
-                description: "Hello Session",
-                thumbnail: image,
-                media: .Image(image!)
+                                         description: "Hello Session",
+                                         thumbnail: image,
+                                         media: .Image(image!)
             )
             var message: MonkeyKing.Message?
             switch view {
@@ -69,9 +69,12 @@ public class ShareSheet: UIView {
                 }
             }
         }
-        UIView.animateWithDuration(0.25) {
+        UIView.animateWithDuration(0.25, animations: {
             self.containView.ks.top(self.ks.bottom)
             self.backgroundView.alpha = 0
+
+        }) { _ in
+            self.removeFromSuperview()
         }
     }
 }

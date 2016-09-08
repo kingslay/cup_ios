@@ -80,7 +80,7 @@ class WaterViewController: ShareViewController {
          waterCycleView.waterplan = CGFloat(staticAccount?.waterplan?.floatValue ?? staticAccount!.calculateProposalWater())
     }
     func setUpChartData(date: NSDate) {
-//        WaterModel.save(NSDate(), amount: 80)
+        WaterModel.save(NSDate(), amount: 80)
         var xVals = [String?]()
         var yVals = [BarChartDataEntry]()
         var water = 0

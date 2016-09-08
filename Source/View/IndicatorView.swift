@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import KSSwiftExtension
 public class IndicatorView: UIView {
     let ovalLayer = CAShapeLayer()
     var ovalPathSmall: UIBezierPath {
@@ -20,12 +20,12 @@ public class IndicatorView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = Colors.black
+        self.backgroundColor = Colors.white
         let label1 = UILabel()
         label1.text = "搜索智能水杯"
         label1.font = UIFont.systemFontOfSize(23)
         label1.sizeToFit()
-        label1.textColor = UIColor.whiteColor()
+        label1.textColor = Colors.red
         self.addSubview(label1)
         label1.snp_makeConstraints { (make) -> Void in
             make.centerX.equalTo(0)
@@ -35,22 +35,22 @@ public class IndicatorView: UIView {
         label2.text = "请将手机靠近智能水杯"
         label2.font = UIFont.systemFontOfSize(12)
         label2.sizeToFit()
-        label2.textColor = UIColor.whiteColor()
+        label2.textColor = Colors.red
         self.addSubview(label2)
         label2.snp_makeConstraints { (make) -> Void in
             make.centerX.equalTo(0)
             make.top.equalTo(label1.snp_bottom).offset(20)
         }
         let circularView = UIView()
-        circularView.backgroundColor = Colors.red
+        circularView.backgroundColor = Swifty<UIColor>.colorFrom("#e7716b")
         self.addSubview(circularView)
         circularView.snp_makeConstraints { (make) -> Void in
             make.center.equalTo(self)
-            make.width.equalTo(2)
-            make.height.equalTo(2)
+            make.width.equalTo(25)
+            make.height.equalTo(5)
         }
         circularView.layer.cornerRadius = 1
-        ovalLayer.fillColor = Colors.pink.CGColor
+        ovalLayer.fillColor = Swifty<UIColor>.colorFrom("#f4bdba").CGColor
         ovalLayer.path = ovalPathSmall.CGPath
         ovalLayer.opacity = 0.1
     }
