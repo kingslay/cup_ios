@@ -164,6 +164,7 @@
                 <outlet property="containView" destination="85" id="ktK-Go-FMv"/>
                 <outlet property="qqSessionButton" destination="gLS-k4-3h5" id="SdL-jf-0fm"/>
                 <outlet property="qqSpaceButton" destination="109" id="pXG-g2-DY9"/>
+                <outlet property="shareSrollView" destination="6dK-cv-qI9" id="LN9-FQ-oGM"/>
                 <outlet property="weiboButton" destination="110" id="U6D-6d-4Tr"/>
                 <outlet property="wxFriendButton" destination="105" id="7ja-q2-5jU"/>
                 <outlet property="wxTimeLineButton" destination="104" id="yHN-sA-hBA"/>

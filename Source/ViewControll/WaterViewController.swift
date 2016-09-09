@@ -34,7 +34,7 @@ class WaterViewController: ShareViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpCentral()
-        self.waterCycleView = WaterCycleView(frame: CGRect(x: 0, y: 0, width: KS.SCREEN_WIDTH, height: 230))
+        waterCycleView = WaterCycleView()
         waterCycleView.batteryRate = 100
         view.addSubview(waterCycleView)
         dateButton.setImage(R.image.icon_calendar(), forState: .Normal)

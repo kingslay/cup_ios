@@ -11,6 +11,7 @@ import MonkeyKing
 import KSSwiftExtension
 public class ShareSheet: UIView {
     @IBOutlet weak var containView: UIView!
+    @IBOutlet weak var shareSrollView: UIScrollView!
     @IBOutlet weak var qqSpaceButton: UIButton!
     @IBOutlet weak var qqSessionButton: UIButton!
     @IBOutlet weak var weiboButton: UIButton!
@@ -18,20 +19,26 @@ public class ShareSheet: UIView {
     @IBOutlet weak var wxTimeLineButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
 
-    let backgroundView: UIView
+    var backgroundView: UIView!
     var image: UIImage?
-    required public init?(coder aDecoder: NSCoder) {
+
+    public override func awakeFromNib() {
+        super.awakeFromNib()
         self.backgroundView = UIView()
-        super.init(coder: aDecoder)
         self.backgroundView.frame = self.frame
         self.backgroundView.autoresizingMask = [.FlexibleHeight,.FlexibleWidth]
         self.backgroundView.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.55)
         self.addSubview(self.backgroundView)
         self.sendSubviewToBack(self.backgroundView)
+        shareSrollView.contentSize = CGSize(width: 320, height: 88)
     }
     public func showIn(view: UIView) {
         image = Swifty<UIImage>.imageFrom(view)
         self.frame = view.bounds
+        if shareSrollView.ks.width > shareSrollView.contentSize.width {
+            shareSrollView.ks.size(shareSrollView.contentSize)
+            shareSrollView.ks.centerX(frame.width/2)
+        }
         view .addSubview(self)
         self.backgroundView.alpha = 0
         self.containView.ks.top(self.ks.bottom)
