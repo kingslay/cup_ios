@@ -42,8 +42,11 @@ class WaterCycleView: UIView {
         didSet {
             progressLayer.strokeEnd = self.progress;
             gradientLayer.mask = self.progressLayer
-            waterRate1Label.text = "\(Int(progress*100.0))％"
-            waterRateLabel.text = "完成\(waterRate1Label.text!)"
+            let text = "\(Int(progress*100.0))%"
+            let attributedText = NSMutableAttributedString(string: text, attributes: [NSFontAttributeName : UIFont.systemFontOfSize(30),NSForegroundColorAttributeName: Colors.pink])
+            attributedText.addAttributes([NSFontAttributeName : UIFont.systemFontOfSize(18)], range: NSMakeRange(text.length-1, 1))
+            waterRate1Label.attributedText = attributedText
+            waterRateLabel.text = "完成\(text)"
         }
     }
     private let waterRateLabel: UILabel = {

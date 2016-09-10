@@ -42,7 +42,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         self.window?.makeKeyAndVisible()
         UIApplication.sharedApplication().keyWindow?.tintColor = Colors.red
-        UISegmentedControl.appearance().tintColor = Colors.red
+        UISegmentedControl.appearance().tintColor = Colors.white
+        UISegmentedControl.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: Colors.red], forState: .Selected)
         UIBarButtonItem.appearance().tintColor = Colors.background
         UINavigationBar.appearance()
         UISwitch.appearance().onTintColor = Colors.red

@@ -30,7 +30,7 @@
                                     <rect key="frame" x="10" y="12" width="44" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                    <state key="normal" image="share_friend.png">
+                                    <state key="normal" image="share_friend">
                                         <color key="titleColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -41,7 +41,7 @@
                                         <action selector="shareButtonTouchUpInside:" destination="1" eventType="touchUpInside" id="118"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="微信朋友圈" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="114">
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="微信朋友圈" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="114">
                                     <rect key="frame" x="2" y="61" width="60" height="15"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -52,7 +52,7 @@
                                     <rect key="frame" x="74" y="12" width="44" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                    <state key="normal" image="share_weixin.png">
+                                    <state key="normal" image="share_weixin">
                                         <color key="titleColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -74,7 +74,7 @@
                                     <rect key="frame" x="138" y="12" width="44" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                    <state key="normal" image="share_tencent.png">
+                                    <state key="normal" image="share_tencent">
                                         <color key="titleColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -96,7 +96,7 @@
                                     <rect key="frame" x="202" y="12" width="44" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                    <state key="normal" image="share_qzone.png">
+                                    <state key="normal" image="share_qzone">
                                         <color key="titleColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -118,7 +118,7 @@
                                     <rect key="frame" x="266" y="12" width="44" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                    <state key="normal" image="share_sina.png">
+                                    <state key="normal" image="share_sina">
                                         <color key="titleColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -173,10 +173,10 @@
         </view>
     </objects>
     <resources>
-        <image name="share_friend.png" width="44" height="44"/>
-        <image name="share_qzone.png" width="44" height="44"/>
-        <image name="share_sina.png" width="44" height="44"/>
-        <image name="share_tencent.png" width="44" height="44"/>
-        <image name="share_weixin.png" width="44" height="44"/>
+        <image name="share_friend" width="44" height="44"/>
+        <image name="share_qzone" width="44" height="44"/>
+        <image name="share_sina" width="44" height="44"/>
+        <image name="share_tencent" width="44" height="44"/>
+        <image name="share_weixin" width="44" height="44"/>
     </resources>
 </document>

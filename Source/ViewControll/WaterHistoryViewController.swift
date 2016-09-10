@@ -43,7 +43,6 @@ class WaterHistoryViewController: ShareViewController {
         //        self.view.addSubview(segmented)
         segmented.ks.width(self.view.ks.width)
         segmented.addTarget(self, action: #selector(valueChanged), forControlEvents: .ValueChanged)
-        segmented.tintColor = Colors.white
         segmented.selectedSegmentIndex = 0
         self.navigationItem.titleView = segmented
         self.view.addSubview(tableView)
