@@ -46,10 +46,10 @@ public class IndicatorView: UIView {
         self.addSubview(circularView)
         circularView.snp_makeConstraints { (make) -> Void in
             make.center.equalTo(self)
-            make.width.equalTo(25)
+            make.width.equalTo(5)
             make.height.equalTo(5)
         }
-        circularView.layer.cornerRadius = 1
+        circularView.layer.cornerRadius = 2.5
         ovalLayer.fillColor = Swifty<UIColor>.colorFrom("#f4bdba").CGColor
         ovalLayer.path = ovalPathSmall.CGPath
         ovalLayer.opacity = 0.1

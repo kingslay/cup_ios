@@ -84,7 +84,7 @@ class WaterViewController: ShareViewController {
         var xVals = [String?]()
         var yVals = [BarChartDataEntry]()
         var water = 0
-        if let models = WaterModel.fetch(dic: ["year":date.year,"month":date.month,"day":date.day]) {
+        if let models = WaterModel.fetch(date) {
             for (index,model) in models.enumerate() {
                 xVals.append("\(model.hour.ks.format("%02d")):\(model.minute.ks.format("%02d"))")
                 yVals.append(BarChartDataEntry(value: Double(model.amount), xIndex: index))

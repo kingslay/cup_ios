@@ -42,8 +42,8 @@ class WaterCycleView: UIView {
         didSet {
             progressLayer.strokeEnd = self.progress;
             gradientLayer.mask = self.progressLayer
-            waterRate1Label.text = "\(Int(progress*100.0))"
-            waterRateLabel.text = "完成\(waterRate1Label.text!)％"
+            waterRate1Label.text = "\(Int(progress*100.0))％"
+            waterRateLabel.text = "完成\(waterRate1Label.text!)"
         }
     }
     private let waterRateLabel: UILabel = {

@@ -25,7 +25,7 @@ class WaterHistoryViewController: ShareViewController {
                 case 0:
                     xVals.append("\(model.hour.ks.format("%02d")):\(model.minute.ks.format("%02d"))")
                 case 1,2:
-                    xVals.append("\(model.month)月\(model.day)日")
+                    xVals.append("\(model.date[5...6])月\(model.date[8...9])日")
                 default:
                     break
                 }
@@ -74,16 +74,12 @@ class WaterHistoryViewController: ShareViewController {
     func valueChanged(seg: UISegmentedControl) {
         switch seg.selectedSegmentIndex {
         case 0:
-            dataSource = WaterModel.fetch(dic: ["year":currentDate.year,"month":currentDate.month,"day":currentDate.day]) ?? [WaterModel]()
+            dataSource = WaterModel.fetch(currentDate) ?? [WaterModel]()
         case 1,2:
-            var dic: [String : Binding] = ["year":currentDate.year,"weekOfYear":currentDate.weekOfYear]
-            if seg.selectedSegmentIndex == 2 {
-                dic = ["year":currentDate.year,"month":currentDate.month]
-            }
-            if let models = WaterModel.fetch(dic: dic) {
+            if let models = WaterModel.fetch(currentDate,type: seg.selectedSegmentIndex) {
                 var map = [String:Int]()
                 for model in models {
-                    let key = "\(model.year)-\(model.month)-\(model.day)"
+                    let key = model.date
                     if let value = map[key] {
                         map[key] = value+model.amount
                     } else {
@@ -92,10 +88,7 @@ class WaterHistoryViewController: ShareViewController {
                 }
                 dataSource = map.map{ (key,value) -> WaterModel in
                     let model = WaterModel()
-                    let array = key.componentsSeparatedByString("-")
-                    model.year = Int(array[0])!
-                    model.month = Int(array[1])!
-                    model.day = Int(array[2])!
+                    model.date = key
                     model.amount = value
                     return model
                 }
@@ -121,7 +114,8 @@ extension WaterHistoryViewController: UITableViewDataSource,UITableViewDelegate 
             cell.wateRateLabel.hidden = true
         case 1,2:
             cell.wateLabel.text = "已喝了\(model.amount)ml"
-            cell.timeLabel.text = "\(model.month.ks.format("%02d"))月\(model.day.ks.format("%02d"))日"
+            cell.timeLabel.text =
+                "\(model.date[5...6])月\(model.date[8...9])日"
             cell.wateRateLabel.text = "\(Int(CGFloat(model.amount)/waterplan*100))%"
             cell.wateRateLabel.hidden = false
         default:
@@ -160,7 +154,7 @@ extension WaterHistoryViewController: UITableViewDataSource,UITableViewDelegate 
             if self.segmented.selectedSegmentIndex == 1 {
                 model.delete()
             } else {
-                WaterModel.delete(dic: ["year":model.year,"month":model.month,"day":model.day])
+                WaterModel.delete(dic: ["date":model.date])
             }
             self.dataSource.removeAtIndex(indexPath.row)
             self.tableView.reloadData()

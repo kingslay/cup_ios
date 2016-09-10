@@ -8,11 +8,11 @@
 
 import Foundation
 import KSJSONHelp
+import SwiftDate
+
 class WaterModel: NSObject,Model,Storable,PrimaryKeyProtocol {
-    var year = 2016
-    var month = 01
+    var date = "2016-01-10"
     var weekOfYear = 01
-    var day = 01
     var hour = 08
     var minute = 0
     var second = 0
@@ -21,19 +21,27 @@ class WaterModel: NSObject,Model,Storable,PrimaryKeyProtocol {
         super.init()
     }
     static func primaryKeys() -> Set<String> {
-        return ["year","month","day","hour","minute","second"]
+        return ["date","hour","minute","second"]
     }
     static func save(date: NSDate,amount: Int) {
         let model = WaterModel()
-        model.year = date.year
-        model.month = date.month
+        model.date = date.ks.stringFromFormat("yyyy-MM-dd")
         model.weekOfYear = date.weekOfYear
-        model.day = date.day
         model.hour = date.hour
         model.minute = date.minute
         model.second = date.second
         model.amount = amount
         model.save()
+    }
+    ///0:日,1:周,2:月
+    static func fetch(date: NSDate,type:Int=0) -> [WaterModel]? {
+        if type == 0 {
+            return WaterModel.fetch(dic: ["date":date.ks.stringFromFormat("yyyy-MM-dd")])
+        } else {
+            let beginDate = date - (type == 1 ? 7.days : 30.days)
+            let filter = CompositeFilter().greater("date", value: beginDate.ks.stringFromFormat("yyyy-MM-dd")).lessOrEqual("date",value:date.ks.stringFromFormat("yyyy-MM-dd"))
+            return WaterModel.fetch(filter)
+        }
     }
 
 }

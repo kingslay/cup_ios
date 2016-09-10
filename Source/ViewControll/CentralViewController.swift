@@ -47,6 +47,7 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
     discoveriesTableView.backgroundColor = Colors.background
     discoveriesTableView.dataSource = self
     discoveriesTableView.delegate = self
+    discoveriesTableView.rowHeight = 45
     view.addSubview(discoveriesTableView)
     let headerView = UIView(frame: CGRectMake(0,0,self.view.frame.width,245))
     let headerLabel = UILabel()
@@ -61,6 +62,7 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
     }
     discoveriesTableView.tableHeaderView = headerView
     headerView.hidden = true
+    discoveriesTableView.tableFooterView = UIView()
   }
   override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(animated)
@@ -108,7 +110,7 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
   
   internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(discoveriesTableViewCellIdentifier, forIndexPath: indexPath)
-    cell.textLabel?.font = UIFont.systemFontOfSize(12)
+    cell.textLabel?.font = UIFont.systemFontOfSize(18)
     cell.textLabel?.textColor = Colors.pink
     let discovery = discoveries[discoveries.startIndex.advancedBy(indexPath.row)]
     cell.textLabel?.text = discovery.name
