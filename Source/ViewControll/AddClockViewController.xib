@@ -51,7 +51,7 @@
                             <constraint firstItem="bHB-YS-rUJ" firstAttribute="centerY" secondItem="5vh-VW-C3K" secondAttribute="centerY" id="xkY-bL-DnI"/>
                         </constraints>
                     </view>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S90-hr-n9e">
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S90-hr-n9e">
                         <rect key="frame" x="0.0" y="353" width="320" height="45"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>

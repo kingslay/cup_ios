@@ -15,6 +15,7 @@ class AddClockViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: R.image.icon_add(), style: .Plain, target: self, action: #selector(complete))
+        self.ks.autoAdjustKeyBoard()
     }
     func complete() {
         let components = datePicker.date.components(inRegion: Region())
@@ -30,10 +31,6 @@ class AddClockViewController: UIViewController {
             block(model)
         }
         self.navigationController?.popViewControllerAnimated(false)
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 }
