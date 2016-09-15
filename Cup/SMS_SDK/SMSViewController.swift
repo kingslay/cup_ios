@@ -23,6 +23,7 @@ class SMSViewController: UIViewController {
   var count = 90
   override func viewDidLoad() {
     super.viewDidLoad()
+    SMSSDK.registerApp("16ece37bd2580", withSecret: "3e403d5017a8b968bc86b461f1f9d543")
     self.view.backgroundColor = Colors.background
     let image = Swifty<UIColor>.createImage(Colors.red)
     self.verificationButton.setBackgroundImage(image, forState: .Normal)

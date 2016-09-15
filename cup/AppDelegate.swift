@@ -29,17 +29,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let userDefaults = NSUserDefaults.standardUserDefaults()
         var appVersion = userDefaults.stringForKey("appVersion")
         // 如果appVersion为nil说明是第一次启动；如果appVersion不等于currentAppVersion说明是更新了
-        if appVersion == nil {
-            userDefaults.setValue(currentAppVersion, forKey: "appVersion")
-            self.window?.rootViewController = R.nib.kSGuidanceViewController.firstView(owner: nil, options: nil)!
-        }else{
+//        if appVersion == nil {
+//            userDefaults.setValue(currentAppVersion, forKey: "appVersion")
+//            self.window?.rootViewController = R.nib.kSGuidanceViewController.firstView(owner: nil, options: nil)!
+//        }else{
             if let dic = NSUserDefaults.standardUserDefaults().objectForKey("sharedAccount") as? [String:AnyObject] {
                 staticAccount = AccountModel(from: dic)
               self.window?.rootViewController = R.storyboard.main.initialViewController()
             }else{
                 self.window?.rootViewController = R.storyboard.sMS.initialViewController()
             }
-        }
+//        }
         self.window?.makeKeyAndVisible()
         UIApplication.sharedApplication().keyWindow?.tintColor = Colors.red
         UISegmentedControl.appearance().tintColor = Colors.white
@@ -58,7 +58,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().tintColor = Colors.red
         UITabBar.appearance().translucent = false
         configureAlamofireManager()
-        SMSSDK.registerApp("16ece37bd2580", withSecret: "3e403d5017a8b968bc86b461f1f9d543")
         MonkeyKing.registerAccount(.WeChat(appID: "wxfc361b137c76f916",appKey: nil))
         //appKey DDbYXy3a8zJH2aeA
         MonkeyKing.registerAccount(.QQ(appID: "1105615474"))
@@ -96,7 +95,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
       if application.applicationIconBadgeNumber > 0 {
-        let alertController = UIAlertController(title: "亲! 已到设定饮水时间咯!", message: "请及时享用哦。", preferredStyle: .Alert)
+        let alertController = UIAlertController(title: "亲! 已到设定饮水时间咯!", message: notification.alertBody, preferredStyle: .Alert)
         let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default, handler: nil)
         alertController.addAction(okAction)
         window?.rootViewController?.presentViewController(alertController, animated: true, completion: nil)

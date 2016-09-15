@@ -32,7 +32,7 @@ class ClockModel: NSObject,Model,Storable,PrimaryKeyProtocol {
         components.minute = self.minute
         localNotification.fireDate = components.date
         localNotification.repeatInterval = .Day
-        localNotification.alertBody = "该喝水了"
+        localNotification.alertBody = explanation
         localNotification.soundName = UILocalNotificationDefaultSoundName
         localNotification.timeZone = NSTimeZone.localTimeZone()
         localNotification.applicationIconBadgeNumber = 1

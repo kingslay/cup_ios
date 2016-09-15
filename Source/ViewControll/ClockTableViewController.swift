@@ -32,6 +32,8 @@ class ClockTableViewController: UITableViewController {
             self.tableView.reloadData()
             }.addDisposableTo(self.ks.disposableBag)
         self.tableView.tableFooterView = UIView()
+        self.tableView.allowsSelection = false
+         UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Badge,.Sound,.Alert], categories: nil))
         //        let fittingSize = tableHeaderView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
 
     }
