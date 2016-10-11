@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>贺迈智能水杯</string>
+	<string>MateCup</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIcons</key>
@@ -148,6 +148,14 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>是否许允此App使用蓝牙？</string>
+	<key>NSCameraUsageDescription</key>
+	<string>是否允许此App使用你的相机？</string>
+	<key>NSContactsUsageDescription</key>
+	<string>是否允许此App访问你的通讯录？</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string> 是否允许此App访问你的媒体资料库？</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>bluetooth-central</string>

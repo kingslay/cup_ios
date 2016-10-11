@@ -57,7 +57,7 @@ extension AboutUsViewController {
         if indexPath.row == 0 {
             UIApplication.sharedApplication().openURL(NSURL(string: "http://www.8amcup.com")!)
         } else if indexPath.row == 1 {
-            UIApplication.sharedApplication().openURL(NSURL(string: "https://shop152288103.taobao.com")!)
+            UIApplication.sharedApplication().openURL(NSURL(string: "www.heatmatetech.com")!)
         }
     }
 }

@@ -51,8 +51,8 @@ public class ShareSheet: UIView {
     }
     @IBAction func shareButtonTouchUpInside(view: UIView?) {
         if let view = view where view !== self.cancelButton {
-            let info: MonkeyKing.Info = (title: "Session",
-                                         description: "Hello Session",
+            let info: MonkeyKing.Info = (title: "MateCup",
+                                         description: "MateCup一款真正温度定制智能水杯。",
                                          thumbnail: image,
                                          media: .Image(image!)
             )

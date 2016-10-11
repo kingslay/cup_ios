@@ -36,7 +36,7 @@ class WaterModel: NSObject,Model,Storable,PrimaryKeyProtocol {
     ///0:日,1:周,2:月
     static func fetch(date: NSDate,type:Int=0) -> [WaterModel]? {
         if type == 0 {
-            return WaterModel.fetch(dic: ["date":date.ks.stringFromFormat("yyyy-MM-dd")])
+            return WaterModel.fetch(["date":date.ks.stringFromFormat("yyyy-MM-dd")])
         } else {
             let beginDate = date - (type == 1 ? 7.days : 30.days)
             let filter = CompositeFilter().greater("date", value: beginDate.ks.stringFromFormat("yyyy-MM-dd")).lessOrEqual("date",value:date.ks.stringFromFormat("yyyy-MM-dd"))

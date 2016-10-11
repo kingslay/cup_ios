@@ -103,7 +103,7 @@ extension CupMoya {
     }
 }
 let endpointClosure = { (target: CupMoya) -> Endpoint<CupMoya> in
-    let url = target.baseURL.URLByAppendingPathComponent(target.path).absoluteString
+    let url = target.baseURL.URLByAppendingPathComponent(target.path)!.absoluteString
     switch target {
     case .Login(_,_),.PhoneLogin(_):
         return Endpoint(URL: url, sampleResponseClosure: {.NetworkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters)
