@@ -98,8 +98,8 @@ extension ClockCollectionViewController {
             if on {
                 clockModel.removeUILocalNotification()
             }
-            clockModel.hour = datePicker.date.hour
-            clockModel.minute = datePicker.date.minute
+            clockModel.hour = datePicker.date.ks.dateComponents.hour!
+            clockModel.minute = datePicker.date.ks.dateComponents.minute!
             if on {
                 clockModel.addUILocalNotification()
             }

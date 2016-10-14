@@ -38,7 +38,7 @@ class AddClockViewController: UIViewController {
         self.ks.autoAdjustKeyBoard()
     }
     func complete() {
-        let model = ClockModel(hour:  datePicker.date.hour, minute:  datePicker.date.minute)
+        let model = ClockModel(hour:  datePicker.date.ks.dateComponents.hour!, minute: datePicker.date.ks.dateComponents.minute!)
         if explanationTextField.text?.characters.count > 0 {
             model.explanation = explanationTextField.text!
         } else {
