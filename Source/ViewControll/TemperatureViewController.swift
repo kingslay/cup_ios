@@ -19,7 +19,7 @@ class TemperatureViewController: UIViewController {
         self.ks.autoAdjustKeyBoard()
         // Do any additional setup after loading the view.
     }
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let model = model {
             explanationTextField.text = model.explanation
@@ -32,40 +32,40 @@ class TemperatureViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func cancelAction(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func cancelAction(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
-    @IBAction func saveAction(sender: AnyObject) {
-        if var text = explanationTextField.text where text.length > 0 {
+    @IBAction func saveAction(_ sender: AnyObject) {
+        if var text = explanationTextField.text , text.length > 0 {
             if text.length > 10 {
                 text = text[0..<10]
             }
             self.model?.delete()
             let model = self.model ?? TemperatureModel()
             model.explanation = text
-            model.temperature = temperaturePickerView.selectedRowInComponent(0)+21
+            model.temperature = temperaturePickerView.selectedRow(inComponent: 0)+21
             model.save()
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
         }else{
             self.ks.noticeInfo("温度描述不能为空")
         }
     }
-    @IBAction func textFieldDidEndOnExit(sender: UIResponder) {
+    @IBAction func textFieldDidEndOnExit(_ sender: UIResponder) {
         sender.resignFirstResponder()
     }
 }
 extension TemperatureViewController:UIPickerViewDataSource, UIPickerViewDelegate {
     // MARK - Picker delegate
-    func pickerView(_pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ _pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerData[component].count
     }
     
-    func numberOfComponentsInPickerView(_pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in _pickerView: UIPickerView) -> Int {
         return pickerData.count
     }
     
     
-    func pickerView(_pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ _pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickerData[component][row]
     }
 

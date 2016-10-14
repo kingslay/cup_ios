@@ -21,29 +21,29 @@ class FirmwareViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = Colors.background
-        self.updateButton.rx_tap.subscribeNext{ [unowned self] in
-            let alert = UIAlertController(title: "温馨提醒", message: "你现在使用的为最新系统", preferredStyle: .Alert)
-            let okAction = UIAlertAction(title: "确定", style: .Default, handler: {
+        self.updateButton.rx.tap.subscribeNext{ [unowned self] in
+            let alert = UIAlertController(title: "温馨提醒", message: "你现在使用的为最新系统", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "确定", style: .default, handler: {
                 [unowned self] (UIAlertAction) -> Void in
-                self.dismissViewControllerAnimated(true, completion: nil)
+                self.dismiss(animated: true, completion: nil)
             })
             alert.addAction(okAction)
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
         }.addDisposableTo(self.disposeBag)
-        self.okButton.rx_tap.subscribeNext{ [unowned self] in
-            NSUserDefaults.standardUserDefaults().removeObjectForKey("sharedAccount")
+        self.okButton.rx.tap.subscribeNext{ [unowned self] in
+            UserDefaults.standard.removeObject(forKey: "sharedAccount")
             staticIdentifier = nil
-            if let vcs = self.tabBarController?.viewControllers where vcs.count > 1, let navigationController = vcs[1] as? UINavigationController, let cupViewController = navigationController.topViewController as? CupViewController, let peripheral = cupViewController.peripheral  {
+            if let vcs = self.tabBarController?.viewControllers , vcs.count > 1, let navigationController = vcs[1] as? UINavigationController, let cupViewController = navigationController.topViewController as? CupViewController, let peripheral = cupViewController.peripheral  {
                 cupViewController.central.cancelPeripheralConnection(peripheral)
             }
-            UIApplication.sharedApplication().cancelAllLocalNotifications()
-            NSUserDefaults.standardUserDefaults().removeObjectForKey("ClockModelClose")
-            NSUserDefaults.standardUserDefaults().removeObjectForKey("clockArray")
+            UIApplication.shared.cancelAllLocalNotifications()
+            UserDefaults.standard.removeObject(forKey: "ClockModelClose")
+            UserDefaults.standard.removeObject(forKey: "clockArray")
             TemperatureModel.delete(dic: [:])
-            UIApplication.sharedApplication().keyWindow!.rootViewController = R.storyboard.sMS.initialViewController()
+            UIApplication.shared.keyWindow!.rootViewController = R.storyboard.sMS.instantiateInitialViewController()
         }.addDisposableTo(self.disposeBag)
-        self.cancelButton.rx_tap.subscribeNext{ [unowned self] in
-            self.dismissViewControllerAnimated(true, completion: nil)
+        self.cancelButton.rx.tap.subscribeNext{ [unowned self] in
+            self.dismiss(animated: true, completion: nil)
         }.addDisposableTo(self.disposeBag)
         
     }

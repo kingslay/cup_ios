@@ -76,17 +76,17 @@ class AccountModel: NSObject,Model,Storable {
     }
     class func localSave() {
         if let account = staticAccount {
-            NSUserDefaults.standardUserDefaults().setObject(account.dictionary, forKey: "sharedAccount")
+            UserDefaults.standard.set(account.dictionary, forKey: "sharedAccount")
         }
     }
     class func remoteSave() {
-        CupProvider.request(.SaveMe).subscribeNext {_ in
+        CupProvider.request(.saveMe).subscribeNext {_ in
         }
     }
     func calculateProposalWater() -> Int {
         var age = 18
         if let birthday = self.birthday,let year = Int(birthday[0..<4]) {
-            age = NSDate().year - year
+            age = Date().year - year
         }
         var bmi = 2100/21.0
         if age < 10 {
@@ -103,11 +103,11 @@ class AccountModel: NSObject,Model,Storable {
 var staticAccount: AccountModel?
 var staticIdentifier: String? {
     get{
-        return NSUserDefaults.standardUserDefaults().stringForKey("sharedIdentifier")
+        return UserDefaults.standard.string(forKey: "sharedIdentifier")
     }
     set{
-        NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: "sharedIdentifier")
-        NSUserDefaults.standardUserDefaults().synchronize()
+        UserDefaults.standard.set(newValue, forKey: "sharedIdentifier")
+        UserDefaults.standard.synchronize()
     }
 }
 

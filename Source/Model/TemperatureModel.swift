@@ -20,13 +20,13 @@ class TemperatureModel: NSObject,Model,Storable,PrimaryKeyProtocol {
     var open = false {
         didSet(newValue){
             if newValue {
-                CupProvider.request(.Temperature(self.explanation,self.temperature)).subscribeNext {_ in
+                CupProvider.request(.temperature(self.explanation,self.temperature)).subscribeNext {_ in
                     }.addDisposableTo(self.ks.disposableBag)
             }
         }
     }
     static func getTemperatures() -> [TemperatureModel] {
-        if let array = TemperatureModel.fetch(nil) where array.count > 0 {
+        if let array = TemperatureModel.fetch(nil) , array.count > 0 {
             return array
         }else{
             let first = TemperatureModel()

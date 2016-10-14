@@ -13,10 +13,10 @@ class AboutUsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.backgroundColor = Colors.background
-        self.tableView.registerNib(R.nib.mineTableViewCell)
+        self.tableView.register(R.nib.mineTableViewCell)
         self.tableView.rowHeight = 51
-        let tableHeaderView = UIView(frame: CGRectMake(0,0,KS.SCREEN_WIDTH,221))
-        tableHeaderView.backgroundColor = UIColor.clearColor()
+        let tableHeaderView = UIView(frame: CGRect(x: 0,y: 0,width: KS.SCREEN_WIDTH,height: 221))
+        tableHeaderView.backgroundColor = UIColor.clear
         let image = UIImageView(image: R.image.lOGO())
         tableHeaderView.addSubview(image)
         self.tableView.tableHeaderView = tableHeaderView
@@ -28,7 +28,7 @@ class AboutUsViewController: UITableViewController {
         lable.text = "贺迈新能源科技（上海）有限公司"
         lable.textColor = Colors.pink
         lable.numberOfLines = -1
-        lable.textAlignment = .Center
+        lable.textAlignment = .center
         lable.sizeToFit()
         self.view.addSubview(lable)
         lable.ks.centerX(self.view.ks.centerX)
@@ -36,28 +36,28 @@ class AboutUsViewController: UITableViewController {
     }
 }
 extension AboutUsViewController {
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(R.nib.mineTableViewCell)!
-        cell.headerImageView.hidden = true
-        cell.selectionStyle = .None
-        cell.accessoryType = .DisclosureIndicator
-        if indexPath.row == 0 {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: R.nib.mineTableViewCell)!
+        cell.headerImageView.isHidden = true
+        cell.selectionStyle = .none
+        cell.accessoryType = .disclosureIndicator
+        if (indexPath as NSIndexPath).row == 0 {
             cell.iconImageView.image = R.image.icon_web()
             cell.titleLabel.text = "进入官网"
-        }else if indexPath.row == 1 {
+        }else if (indexPath as NSIndexPath).row == 1 {
             cell.iconImageView.image = R.image.icon_buy()
             cell.titleLabel.text = "购买"
         }
         return cell
     }
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row == 0 {
-            UIApplication.sharedApplication().openURL(NSURL(string: "http://www.8amcup.com")!)
-        } else if indexPath.row == 1 {
-            UIApplication.sharedApplication().openURL(NSURL(string: "www.heatmatetech.com")!)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (indexPath as NSIndexPath).row == 0 {
+            UIApplication.shared.openURL(URL(string: "http://www.8amcup.com")!)
+        } else if (indexPath as NSIndexPath).row == 1 {
+            UIApplication.shared.openURL(URL(string: "www.heatmatetech.com")!)
         }
     }
 }

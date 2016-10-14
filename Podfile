@@ -1,24 +1,25 @@
 source 'https://github.com/CocoaPods/Specs.git'
 inhibit_all_warnings!
-platform:ios, "8.0"
+platform:ios, "9.0"
 use_frameworks!
 target :Cup do
-pod 'KSSwiftExtension/RxCocoa'
-pod 'KSSwiftExtension/ViewKit'
-pod 'KSJSONHelp/SQLiteStandalone'
-pod 'R.swift', '~>2.5.0'
-pod 'Moya/RxSwift'
-pod 'RxCocoa'
-pod 'SwiftDate', '~>3.0.9'
-#pod 'BluetoothKit'
-pod 'SwiftyJSON'
-pod 'AlamofireImage'
-pod 'SnapKit' , '~>0.22.0'
-#pod 'AsyncSwift'
-pod 'Bugly'
-pod 'Gifu', :git => 'https://github.com/kaishin/Gifu.git',:branch =>'swift2.3'
-pod 'MonkeyKing', '~>0.9.4'
-pod 'Charts'
-pod 'CVCalendar', '~>1.3.1'
-#pod 'libWeChatSDK',:git => "git@github.com:kingslay/libWeChatSDK.git"
+    pod 'KSSwiftExtension/RxCocoa', :path => '../KSSwiftExtension'
+    pod 'KSSwiftExtension/ViewKit', :path => '../KSSwiftExtension'
+    pod 'KSJSONHelp/SQLiteStandalone'
+    pod 'R.swift'
+    pod 'Moya/RxSwift', '8.0.0-beta.2'
+    pod 'RxCocoa'
+    pod 'SwiftDate'
+    #pod 'BluetoothKit'
+    pod 'SwiftyJSON'
+    pod 'AlamofireImage'
+    pod 'SnapKit'
+    pod 'AsyncSwift'
+    pod 'Bugly'
+#    pod 'Gifu', '~> 2.0.0-rc'
+    pod 'MonkeyKing'
+    pod 'Charts', :path => '../Charts'
+#    , :git => 'https://github.com/danielgindi/Charts.git', :branch => 'Chart2.2.5-Swift3.0'
+    pod 'CVCalendar'
+    #pod 'libWeChatSDK',:git => "git@github.com:kingslay/libWeChatSDK.git"
 end

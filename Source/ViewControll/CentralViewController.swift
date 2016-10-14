@@ -23,16 +23,15 @@
 //
 
 import UIKit
-import BluetoothKit
 import CoreBluetooth
 import SnapKit
 internal class CentralViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
   
   // MARK: Properties
-  private let indicatorView = IndicatorView()
-  private let discoveriesTableView = UITableView()
-  private let discoveriesTableViewCellIdentifier = "Discoveries Table View Cell Identifier"
-  private var central: CBCentralManager!
+  fileprivate let indicatorView = IndicatorView()
+  fileprivate let discoveriesTableView = UITableView()
+  fileprivate let discoveriesTableViewCellIdentifier = "Discoveries Table View Cell Identifier"
+  fileprivate var central: CBCentralManager!
   var discoveries: Set<CBPeripheral> = []
   // MARK: UIViewController Life Cycle
   
@@ -43,16 +42,16 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
   }
   
   func setupTableView() {
-    discoveriesTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: discoveriesTableViewCellIdentifier)
+    discoveriesTableView.register(UITableViewCell.self, forCellReuseIdentifier: discoveriesTableViewCellIdentifier)
     discoveriesTableView.backgroundColor = Colors.background
     discoveriesTableView.dataSource = self
     discoveriesTableView.delegate = self
     discoveriesTableView.rowHeight = 45
     view.addSubview(discoveriesTableView)
-    let headerView = UIView(frame: CGRectMake(0,0,self.view.frame.width,245))
+    let headerView = UIView(frame: CGRect(x: 0,y: 0,width: self.view.frame.width,height: 245))
     let headerLabel = UILabel()
     headerLabel.text = "发现智能水杯"
-    headerLabel.font = UIFont.systemFontOfSize(24)
+    headerLabel.font = UIFont.systemFont(ofSize: 24)
     headerLabel.textColor = Colors.red
     headerLabel.sizeToFit()
     headerView.addSubview(headerLabel)
@@ -61,15 +60,15 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
       make.bottom.equalTo(-20)
     }
     discoveriesTableView.tableHeaderView = headerView
-    headerView.hidden = true
+    headerView.isHidden = true
     discoveriesTableView.tableFooterView = UIView()
   }
-  override func viewDidAppear(animated: Bool) {
+  override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     indicatorView.startAnimating()
     self.central = CBCentralManager(delegate: self, queue: nil)
 
-    NSNotificationCenter.defaultCenter().rx_notification(UIApplicationDidBecomeActiveNotification).subscribeNext{_ in
+    NotificationCenter.default.rx.notification(NSNotification.Name.UIApplicationDidBecomeActive).subscribe{_ in
         if self.discoveries.count == 0 {
             self.indicatorView.startAnimating()
         }
@@ -81,9 +80,9 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
   
   // MARK: Functions
   
-  private func applyConstraints() {
-    discoveriesTableView.snp_makeConstraints { make in
-      make.top.equalTo(snp_topLayoutGuideBottom)
+  fileprivate func applyConstraints() {
+    discoveriesTableView.snp.makeConstraints { make in
+      make.top.equalTo(self.topLayoutGuide.snp.bottom)
       make.leading.trailing.equalTo(view)
       make.bottom.equalTo(view.snp_bottom)
     }
@@ -92,45 +91,45 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
     }
   }
   
-  override func didDiscoverPeripheral(peripheral: CBPeripheral) {
-    if let name = peripheral.name where name == "HMAI" || name.hasPrefix("TAv22u") {
+  override func didDiscoverPeripheral(_ peripheral: CBPeripheral) {
+    if let name = peripheral.name , name == "HMAI" || name.hasPrefix("TAv22u") {
       indicatorView.stopAnimating()
       discoveries.insert(peripheral)
-      discoveriesTableView.tableHeaderView?.hidden = false
-      discoveriesTableView.tableFooterView?.hidden = false
+      discoveriesTableView.tableHeaderView?.isHidden = false
+      discoveriesTableView.tableFooterView?.isHidden = false
       discoveriesTableView.reloadData()
     }
   }
   
   // MARK: UITableViewDataSource
   
-  internal func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return discoveries.count
   }
   
-  internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier(discoveriesTableViewCellIdentifier, forIndexPath: indexPath)
-    cell.textLabel?.font = UIFont.systemFontOfSize(18)
+  internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: discoveriesTableViewCellIdentifier, for: indexPath)
+    cell.textLabel?.font = UIFont.systemFont(ofSize: 18)
     cell.textLabel?.textColor = Colors.pink
-    let discovery = discoveries[discoveries.startIndex.advancedBy(indexPath.row)]
+    let discovery = discoveries[discoveries.index(discoveries.startIndex, offsetBy: (indexPath as NSIndexPath).row)]
     cell.textLabel?.text = discovery.name
     return cell
   }
   
   // MARK: UITableViewDelegate
   
-  internal func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    tableView.userInteractionEnabled = false
-    let discovery = discoveries[discoveries.startIndex.advancedBy(indexPath.row)]
-    central.connectPeripheral(discovery, options: nil)
+  internal func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.isUserInteractionEnabled = false
+    let discovery = discoveries[discoveries.index(discoveries.startIndex, offsetBy: (indexPath as NSIndexPath).row)]
+    central.connect(discovery, options: nil)
   }
-  override func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {
-    staticIdentifier = peripheral.identifier.UUIDString
+  override func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+    staticIdentifier = peripheral.identifier.uuidString
     central.cancelPeripheralConnection(peripheral)
-    UIApplication.sharedApplication().keyWindow!.rootViewController = R.storyboard.main.initialViewController()
+    UIApplication.shared.keyWindow!.rootViewController = R.storyboard.main.instantiateInitialViewController()
     
   }
-  override func centralManager(central: CBCentralManager, didFailToConnectPeripheral peripheral: CBPeripheral, error: NSError?) {
+  override func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
     if let error = error {
       self.ks.noticeError("连接失败: \(error)")
       if let _ = discoveries.remove(peripheral) {

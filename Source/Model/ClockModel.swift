@@ -26,27 +26,22 @@ class ClockModel: NSObject,Model,Storable,PrimaryKeyProtocol {
     }
     func addUILocalNotification(){
         let localNotification = UILocalNotification()
-        let components = NSDate().components
-        components.timeZone = NSTimeZone.localTimeZone()
-        components.hour = self.hour
-        components.minute = self.minute
-        localNotification.fireDate = components.date
-        localNotification.repeatInterval = .Day
+        localNotification.fireDate = self.date
+        localNotification.repeatInterval = .day
         localNotification.alertBody = explanation
         localNotification.soundName = UILocalNotificationDefaultSoundName
-        localNotification.timeZone = NSTimeZone.localTimeZone()
+        localNotification.timeZone = TimeZone.autoupdatingCurrent
         localNotification.applicationIconBadgeNumber = 1
-        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
-        CupProvider.request(.Clock(self.description)).subscribeNext {_ in
+        UIApplication.shared.scheduleLocalNotification(localNotification)
+        CupProvider.request(.clock(self.description)).subscribeNext {_ in
         }.addDisposableTo(self.ks.disposableBag)
     }
     func removeUILocalNotification(){
-        if let localNotifications = UIApplication.sharedApplication().scheduledLocalNotifications {
+        if let localNotifications = UIApplication.shared.scheduledLocalNotifications {
             for localNotification in localNotifications {
                 if let fireDate = localNotification.fireDate {
-                    let components = fireDate.components(inRegion: Region())
-                    if components.hour == self.hour && components.minute == self.minute {
-                        UIApplication.sharedApplication().cancelLocalNotification(localNotification)
+                    if fireDate.hour == self.hour && fireDate.minute == self.minute {
+                        UIApplication.shared.cancelLocalNotification(localNotification)
                         break
                     }
                 }
@@ -55,15 +50,21 @@ class ClockModel: NSObject,Model,Storable,PrimaryKeyProtocol {
             }
         }
     }
-    
-    static func addClock(model: ClockModel) {
+    var date: Date {
+        var dateComponents = Date().ks.dateComponents
+        dateComponents.hour = self.hour
+        dateComponents.minute = self.minute
+        return NSCalendar.autoupdatingCurrent.date(from:dateComponents)!
+    }
+
+    static func addClock(_ model: ClockModel) {
         model.save()
         if model.open {
             model.addUILocalNotification()
         }
     }
     static func getClocks() -> [ClockModel] {
-        if let array = ClockModel.fetch(nil) where array.count > 0 {
+        if let array = ClockModel.fetch(nil) , array.count > 0 {
             return array
         } else {
             return []
@@ -71,10 +72,10 @@ class ClockModel: NSObject,Model,Storable,PrimaryKeyProtocol {
     }
     static var close: Bool {
         get{
-            return NSUserDefaults.standardUserDefaults().boolForKey("ClockModelClose")
+            return UserDefaults.standard.bool(forKey: "ClockModelClose")
         }
         set{
-            NSUserDefaults.standardUserDefaults().setBool(newValue, forKey: "ClockModelClose")
+            UserDefaults.standard.set(newValue, forKey: "ClockModelClose")
         }
     }
     static func primaryKeys() -> Set<String> {

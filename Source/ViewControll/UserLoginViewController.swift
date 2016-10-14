@@ -19,18 +19,18 @@ class UserLoginViewController: UIViewController,UITextFieldDelegate{
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        let username = defaults.stringForKey("username")
+        let defaults = UserDefaults.standard
+        let username = defaults.string(forKey: "username")
         if username != nil {
             userNameTextField.text = username
         }
-        let password = defaults.stringForKey("password")
+        let password = defaults.string(forKey: "password")
         if password != nil {
             userPassTextField.text = password
         }
     }
     //MARK: UITextFieldDelegate
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == self.userNameTextField {
             self.userNameTextField.resignFirstResponder()
             self.userPassTextField.becomeFirstResponder()
@@ -42,29 +42,29 @@ class UserLoginViewController: UIViewController,UITextFieldDelegate{
     }
     
     //MARK: action
-    @IBAction func login(sender: UIButton?) {
-        guard let userName = self.userNameTextField.text where userName.characters.count > 0 else{
+    @IBAction func login(_ sender: UIButton?) {
+        guard let userName = self.userNameTextField.text , userName.characters.count > 0 else{
             self.ks.noticeError("用户名不能为空",autoClear: true)
             return
         }
-        guard let password = self.userPassTextField.text where password.characters.count > 0 else{
+        guard let password = self.userPassTextField.text , password.characters.count > 0 else{
             self.ks.noticeError("密码不能为空",autoClear: true)
             return
         }
-        self.navigationController?.view.userInteractionEnabled = false
+        self.navigationController?.view.isUserInteractionEnabled = false
         self.ks.pleaseWait("正在登录中")
-        CupProvider.request(.Login(userName,password)).filterSuccessfulStatusCodes().mapJSON().observeOn(MainScheduler.instance).subscribe(onNext: { (let json) -> Void in
+        CupProvider.request(.login(userName,password)).filterSuccessfulStatusCodes().mapJSON().observeOn(MainScheduler.instance).subscribe(onNext: { (json) -> Void in
             self.ks.clearAllNotice()
             staticAccount = AccountModel(from: json as! [String : AnyObject])
             AccountModel.localSave()
 //            if staticIdentifier == nil {
-//               UIApplication.sharedApplication().keyWindow!.rootViewController = CentralViewController()
+//               UIApplication.shared.keyWindow!.rootViewController = CentralViewController()
 //            }else{
-                UIApplication.sharedApplication().keyWindow!.rootViewController = R.storyboard.main.initialViewController()
+                UIApplication.shared.keyWindow!.rootViewController = R.storyboard.main.instantiateInitialViewController()
 //            }
             }, onError: {
                 self.ks.clearAllNotice()
-                self.navigationController?.view.userInteractionEnabled = true
+                self.navigationController?.view.isUserInteractionEnabled = true
                 if let error = $0 as? Moya.Error, let response = error.response {
                     self.ks.noticeError(JSON(data: response.data)["message"].stringValue, autoClear: true)
                 }

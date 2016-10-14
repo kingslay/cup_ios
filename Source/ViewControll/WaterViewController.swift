@@ -10,7 +10,6 @@
 import UIKit
 import RxSwift
 import CoreBluetooth
-import Async
 import KSSwiftExtension
 import Charts
 import SwiftDate
@@ -20,14 +19,14 @@ class WaterViewController: ShareViewController {
     var peripheral: CBPeripheral?
     var characteristic: Variable<CBCharacteristic?> = Variable(nil)
     var selectedIndex: Int?
-    var timer: NSTimer?
-    var durationTimer: NSTimer?
+    var timer: Timer?
+    var durationTimer: Timer?
     lazy var dateButton = UIButton()
     var calendarView: CalendarView!
     var waterCycleView: WaterCycleView!
-    var currentDate = NSDate() {
+    var currentDate = Foundation.Date() {
         didSet{
-            self.dateButton.setTitle(currentDate.ks.stringFromFormat("yyyy年MM月dd日"), forState: .Normal)
+            self.dateButton.setTitle(currentDate.ks.string(fromFormat:"yyyy年MM月dd日"), for: UIControlState())
             self.setUpChartData(currentDate)
         }
     }
@@ -37,10 +36,10 @@ class WaterViewController: ShareViewController {
         waterCycleView = WaterCycleView()
         waterCycleView.batteryRate = 100
         view.addSubview(waterCycleView)
-        dateButton.setImage(R.image.icon_calendar(), forState: .Normal)
+        dateButton.setImage(R.image.icon_calendar(), for: .normal)
         dateButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
-        dateButton.titleLabel?.font = UIFont.systemFontOfSize(15)
-        dateButton.setTitleColor(Colors.pink, forState: .Normal)
+        dateButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        dateButton.setTitleColor(Colors.pink, for: UIControlState())
         view.addSubview(dateButton)
         dateButton.snp_makeConstraints { (make) in
             make.top.equalTo(waterCycleView.ks.bottom)
@@ -56,7 +55,7 @@ class WaterViewController: ShareViewController {
         }
         let tapGesture = UITapGestureRecognizer()
         self.chartView.addGestureRecognizer(tapGesture)
-        tapGesture.rx_event.subscribeNext{ [unowned self](_) in
+        tapGesture.rx.event.subscribeNext{ [unowned self](_) in
             let vc = WaterHistoryViewController()
             vc.currentDate = self.currentDate
             self.navigationController?.ks.pushViewController(vc)
@@ -64,8 +63,8 @@ class WaterViewController: ShareViewController {
         calendarView = CalendarView(frame: view.bounds)
         view.addSubview(calendarView)
         calendarView.ks.top(view.ks.bottom)
-        dateButton.rx_tap.subscribeNext { [unowned self]_ in
-            UIView.animateWithDuration(0.35, animations: {
+        dateButton.rx.tap.subscribeNext { [unowned self]_ in
+            UIView.animate(withDuration: 0.35, animations: {
                 self.calendarView.ks.bottom(self.view.ks.bottom)
             })
             }.addDisposableTo(ks.disposableBag)
@@ -73,19 +72,19 @@ class WaterViewController: ShareViewController {
             self.calendarView.ks.top(self.view.ks.bottom)
             self.currentDate = date.convertedDate()!
         }
-        currentDate = NSDate()
+        currentDate = Foundation.Date()
     }
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-         waterCycleView.waterplan = CGFloat(staticAccount?.waterplan?.floatValue ?? staticAccount!.calculateProposalWater())
+         waterCycleView.waterplan = CGFloat(staticAccount?.waterplan?.intValue ?? staticAccount!.calculateProposalWater())
     }
-    func setUpChartData(date: NSDate) {
-        WaterModel.save(NSDate(), amount: 80)
+    func setUpChartData(_ date: Foundation.Date) {
+        WaterModel.save(Foundation.Date(), amount: 80)
         var xVals = [String?]()
         var yVals = [BarChartDataEntry]()
         var water = 0
         if let models = WaterModel.fetch(date) {
-            for (index,model) in models.enumerate() {
+            for (index,model) in models.enumerated() {
                 xVals.append("\(model.hour.ks.format("%02d")):\(model.minute.ks.format("%02d"))")
                 yVals.append(BarChartDataEntry(value: Double(model.amount), xIndex: index))
                 water = water + model.amount
@@ -104,10 +103,10 @@ extension WaterViewController {
     func setUpCentral() {
         self.central = CBCentralManager(delegate: self, queue: nil)
     }
-    override func scanForPeripherals(central: CBCentralManager) {
-        if let staticIdentifier = staticIdentifier, identifier = NSUUID(UUIDString: staticIdentifier) {
-            self.durationTimer = NSTimer.scheduledTimerWithTimeInterval(15, target: self, selector: #selector(durationTimerElapsed), userInfo: nil, repeats: false)
-            let peripherals = self.central.retrievePeripheralsWithIdentifiers([identifier])
+    override func scanForPeripherals(_ central: CBCentralManager) {
+        if let staticIdentifier = staticIdentifier, let identifier = UUID(uuidString: staticIdentifier) {
+            self.durationTimer = Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(durationTimerElapsed), userInfo: nil, repeats: false)
+            let peripherals = self.central.retrievePeripherals(withIdentifiers: [identifier])
             if peripherals.count > 0 {
                 didDiscoverPeripheral(peripherals[0])
             }
@@ -115,37 +114,37 @@ extension WaterViewController {
             alterCentralViewController()
         }
     }
-    @objc private func durationTimerElapsed() {
+    @objc fileprivate func durationTimerElapsed() {
         self.durationTimer?.invalidate()
         self.durationTimer = nil
         if self.characteristic.value == nil {
-            let alertController = UIAlertController(title: "找不到之前设定的蓝牙的设备，是否要重新扫描，设定蓝牙设备", message: nil, preferredStyle: .Alert)
-            let okAction = UIAlertAction(title: "是", style: UIAlertActionStyle.Default){
+            let alertController = UIAlertController(title: "找不到之前设定的蓝牙的设备，是否要重新扫描，设定蓝牙设备", message: nil, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "是", style: UIAlertActionStyle.default){
                 (action: UIAlertAction!) -> Void in
                 self.navigationController?.pushViewController(CentralViewController(), animated: true)
             }
-            let cancelAction = UIAlertAction(title: "否", style: .Cancel, handler: nil)
+            let cancelAction = UIAlertAction(title: "否", style: .cancel, handler: nil)
             alertController.addAction(okAction)
             alertController.addAction(cancelAction)
-            presentViewController(alertController, animated: true, completion: nil)
+            present(alertController, animated: true, completion: nil)
 
         }
     }
 
-    override func didDiscoverPeripheral(peripheral: CBPeripheral) {
-        if peripheral.identifier.UUIDString == staticIdentifier {
+    override func didDiscoverPeripheral(_ peripheral: CBPeripheral) {
+        if peripheral.identifier.uuidString == staticIdentifier {
             self.peripheral = peripheral
-            self.central.connectPeripheral(peripheral, options: nil)
+            self.central.connect(peripheral, options: nil)
             self.central.stopScan()
         }
     }
-    override func didDiscoverCharacteristicsForService(characteristic: CBCharacteristic) {
-        if characteristic.properties.contains([.Notify]) {
-            self.peripheral?.setNotifyValue(true, forCharacteristic: characteristic)
+    override func didDiscoverCharacteristicsForService(_ characteristic: CBCharacteristic) {
+        if characteristic.properties.contains([.notify]) {
+            self.peripheral?.setNotifyValue(true, for: characteristic)
         }
-        if characteristic.properties.contains([.Write]) {
+        if characteristic.properties.contains([.write]) {
             self.characteristic.value = characteristic
-            self.timer = NSTimer.scheduledTimerWithTimeInterval(60*5, target: self, selector: #selector(askTemperature), userInfo: nil, repeats: true)
+            self.timer = Timer.scheduledTimer(timeInterval: 60*5, target: self, selector: #selector(askTemperature), userInfo: nil, repeats: true)
             self.timer?.fire()
             //连接通过之后，发送一下。让杯子叫一下
             let data = NSMutableData()
@@ -155,7 +154,7 @@ extension WaterViewController {
             data.ks.appendUInt16(0x00)
             data.ks.appendUInt8(0x11)
             data.ks.appendUInt8(0x0a)
-            self.peripheral?.writeValue(data, forCharacteristic: characteristic, type: .WithResponse)
+            self.peripheral?.writeValue(data as Data, for: characteristic, type: .withResponse)
         }
     }
 
@@ -164,18 +163,18 @@ extension WaterViewController {
             return [CBUUID(string: "FFE0")]
         }
     }
-    override func characteristicUUIDs(service: CBUUID) -> [CBUUID]? {
+    override func characteristicUUIDs(_ service: CBUUID) -> [CBUUID]? {
         //监听的通道
-        if service.UUIDString == "FFE0" {
+        if service.uuidString == "FFE0" {
             return [CBUUID(string: "FFE1")]
         }
         return nil
     }
-    func peripheral(peripheral: CBPeripheral, didUpdateValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
+    func peripheral(_ peripheral: CBPeripheral, didUpdateValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
         guard let data = characteristic.value else {
             return
         }
-        let bytes = UnsafePointer<UInt8>(data.bytes)
+        let bytes = (data as NSData).bytes.bindMemory(to: UInt8.self, capacity: data.count)
         if bytes[0] == 0x55 {
             if bytes[1] == 0x00 {
 
@@ -183,30 +182,30 @@ extension WaterViewController {
         }
 
     }
-    func peripheral(peripheral: CBPeripheral, didUpdateNotificationStateForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
+    func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
 
     }
 
-    func centralManager(central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: NSError?)
+    func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: NSError?)
     {
         self.timer?.invalidate()
         self.timer = nil
         self.durationTimer?.invalidate()
         self.durationTimer = nil
         if let _ = error {
-            self.central.connectPeripheral(peripheral, options: nil)
+            self.central.connect(peripheral, options: nil)
         }
     }
     func alterCentralViewController() {
-        let alertController = UIAlertController(title: "您还没有关联水杯设备,是否现在进行关联", message: nil, preferredStyle: .Alert)
-        let okAction = UIAlertAction(title: "是", style: UIAlertActionStyle.Default){
+        let alertController = UIAlertController(title: "您还没有关联水杯设备,是否现在进行关联", message: nil, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "是", style: UIAlertActionStyle.default){
             (action: UIAlertAction!) -> Void in
             self.navigationController?.pushViewController(CentralViewController(), animated: true)
         }
-        let cancelAction = UIAlertAction(title: "否", style: .Cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "否", style: .cancel, handler: nil)
         alertController.addAction(okAction)
         alertController.addAction(cancelAction)
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
 
     }
     func askTemperature() {
@@ -218,7 +217,7 @@ extension WaterViewController {
             data.ks.appendUInt16(0x00)
             data.ks.appendUInt8(0x02)
             data.ks.appendUInt8(0x0a)
-            self.peripheral?.writeValue(data, forCharacteristic: characteristic, type: .WithResponse)
+            self.peripheral?.writeValue(data as Data, for: characteristic, type: .withResponse)
         }
     }
 }

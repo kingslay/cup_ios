@@ -38,99 +38,99 @@ class WaterCycleView: UIView {
             }
         }
     }
-    private var progress: CGFloat = 0 {
+    fileprivate var progress: CGFloat = 0 {
         didSet {
             progressLayer.strokeEnd = self.progress;
             gradientLayer.mask = self.progressLayer
             let text = "\(Int(progress*100.0))%"
-            let attributedText = NSMutableAttributedString(string: text, attributes: [NSFontAttributeName : UIFont.systemFontOfSize(30),NSForegroundColorAttributeName: Colors.pink])
-            attributedText.addAttributes([NSFontAttributeName : UIFont.systemFontOfSize(18)], range: NSMakeRange(text.length-1, 1))
+            let attributedText = NSMutableAttributedString(string: text, attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 30),NSForegroundColorAttributeName: Colors.pink])
+            attributedText.addAttributes([NSFontAttributeName : UIFont.systemFont(ofSize: 18)], range: NSMakeRange(text.length-1, 1))
             waterRate1Label.attributedText = attributedText
             waterRateLabel.text = "完成\(text)"
         }
     }
-    private let waterRateLabel: UILabel = {
+    fileprivate let waterRateLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-        label.textAlignment = .Center
+        label.textAlignment = .center
         label.textColor = Colors.red
-        label.font = UIFont.systemFontOfSize(18)
+        label.font = UIFont.systemFont(ofSize: 18)
         label.text = "1234567890"
         label.sizeToFit()
         return label
     }()
-    private let waterRate1Label: UILabel = {
+    fileprivate let waterRate1Label: UILabel = {
         let label = UILabel()
-        label.textAlignment = .Center
+        label.textAlignment = .center
         label.textColor = Colors.pink
-        label.font = UIFont.systemFontOfSize(30)
+        label.font = UIFont.systemFont(ofSize: 30)
         label.text = "1234567890"
         label.sizeToFit()
         return label
     }()
-    private let waterLabel: UILabel = {
+    fileprivate let waterLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-        label.textAlignment = .Center
+        label.textAlignment = .center
         label.textColor = Colors.red
-        label.font = UIFont.systemFontOfSize(49)
+        label.font = UIFont.systemFont(ofSize: 49)
         label.text = "1234567890"
         label.sizeToFit()
         return label
     }()
-    private let water1Label: UILabel = {
+    fileprivate let water1Label: UILabel = {
         let label = UILabel()
-        label.textAlignment = .Center
+        label.textAlignment = .center
         label.textColor = Colors.pink
-        label.font = UIFont.systemFontOfSize(30)
+        label.font = UIFont.systemFont(ofSize: 30)
         label.text = "1234567890"
         label.sizeToFit()
         return label
     }()
-    private let waterplanLabel: UILabel = {
+    fileprivate let waterplanLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-        label.textAlignment = .Center
+        label.textAlignment = .center
         label.textColor = Colors.pink
-        label.font = UIFont.systemFontOfSize(18)
+        label.font = UIFont.systemFont(ofSize: 18)
         label.text = "目标123456ml"
         label.sizeToFit()
         return label
     }()
-    private let waterplan1Label: UILabel = {
+    fileprivate let waterplan1Label: UILabel = {
         let label = UILabel()
-        label.textAlignment = .Center
+        label.textAlignment = .center
         label.textColor = Colors.pink
-        label.font = UIFont.systemFontOfSize(30)
+        label.font = UIFont.systemFont(ofSize: 30)
         label.text = "目标123456ml"
         label.sizeToFit()
         return label
     }()
-    private let batteryRateLabel: UILabel = {
+    fileprivate let batteryRateLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-        label.textAlignment = .Center
+        label.textAlignment = .center
         label.textColor = Swifty<UIColor>.colorFrom("#7dd833")
-        label.font = UIFont.systemFontOfSize(15)
+        label.font = UIFont.systemFont(ofSize: 15)
         label.text = "1234567890"
         label.sizeToFit()
         return label
     }()
-    private let batteryRateImageView = UIImageView(image: R.image.icon_Battery_charging())
-    private let trackLayer: CAShapeLayer = {
+    fileprivate let batteryRateImageView = UIImageView(image: R.image.icon_Battery_charging())
+    fileprivate let trackLayer: CAShapeLayer = {
         let layer = CAShapeLayer()
-        layer.fillColor = UIColor.clearColor().CGColor
-        layer.strokeColor = Swifty<UIColor>.colorFrom("#ffd1d8").CGColor
+        layer.fillColor = UIColor.clear.cgColor
+        layer.strokeColor = Swifty<UIColor>.colorFrom("#ffd1d8").cgColor
         layer.lineCap = kCALineCapRound
         layer.lineWidth = 22
         return layer
     }()
-    private let progressLayer: CAShapeLayer = {
+    fileprivate let progressLayer: CAShapeLayer = {
         let layer = CAShapeLayer()
-        layer.fillColor = UIColor.clearColor().CGColor
-        layer.strokeColor = UIColor.blackColor().CGColor
+        layer.fillColor = UIColor.clear.cgColor
+        layer.strokeColor = UIColor.black.cgColor
         layer.lineCap = kCALineCapRound
         layer.lineWidth = 22
         layer.strokeEnd = 0
         return layer
     }()
-    private let gradientLayer = CALayer()
+    fileprivate let gradientLayer = CALayer()
     override init(frame: CGRect) {
         var newFrame = CGRect(x: 0, y: 0, width: KS.SCREEN_WIDTH, height: WaterCycleView.CycleHeight)
         if KS.SCREEN_HEIGHT > 568 {
@@ -140,7 +140,7 @@ class WaterCycleView: UIView {
         if KS.SCREEN_HEIGHT > 568 {
             let label = UILabel()
             label.textColor = Colors.pink
-            label.font = UIFont.systemFontOfSize(15)
+            label.font = UIFont.systemFont(ofSize: 15)
             label.text = "饮水目标"
             label.sizeToFit()
             addSubview(label)
@@ -155,7 +155,7 @@ class WaterCycleView: UIView {
             }
             let label1 = UILabel()
             label1.textColor = Colors.pink
-            label1.font = UIFont.systemFontOfSize(15)
+            label1.font = UIFont.systemFont(ofSize: 15)
             label1.text = "今日喝水"
             label1.sizeToFit()
             addSubview(label1)
@@ -170,7 +170,7 @@ class WaterCycleView: UIView {
             }
             let label2 = UILabel()
             label2.textColor = Colors.pink
-            label2.font = UIFont.systemFontOfSize(15)
+            label2.font = UIFont.systemFont(ofSize: 15)
             label2.ks.top(25)
             label2.text = "完成计划"
             label2.sizeToFit()
@@ -187,8 +187,8 @@ class WaterCycleView: UIView {
         }
         let arcCenter = CGPoint(x: center.x, y: self.frame.height-WaterCycleView.CycleHeight/2)
         let path = UIBezierPath(arcCenter: arcCenter, radius: WaterCycleView.CycleHeight/2-trackLayer.lineWidth, startAngle: CGFloat(-240*M_PI/180), endAngle: CGFloat(60*M_PI/180), clockwise: true)
-        trackLayer.path = path.CGPath
-        progressLayer.path = path.CGPath
+        trackLayer.path = path.cgPath
+        progressLayer.path = path.cgPath
         layer.addSublayer(self.trackLayer)
         setUpGradientLayer()
         waterLabel.center = arcCenter
@@ -212,14 +212,14 @@ class WaterCycleView: UIView {
     }
     func setUpGradientLayer() {
         let gradientLayer1 = CAGradientLayer()
-        gradientLayer1.colors = [Swifty<UIColor>.colorFrom("#da251c").CGColor,Swifty<UIColor>.colorFrom("#ff9958").CGColor]
+        gradientLayer1.colors = [Swifty<UIColor>.colorFrom("#da251c").cgColor,Swifty<UIColor>.colorFrom("#ff9958").cgColor]
         gradientLayer1.frame = CGRect(x: 0, y: frame.height-WaterCycleView.CycleHeight, width: self.ks.width/2, height: WaterCycleView.CycleHeight)
         gradientLayer1.locations = [0.5,0.9,1]
         gradientLayer1.startPoint = CGPoint(x: 0.5, y: 1)
         gradientLayer1.endPoint = CGPoint(x: 0.5, y: 0)
         gradientLayer.addSublayer(gradientLayer1)
         let gradientLayer2 = CAGradientLayer()
-        gradientLayer2.colors = [Swifty<UIColor>.colorFrom("#ff9958").CGColor,Swifty<UIColor>.colorFrom("#da251c").CGColor]
+        gradientLayer2.colors = [Swifty<UIColor>.colorFrom("#ff9958").cgColor,Swifty<UIColor>.colorFrom("#da251c").cgColor]
         gradientLayer2.frame = CGRect(x: self.ks.width/2, y: frame.height-WaterCycleView.CycleHeight, width: self.ks.width/2, height: WaterCycleView.CycleHeight)
         gradientLayer2.locations = [0.1,0.5,1]
         gradientLayer2.startPoint = CGPoint(x: 0.5, y: 0)

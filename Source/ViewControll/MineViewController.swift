@@ -13,7 +13,7 @@ import KSSwiftExtension
 class MineViewController: UITableViewController {
     var datas :[[(UIImage?,String)]]!
     lazy var navigationAccessoryView : NavigationAccessoryView = {
-        let naview = NavigationAccessoryView(frame: CGRectMake(0, 0, self.view.frame.width, 44.0))
+        let naview = NavigationAccessoryView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44.0))
         naview.doneButton.target = self
         naview.doneButton.action = #selector(navigationDone)
         return naview
@@ -24,9 +24,9 @@ class MineViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = Colors.background
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: R.image.icon_exit(), style: .Plain, target: self, action: #selector(exitAccount))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: R.image.icon_exit(), style: .plain, target: self, action: #selector(exitAccount))
         self.tableView.backgroundColor = Colors.background
-        self.tableView.registerNib(R.nib.mineTableViewCell)
+        self.tableView.register(R.nib.mineTableViewCell)
         self.tableView.rowHeight = 51
         datas = [[(R.image.icon_modify(),"个人资料修改"),
                 (R.image.icon_plan(),"饮水计划(ml)")],
@@ -36,58 +36,58 @@ class MineViewController: UITableViewController {
                     (R.image.icon_nickname(),"固件升级"),
                     (R.image.icon_about(),"关于")]]
     }
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tableView.reloadData()
     }
     func exitAccount() {
-        let alertController = UIAlertController(title: nil, message: "确认要退出当前账号吗", preferredStyle: .Alert)
-        let cancelAction = UIAlertAction(title: "继续", style: UIAlertActionStyle.Default,handler: nil)
+        let alertController = UIAlertController(title: nil, message: "确认要退出当前账号吗", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "继续", style: UIAlertActionStyle.default,handler: nil)
         alertController.addAction(cancelAction)
-        let okAction = UIAlertAction(title: "退出", style: UIAlertActionStyle.Default) {
+        let okAction = UIAlertAction(title: "退出", style: UIAlertActionStyle.default) {
             [unowned self] (action: UIAlertAction!) -> Void in
-            NSUserDefaults.standardUserDefaults().removeObjectForKey("sharedAccount")
+            UserDefaults.standard.removeObject(forKey: "sharedAccount")
             staticIdentifier = nil
-            if let vcs = self.tabBarController?.viewControllers where vcs.count > 1, let navigationController = vcs[1] as? UINavigationController, let cupViewController = navigationController.topViewController as? CupViewController, let peripheral = cupViewController.peripheral  {
+            if let vcs = self.tabBarController?.viewControllers , vcs.count > 1, let navigationController = vcs[1] as? UINavigationController, let cupViewController = navigationController.topViewController as? CupViewController, let peripheral = cupViewController.peripheral  {
                 cupViewController.central.cancelPeripheralConnection(peripheral)
             }
-            UIApplication.sharedApplication().cancelAllLocalNotifications()
-            NSUserDefaults.standardUserDefaults().removeObjectForKey("ClockModelClose")
-            NSUserDefaults.standardUserDefaults().removeObjectForKey("clockArray")
+            UIApplication.shared.cancelAllLocalNotifications()
+            UserDefaults.standard.removeObject(forKey: "ClockModelClose")
+            UserDefaults.standard.removeObject(forKey: "clockArray")
             TemperatureModel.delete(dic: [:])
-            UIApplication.sharedApplication().keyWindow!.rootViewController = R.storyboard.sMS.initialViewController()
+            UIApplication.shared.keyWindow!.rootViewController = R.storyboard.sMS.instantiateInitialViewController()
         }
         alertController.addAction(okAction)
-        self.presentViewController(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 extension MineViewController {
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return datas.count
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return datas[section].count
     }
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(R.nib.mineTableViewCell)!
-        let (image,title) = datas[indexPath.section][indexPath.row]
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: R.nib.mineTableViewCell)!
+        let (image,title) = datas[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
         cell.iconImageView.image = image
         cell.titleLabel.text = title
-        cell.headerImageView.hidden = true
-        cell.valueTextField.hidden = true
-        cell.accessoryType = .DisclosureIndicator
-        if indexPath.section == 0 {
-            switch indexPath.row {
+        cell.headerImageView.isHidden = true
+        cell.valueTextField.isHidden = true
+        cell.accessoryType = .disclosureIndicator
+        if (indexPath as NSIndexPath).section == 0 {
+            switch (indexPath as NSIndexPath).row {
             case 0:
-                cell.headerImageView.hidden = false
-                if let str = staticAccount?.avatar,url = NSURL(string: str) {
-                    cell.headerImageView!.af_setImageWithURL(url, placeholderImage: R.image.默认头像(),filter: AspectScaledToFillSizeCircleFilter(size: CGSizeMake(41, 41)))
+                cell.headerImageView.isHidden = false
+                if let str = staticAccount?.avatar,let url = URL(string: str) {
+                    cell.headerImageView!.af_setImage(withURL:url, placeholderImage: R.image.默认头像(),filter: AspectScaledToFillSizeCircleFilter(size: CGSize(width: 41, height: 41)))
                 }
             case 1:
-                cell.valueTextField.hidden = false
+                cell.valueTextField.isHidden = false
                 if let value = staticAccount?.waterplan {
                     cell.valueTextField.text = "\(value)"
                 }
@@ -97,15 +97,15 @@ extension MineViewController {
         }
         return cell
     }
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
             return 10
         }else{
             return 25
         }
     }
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        switch (indexPath.section,indexPath.row) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch ((indexPath as NSIndexPath).section,(indexPath as NSIndexPath).row) {
         case (0,0):
             self.navigationController?.ks.pushViewController(AccountViewController())
         case (0,1):
@@ -125,7 +125,7 @@ extension MineViewController {
         case(1,3):
             let vc = R.nib.firmwareViewController.firstView(owner: nil, options: nil)!
             vc.serialLabel.text = "序列号: " + (staticIdentifier ?? "")
-            vc.updateButton.hidden = false
+            vc.updateButton.isHidden = false
             self.navigationController?.ks.pushViewController(vc)
         case(1,4):
             self.navigationController?.ks.pushViewController(R.nib.aboutUsViewController.firstView(owner: nil, options: nil)!)

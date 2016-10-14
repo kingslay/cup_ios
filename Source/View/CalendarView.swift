@@ -11,32 +11,32 @@ import CVCalendar
 import KSSwiftExtension
 
 class CalendarView: UIView {
-    var update: ((date: CVDate)->Void)?
-    private var nextButton = UIButton()
-    private var preButton = UIButton()
-    private var calendarView = CVCalendarView()
-    private var menuView = CVCalendarMenuView()
-    private var dateButton = UIButton()
+    var update: ((_ date: CVDate)->Void)?
+    fileprivate var nextButton = UIButton()
+    fileprivate var preButton = UIButton()
+    fileprivate var calendarView = CVCalendarView()
+    fileprivate var menuView = CVCalendarMenuView()
+    fileprivate var dateButton = UIButton()
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
+        backgroundColor = UIColor.black.withAlphaComponent(0.5)
         let topView = UIView(frame: CGRect(x: 0, y: frame.height-400, width: frame.width, height: 60))
         addSubview(topView)
         topView.backgroundColor = Colors.white
         preButton.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
-        preButton.setImage(R.image.icon_calendarL(), forState: .Normal)
+        preButton.setImage(R.image.icon_calendarL(), for: .normal)
         topView.addSubview(preButton)
         nextButton.frame = CGRect(x:dateButton.ks.right, y: 0, width: 60, height: 60)
-        nextButton.setImage(R.image.icon_calendarR(), forState: .Normal)
+        nextButton.setImage(R.image.icon_calendarR(), for: .normal)
         topView.addSubview(nextButton)
         nextButton.ks.right(frame.width)
         dateButton.frame = CGRect(x: preButton.ks.right, y: 0, width: frame.width-preButton.frame.width - nextButton.frame.width, height: 60)
         dateButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
-        dateButton.titleLabel?.textAlignment = .Center
-        dateButton.setImage(R.image.icon_calendar(), forState: .Normal)
-        dateButton.titleLabel?.font = UIFont.systemFontOfSize(15)
-        dateButton.setTitleColor(Colors.pink, forState: .Normal)
-        dateButton.setTitle(NSDate().ks.stringFromFormat(" yyyy年MM月dd日"), forState: .Normal)
+        dateButton.titleLabel?.textAlignment = .center
+        dateButton.setImage(R.image.icon_calendar(), for: .normal)
+        dateButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        dateButton.setTitleColor(Colors.pink, for: UIControlState())
+        dateButton.setTitle(Foundation.Date().ks.string(fromFormat:" yyyy年MM月dd日"), for: UIControlState())
         topView.addSubview(dateButton)
         menuView.frame = CGRect(x: 0, y: topView.ks.bottom, width: frame.width, height: 24)
         addSubview(menuView)
@@ -47,10 +47,10 @@ class CalendarView: UIView {
         menuView.delegate = self
         calendarView.calendarAppearanceDelegate = self
         calendarView.backgroundColor = Colors.white
-        preButton.rx_tap.subscribeNext { [unowned self] in
+        preButton.rx.tap.subscribeNext { [unowned self] in
             self.calendarView.loadPreviousView()
         }.addDisposableTo(ks.disposableBag)
-        nextButton.rx_tap.subscribeNext { [unowned self] in
+        nextButton.rx.tap.subscribeNext { [unowned self] in
             self.calendarView.loadNextView()
         }.addDisposableTo(ks.disposableBag)
     }
@@ -67,18 +67,18 @@ extension CalendarView: CVCalendarViewDelegate {
 
     /// Required method to implement!
     func presentationMode() -> CalendarMode {
-        return .MonthView
+        return .monthView
     }
 
     /// Required method to implement!
     func firstWeekday() -> Weekday {
-        return .Sunday
+        return .sunday
     }
     func shouldShowWeekdaysOut() -> Bool {
         return true
     }
     func preliminaryView(viewOnDayView dayView: DayView) -> UIView {
-        let circleView = CVAuxiliaryView(dayView: dayView, rect: dayView.bounds, shape: CVShape.Circle)
+        let circleView = CVAuxiliaryView(dayView: dayView, rect: dayView.bounds, shape: CVShape.circle)
         circleView.fillColor = .colorFromCode(0xCCCCCC)
         return circleView
     }
@@ -95,9 +95,9 @@ extension CalendarView: CVCalendarViewDelegate {
     func shouldAutoSelectDayOnMonthChange() -> Bool {
         return true
     }
-    func presentedDateUpdated(date: CVDate) {
-        dateButton.setTitle(date.convertedDate()?.ks.stringFromFormat("yyyy年MM月dd日"), forState: .Normal)
-        update?(date: date)
+    func presentedDateUpdated(_ date: CVDate) {
+        dateButton.setTitle(date.convertedDate()?.ks.string(fromFormat:"yyyy年MM月dd日"), for: UIControlState())
+        update?(date)
     }
 }
 extension CalendarView: CVCalendarMenuViewDelegate {
@@ -112,19 +112,19 @@ extension CalendarView: CVCalendarViewAppearanceDelegate {
     func spaceBetweenDayViews() -> CGFloat {
         return 2
     }
-    func dayLabelFont(by weekDay: Weekday, status: CVStatus, present: CVPresent) -> UIFont { return UIFont.systemFontOfSize(14) }
+    func dayLabelFont(by weekDay: Weekday, status: CVStatus, present: CVPresent) -> UIFont { return UIFont.systemFont(ofSize: 14) }
 
     func dayLabelColor(by weekDay: Weekday, status: CVStatus, present: CVPresent) -> UIColor? {
         switch (weekDay, status, present) {
-        case (_, .Selected, _), (_, .Highlighted, _): return Colors.white
-        case (_, .Out, _),(.Sunday, _, _),(.Saturday, _, _): return Colors.black
+        case (_, .selected, _), (_, .highlighted, _): return Colors.white
+        case (_, .out, _),(.sunday, _, _),(.saturday, _, _): return Colors.black
         default: return Colors.pink
         }
     }
 
     func dayLabelBackgroundColor(by weekDay: Weekday, status: CVStatus, present: CVPresent) -> UIColor? {
         switch (weekDay, status, present) {
-        case (_, .Selected, _), (_, .Highlighted, _): return Colors.red
+        case (_, .selected, _), (_, .highlighted, _): return Colors.red
         default: return nil
         }
     }

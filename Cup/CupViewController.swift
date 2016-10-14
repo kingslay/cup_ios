@@ -7,9 +7,9 @@
 //
 
 import UIKit
+import Async
 import RxSwift
 import CoreBluetooth
-import Async
 import KSSwiftExtension
 class CupViewController: UITableViewController {
     let disposeBag = DisposeBag()
@@ -19,22 +19,22 @@ class CupViewController: UITableViewController {
     var peripheral: CBPeripheral?
     var characteristic: Variable<CBCharacteristic?> = Variable(nil)
     var selectedIndex: Int?
-    var timer: NSTimer?
-    var durationTimer: NSTimer?
+    var timer: Timer?
+    var durationTimer: Timer?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.backgroundColor = Colors.background
-        self.tableView.registerNib(R.nib.temperatureTableViewCell)
+        self.tableView.register(R.nib.temperatureTableViewCell)
         self.setTableHeaderView()
         self.tableView.estimatedRowHeight = 45
         self.setUpCentral()
         refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(askTemperature), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl?.addTarget(self, action: #selector(askTemperature), for: UIControlEvents.valueChanged)
         //修改下拉刷新标题
         refreshControl?.attributedTitle = NSAttributedString(string: "释放刷新")
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.temperatureArray = TemperatureModel.getTemperatures()
         if let _ = self.selectedIndex {
@@ -62,7 +62,7 @@ class CupViewController: UITableViewController {
         }
         self.tableView.reloadData()
     }
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         endRefreshing()
     }
@@ -70,13 +70,13 @@ class CupViewController: UITableViewController {
     func setTableHeaderView() {
         headerView?.ks.height(204)
         self.tableView.tableHeaderView = headerView
-        let view = UIView(frame: CGRectMake(0,204,self.view.ks.width,self.view.ks.height))
+        let view = UIView(frame: CGRect(x: 0,y: 204,width: self.view.ks.width,height: self.view.ks.height))
         view.alpha = 0.5
-        view.backgroundColor = UIColor.blackColor()
+        view.backgroundColor = UIColor.black
         self.view.addSubview(view)
         let tapGestureRecognizer = UITapGestureRecognizer()
         headerView?.meTemperaturelabel.addGestureRecognizer(tapGestureRecognizer)
-        tapGestureRecognizer.rx_event.subscribeNext{ [unowned self] _ in
+        tapGestureRecognizer.rx.event.subscribeNext{ [unowned self] _ in
             if view.superview != nil {
                 view.removeFromSuperview()
             }else{
@@ -104,24 +104,24 @@ class CupViewController: UITableViewController {
     }
 }
 extension CupViewController {
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return temperatureArray.count
     }
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let model = temperatureArray[indexPath.row]
-        let cell = tableView.dequeueReusableCellWithIdentifier(R.nib.temperatureTableViewCell, forIndexPath: indexPath)!
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let model = temperatureArray[(indexPath as NSIndexPath).row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: R.nib.temperatureTableViewCell, for: indexPath)!
         cell.backgroundColor = Colors.background
-        cell.selectionStyle = .None
+        cell.selectionStyle = .none
         cell.explanationLabel.text = model.explanation
         cell.temperatureLabel.text = "\(model.temperature)度"
-        cell.openSwitch.on = model.open
-        cell.openSwitch.rx_controlEvent(.TouchUpInside).subscribeNext{ [unowned cell,unowned self] in
-            let on = cell.openSwitch.on
+        cell.openSwitch.isOn = model.open
+        cell.openSwitch.rx.controlEvent(.touchUpInside).subscribeNext{ [unowned cell,unowned self] in
+            let on = cell.openSwitch.isOn
             if on {
                 if self.characteristic.value == nil {
                     self.alterCentralViewController()
                     Async.main(after: 0.35) {
-                        cell.openSwitch.on = false
+                        cell.openSwitch.isOn = false
                     }
                 } else {
                     self.temperatureArray.forEach{
@@ -140,10 +140,10 @@ extension CupViewController {
             }.addDisposableTo(cell.disposeBag)
         return cell
     }
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
         let label = UILabel()
-        label.font = UIFont.systemFontOfSize(17)
+        label.font = UIFont.systemFont(ofSize: 17)
         label.text = "恒温设定"
         label.sizeToFit()
         headerView.addSubview(label)
@@ -152,7 +152,7 @@ extension CupViewController {
             make.centerY.equalTo(headerView)
         }
         let button = UIButton()
-        button.setImage(UIImage(named: R.image.icon_add.name), forState: .Normal)
+        button.setImage(UIImage(named: R.image.icon_add.name), for: .normal)
         headerView.addSubview(button)
         button.snp_makeConstraints { (make) -> Void in
             make.width.height.equalTo(27)
@@ -162,33 +162,33 @@ extension CupViewController {
         if self.temperatureArray.count >= 5 {
             button.removeFromSuperview()
         }
-        button.rx_tap.subscribeNext { [unowned self] in
+        button.rx.tap.subscribeNext { [unowned self] in
             let vc = R.nib.temperatureViewController.firstView(owner: nil, options: nil)!
-            self.navigationController?.presentViewController(vc, animated: true, completion: nil)
+            self.navigationController?.present(vc, animated: true, completion: nil)
         }.addDisposableTo(self.disposeBag)
         return headerView
     }
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
     }
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "恒温设定"
     }
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath){
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath){
     }
 
-    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        let model = self.temperatureArray[indexPath.row]
-        let editAction = UITableViewRowAction(style: .Default, title: "编辑") {
-           (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let model = self.temperatureArray[(indexPath as NSIndexPath).row]
+        let editAction = UITableViewRowAction(style: .default, title: "编辑") {
+           (action: UITableViewRowAction!, indexPath: IndexPath!) -> Void in
             let vc = R.nib.temperatureViewController.firstView(owner: nil, options: nil)!
             vc.model = model
-            self.navigationController?.presentViewController(vc, animated: true, completion: nil)
+            self.navigationController?.present(vc, animated: true, completion: nil)
         }
-        let deleteAction = UITableViewRowAction(style: .Default, title: "删除") {[unowned self]
-            (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
+        let deleteAction = UITableViewRowAction(style: .default, title: "删除") {[unowned self]
+            (action: UITableViewRowAction!, indexPath: IndexPath!) -> Void in
             model.delete()
-            self.temperatureArray.removeAtIndex(indexPath.row)
+            self.temperatureArray.remove(at: indexPath.row)
             self.tableView.reloadData()
         }
         editAction.backgroundColor = Colors.black
@@ -200,10 +200,10 @@ extension CupViewController {
     func setUpCentral() {
         self.central = CBCentralManager(delegate: self, queue: nil)
     }
-    override func scanForPeripherals(central: CBCentralManager) {
-        if let staticIdentifier = staticIdentifier, identifier = NSUUID(UUIDString: staticIdentifier) {
-            self.durationTimer = NSTimer.scheduledTimerWithTimeInterval(15, target: self, selector: #selector(durationTimerElapsed), userInfo: nil, repeats: false)
-            let peripherals = self.central.retrievePeripheralsWithIdentifiers([identifier])
+    override func scanForPeripherals(_ central: CBCentralManager) {
+        if let staticIdentifier = staticIdentifier, let identifier = UUID(uuidString: staticIdentifier) {
+            self.durationTimer = Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(durationTimerElapsed), userInfo: nil, repeats: false)
+            let peripherals = self.central.retrievePeripherals(withIdentifiers: [identifier])
             if peripherals.count > 0 {
                 didDiscoverPeripheral(peripherals[0])
             }
@@ -211,37 +211,37 @@ extension CupViewController {
             alterCentralViewController()
         }
     }
-    @objc private func durationTimerElapsed() {
+    @objc fileprivate func durationTimerElapsed() {
         self.durationTimer?.invalidate()
         self.durationTimer = nil
         if self.characteristic.value == nil {
-            let alertController = UIAlertController(title: "找不到之前设定的蓝牙的设备，是否要重新扫描，设定蓝牙设备", message: nil, preferredStyle: .Alert)
-            let okAction = UIAlertAction(title: "是", style: UIAlertActionStyle.Default){
+            let alertController = UIAlertController(title: "找不到之前设定的蓝牙的设备，是否要重新扫描，设定蓝牙设备", message: nil, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "是", style: UIAlertActionStyle.default){
                 (action: UIAlertAction!) -> Void in
                 self.navigationController?.pushViewController(CentralViewController(), animated: true)
             }
-            let cancelAction = UIAlertAction(title: "否", style: .Cancel, handler: nil)
+            let cancelAction = UIAlertAction(title: "否", style: .cancel, handler: nil)
             alertController.addAction(okAction)
             alertController.addAction(cancelAction)
-            presentViewController(alertController, animated: true, completion: nil)
+            present(alertController, animated: true, completion: nil)
             
         }
     }
     
-    override func didDiscoverPeripheral(peripheral: CBPeripheral) {
-        if peripheral.identifier.UUIDString == staticIdentifier {
+    override func didDiscoverPeripheral(_ peripheral: CBPeripheral) {
+        if peripheral.identifier.uuidString == staticIdentifier {
             self.peripheral = peripheral
-            self.central.connectPeripheral(peripheral, options: nil)
+            self.central.connect(peripheral, options: nil)
             self.central.stopScan()
         }
     }
-    override func didDiscoverCharacteristicsForService(characteristic: CBCharacteristic) {
-        if characteristic.properties.contains([.Notify]) {
-            self.peripheral?.setNotifyValue(true, forCharacteristic: characteristic)
+    override func didDiscoverCharacteristicsForService(_ characteristic: CBCharacteristic) {
+        if characteristic.properties.contains([.notify]) {
+            self.peripheral?.setNotifyValue(true, for: characteristic)
         }
-        if characteristic.properties.contains([.Write]) {
+        if characteristic.properties.contains([.write]) {
             self.characteristic.value = characteristic
-            self.timer = NSTimer.scheduledTimerWithTimeInterval(60*5, target: self, selector: #selector(askTemperature), userInfo: nil, repeats: true)
+            self.timer = Timer.scheduledTimer(timeInterval: 60*5, target: self, selector: #selector(askTemperature), userInfo: nil, repeats: true)
             self.timer?.fire()
             //连接通过之后，发送一下。让杯子叫一下
             let data = NSMutableData()
@@ -251,7 +251,7 @@ extension CupViewController {
             data.ks.appendUInt16(0x00)
             data.ks.appendUInt8(0x11)
             data.ks.appendUInt8(0x0a)
-            self.peripheral?.writeValue(data, forCharacteristic: characteristic, type: .WithResponse)
+            self.peripheral?.writeValue(data as Data, for: characteristic, type: .withResponse)
         }
     }
     
@@ -260,20 +260,20 @@ extension CupViewController {
             return [CBUUID(string: "FFE0"),CBUUID(string: "FFE5")]
         }
     }
-    override func characteristicUUIDs(service: CBUUID) -> [CBUUID]? {
+    override func characteristicUUIDs(_ service: CBUUID) -> [CBUUID]? {
         //监听的通道
-        if service.UUIDString == "FFE0" {
+        if service.uuidString == "FFE0" {
             return [CBUUID(string: "FFE4")]
-        }else  if service.UUIDString == "FFE5" {
+        }else  if service.uuidString == "FFE5" {
             return [CBUUID(string: "FFE9")]
         }
         return nil
     }
-    func peripheral(peripheral: CBPeripheral, didUpdateValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
+    func peripheral(_ peripheral: CBPeripheral, didUpdateValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
         guard let data = characteristic.value else {
             return
         }
-        let bytes = UnsafePointer<UInt8>(data.bytes)
+        let bytes = (data as NSData).bytes.bindMemory(to: UInt8.self, capacity: data.count)
         guard  bytes[0] == 0x3a else {
             return
         }
@@ -288,13 +288,13 @@ extension CupViewController {
             let temperature = self.temperatureArray[selectedIndex].temperature
             self.headerView?.meTemperaturelabel.text = "\(temperature)"
             self.headerView?.meExplanation.text = self.temperatureArray[selectedIndex].explanation
-            if let text = self.headerView?.cupTemperaturelabel.text,cupTemperature = Int(text) {
+            if let text = self.headerView?.cupTemperaturelabel.text,let cupTemperature = Int(text) {
                 if abs(cupTemperature - temperature) <= 1 {
                     //self.headerView?.cupTemperatureImageView.image = R.image.已恒温()
-                    let alertController = UIAlertController(title: "亲! 水温已到达最适宜度数!", message: "请及时享用哦。", preferredStyle: .Alert)
-                    let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default, handler: nil)
+                    let alertController = UIAlertController(title: "亲! 水温已到达最适宜度数!", message: "请及时享用哦。", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.default, handler: nil)
                     alertController.addAction(okAction)
-                    presentViewController(alertController, animated: true, completion: nil)
+                    present(alertController, animated: true, completion: nil)
                 }else{
                     //self.headerView?.cupTemperatureImageView.image = R.image.恒温中()
                 }
@@ -309,7 +309,7 @@ extension CupViewController {
                 endRefreshing()
             }
             var cupTemperature: UInt16 = 0
-            data.getBytes(&cupTemperature, range: NSMakeRange(2,2))
+            (data as NSData).getBytes(&cupTemperature, range: NSMakeRange(2,2))
             cupTemperature =  (cupTemperature / 10)
             self.headerView?.cupTemperaturelabel.text = "\(cupTemperature)"
             guard let selectedIndex = self.selectedIndex else {
@@ -318,48 +318,48 @@ extension CupViewController {
             let temperature = self.temperatureArray[selectedIndex].temperature
             if abs(Int(cupTemperature) - temperature) <= 1  {
 //                self.headerView?.cupTemperatureImageView.image = R.image.已恒温()
-                let alertController = UIAlertController(title: "亲! 水温已到达最适宜度数!", message: "请及时享用哦。", preferredStyle: .Alert)
-                let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.Default, handler: nil)
+                let alertController = UIAlertController(title: "亲! 水温已到达最适宜度数!", message: "请及时享用哦。", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.default, handler: nil)
                 alertController.addAction(okAction)
-                presentViewController(alertController, animated: true, completion: nil)
+                present(alertController, animated: true, completion: nil)
             }
         }
     }
     
-    func centralManager(central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: NSError?)
+    func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: NSError?)
     {
         self.timer?.invalidate()
         self.timer = nil
         self.durationTimer?.invalidate()
         self.durationTimer = nil
         if let _ = error {
-            self.central.connectPeripheral(peripheral, options: nil)
+            self.central.connect(peripheral, options: nil)
         }
     }
     func alterCentralViewController() {
-        let alertController = UIAlertController(title: "您还没有关联水杯设备,是否现在进行关联", message: nil, preferredStyle: .Alert)
-        let okAction = UIAlertAction(title: "是", style: UIAlertActionStyle.Default){
+        let alertController = UIAlertController(title: "您还没有关联水杯设备,是否现在进行关联", message: nil, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "是", style: UIAlertActionStyle.default){
             (action: UIAlertAction!) -> Void in
             self.navigationController?.pushViewController(CentralViewController(), animated: true)
         }
-        let cancelAction = UIAlertAction(title: "否", style: .Cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "否", style: .cancel, handler: nil)
         alertController.addAction(okAction)
         alertController.addAction(cancelAction)
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
         
     }
     func sendTemperature() {
-        if let characteristic = self.characteristic.value, selectedIndex = self.selectedIndex {
+        if let characteristic = self.characteristic.value, let selectedIndex = self.selectedIndex {
             let data = NSMutableData()
             data.ks.appendUInt8(0x3a)
             data.ks.appendUInt8(0x01)
             var val = UInt16(self.temperatureArray[selectedIndex].temperature * 10)
-            data.appendBytes(&val, length: sizeofValue(val))
+            data.append(&val, length: MemoryLayout.size(ofValue: val))
             data.ks.appendUInt16(0x00)
-            let bytes = UnsafePointer<UInt8>(data.bytes)
+            let bytes = data.bytes.bindMemory(to: UInt8.self, capacity: data.length)
             data.ks.appendUInt8(bytes[1] + bytes[2] + bytes[3] + bytes[4] + bytes[5])
             data.ks.appendUInt8(0x0a)
-            self.peripheral?.writeValue(data, forCharacteristic: characteristic, type: .WithResponse)
+            self.peripheral?.writeValue(data as Data, for: characteristic, type: .withResponse)
         }
     }
     func askTemperature() {
@@ -371,7 +371,7 @@ extension CupViewController {
             data.ks.appendUInt16(0x00)
             data.ks.appendUInt8(0x02)
             data.ks.appendUInt8(0x0a)
-            self.peripheral?.writeValue(data, forCharacteristic: characteristic, type: .WithResponse)
+            self.peripheral?.writeValue(data as Data, for: characteristic, type: .withResponse)
         }
         refreshControl?.attributedTitle = NSAttributedString(string: "刷新中")
     }

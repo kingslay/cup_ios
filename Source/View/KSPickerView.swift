@@ -8,9 +8,9 @@
 
 import UIKit
 
-public class KSPickerView: UIPickerView ,UIPickerViewDataSource, UIPickerViewDelegate {
-    public var callBackBlock: ([Int] -> Void)?
-    public var pickerData  = [[]]{
+open class KSPickerView: UIPickerView ,UIPickerViewDataSource, UIPickerViewDelegate {
+    open var callBackBlock: (([Int]) -> Void)?
+    open var pickerData  = [[]]{
         didSet(newValue){
             self.dataSource = self
             self.delegate = self
@@ -19,23 +19,23 @@ public class KSPickerView: UIPickerView ,UIPickerViewDataSource, UIPickerViewDel
         }
     }
     // MARK - Picker delegate
-    public func pickerView(_pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    open func pickerView(_ _pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerData[component].count
     }
     
-    public func numberOfComponentsInPickerView(_pickerView: UIPickerView) -> Int {
+    open func numberOfComponents(in _pickerView: UIPickerView) -> Int {
         return pickerData.count
     }
     
     
-    public func pickerView(_pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    open func pickerView(_ _pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickerData[component][row] as? String
     }
-    public func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    open func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if callBackBlock != nil {
             var result: [Int] = []
             (0..<pickerView.numberOfComponents).forEach{
-                result.append(pickerView.selectedRowInComponent($0))
+                result.append(pickerView.selectedRow(inComponent: $0))
             }
             callBackBlock!(result)
         }

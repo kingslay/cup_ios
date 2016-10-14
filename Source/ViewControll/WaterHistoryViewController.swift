@@ -10,17 +10,18 @@ import UIKit
 import Charts
 import KSJSONHelp
 import KSSwiftExtension
+
 class WaterHistoryViewController: ShareViewController {
     let segmented = UISegmentedControl(items: ["日","周","月"])
     let tableView = UITableView()
-    var currentDate = NSDate()
-    var waterplan = CGFloat(staticAccount?.waterplan?.floatValue ?? staticAccount!.calculateProposalWater())
+    var currentDate = Date()
+    var waterplan = CGFloat(staticAccount?.waterplan?.intValue ?? staticAccount!.calculateProposalWater())
     var dataSource = [WaterModel]() {
         didSet{
             var xVals = [String?]()
             var yVals = [BarChartDataEntry]()
             var water = 0
-            for (index,model) in dataSource.enumerate() {
+            for (index,model) in dataSource.enumerated() {
                 switch segmented.selectedSegmentIndex {
                 case 0:
                     xVals.append("\(model.hour.ks.format("%02d")):\(model.minute.ks.format("%02d"))")
@@ -42,11 +43,11 @@ class WaterHistoryViewController: ShareViewController {
 //        segmented.frame = CGRect(x: 10, y: 10, width: self.view.ks.width-20, height: 20)
         //        self.view.addSubview(segmented)
         segmented.ks.width(self.view.ks.width)
-        segmented.addTarget(self, action: #selector(valueChanged), forControlEvents: .ValueChanged)
+        segmented.addTarget(self, action: #selector(valueChanged), for: .valueChanged)
         segmented.selectedSegmentIndex = 0
         self.navigationItem.titleView = segmented
         self.view.addSubview(tableView)
-        tableView.registerNib(R.nib.waterHistoryTableViewCell)
+        tableView.register(R.nib.waterHistoryTableViewCell)
         self.tableView.rowHeight = 51
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -70,7 +71,7 @@ class WaterHistoryViewController: ShareViewController {
         self.tableView.tableFooterView = UIView()
         valueChanged(segmented)
     }
-    func valueChanged(seg: UISegmentedControl) {
+    func valueChanged(_ seg: UISegmentedControl) {
         switch seg.selectedSegmentIndex {
         case 0:
             dataSource = WaterModel.fetch(currentDate) ?? [WaterModel]()
@@ -100,62 +101,62 @@ class WaterHistoryViewController: ShareViewController {
     }
 }
 extension WaterHistoryViewController: UITableViewDataSource,UITableViewDelegate {
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.count
     }
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let model = dataSource[indexPath.row]
-        let cell = tableView.dequeueReusableCellWithIdentifier(R.nib.waterHistoryTableViewCell)!
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let model = dataSource[(indexPath as NSIndexPath).row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: R.nib.waterHistoryTableViewCell)!
         switch segmented.selectedSegmentIndex {
         case 0:
             cell.wateLabel.text = "喝了\(model.amount)ml"
             cell.timeLabel.text = "\(model.hour.ks.format("%02d")):\(model.minute.ks.format("%02d"))"
-            cell.wateRateLabel.hidden = true
+            cell.wateRateLabel.isHidden = true
         case 1,2:
             cell.wateLabel.text = "已喝了\(model.amount)ml"
             cell.timeLabel.text =
                 "\(model.date[5...6])月\(model.date[8...9])日"
             cell.wateRateLabel.text = "\(Int(CGFloat(model.amount)/waterplan*100))%"
-            cell.wateRateLabel.hidden = false
+            cell.wateRateLabel.isHidden = false
         default:
             break
         }
         return cell
     }
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
     }
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
         view.backgroundColor = Colors.white
         let label = UILabel(frame: CGRect(x: 15, y: 10, width: 0, height: 0))
         view.addSubview(label)
-        label.font = UIFont.systemFontOfSize(15)
+        label.font = UIFont.systemFont(ofSize: 15)
         label.textColor = Colors.red
         switch segmented.selectedSegmentIndex {
         case 0:
-            label.text = currentDate.ks.stringFromFormat("yyyy年MM月dd日")
+            label.text = currentDate.ks.string(fromFormat:"yyyy年MM月dd日")
         case 1,2:
-            label.text = currentDate.ks.stringFromFormat("yyyy年")
+            label.text = currentDate.ks.string(fromFormat:"yyyy年")
         default:
             break
         }
         label.sizeToFit()
         return view
     }
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath){
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath){
     }
 
-    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        let model = dataSource[indexPath.row]
-        let deleteAction = UITableViewRowAction(style: .Default, title: "删除") {[unowned self]
-            (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let model = dataSource[(indexPath as NSIndexPath).row]
+        let deleteAction = UITableViewRowAction(style: .default, title: "删除") {[unowned self]
+            (action: UITableViewRowAction!, indexPath: IndexPath!) -> Void in
             if self.segmented.selectedSegmentIndex == 1 {
                 model.delete()
             } else {
                 WaterModel.delete(dic: ["date":model.date])
             }
-            self.dataSource.removeAtIndex(indexPath.row)
+            self.dataSource.remove(at: indexPath.row)
             self.tableView.reloadData()
         }
         deleteAction.backgroundColor = Colors.red

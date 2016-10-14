@@ -16,12 +16,12 @@ class ClockTableViewController: UITableViewController {
     let tableHeaderView = R.nib.clockHeaderView.firstView(owner: nil)!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.registerNib(R.nib.clockTableViewCell)
+        self.tableView.register(R.nib.clockTableViewCell)
         self.tableView.backgroundColor = Colors.background
         self.tableView.rowHeight = 92
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: R.image.icon_add(), style: .Plain, target: self, action: #selector(addClock))
-        tableHeaderView.openSwitch.on = !close.value
-        tableHeaderView.openSwitch.rx_value.subscribeNext { [unowned self] in
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: R.image.icon_add(), style: .plain, target: self, action: #selector(addClock))
+        tableHeaderView.openSwitch.isOn = !close.value
+        tableHeaderView.openSwitch.rx.value.subscribeNext { [unowned self] in
             if $0 {
                 self.tableHeaderView.clockImageView.image = R.image.icon_clockRemind2()
             } else {
@@ -33,11 +33,11 @@ class ClockTableViewController: UITableViewController {
             }.addDisposableTo(self.ks.disposableBag)
         self.tableView.tableFooterView = UIView()
         self.tableView.allowsSelection = false
-         UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Badge,.Sound,.Alert], categories: nil))
+         UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.badge,.sound,.alert], categories: nil))
         //        let fittingSize = tableHeaderView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
 
     }
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableHeaderView.ks.height(218)
         self.tableView.tableHeaderView = tableHeaderView
@@ -53,18 +53,18 @@ class ClockTableViewController: UITableViewController {
 }
 extension ClockTableViewController {
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return clockArray.count
     }
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(R.nib.clockTableViewCell)!
-        let clockModel = clockArray[indexPath.row]
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: R.nib.clockTableViewCell)!
+        let clockModel = clockArray[(indexPath as NSIndexPath).row]
         cell.timeTextField.text = clockModel.description
         cell.explanationLabel.text = clockModel.explanation
-        cell.openSwitch.rx_value.skip(1).subscribeNext { (on) in
+        cell.openSwitch.rx.value.skip(1).subscribeNext { (on) in
             if on {
                 clockModel.addUILocalNotification()
             } else {
@@ -76,24 +76,24 @@ extension ClockTableViewController {
         if close.value {
             cell.timeTextField.textColor = Colors.black
             cell.explanationLabel.textColor = Colors.black
-            cell.openSwitch.on = false
+            cell.openSwitch.isOn = false
         } else {
             cell.timeTextField.textColor = Colors.pink
             cell.explanationLabel.textColor = Colors.pink
-            cell.openSwitch.on = clockModel.open
+            cell.openSwitch.isOn = clockModel.open
         }
         return cell
     }
 
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath){
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath){
     }
 
-    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        let model = self.clockArray[indexPath.row]
-        let deleteAction = UITableViewRowAction(style: .Default, title: "删除") {[unowned self]
-            (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let model = self.clockArray[(indexPath as NSIndexPath).row]
+        let deleteAction = UITableViewRowAction(style: .default, title: "删除") {[unowned self]
+            (action: UITableViewRowAction!, indexPath: IndexPath!) -> Void in
             model.delete()
-            self.clockArray.removeAtIndex(indexPath.row)
+            self.clockArray.remove(at: indexPath.row)
             self.tableView.reloadData()
         }
         deleteAction.backgroundColor = Colors.red

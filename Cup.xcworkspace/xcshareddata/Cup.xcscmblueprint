@@ -4,15 +4,17 @@
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "87597356858E822CE96DEA6495A02DD65AB7D33E" : 0,
     "731AFC2B5E33619E69888F33EE46193A074C0330" : 0,
-    "50EED7DC32D469B465061A2045DC53E422C92B54" : 0
+    "50EED7DC32D469B465061A2045DC53E422C92B54" : 0,
+    "9025163822AAEA7A2D8AC9210D0874A56F62B462" : 9223372036854775807,
+    "87597356858E822CE96DEA6495A02DD65AB7D33E" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "4BD32423-6A0F-4084-8CD0-48082F4CC814",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "87597356858E822CE96DEA6495A02DD65AB7D33E" : "KSJSONHelp\/",
     "731AFC2B5E33619E69888F33EE46193A074C0330" : "Cup\/",
-    "50EED7DC32D469B465061A2045DC53E422C92B54" : "KSSwiftExtension\/"
+    "50EED7DC32D469B465061A2045DC53E422C92B54" : "KSSwiftExtension\/",
+    "9025163822AAEA7A2D8AC9210D0874A56F62B462" : "Charts\/",
+    "87597356858E822CE96DEA6495A02DD65AB7D33E" : "KSJSONHelp\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "Cup",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -32,6 +34,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/kingslay\/KSJSONHelp.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "87597356858E822CE96DEA6495A02DD65AB7D33E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/danielgindi\/Charts.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9025163822AAEA7A2D8AC9210D0874A56F62B462"
     }
   ]
 }

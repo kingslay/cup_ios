@@ -23,9 +23,9 @@ class WaterModel: NSObject,Model,Storable,PrimaryKeyProtocol {
     static func primaryKeys() -> Set<String> {
         return ["date","hour","minute","second"]
     }
-    static func save(date: NSDate,amount: Int) {
+    static func save(_ date: Date,amount: Int) {
         let model = WaterModel()
-        model.date = date.ks.stringFromFormat("yyyy-MM-dd")
+        model.date = date.ks.string(fromFormat:"yyyy-MM-dd")
         model.weekOfYear = date.weekOfYear
         model.hour = date.hour
         model.minute = date.minute
@@ -34,12 +34,13 @@ class WaterModel: NSObject,Model,Storable,PrimaryKeyProtocol {
         model.save()
     }
     ///0:日,1:周,2:月
-    static func fetch(date: NSDate,type:Int=0) -> [WaterModel]? {
+    static func fetch(_ date: Date,type:Int=0) -> [WaterModel]? {
         if type == 0 {
-            return WaterModel.fetch(["date":date.ks.stringFromFormat("yyyy-MM-dd")])
+            let dic = ["date": date.ks.string(fromFormat:"yyyy-MM-dd")]
+            return WaterModel.fetch(dic: dic)
         } else {
             let beginDate = date - (type == 1 ? 7.days : 30.days)
-            let filter = CompositeFilter().greater("date", value: beginDate.ks.stringFromFormat("yyyy-MM-dd")).lessOrEqual("date",value:date.ks.stringFromFormat("yyyy-MM-dd"))
+            let filter = CompositeFilter().greater("date", value: beginDate.ks.string(fromFormat:"yyyy-MM-dd")).lessOrEqual("date",value:date.ks.string(fromFormat:"yyyy-MM-dd"))
             return WaterModel.fetch(filter)
         }
     }

@@ -20,7 +20,7 @@ class ClockCollectionViewController: UICollectionViewController {
     
     lazy var navigationAccessoryView : NavigationAccessoryView = {
         [unowned self] in
-        let naview = NavigationAccessoryView(frame: CGRectMake(0, 0, self.view.frame.width, 44.0))
+        let naview = NavigationAccessoryView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44.0))
         naview.doneButton.target = self
         naview.doneButton.action = #selector(navigationDone)
         return naview
@@ -31,29 +31,29 @@ class ClockCollectionViewController: UICollectionViewController {
     }
     //MARK: UIScrollViewDelegate
     
-    override func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         self.view.endEditing(true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView?.backgroundColor = Colors.background
-        self.collectionView?.registerNib(R.nib.clockCollectionViewCell)
-        self.collectionView?.registerNib(R.nib.clockCollectionHeaderView, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader)
+        self.collectionView?.register(R.nib.clockCollectionViewCell)
+        self.collectionView?.register(R.nib.clockCollectionHeaderView, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader)
         clockArray = ClockModel.getClocks()
         let flowLayout  = self.collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
-        flowLayout.headerReferenceSize = CGSizeMake(KS.SCREEN_WIDTH, 204)
+        flowLayout.headerReferenceSize = CGSize(width: KS.SCREEN_WIDTH, height: 204)
         let width = KS.SCREEN_WIDTH/3
         var height = (self.view.ks.height - 108 - 204)/3
         if height < 80 {
             height = 80
         }else{
-            self.collectionView?.scrollEnabled = false
+            self.collectionView?.isScrollEnabled = false
         }
-        flowLayout.itemSize = CGSizeMake(width,height)
+        flowLayout.itemSize = CGSize(width: width,height: height)
         flowLayout.minimumInteritemSpacing = 0
         flowLayout.minimumLineSpacing = 0
-        UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Badge,.Sound,.Alert], categories: nil))
+        UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.badge,.sound,.alert], categories: nil))
     }
     
     override func didReceiveMemoryWarning() {
@@ -64,23 +64,23 @@ class ClockCollectionViewController: UICollectionViewController {
 }
 // MARK: UICollectionViewDataSource
 extension ClockCollectionViewController {
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
         return self.clockArray.count
     }
     
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(R.nib.clockCollectionViewCell, forIndexPath: indexPath)!
-        let clockModel = clockArray[indexPath.row]
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.nib.clockCollectionViewCell, for: indexPath)!
+        let clockModel = clockArray[(indexPath as NSIndexPath).row]
         cell.timeTextField.text = clockModel.description
-        cell.openSwitch.on = clockModel.open
-        cell.openSwitch.rx_value.skip(1).subscribeNext { [unowned self] (on) in
+        cell.openSwitch.isOn = clockModel.open
+        cell.openSwitch.rx.value.skip(1).subscribeNext { [unowned self] (on) in
             if on {
                 clockModel.addUILocalNotification()
             } else {
@@ -91,34 +91,29 @@ extension ClockCollectionViewController {
         }.addDisposableTo(cell.disposeBag)
         cell.timeTextField.inputAccessoryView = navigationAccessoryView
         let datePicker = UIDatePicker()
-        datePicker.datePickerMode = .Time
+        datePicker.datePickerMode = .time
         cell.timeTextField.inputView = datePicker
-        datePicker.rx_controlEvent(.ValueChanged).subscribeNext{ [unowned cell,unowned datePicker] in
-            let on = cell.openSwitch.on
+        datePicker.rx.controlEvent(.valueChanged).subscribeNext{ [unowned cell,unowned datePicker] in
+            let on = cell.openSwitch.isOn
             if on {
                 clockModel.removeUILocalNotification()
             }
-            let components = datePicker.date.components(inRegion: Region())
-            clockModel.hour = components.hour
-            clockModel.minute = components.minute
+            clockModel.hour = datePicker.date.hour
+            clockModel.minute = datePicker.date.minute
             if on {
                 clockModel.addUILocalNotification()
             }
             cell.timeTextField.text = clockModel.description
         }.addDisposableTo(cell.ks.prepareForReusedisposableBag)
-        let components = NSDate().components
-        components.timeZone = NSTimeZone.localTimeZone()
-        components.hour = clockModel.hour
-        components.minute = clockModel.minute
-        datePicker.date = components.date!
+        datePicker.date = clockModel.date
         return cell
     }
     
-    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: R.nib.clockCollectionHeaderView, forIndexPath: indexPath)!
-        let view = UIView(frame: CGRectMake(0,header.ks.height ,self.view.ks.width,self.view.ks.height))
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: R.nib.clockCollectionHeaderView, for: indexPath)!
+        let view = UIView(frame: CGRect(x: 0,y: header.ks.height ,width: self.view.ks.width,height: self.view.ks.height))
         view.alpha = 0.5
-        view.backgroundColor = UIColor.blackColor()
+        view.backgroundColor = UIColor.black
         self.close.asObservable().subscribeNext{ [unowned self]  in
             if $0 {
                 view.ks.top(header.ks.height - collectionView.contentOffset.y)
@@ -129,13 +124,13 @@ extension ClockCollectionViewController {
             }.addDisposableTo(disposeBag)
         let tapGestureRecognizer = UITapGestureRecognizer()
         header.addGestureRecognizer(tapGestureRecognizer)
-        tapGestureRecognizer.rx_event.subscribeNext{ [unowned self] _ in
+        tapGestureRecognizer.rx.event.subscribeNext{ [unowned self] _ in
           self.view.endEditing(true)
             self.close.value = !self.close.value
             ClockModel.close = self.close.value
             if  self.close.value {
                 self.ks.noticeOnlyText("闹钟功能已禁用")
-                UIApplication.sharedApplication().cancelAllLocalNotifications()
+                UIApplication.shared.cancelAllLocalNotifications()
             }else{
                 self.ks.noticeOnlyText("闹钟功能已开启")
             }
@@ -147,7 +142,7 @@ extension ClockCollectionViewController {
             }.addDisposableTo(disposeBag)
         return header
     }
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     }
 }
 

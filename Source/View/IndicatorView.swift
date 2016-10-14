@@ -8,14 +8,14 @@
 
 import UIKit
 import KSSwiftExtension
-public class IndicatorView: UIView {
+open class IndicatorView: UIView {
     let ovalLayer = CAShapeLayer()
     var ovalPathSmall: UIBezierPath {
-        return UIBezierPath(ovalInRect: CGRect(x: self.ks.centerX, y: self.ks.centerY, width: 0.0, height: 0.0))
+        return UIBezierPath(ovalIn: CGRect(x: self.ks.centerX, y: self.ks.centerY, width: 0.0, height: 0.0))
     }
     
     var ovalPathLarge: UIBezierPath {
-        return UIBezierPath(ovalInRect: CGRect(x: self.ks.centerX-100, y: self.ks.centerY-100, width: 200, height: 200))
+        return UIBezierPath(ovalIn: CGRect(x: self.ks.centerX-100, y: self.ks.centerY-100, width: 200, height: 200))
     }
 
     override init(frame: CGRect) {
@@ -23,7 +23,7 @@ public class IndicatorView: UIView {
         self.backgroundColor = Colors.white
         let label1 = UILabel()
         label1.text = "搜索智能水杯"
-        label1.font = UIFont.systemFontOfSize(23)
+        label1.font = UIFont.systemFont(ofSize: 23)
         label1.sizeToFit()
         label1.textColor = Colors.red
         self.addSubview(label1)
@@ -33,7 +33,7 @@ public class IndicatorView: UIView {
         }
         let label2 = UILabel()
         label2.text = "请将手机靠近智能水杯"
-        label2.font = UIFont.systemFontOfSize(12)
+        label2.font = UIFont.systemFont(ofSize: 12)
         label2.sizeToFit()
         label2.textColor = Colors.red
         self.addSubview(label2)
@@ -50,8 +50,8 @@ public class IndicatorView: UIView {
             make.height.equalTo(5)
         }
         circularView.layer.cornerRadius = 2.5
-        ovalLayer.fillColor = Swifty<UIColor>.colorFrom("#f4bdba").CGColor
-        ovalLayer.path = ovalPathSmall.CGPath
+        ovalLayer.fillColor = Swifty<UIColor>.colorFrom("#f4bdba").cgColor
+        ovalLayer.path = ovalPathSmall.cgPath
         ovalLayer.opacity = 0.1
     }
 
@@ -59,23 +59,23 @@ public class IndicatorView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public func startAnimating()
+    open func startAnimating()
     {
-        self.hidden = false
+        self.isHidden = false
         self.layer.addSublayer(ovalLayer)
         let expandAnimation: CABasicAnimation = CABasicAnimation(keyPath: "path")
-        expandAnimation.fromValue = ovalPathSmall.CGPath
-        expandAnimation.toValue = ovalPathLarge.CGPath
+        expandAnimation.fromValue = ovalPathSmall.cgPath
+        expandAnimation.toValue = ovalPathLarge.cgPath
         expandAnimation.duration = 2
         expandAnimation.fillMode = kCAFillModeForwards
-        expandAnimation.removedOnCompletion = true
+        expandAnimation.isRemovedOnCompletion = true
         expandAnimation.repeatCount = 1000
-        ovalLayer.addAnimation(expandAnimation, forKey: nil)
+        ovalLayer.add(expandAnimation, forKey: nil)
 
     }
-    public func stopAnimating()
+    open func stopAnimating()
     {
-        self.hidden = true
+        self.isHidden = true
         ovalLayer.removeAllAnimations()
     }
 

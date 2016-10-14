@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Gifu
+//import Gifu
 class KSGuidanceViewController: UIViewController {
     
     var scrollView:  UIScrollView!
@@ -24,9 +24,9 @@ class KSGuidanceViewController: UIViewController {
         scrollView.frame = self.view.bounds
         scrollView.delegate = self
         
-        scrollView.contentSize = CGSizeMake(frame.size.width * CGFloat(numOfPages), frame.size.height)
+        scrollView.contentSize = CGSize(width: frame.size.width * CGFloat(numOfPages), height: frame.size.height)
         
-        scrollView.pagingEnabled = true
+        scrollView.isPagingEnabled = true
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
         scrollView.scrollsToTop = false
@@ -36,22 +36,22 @@ class KSGuidanceViewController: UIViewController {
         }
         for i in 0..<numOfPages {
             
-            let imageView = AnimatableImageView(frame: CGRect(x: frame.size.width * CGFloat(i), y: 0, width: frame.size.width, height: frame.size.height))
-            imageView.animateWithImage(named: "\(i + count).gif")
-            scrollView.addSubview(imageView)
+//            let imageView = AnimatableImageView(frame: CGRect(x: frame.size.width * CGFloat(i), y: 0, width: frame.size.width, height: frame.size.height))
+//            imageView.animateWithImage(named: "\(i + count).gif")
+//            scrollView.addSubview(imageView)
         }
         
-        scrollView.contentOffset = CGPointZero
+        scrollView.contentOffset = CGPoint.zero
         
         self.view.addSubview(scrollView)
         
         startButton.alpha = 0.0
         
         // 将这两个控件拿到视图的最上面
-        self.view.bringSubviewToFront(pageControl)
-        self.view.bringSubviewToFront(startButton)
-        self.startButton.rx_tap.subscribeNext{
-            UIApplication.sharedApplication().keyWindow?.rootViewController =  R.storyboard.sMS.initialViewController()
+        self.view.bringSubview(toFront: pageControl)
+        self.view.bringSubview(toFront: startButton)
+        self.startButton.rx.tap.subscribeNext{
+            UIApplication.shared.keyWindow?.rootViewController =  R.storyboard.sMS.instantiateInitialViewController()
         }.addDisposableTo(self.ks.disposableBag)
     }
 
@@ -64,22 +64,22 @@ class KSGuidanceViewController: UIViewController {
 // MARK: - UIScrollViewDelegate
 extension KSGuidanceViewController: UIScrollViewDelegate {
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offset = scrollView.contentOffset
         // 随着滑动改变pageControl的状态
         pageControl.currentPage = Int(offset.x / view.bounds.width)
         // 因为currentPage是从0开始，所以numOfPages减1
         if pageControl.currentPage == numOfPages - 1 {
             
-            UIView.animateWithDuration(0.5) {
+            UIView.animate(withDuration: 0.5, animations: {
                 self.startButton.alpha = 1.0
-            }
+            }) 
             
         } else {
             
-            UIView.animateWithDuration(0.5) {
+            UIView.animate(withDuration: 0.5, animations: {
                 self.startButton.alpha = 0.0
-            }
+            }) 
         }
     }
 }
