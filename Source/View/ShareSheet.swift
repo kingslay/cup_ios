@@ -33,7 +33,7 @@ open class ShareSheet: UIView {
         shareSrollView.contentSize = CGSize(width: 320, height: 88)
     }
     open func showIn(_ view: UIView) {
-        image = Swifty<UIImage>.imageFrom(view)
+        image = UIImage.ks.imageFrom(view)
         self.frame = view.bounds
         if shareSrollView.ks.width > shareSrollView.contentSize.width {
             shareSrollView.ks.size(shareSrollView.contentSize)

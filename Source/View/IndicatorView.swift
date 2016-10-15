@@ -42,7 +42,7 @@ open class IndicatorView: UIView {
             make.top.equalTo(label1.snp.bottom).offset(20)
         }
         let circularView = UIView()
-        circularView.backgroundColor = Swifty<UIColor>.colorFrom("#e7716b")
+        circularView.backgroundColor = UIColor.ks.colorFrom("#e7716b")
         self.addSubview(circularView)
         circularView.snp.makeConstraints { (make) -> Void in
             make.center.equalTo(self)
@@ -50,7 +50,7 @@ open class IndicatorView: UIView {
             make.height.equalTo(5)
         }
         circularView.layer.cornerRadius = 2.5
-        ovalLayer.fillColor = Swifty<UIColor>.colorFrom("#f4bdba").cgColor
+        ovalLayer.fillColor = UIColor.ks.colorFrom("#f4bdba").cgColor
         ovalLayer.path = ovalPathSmall.cgPath
         ovalLayer.opacity = 0.1
     }

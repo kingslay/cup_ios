@@ -106,7 +106,7 @@ class WaterCycleView: UIView {
     fileprivate let batteryRateLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         label.textAlignment = .center
-        label.textColor = Swifty<UIColor>.colorFrom("#7dd833")
+        label.textColor = UIColor.ks.colorFrom("#7dd833")
         label.font = UIFont.systemFont(ofSize: 15)
         label.text = "1234567890"
         label.sizeToFit()
@@ -116,7 +116,7 @@ class WaterCycleView: UIView {
     fileprivate let trackLayer: CAShapeLayer = {
         let layer = CAShapeLayer()
         layer.fillColor = UIColor.clear.cgColor
-        layer.strokeColor = Swifty<UIColor>.colorFrom("#ffd1d8").cgColor
+        layer.strokeColor = UIColor.ks.colorFrom("#ffd1d8").cgColor
         layer.lineCap = kCALineCapRound
         layer.lineWidth = 22
         return layer
@@ -212,14 +212,14 @@ class WaterCycleView: UIView {
     }
     func setUpGradientLayer() {
         let gradientLayer1 = CAGradientLayer()
-        gradientLayer1.colors = [Swifty<UIColor>.colorFrom("#da251c").cgColor,Swifty<UIColor>.colorFrom("#ff9958").cgColor]
+        gradientLayer1.colors = [UIColor.ks.colorFrom("#da251c").cgColor,UIColor.ks.colorFrom("#ff9958").cgColor]
         gradientLayer1.frame = CGRect(x: 0, y: frame.height-WaterCycleView.CycleHeight, width: self.ks.width/2, height: WaterCycleView.CycleHeight)
         gradientLayer1.locations = [0.5,0.9,1]
         gradientLayer1.startPoint = CGPoint(x: 0.5, y: 1)
         gradientLayer1.endPoint = CGPoint(x: 0.5, y: 0)
         gradientLayer.addSublayer(gradientLayer1)
         let gradientLayer2 = CAGradientLayer()
-        gradientLayer2.colors = [Swifty<UIColor>.colorFrom("#ff9958").cgColor,Swifty<UIColor>.colorFrom("#da251c").cgColor]
+        gradientLayer2.colors = [UIColor.ks.colorFrom("#ff9958").cgColor,UIColor.ks.colorFrom("#da251c").cgColor]
         gradientLayer2.frame = CGRect(x: self.ks.width/2, y: frame.height-WaterCycleView.CycleHeight, width: self.ks.width/2, height: WaterCycleView.CycleHeight)
         gradientLayer2.locations = [0.1,0.5,1]
         gradientLayer2.startPoint = CGPoint(x: 0.5, y: 0)

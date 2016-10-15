@@ -25,7 +25,7 @@ class SMSViewController: UIViewController {
     super.viewDidLoad()
     SMSSDK.registerApp("16ece37bd2580", withSecret: "3e403d5017a8b968bc86b461f1f9d543")
     self.view.backgroundColor = Colors.background
-    let image = Swifty<UIColor>.createImage(Colors.red)
+    let image = UIColor.ks.createImage(Colors.red)
     self.verificationButton.setBackgroundImage(image, for: UIControlState())
     self.loginButton.setBackgroundImage(image, for: UIControlState())
     self.loginButton.isEnabled = true

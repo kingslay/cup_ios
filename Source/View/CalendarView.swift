@@ -40,7 +40,7 @@ class CalendarView: UIView {
         topView.addSubview(dateButton)
         menuView.frame = CGRect(x: 0, y: topView.ks.bottom, width: frame.width, height: 24)
         addSubview(menuView)
-        menuView.backgroundColor = Swifty<UIColor>.colorFrom("#f5e1de")
+        menuView.backgroundColor = UIColor.ks.colorFrom("#f5e1de")
         calendarView.frame = CGRect(x: 0, y: menuView.ks.bottom, width: frame.width, height: frame.height-menuView.ks.bottom)
         addSubview(calendarView)
         calendarView.delegate = self
