@@ -86,7 +86,7 @@ class AccountModel: NSObject,Model,Storable {
     func calculateProposalWater() -> Int {
         var age = 18
         if let birthday = self.birthday,let year = Int(birthday[0..<4]) {
-            age = Date().year - year
+            age = Date().ks.year - year
         }
         var bmi = 2100/21.0
         if age < 10 {

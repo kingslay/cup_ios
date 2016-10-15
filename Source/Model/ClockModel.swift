@@ -8,7 +8,7 @@
 
 import UIKit
 import KSJSONHelp
-import SwiftDate
+
 class ClockModel: NSObject,Model,Storable,PrimaryKeyProtocol {
     var explanation:String = ""
     var hour:Int
@@ -40,7 +40,7 @@ class ClockModel: NSObject,Model,Storable,PrimaryKeyProtocol {
         if let localNotifications = UIApplication.shared.scheduledLocalNotifications {
             for localNotification in localNotifications {
                 if let fireDate = localNotification.fireDate {
-                    if fireDate.hour == self.hour && fireDate.minute == self.minute {
+                    if fireDate.ks.hour == self.hour && fireDate.ks.minute == self.minute {
                         UIApplication.shared.cancelLocalNotification(localNotification)
                         break
                     }

@@ -7,7 +7,8 @@
 //
 
 import UIKit
-//import Gifu
+import Gifu
+
 class KSGuidanceViewController: UIViewController {
     
     var scrollView:  UIScrollView!
@@ -35,10 +36,9 @@ class KSGuidanceViewController: UIViewController {
             count = 5
         }
         for i in 0..<numOfPages {
-            
-//            let imageView = AnimatableImageView(frame: CGRect(x: frame.size.width * CGFloat(i), y: 0, width: frame.size.width, height: frame.size.height))
-//            imageView.animateWithImage(named: "\(i + count).gif")
-//            scrollView.addSubview(imageView)
+            let imageView = GIFImageView(frame: CGRect(x: frame.size.width * CGFloat(i), y: 0, width: frame.size.width, height: frame.size.height))
+            imageView.animate(withGIFNamed: "\(i + count).gif")
+            scrollView.addSubview(imageView)
         }
         
         scrollView.contentOffset = CGPoint.zero

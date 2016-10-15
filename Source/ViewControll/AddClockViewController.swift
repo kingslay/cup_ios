@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SwiftDate
+
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
@@ -38,7 +38,7 @@ class AddClockViewController: UIViewController {
         self.ks.autoAdjustKeyBoard()
     }
     func complete() {
-        let model = ClockModel(hour:  datePicker.date.ks.dateComponents.hour!, minute: datePicker.date.ks.dateComponents.minute!)
+        let model = ClockModel(hour:  datePicker.date.ks.hour, minute: datePicker.date.ks.minute)
         if explanationTextField.text?.characters.count > 0 {
             model.explanation = explanationTextField.text!
         } else {
