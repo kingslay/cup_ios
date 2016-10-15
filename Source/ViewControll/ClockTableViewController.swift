@@ -65,11 +65,6 @@ extension ClockTableViewController {
         cell.timeTextField.text = clockModel.description
         cell.explanationLabel.text = clockModel.explanation
         cell.openSwitch.rx.value.skip(1).subscribe(onNext: { (on) in
-            if on {
-                clockModel.addUILocalNotification()
-            } else {
-                clockModel.removeUILocalNotification()
-            }
             clockModel.open = on
             clockModel.save()
             }).addDisposableTo(cell.ks.prepareForReusedisposableBag)

@@ -130,14 +130,13 @@ let credentialsPlugin = CredentialsPlugin {
 }
 let CupProvider = RxMoyaProvider<CupMoya>(endpointClosure:endpointClosure ,manager:CupMoya.sharedManager(), plugins: [credentialsPlugin])
 
-
 func uploadImage(_ imagePath:URL, headers: [String: String]? = nil){
     var dict = [String : String]()
     if headers != nil {
         dict = headers!
     }
     dict["accountid"] = "\(staticAccount!.accountid)"
-    CupProvider.request(.uploadImage(dict,[Moya.MultipartFormData(provider: .file(imagePath), name: "file")])).mapJSON().subscribe(onNext: { (data) -> Void in
+    _ = CupProvider.request(.uploadImage(dict,[Moya.MultipartFormData(provider: .file(imagePath), name: "file")])).mapJSON().subscribe(onNext: { (data) -> Void in
         if let json = data as? [String:Any],let url = json["url"] as? String {
             staticAccount?.avatar = url
         }

@@ -30,7 +30,7 @@ class ClockModel: NSObject,Model,Storable,PrimaryKeyProtocol {
         localNotification.repeatInterval = .day
         localNotification.alertBody = explanation
         localNotification.soundName = UILocalNotificationDefaultSoundName
-        localNotification.timeZone = TimeZone.autoupdatingCurrent
+        localNotification.timeZone = TimeZone.current
         localNotification.applicationIconBadgeNumber = 1
         UIApplication.shared.scheduleLocalNotification(localNotification)
         CupProvider.request(.clock(self.description)).subscribe(onNext: {_ in
@@ -56,13 +56,20 @@ class ClockModel: NSObject,Model,Storable,PrimaryKeyProtocol {
         dateComponents.minute = self.minute
         return NSCalendar.autoupdatingCurrent.date(from:dateComponents)!
     }
-
-    static func addClock(_ model: ClockModel) {
-        model.save()
-        if model.open {
-            model.addUILocalNotification()
+    public func save() {
+        Query().save(self)
+        if self.open {
+            self.addUILocalNotification()
+        } else {
+            self.removeUILocalNotification()
         }
     }
+
+    public func delete() {
+        Query().delete(self)
+        self.removeUILocalNotification()
+    }
+
     static func getClocks() -> [ClockModel] {
         if let array = ClockModel.fetch(nil) , array.count > 0 {
             return array
@@ -71,11 +78,20 @@ class ClockModel: NSObject,Model,Storable,PrimaryKeyProtocol {
         }
     }
     static var close: Bool {
-        get{
+        get {
             return UserDefaults.standard.bool(forKey: "ClockModelClose")
         }
-        set{
+        set {
             UserDefaults.standard.set(newValue, forKey: "ClockModelClose")
+            if newValue {
+                UIApplication.shared.cancelAllLocalNotifications()
+            } else {
+                _ = ClockModel.getClocks().map {
+                    if $0.open {
+                        $0.addUILocalNotification()
+                    }
+                }
+            }
         }
     }
     static func primaryKeys() -> Set<String> {

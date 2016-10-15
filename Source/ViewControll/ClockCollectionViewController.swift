@@ -81,29 +81,19 @@ extension ClockCollectionViewController {
         cell.timeTextField.text = clockModel.description
         cell.openSwitch.isOn = clockModel.open
         cell.openSwitch.rx.value.skip(1).subscribe(onNext: {
-            [unowned self] (on) in
-            if on {
-                clockModel.addUILocalNotification()
-            } else {
-                clockModel.removeUILocalNotification()
-            }
+            (on) in
             clockModel.open = on
-            ClockModel.saveValuesToDefaults(self.clockArray, forKey: "clockArray")
+            clockModel.save()
         }).addDisposableTo(cell.disposeBag)
         cell.timeTextField.inputAccessoryView = navigationAccessoryView
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .time
         cell.timeTextField.inputView = datePicker
         datePicker.rx.controlEvent(.valueChanged).subscribe(onNext: { [unowned cell,unowned datePicker] in
-            let on = cell.openSwitch.isOn
-            if on {
-                clockModel.removeUILocalNotification()
-            }
+            clockModel.open = cell.openSwitch.isOn
             clockModel.hour = datePicker.date.ks.hour
             clockModel.minute = datePicker.date.ks.minute
-            if on {
-                clockModel.addUILocalNotification()
-            }
+            clockModel.save()
             cell.timeTextField.text = clockModel.description
         }).addDisposableTo(cell.ks.prepareForReusedisposableBag)
         datePicker.date = clockModel.date
@@ -132,7 +122,7 @@ extension ClockCollectionViewController {
             if  self.close.value {
                 self.ks.noticeOnlyText("闹钟功能已禁用")
                 UIApplication.shared.cancelAllLocalNotifications()
-            }else{
+            } else {
                 self.ks.noticeOnlyText("闹钟功能已开启")
             }
             self.clockArray.forEach{
@@ -146,20 +136,5 @@ extension ClockCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     }
 }
-
-//extension ClockCollectionViewController:KSArrangeCollectionViewDelegate {
-//    func moveDataItem(fromIndexPath : NSIndexPath, toIndexPath: NSIndexPath) -> Void
-//    {
-//        let model = self.clockArray.removeAtIndex(fromIndexPath.row)
-//        self.clockArray.insert(model, atIndex: toIndexPath.row)
-//    }
-//    func deleteItemAtIndexPath(indexPath : NSIndexPath) -> Void
-//    {
-//        let model = clockArray[indexPath.row]
-//        self.clockArray.removeAtIndex(indexPath.row)
-//        ClockModel.setObjectArray(self.clockArray,forKey:"clockArray")
-//        model.removeUILocalNotification()
-//    }
-//}
 
 

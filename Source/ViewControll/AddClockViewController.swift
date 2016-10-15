@@ -45,7 +45,6 @@ class AddClockViewController: UIViewController {
             model.explanation = explanationTextField.placeholder!
         }
         model.save()
-        model.addUILocalNotification()
         if let block = addModel {
             block(model)
         }
