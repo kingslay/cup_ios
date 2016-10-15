@@ -76,7 +76,7 @@ class CupViewController: UITableViewController {
         self.view.addSubview(view)
         let tapGestureRecognizer = UITapGestureRecognizer()
         headerView?.meTemperaturelabel.addGestureRecognizer(tapGestureRecognizer)
-        tapGestureRecognizer.rx.event.subscribeNext{ [unowned self] _ in
+        tapGestureRecognizer.rx.event.subscribe(onNext: { [unowned self] _ in
             if view.superview != nil {
                 view.removeFromSuperview()
             }else{
@@ -86,12 +86,12 @@ class CupViewController: UITableViewController {
                 }
                 self.tableView.reloadData()
             }
-            }.addDisposableTo(disposeBag)
-        self.characteristic.asObservable().subscribeNext{
+            }).addDisposableTo(disposeBag)
+        self.characteristic.asObservable().subscribe(onNext: {
             if $0 != nil {
                 view.removeFromSuperview()
             }
-            }.addDisposableTo(disposeBag)
+            }).addDisposableTo(disposeBag)
     }
     deinit {
         self.timer?.invalidate()
@@ -115,7 +115,7 @@ extension CupViewController {
         cell.explanationLabel.text = model.explanation
         cell.temperatureLabel.text = "\(model.temperature)度"
         cell.openSwitch.isOn = model.open
-        cell.openSwitch.rx.controlEvent(.touchUpInside).subscribeNext{ [unowned cell,unowned self] in
+        cell.openSwitch.rx.controlEvent(.touchUpInside).subscribe(onNext: { [unowned cell,unowned self] in
             let on = cell.openSwitch.isOn
             if on {
                 if self.characteristic.value == nil {
@@ -137,7 +137,7 @@ extension CupViewController {
                 model.open = on
                 self.selectedIndex = nil
             }
-            }.addDisposableTo(cell.disposeBag)
+            }).addDisposableTo(cell.disposeBag)
         return cell
     }
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -147,14 +147,14 @@ extension CupViewController {
         label.text = "恒温设定"
         label.sizeToFit()
         headerView.addSubview(label)
-        label.snp_makeConstraints { (make) -> Void in
+        label.snp.makeConstraints { (make) -> Void in
             make.left.equalTo(17)
             make.centerY.equalTo(headerView)
         }
         let button = UIButton()
         button.setImage(UIImage(named: R.image.icon_add.name), for: .normal)
         headerView.addSubview(button)
-        button.snp_makeConstraints { (make) -> Void in
+        button.snp.makeConstraints { (make) -> Void in
             make.width.height.equalTo(27)
             make.right.equalTo(-12)
             make.centerY.equalTo(0)
@@ -162,10 +162,10 @@ extension CupViewController {
         if self.temperatureArray.count >= 5 {
             button.removeFromSuperview()
         }
-        button.rx.tap.subscribeNext { [unowned self] in
+        button.rx.tap.subscribe(onNext: { [unowned self] in
             let vc = R.nib.temperatureViewController.firstView(owner: nil, options: nil)!
             self.navigationController?.present(vc, animated: true, completion: nil)
-        }.addDisposableTo(self.disposeBag)
+        }).addDisposableTo(self.disposeBag)
         return headerView
     }
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

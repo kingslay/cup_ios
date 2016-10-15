@@ -50,9 +50,9 @@ class KSGuidanceViewController: UIViewController {
         // 将这两个控件拿到视图的最上面
         self.view.bringSubview(toFront: pageControl)
         self.view.bringSubview(toFront: startButton)
-        self.startButton.rx.tap.subscribeNext{
+        self.startButton.rx.tap.subscribe(onNext: {
             UIApplication.shared.keyWindow?.rootViewController =  R.storyboard.sMS.instantiateInitialViewController()
-        }.addDisposableTo(self.ks.disposableBag)
+        }).addDisposableTo(self.ks.disposableBag)
     }
 
     override func didReceiveMemoryWarning() {

@@ -51,8 +51,8 @@ class WaterHistoryViewController: ShareViewController {
         self.tableView.rowHeight = 51
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        tableView.snp_makeConstraints { (make) in
-//            make.top.equalTo(segmented.snp_bottom).offset(10)
+        tableView.snp.makeConstraints { (make) in
+//            make.top.equalTo(segmented.snp.bottom).offset(10)
             make.top.equalToSuperview()
             make.left.equalTo(0)
             make.width.equalToSuperview()
@@ -60,7 +60,7 @@ class WaterHistoryViewController: ShareViewController {
         }
         let tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.ks.width, height: view.ks.height/3))
         tableHeaderView.addSubview(chartView)
-        chartView.snp_makeConstraints { (make) in
+        chartView.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
             make.left.equalToSuperview().offset(5)
             make.right.equalToSuperview().offset(-5)

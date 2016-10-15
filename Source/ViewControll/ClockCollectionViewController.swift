@@ -80,7 +80,8 @@ extension ClockCollectionViewController {
         let clockModel = clockArray[(indexPath as NSIndexPath).row]
         cell.timeTextField.text = clockModel.description
         cell.openSwitch.isOn = clockModel.open
-        cell.openSwitch.rx.value.skip(1).subscribeNext { [unowned self] (on) in
+        cell.openSwitch.rx.value.skip(1).subscribe(onNext: {
+            [unowned self] (on) in
             if on {
                 clockModel.addUILocalNotification()
             } else {
@@ -88,12 +89,12 @@ extension ClockCollectionViewController {
             }
             clockModel.open = on
             ClockModel.saveValuesToDefaults(self.clockArray, forKey: "clockArray")
-        }.addDisposableTo(cell.disposeBag)
+        }).addDisposableTo(cell.disposeBag)
         cell.timeTextField.inputAccessoryView = navigationAccessoryView
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .time
         cell.timeTextField.inputView = datePicker
-        datePicker.rx.controlEvent(.valueChanged).subscribeNext{ [unowned cell,unowned datePicker] in
+        datePicker.rx.controlEvent(.valueChanged).subscribe(onNext: { [unowned cell,unowned datePicker] in
             let on = cell.openSwitch.isOn
             if on {
                 clockModel.removeUILocalNotification()
@@ -104,7 +105,7 @@ extension ClockCollectionViewController {
                 clockModel.addUILocalNotification()
             }
             cell.timeTextField.text = clockModel.description
-        }.addDisposableTo(cell.ks.prepareForReusedisposableBag)
+        }).addDisposableTo(cell.ks.prepareForReusedisposableBag)
         datePicker.date = clockModel.date
         return cell
     }
@@ -114,17 +115,17 @@ extension ClockCollectionViewController {
         let view = UIView(frame: CGRect(x: 0,y: header.ks.height ,width: self.view.ks.width,height: self.view.ks.height))
         view.alpha = 0.5
         view.backgroundColor = UIColor.black
-        self.close.asObservable().subscribeNext{ [unowned self]  in
+        self.close.asObservable().subscribe(onNext: { [unowned self]  in
             if $0 {
                 view.ks.top(header.ks.height - collectionView.contentOffset.y)
                 self.view.addSubview(view)
             }else{
                 view.removeFromSuperview()
             }
-            }.addDisposableTo(disposeBag)
+            }).addDisposableTo(disposeBag)
         let tapGestureRecognizer = UITapGestureRecognizer()
         header.addGestureRecognizer(tapGestureRecognizer)
-        tapGestureRecognizer.rx.event.subscribeNext{ [unowned self] _ in
+        tapGestureRecognizer.rx.event.subscribe(onNext: { [unowned self] _ in
           self.view.endEditing(true)
             self.close.value = !self.close.value
             ClockModel.close = self.close.value
@@ -139,7 +140,7 @@ extension ClockCollectionViewController {
                     $0.addUILocalNotification()
                 }
             }
-            }.addDisposableTo(disposeBag)
+            }).addDisposableTo(disposeBag)
         return header
     }
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

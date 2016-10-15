@@ -80,8 +80,8 @@ class AccountModel: NSObject,Model,Storable {
         }
     }
     class func remoteSave() {
-        CupProvider.request(.saveMe).subscribeNext {_ in
-        }
+        CupProvider.request(.saveMe).subscribe(onNext: {_ in
+        })
     }
     func calculateProposalWater() -> Int {
         var age = 18

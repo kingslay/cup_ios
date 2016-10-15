@@ -21,7 +21,7 @@ class ClockTableViewController: UITableViewController {
         self.tableView.rowHeight = 92
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: R.image.icon_add(), style: .plain, target: self, action: #selector(addClock))
         tableHeaderView.openSwitch.isOn = !close.value
-        tableHeaderView.openSwitch.rx.value.subscribeNext { [unowned self] in
+        tableHeaderView.openSwitch.rx.value.subscribe(onNext: { [unowned self] in
             if $0 {
                 self.tableHeaderView.clockImageView.image = R.image.icon_clockRemind2()
             } else {
@@ -30,7 +30,7 @@ class ClockTableViewController: UITableViewController {
             self.close.value = !$0
             ClockModel.close = self.close.value
             self.tableView.reloadData()
-            }.addDisposableTo(self.ks.disposableBag)
+            }).addDisposableTo(self.ks.disposableBag)
         self.tableView.tableFooterView = UIView()
         self.tableView.allowsSelection = false
          UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.badge,.sound,.alert], categories: nil))
@@ -64,7 +64,7 @@ extension ClockTableViewController {
         let clockModel = clockArray[(indexPath as NSIndexPath).row]
         cell.timeTextField.text = clockModel.description
         cell.explanationLabel.text = clockModel.explanation
-        cell.openSwitch.rx.value.skip(1).subscribeNext { (on) in
+        cell.openSwitch.rx.value.skip(1).subscribe(onNext: { (on) in
             if on {
                 clockModel.addUILocalNotification()
             } else {
@@ -72,7 +72,7 @@ extension ClockTableViewController {
             }
             clockModel.open = on
             clockModel.save()
-            }.addDisposableTo(cell.ks.prepareForReusedisposableBag)
+            }).addDisposableTo(cell.ks.prepareForReusedisposableBag)
         if close.value {
             cell.timeTextField.textColor = Colors.black
             cell.explanationLabel.textColor = Colors.black

@@ -41,33 +41,33 @@ class WaterViewController: ShareViewController {
         dateButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         dateButton.setTitleColor(Colors.pink, for: UIControlState())
         view.addSubview(dateButton)
-        dateButton.snp_makeConstraints { (make) in
+        dateButton.snp.makeConstraints { (make) in
             make.top.equalTo(waterCycleView.ks.bottom)
             make.left.equalToSuperview()
             make.width.equalToSuperview()
         }
         view.addSubview(chartView)
-        chartView.snp_makeConstraints { (make) in
-            make.top.equalTo(dateButton.snp_bottom)
+        chartView.snp.makeConstraints { (make) in
+            make.top.equalTo(dateButton.snp.bottom)
             make.left.equalToSuperview().offset(5)
             make.right.equalToSuperview().offset(-5)
             make.bottom.equalToSuperview().offset(-10)
         }
         let tapGesture = UITapGestureRecognizer()
         self.chartView.addGestureRecognizer(tapGesture)
-        tapGesture.rx.event.subscribeNext{ [unowned self](_) in
+        tapGesture.rx.event.subscribe(onNext: { [unowned self](_) in
             let vc = WaterHistoryViewController()
             vc.currentDate = self.currentDate
             self.navigationController?.ks.pushViewController(vc)
-        }.addDisposableTo(self.ks.disposableBag)
+        }).addDisposableTo(self.ks.disposableBag)
         calendarView = CalendarView(frame: view.bounds)
         view.addSubview(calendarView)
         calendarView.ks.top(view.ks.bottom)
-        dateButton.rx.tap.subscribeNext { [unowned self]_ in
+        dateButton.rx.tap.subscribe(onNext: { [unowned self]_ in
             UIView.animate(withDuration: 0.35, animations: {
                 self.calendarView.ks.bottom(self.view.ks.bottom)
             })
-            }.addDisposableTo(ks.disposableBag)
+            }).addDisposableTo(ks.disposableBag)
         calendarView.update = { [unowned self] date in
             self.calendarView.ks.top(self.view.ks.bottom)
             self.currentDate = date.convertedDate()!

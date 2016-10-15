@@ -64,7 +64,7 @@ class UserRegistViewController: UIViewController,UITextFieldDelegate {
             }, onError: {
                 self.ks.clearAllNotice()
                 self.navigationController?.view.isUserInteractionEnabled = true
-                if let error = $0 as? NSError, let response = error.userInfo["data"] as? Moya.Response {
+                if let response = ($0 as NSError).userInfo["data"] as? Moya.Response {
                     self.ks.noticeError(JSON(data: response.data)["message"].stringValue, autoClear: true)
                 }
                 

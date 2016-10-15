@@ -29,7 +29,7 @@ class SMSViewController: UIViewController {
     self.verificationButton.setBackgroundImage(image, for: UIControlState())
     self.loginButton.setBackgroundImage(image, for: UIControlState())
     self.loginButton.isEnabled = true
-    self.verificationButton.rx.tap.subscribeNext { [unowned self] in
+    self.verificationButton.rx.tap.subscribe(onNext: { [unowned self] in
       if let phone = self.phoneTextField.text , phone.checkMobileNumble() {
         self.ks.pleaseWait("发送验证码中")
         SMSSDK.getVerificationCode(by: SMSGetCodeMethodSMS, phoneNumber: phone, zone: "86", customIdentifier: nil, result: {
@@ -48,8 +48,8 @@ class SMSViewController: UIViewController {
         self.ks.noticeError("手机号码错误，请重新输入", autoClear: true)
       }
       
-      }.addDisposableTo(disposeBag)
-    self.loginButton.rx.tap.subscribeNext { [unowned self] in
+      }).addDisposableTo(disposeBag)
+    self.loginButton.rx.tap.subscribe(onNext: { [unowned self] in
       self.view.endEditing(true)
         if self.phoneTextField.text == "13395992007" && self.verificationTextField.text == "1234" {
             self.phonelogin()
@@ -63,7 +63,7 @@ class SMSViewController: UIViewController {
             })
         }
       
-      }.addDisposableTo(disposeBag)
+      }).addDisposableTo(disposeBag)
     self.ks.autoAdjustKeyBoard()
   }
     override func relatedViewFor(_ inputView: UIView) -> UIView {
@@ -96,7 +96,7 @@ class SMSViewController: UIViewController {
       }, onError: {
         self.ks.clearAllNotice()
         self.view.isUserInteractionEnabled = true
-        if let error = $0 as? NSError, let response = error.userInfo["data"] as? Moya.Response {
+        if let response = ($0 as NSError).userInfo["data"] as? Moya.Response {
           self.ks.noticeError(JSON(data: response.data)["message"].stringValue, autoClear: true)
         }
         

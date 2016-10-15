@@ -20,8 +20,8 @@ class TemperatureModel: NSObject,Model,Storable,PrimaryKeyProtocol {
     var open = false {
         didSet(newValue){
             if newValue {
-                CupProvider.request(.temperature(self.explanation,self.temperature)).subscribeNext {_ in
-                    }.addDisposableTo(self.ks.disposableBag)
+                CupProvider.request(.temperature(self.explanation,self.temperature)).subscribe(onNext: {_ in
+                    }).addDisposableTo(self.ks.disposableBag)
             }
         }
     }

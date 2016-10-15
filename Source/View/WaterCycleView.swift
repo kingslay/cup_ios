@@ -144,13 +144,13 @@ class WaterCycleView: UIView {
             label.text = "饮水目标"
             label.sizeToFit()
             addSubview(label)
-            label.snp_makeConstraints { (make) in
+            label.snp.makeConstraints { (make) in
                 make.top.equalTo(25)
                 make.centerX.equalTo(self)
             }
             addSubview(waterplan1Label)
-            waterplan1Label.snp_makeConstraints { (make) in
-                make.top.equalTo(label.snp_bottom).offset(10)
+            waterplan1Label.snp.makeConstraints { (make) in
+                make.top.equalTo(label.snp.bottom).offset(10)
                 make.centerX.equalTo(label)
             }
             let label1 = UILabel()
@@ -159,12 +159,12 @@ class WaterCycleView: UIView {
             label1.text = "今日喝水"
             label1.sizeToFit()
             addSubview(label1)
-            label1.snp_makeConstraints { (make) in
+            label1.snp.makeConstraints { (make) in
                 make.top.equalTo(label)
-                make.right.equalTo(label.snp_left).offset(-62)
+                make.right.equalTo(label.snp.left).offset(-62)
             }
             addSubview(water1Label)
-            water1Label.snp_makeConstraints { (make) in
+            water1Label.snp.makeConstraints { (make) in
                 make.top.equalTo(waterplan1Label)
                 make.centerX.equalTo(label1)
             }
@@ -175,12 +175,12 @@ class WaterCycleView: UIView {
             label2.text = "完成计划"
             label2.sizeToFit()
             addSubview(label2)
-            label2.snp_makeConstraints { (make) in
+            label2.snp.makeConstraints { (make) in
                 make.top.equalTo(label)
-                make.left.equalTo(label.snp_right).offset(62)
+                make.left.equalTo(label.snp.right).offset(62)
             }
             addSubview(waterRate1Label)
-            waterRate1Label.snp_makeConstraints { (make) in
+            waterRate1Label.snp.makeConstraints { (make) in
                 make.top.equalTo(waterplan1Label)
                 make.centerX.equalTo(label2)
             }

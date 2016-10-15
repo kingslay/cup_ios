@@ -33,7 +33,7 @@ class WaterplanViewController: UIViewController {
     }
     func complete() {
         staticAccount?.waterplan = Int(rulerView.currentValue) as NSNumber?
-        self.navigationController?.popViewController(animated: false)
+        self.navigationController!.popViewController(animated: false)
     }
 }
 extension WaterplanViewController: KSRulerDelegate {

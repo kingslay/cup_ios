@@ -27,7 +27,7 @@ open class IndicatorView: UIView {
         label1.sizeToFit()
         label1.textColor = Colors.red
         self.addSubview(label1)
-        label1.snp_makeConstraints { (make) -> Void in
+        label1.snp.makeConstraints { (make) -> Void in
             make.centerX.equalTo(0)
             make.centerY.equalTo(-160)
         }
@@ -37,14 +37,14 @@ open class IndicatorView: UIView {
         label2.sizeToFit()
         label2.textColor = Colors.red
         self.addSubview(label2)
-        label2.snp_makeConstraints { (make) -> Void in
+        label2.snp.makeConstraints { (make) -> Void in
             make.centerX.equalTo(0)
-            make.top.equalTo(label1.snp_bottom).offset(20)
+            make.top.equalTo(label1.snp.bottom).offset(20)
         }
         let circularView = UIView()
         circularView.backgroundColor = Swifty<UIColor>.colorFrom("#e7716b")
         self.addSubview(circularView)
-        circularView.snp_makeConstraints { (make) -> Void in
+        circularView.snp.makeConstraints { (make) -> Void in
             make.center.equalTo(self)
             make.width.equalTo(5)
             make.height.equalTo(5)

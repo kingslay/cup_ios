@@ -55,7 +55,7 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
     headerLabel.textColor = Colors.red
     headerLabel.sizeToFit()
     headerView.addSubview(headerLabel)
-    headerLabel.snp_makeConstraints { (make) -> Void in
+    headerLabel.snp.makeConstraints { (make) -> Void in
       make.centerX.equalTo(0)
       make.bottom.equalTo(-20)
     }
@@ -84,9 +84,9 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
     discoveriesTableView.snp.makeConstraints { make in
       make.top.equalTo(self.topLayoutGuide.snp.bottom)
       make.leading.trailing.equalTo(view)
-      make.bottom.equalTo(view.snp_bottom)
+      make.bottom.equalTo(view.snp.bottom)
     }
-    indicatorView.snp_makeConstraints { (make) -> Void in
+    indicatorView.snp.makeConstraints { (make) -> Void in
       make.edges.equalTo(view)
     }
   }

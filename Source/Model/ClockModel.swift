@@ -33,8 +33,8 @@ class ClockModel: NSObject,Model,Storable,PrimaryKeyProtocol {
         localNotification.timeZone = TimeZone.autoupdatingCurrent
         localNotification.applicationIconBadgeNumber = 1
         UIApplication.shared.scheduleLocalNotification(localNotification)
-        CupProvider.request(.clock(self.description)).subscribeNext {_ in
-        }.addDisposableTo(self.ks.disposableBag)
+        CupProvider.request(.clock(self.description)).subscribe(onNext: {_ in
+        }).addDisposableTo(self.ks.disposableBag)
     }
     func removeUILocalNotification(){
         if let localNotifications = UIApplication.shared.scheduledLocalNotifications {

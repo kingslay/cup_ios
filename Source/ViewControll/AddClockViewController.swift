@@ -49,7 +49,7 @@ class AddClockViewController: UIViewController {
         if let block = addModel {
             block(model)
         }
-        self.navigationController?.popViewController(animated: false)
+        self.navigationController!.popViewController(animated: false)
     }
 
 }

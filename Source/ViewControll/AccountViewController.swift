@@ -126,10 +126,10 @@ extension AccountViewController {
             datePicker.datePickerMode = .date
             datePicker.maximumDate = Date()
             cell.valueTextField.inputView = datePicker
-            datePicker.rx.controlEvent(.valueChanged).subscribeNext{ [unowned cell,unowned datePicker] in
+            datePicker.rx.controlEvent(.valueChanged).subscribe(onNext: { [unowned cell,unowned datePicker] in
                 staticAccount?.birthday = datePicker.date.ks.string(fromFormat:"yyyy年MM月dd日")
                 cell.valueTextField.text = staticAccount?.birthday
-            }
+            }).addDisposableTo(ks.disposableBag)
             datePicker.date = Date()
         default:
             break

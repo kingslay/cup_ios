@@ -47,12 +47,12 @@ class CalendarView: UIView {
         menuView.delegate = self
         calendarView.calendarAppearanceDelegate = self
         calendarView.backgroundColor = Colors.white
-        preButton.rx.tap.subscribeNext { [unowned self] in
+        preButton.rx.tap.subscribe(onNext: { [unowned self] in
             self.calendarView.loadPreviousView()
-        }.addDisposableTo(ks.disposableBag)
-        nextButton.rx.tap.subscribeNext { [unowned self] in
+        }).addDisposableTo(ks.disposableBag)
+        nextButton.rx.tap.subscribe(onNext: { [unowned self] in
             self.calendarView.loadNextView()
-        }.addDisposableTo(ks.disposableBag)
+        }).addDisposableTo(ks.disposableBag)
     }
     
     required init?(coder aDecoder: NSCoder) {

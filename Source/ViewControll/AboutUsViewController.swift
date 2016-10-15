@@ -20,7 +20,7 @@ class AboutUsViewController: UITableViewController {
         let image = UIImageView(image: R.image.lOGO())
         tableHeaderView.addSubview(image)
         self.tableView.tableHeaderView = tableHeaderView
-        image.snp_makeConstraints { (make) -> Void in
+        image.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(51)
             make.centerX.equalTo(tableHeaderView)
         }
