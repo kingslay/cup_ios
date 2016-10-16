@@ -55,7 +55,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().barTintColor = Colors.white
         UITabBar.appearance().tintColor = Colors.red
         UITabBar.appearance().isTranslucent = false
-        MonkeyKing.registerAccount(.weChat(appID: "wxfc361b137c76f916",appKey: nil))
+        //AppSecret：a815bf4b3277e5d3c0e6df1d0958e3ab
+        MonkeyKing.registerAccount(.weChat(appID: "wxe96808efbc07344c",appKey: nil))
         //appKey DDbYXy3a8zJH2aeA
         MonkeyKing.registerAccount(.qq(appID: "1105615474"))
         MonkeyKing.registerAccount(.weibo(appID: "3083484688", appKey: "cb5afe0602f54f3fd82aea937020c1c2", redirectURL: "wxfc361b137c76f916"))

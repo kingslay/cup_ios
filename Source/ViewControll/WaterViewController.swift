@@ -192,6 +192,8 @@ extension WaterViewController {
         } else if bytes[0] == 0x77 {
             if bytes[1] == 0x03 {
                 switch bytes[2] {
+                case 0x00:
+                    waterCycleView.batteryRate = 01
                 case 0x01:
                     waterCycleView.batteryRate = 25
                 case 0x02:

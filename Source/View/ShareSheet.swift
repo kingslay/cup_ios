@@ -55,6 +55,7 @@ open class ShareSheet: UIView {
                                          description: "MateCup一款真正温度定制智能水杯。",
                                          thumbnail: image,
                                          media: .image(image!)
+//                                         media: .url(URL(string:"baidu.com")!)
             )
             var message: MonkeyKing.Message?
             switch view {
