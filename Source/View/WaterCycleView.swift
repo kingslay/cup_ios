@@ -24,6 +24,7 @@ class WaterCycleView: UIView {
             progress = water/waterplan
         }
     }
+    ///电量
     var batteryRate: NSInteger = 100 {
         didSet {
             if batteryRate >= 100 {

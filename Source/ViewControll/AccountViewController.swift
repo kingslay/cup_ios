@@ -295,6 +295,6 @@ extension AccountViewController: UIImagePickerControllerDelegate, UINavigationCo
             .appendingPathComponent(imageName)
         try? imageData.write(to: URL(fileURLWithPath: fullPath), options: [])
         staticAccount?.avatar = "file:"+fullPath
-        uploadImage(URL(fileURLWithPath: fullPath))
+        CupMoya.upload(imagePath:URL(fileURLWithPath: fullPath))
     }
 }

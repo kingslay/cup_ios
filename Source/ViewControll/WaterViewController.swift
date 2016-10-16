@@ -19,7 +19,6 @@ class WaterViewController: ShareViewController {
     var peripheral: CBPeripheral?
     var characteristic: Variable<CBCharacteristic?> = Variable(nil)
     var selectedIndex: Int?
-    var timer: Timer?
     var durationTimer: Timer?
     lazy var dateButton = UIButton()
     var calendarView: CalendarView!
@@ -97,11 +96,14 @@ class WaterViewController: ShareViewController {
         super.viewDidLayoutSubviews()
         calendarView.commitCalendarViewUpdate()
     }
-
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
 extension WaterViewController {
     func setUpCentral() {
         self.central = CBCentralManager(delegate: self, queue: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(synchronizeClock), name: .synchronizeClock, object: nil)
     }
     override func scanForPeripherals(_ central: CBCentralManager) {
         if let staticIdentifier = staticIdentifier, let identifier = UUID(uuidString: staticIdentifier) {
@@ -144,17 +146,15 @@ extension WaterViewController {
         }
         if characteristic.properties.contains([.write]) {
             self.characteristic.value = characteristic
-            self.timer = Timer.scheduledTimer(timeInterval: 60*5, target: self, selector: #selector(askTemperature), userInfo: nil, repeats: true)
-            self.timer?.fire()
-            //连接通过之后，发送一下。让杯子叫一下
+            //同步时间
             let data = NSMutableData()
-            data.ks.appendUInt8(0x3a)
-            data.ks.appendUInt8(0x11)
-            data.ks.appendUInt16(0x00)
-            data.ks.appendUInt16(0x00)
-            data.ks.appendUInt8(0x11)
-            data.ks.appendUInt8(0x0a)
+            let date = Date()
+            var array: [UInt8] = [0x66,0x02,0x00,UInt8(date.ks.hour),UInt8(date.ks.minute),0x0a]
+            array.append(array[1]+array[2]+array[3]+array[4]+array[5])
+            array.append(0xbb)
+            data.ks.appendUInt8(array)
             self.peripheral?.writeValue(data as Data, for: characteristic, type: .withResponse)
+            synchronizeClock()
         }
     }
 
@@ -175,9 +175,41 @@ extension WaterViewController {
             return
         }
         let bytes = (data as NSData).bytes.bindMemory(to: UInt8.self, capacity: data.count)
+        //喝水量
         if bytes[0] == 0x55 {
-            if bytes[1] == 0x00 {
-
+            if bytes[1] == 0x01 {
+                let amount = Int(bytes[2])
+                let date = Date().ks.date(fromValues:[.hour:Int(bytes[3]),.minute:Int(bytes[4])])
+                WaterModel.save(date, amount: amount)
+                //确认喝水量
+                var array: [UInt8] = [0x55,0x01,0x01,0x00]
+                array.append(array[1]+array[2]+array[3])
+                array.append(0xaa)
+                let data = NSMutableData()
+                data.ks.appendUInt8(array)
+                self.peripheral?.writeValue(data as Data, for: characteristic, type: .withoutResponse)
+            }
+        } else if bytes[0] == 0x77 {
+            if bytes[1] == 0x03 {
+                switch bytes[2] {
+                case 0x01:
+                    waterCycleView.batteryRate = 25
+                case 0x02:
+                    waterCycleView.batteryRate = 50
+                case 0x04:
+                    waterCycleView.batteryRate = 75
+                case 0x08:
+                    waterCycleView.batteryRate = 100
+                default:
+                    waterCycleView.batteryRate = 100
+                }
+                //确认电量
+                var array: [UInt8] = [0x77,0x03,0x01,0x00]
+                array.append(array[1]+array[2]+array[3])
+                array.append(0xcc)
+                let data = NSMutableData()
+                data.ks.appendUInt8(array)
+                self.peripheral?.writeValue(data as Data, for: characteristic, type: .withoutResponse)
             }
         }
 
@@ -186,10 +218,7 @@ extension WaterViewController {
 
     }
 
-    func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: NSError?)
-    {
-        self.timer?.invalidate()
-        self.timer = nil
+    func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: NSError?){
         self.durationTimer?.invalidate()
         self.durationTimer = nil
         if let _ = error {
@@ -208,16 +237,20 @@ extension WaterViewController {
         present(alertController, animated: true, completion: nil)
 
     }
-    func askTemperature() {
+    //同步闹钟时间
+    func synchronizeClock() {
         if let characteristic = self.characteristic.value {
-            let data = NSMutableData()
-            data.ks.appendUInt8(0x3a)
-            data.ks.appendUInt8(0x02)
-            data.ks.appendUInt16(0x00)
-            data.ks.appendUInt16(0x00)
-            data.ks.appendUInt8(0x02)
-            data.ks.appendUInt8(0x0a)
-            self.peripheral?.writeValue(data as Data, for: characteristic, type: .withResponse)
+            if let models = ClockModel.fetch(dic:["open":true]) , models.count > 0 {
+                for (index, model) in models.enumerated() {
+                    var array: [UInt8] = [0x66,0x02,UInt8(index+1),UInt8(model.hour),UInt8(model.minute),0x00]
+                    array.append(array[1]+array[2]+array[3]+array[4]+array[5])
+                    array.append(0xbb)
+                    let data = NSMutableData()
+                    data.ks.appendUInt8(array)
+                    self.peripheral?.writeValue(data as Data, for: characteristic, type: .withResponse)
+
+                }
+            }
         }
     }
 }

@@ -11,6 +11,7 @@ import Moya
 import RxSwift
 import SwiftyJSON
 import Alamofire
+
 extension ObservableType where E: Moya.Response {
     /// Maps data received from the signal into a JSON object. If the conversion fails, the signal errors.
     public func mapSwiftyJSON() -> Observable<JSON> {
@@ -27,27 +28,11 @@ public enum CupMoya: TargetType  {
     case clock(String)
     case temperature(String,Int)
     case uploadImage([String: String]?,[Moya.MultipartFormData])
-
-    ///因为AlamofireImage不是马上执行的，所以不能用单例
-    public static func sharedManager() -> Manager {
-        let serverTrustPolicies: [String: ServerTrustPolicy] = [
-            // 不验证证书链，总是让 TLS 握手成功
-            "121.199.75.79": .disableEvaluation,
-            "114.55.91.36": .disableEvaluation
-        ]
-        let configuration = URLSessionConfiguration.default
-        configuration.httpAdditionalHeaders = Manager.defaultHTTPHeaders
-        return Manager(
-            configuration: configuration,
-            serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
-        )
-    }
 }
-let host = "https://114.55.91.36:8282"
-//let host = "http://localhost:8280"
 
 extension CupMoya {
-    public var baseURL: URL { return URL(string: host)! }
+    //let host = "http://localhost:8280"
+    public var baseURL: URL { return URL(string: "https://114.55.91.36:8282")! }
     public var task: Task {
         switch self {
         case .uploadImage(_,let multipart):
@@ -100,47 +85,62 @@ extension CupMoya {
             return dic
         }
     }
-
     public var sampleData: Data {
         return "Half measures are as bad as nothing at all.".data(using: String.Encoding.utf8)!
     }
-    public var multipartBody:[Moya.MultipartFormData]? {
-        return nil
-    }
 }
-let endpointClosure = { (target: CupMoya) -> Endpoint<CupMoya> in
-    let url = target.baseURL.appendingPathComponent(target.path).absoluteString
-    switch target {
-    case .login(_,_),.phoneLogin(_):
-        return Endpoint(URL: url, sampleResponseClosure: {.networkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters)
-    case .uploadImage(_,_):
-        return Endpoint(URL: url, sampleResponseClosure: {.networkResponse(200, target.sampleData)}, method: target.method, parameters:nil , parameterEncoding: JSONEncoding(),httpHeaderFields: target.parameters as? [String : String])
-    default:
-        return Endpoint(URL: url, sampleResponseClosure: {.networkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters, parameterEncoding: JSONEncoding())
-
+extension CupMoya {
+    ///因为AlamofireImage不是马上执行的，所以不能用单例
+    public static func sharedManager() -> Manager {
+        let serverTrustPolicies: [String: ServerTrustPolicy] = [
+            // 不验证证书链，总是让 TLS 握手成功
+            "121.199.75.79": .disableEvaluation,
+            "114.55.91.36": .disableEvaluation
+        ]
+        let configuration = URLSessionConfiguration.default
+        configuration.httpAdditionalHeaders = Manager.defaultHTTPHeaders
+        return Manager(
+            configuration: configuration,
+            serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
+        )
     }
-}
-let credentialsPlugin = CredentialsPlugin {
-    switch $0 {
-    case CupMoya.login(_, _),CupMoya.regist(_,_),CupMoya.phoneLogin(_):
-        return nil
-    default:
-        return URLCredential(user: staticAccount!.phone!, password: "phone", persistence: .forSession)
-    }
-}
-let CupProvider = RxMoyaProvider<CupMoya>(endpointClosure:endpointClosure ,manager:CupMoya.sharedManager(), plugins: [credentialsPlugin])
-
-func uploadImage(_ imagePath:URL, headers: [String: String]? = nil){
-    var dict = [String : String]()
-    if headers != nil {
-        dict = headers!
-    }
-    dict["accountid"] = "\(staticAccount!.accountid)"
-    _ = CupProvider.request(.uploadImage(dict,[Moya.MultipartFormData(provider: .file(imagePath), name: "file")])).mapJSON().subscribe(onNext: { (data) -> Void in
-        if let json = data as? [String:Any],let url = json["url"] as? String {
-            staticAccount?.avatar = url
+    public static func DefaultEndpointMapping(_ target: CupMoya) -> Endpoint<CupMoya> {
+        let url = target.baseURL.appendingPathComponent(target.path).absoluteString
+        switch target {
+        case .login(_,_),.phoneLogin(_):
+            return Endpoint(URL: url, sampleResponseClosure: {.networkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters)
+        case .uploadImage(_,_):
+            return Endpoint(URL: url, sampleResponseClosure: {.networkResponse(200, target.sampleData)}, method: target.method, parameters:nil , parameterEncoding: JSONEncoding(),httpHeaderFields: target.parameters as? [String : String])
+        default:
+            return Endpoint(URL: url, sampleResponseClosure: {.networkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters, parameterEncoding: JSONEncoding())
+            
         }
-    })
+    }
+    public static let credentialsPlugin = CredentialsPlugin {
+        switch $0 {
+        case CupMoya.login(_, _),CupMoya.regist(_,_),CupMoya.phoneLogin(_):
+            return nil
+        default:
+            return URLCredential(user: staticAccount!.phone!, password: "phone", persistence: .forSession)
+        }
+    }
+
+    public static func upload(imagePath:URL, headers: [String: String]? = nil) {
+        var dict = [String : String]()
+        if headers != nil {
+            dict = headers!
+        }
+        dict["accountid"] = "\(staticAccount!.accountid)"
+        _ = CupProvider.request(.uploadImage(dict,[Moya.MultipartFormData(provider: .file(imagePath), name: "file")])).mapJSON().subscribe(onNext: { (data) -> Void in
+            if let json = data as? [String:Any],let url = json["url"] as? String {
+                staticAccount?.avatar = url
+            }
+        })
+    }
 }
+let CupProvider = RxMoyaProvider<CupMoya>(endpointClosure:CupMoya.DefaultEndpointMapping ,manager:CupMoya.sharedManager(), plugins: [CupMoya.credentialsPlugin])
 
 
+extension Notification.Name {
+    static let synchronizeClock = Notification.Name("synchronizeClock")
+}

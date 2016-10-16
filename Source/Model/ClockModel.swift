@@ -51,10 +51,7 @@ class ClockModel: NSObject,Model,Storable,PrimaryKeyProtocol {
         }
     }
     var date: Date {
-        var dateComponents = Date().ks.dateComponents
-        dateComponents.hour = self.hour
-        dateComponents.minute = self.minute
-        return NSCalendar.autoupdatingCurrent.date(from:dateComponents)!
+        return Date().ks.date(fromValues:[.hour:self.hour,.minute:self.minute])
     }
     public func save() {
         Query().save(self)
@@ -63,11 +60,16 @@ class ClockModel: NSObject,Model,Storable,PrimaryKeyProtocol {
         } else {
             self.removeUILocalNotification()
         }
+        NotificationCenter.default.post(name: .synchronizeClock, object: nil)
     }
 
     public func delete() {
         Query().delete(self)
-        self.removeUILocalNotification()
+        if self.open {
+            self.removeUILocalNotification()
+            NotificationCenter.default.post(name: .synchronizeClock, object: nil)
+        }
+
     }
 
     static func getClocks() -> [ClockModel] {
