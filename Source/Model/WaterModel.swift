@@ -24,6 +24,9 @@ class WaterModel: NSObject,Model,Storable,PrimaryKeyProtocol {
         return ["date","hour","minute","second"]
     }
     static func save(_ date: Date,amount: Int) {
+        guard amount > 0 else {
+            return
+        }
         let model = WaterModel()
         model.date = date.ks.string(fromFormat:"yyyy-MM-dd")
         model.weekOfYear = date.ks.weekOfYear

@@ -56,7 +56,7 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
     headerLabel.sizeToFit()
     headerView.addSubview(headerLabel)
     headerLabel.snp.makeConstraints { (make) -> Void in
-      make.centerX.equalTo(0)
+      make.centerX.equalTo(headerView.snp.centerX)
       make.bottom.equalTo(-20)
     }
     discoveriesTableView.tableHeaderView = headerView
@@ -92,7 +92,7 @@ internal class CentralViewController: UIViewController, UITableViewDataSource, U
   }
   
   override func didDiscoverPeripheral(_ peripheral: CBPeripheral) {
-    if let name = peripheral.name , name == "HMAI" || name.hasPrefix("TAv22u") {
+    if let name = peripheral.name , name == "HMAI" || name == "BT05" || name.hasPrefix("TAv22u") {
       indicatorView.stopAnimating()
       discoveries.insert(peripheral)
       discoveriesTableView.tableHeaderView?.isHidden = false

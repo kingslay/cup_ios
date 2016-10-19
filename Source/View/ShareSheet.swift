@@ -51,7 +51,7 @@ open class ShareSheet: UIView {
     }
     @IBAction func shareButtonTouchUpInside(_ view: UIView?) {
         if let view = view , view !== self.cancelButton {
-            let info: MonkeyKing.Info = (title: "MateCup",
+            var info: MonkeyKing.Info = (title: "MateCup",
                                          description: "MateCup一款真正温度定制智能水杯。",
                                          thumbnail: image,
                                          media: .image(image!)
@@ -62,6 +62,7 @@ open class ShareSheet: UIView {
             case self.weiboButton:
                 message = MonkeyKing.Message.weibo(.default(info: info,accessToken:nil))
             case self.wxFriendButton:
+                info.media = .url(URL(string:"baidu.com")!)
                 message = MonkeyKing.Message.weChat(.session(info:info))
             case self.wxTimeLineButton:
                 message = MonkeyKing.Message.weChat(.timeline(info:info))

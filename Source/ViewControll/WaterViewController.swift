@@ -13,13 +13,14 @@ import CoreBluetooth
 import KSSwiftExtension
 import Charts
 import CVCalendar
-
+import Async
 class WaterViewController: ShareViewController {
     var central: CBCentralManager!
     var peripheral: CBPeripheral?
     var characteristic: Variable<CBCharacteristic?> = Variable(nil)
     var selectedIndex: Int?
     var durationTimer: Timer?
+    var timer: Timer?
     lazy var dateButton = UIButton()
     var calendarView: CalendarView!
     var waterCycleView: WaterCycleView!
@@ -97,6 +98,13 @@ class WaterViewController: ShareViewController {
         calendarView.commitCalendarViewUpdate()
     }
     deinit {
+        self.timer?.invalidate()
+        self.timer = nil
+        self.durationTimer?.invalidate()
+        self.durationTimer = nil
+        if let peripheral = self.peripheral {
+            self.central.cancelPeripheralConnection(peripheral)
+        }
         NotificationCenter.default.removeObserver(self)
     }
 }
@@ -146,15 +154,15 @@ extension WaterViewController {
         }
         if characteristic.properties.contains([.write]) {
             self.characteristic.value = characteristic
+            self.timer = Timer.scheduledTimer(timeInterval: 60*5, target: self, selector: #selector(ask), userInfo: nil, repeats: true)
+            self.timer?.fire()
             //同步时间
-            let data = NSMutableData()
             let date = Date()
-            var array: [UInt8] = [0x66,0x02,0x00,UInt8(date.ks.hour),UInt8(date.ks.minute),0x0a]
-            array.append(array[1]+array[2]+array[3]+array[4]+array[5])
+            var array: [UInt8] = [0x66,0x02,0x0,UInt8(date.ks.hour),UInt8(date.ks.minute),0x0a]
+            array.append(array[1]&+array[2]&+array[3]&+array[4]&+array[5])
             array.append(0xbb)
-            data.ks.appendUInt8(array)
-            self.peripheral?.writeValue(data as Data, for: characteristic, type: .withResponse)
-            synchronizeClock()
+            self.peripheral?.writeValue(Data(array), for: characteristic, type: .withResponse)
+            self.synchronizeClock()
         }
     }
 
@@ -174,24 +182,29 @@ extension WaterViewController {
         guard let data = characteristic.value else {
             return
         }
-        let bytes = (data as NSData).bytes.bindMemory(to: UInt8.self, capacity: data.count)
         //喝水量
-        if bytes[0] == 0x55 {
-            if bytes[1] == 0x01 {
-                let amount = Int(bytes[2])
-                let date = Date().ks.date(fromValues:[.hour:Int(bytes[3]),.minute:Int(bytes[4])])
+        if data[0] == 0x55 && data.count >= 8{
+            if data[1] == 0x01 {
+                let check = data[1] &+ data[2] &+ data[3] &+ data[4] &+ data[5]
+                guard check == data[6] else {
+                    return
+                }
+                let amount = Int(data[2])
+                let date = Date().ks.date(fromValues:[.hour:Int(data[3]),.minute:Int(data[4])])
                 WaterModel.save(date, amount: amount)
-                //确认喝水量
-                var array: [UInt8] = [0x55,0x01,0x01,0x00]
-                array.append(array[1]+array[2]+array[3])
-                array.append(0xaa)
-                let data = NSMutableData()
-                data.ks.appendUInt8(array)
-                self.peripheral?.writeValue(data as Data, for: characteristic, type: .withoutResponse)
+                //确认喝水量 data[5] == 0x0a &&
+                if data[5] == 0x0a {
+                    self.peripheral?.writeValue(Data([0x55,0x01,0x00,0x00,0x01,0xAA] as [UInt8]), for: characteristic, type: .withoutResponse)
+                }
+
             }
-        } else if bytes[0] == 0x77 {
-            if bytes[1] == 0x03 {
-                switch bytes[2] {
+        } else if data[0] == 0x77 && data.count >= 6 {
+            if data[1] == 0x03 {
+                let check = data[1] &+ data[2] &+ data[3]
+                guard check == data[4] else {
+                    return
+                }
+                switch data[2] {
                 case 0x00:
                     waterCycleView.batteryRate = 01
                 case 0x01:
@@ -206,13 +219,10 @@ extension WaterViewController {
                     waterCycleView.batteryRate = 100
                 }
                 //确认电量
-                var array: [UInt8] = [0x77,0x03,0x01,0x00]
-                array.append(array[1]+array[2]+array[3])
-                array.append(0xcc)
-                let data = NSMutableData()
-                data.ks.appendUInt8(array)
-                self.peripheral?.writeValue(data as Data, for: characteristic, type: .withoutResponse)
+                self.peripheral?.writeValue(Data([0x77,0x03,0x01,0x00,0x04,0xcc] as [UInt8]), for: characteristic, type: .withoutResponse)
             }
+        } else if data[0] == 0x66 {
+            print(data)
         }
 
     }
@@ -221,6 +231,8 @@ extension WaterViewController {
     }
 
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: NSError?){
+        self.timer?.invalidate()
+        self.timer = nil
         self.durationTimer?.invalidate()
         self.durationTimer = nil
         if let _ = error {
@@ -242,17 +254,30 @@ extension WaterViewController {
     //同步闹钟时间
     func synchronizeClock() {
         if let characteristic = self.characteristic.value {
-            if let models = ClockModel.fetch(dic:["open":true]) , models.count > 0 {
-                for (index, model) in models.enumerated() {
-                    var array: [UInt8] = [0x66,0x02,UInt8(index+1),UInt8(model.hour),UInt8(model.minute),0x00]
-                    array.append(array[1]+array[2]+array[3]+array[4]+array[5])
-                    array.append(0xbb)
-                    let data = NSMutableData()
-                    data.ks.appendUInt8(array)
-                    self.peripheral?.writeValue(data as Data, for: characteristic, type: .withResponse)
-
+            if let models = ClockModel.fetch(dic:["open":1]) , models.count > 0 {
+                Async.background {
+                    for (index, model) in models.enumerated() {
+                        guard index < 14 else {
+                            break
+                        }
+                        Thread.sleep(forTimeInterval: 1)
+                        var array: [UInt8] = [0x66,0x02,UInt8(index+1),UInt8(model.hour),UInt8(model.minute),0x00]
+                        array.append(array[1]&+array[2]&+array[3]&+array[4]&+array[5])
+                        array.append(0xbb)
+                        self.peripheral?.writeValue(Data(array), for: characteristic, type: .withResponse)
+                    }
                 }
             }
         }
+    }
+    func ask(){
+        askPower()
+    }
+    //查询电量
+    func askPower() {
+        if let characteristic = self.characteristic.value {
+            self.peripheral?.writeValue(Data([0xdd,0x11,0x03,0x00,0x14,0x88] as [UInt8]), for: characteristic, type: .withResponse)
+        }
+
     }
 }
