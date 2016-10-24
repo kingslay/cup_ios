@@ -79,7 +79,6 @@ class WaterViewController: ShareViewController {
          waterCycleView.waterplan = CGFloat(staticAccount?.waterplan?.intValue ?? staticAccount!.calculateProposalWater())
     }
     func setUpChartData(_ date: Foundation.Date) {
-        WaterModel.save(Foundation.Date(), amount: 80)
         var xVals = [String?]()
         var yVals = [BarChartDataEntry]()
         var water = 0
@@ -187,14 +186,16 @@ extension WaterViewController {
             if data[1] == 0x01 {
                 let check = data[1] &+ data[2] &+ data[3] &+ data[4] &+ data[5]
                 guard check == data[6] else {
+                    self.peripheral?.writeValue(Data([0x55,0x01,0x00,0x00,0x01,0xAA] as [UInt8]), for: characteristic, type: .withoutResponse)
                     return
                 }
                 let amount = Int(data[2])
                 let date = Date().ks.date(fromValues:[.hour:Int(data[3]),.minute:Int(data[4])])
                 WaterModel.save(date, amount: amount)
-                //确认喝水量 data[5] == 0x0a &&
+                //确认喝水量
                 if data[5] == 0x0a {
-                    self.peripheral?.writeValue(Data([0x55,0x01,0x00,0x00,0x01,0xAA] as [UInt8]), for: characteristic, type: .withoutResponse)
+                    setUpChartData(currentDate)
+                    self.peripheral?.writeValue(Data([0x55,0x01,0x01,0x00,0x02,0xAA] as [UInt8]), for: characteristic, type: .withoutResponse)
                 }
 
             }
@@ -202,6 +203,7 @@ extension WaterViewController {
             if data[1] == 0x03 {
                 let check = data[1] &+ data[2] &+ data[3]
                 guard check == data[4] else {
+                     self.peripheral?.writeValue(Data([0x77,0x03,0x00,0x00,0x03,0xcc] as [UInt8]), for: characteristic, type: .withoutResponse)
                     return
                 }
                 switch data[2] {
@@ -267,6 +269,9 @@ extension WaterViewController {
                         self.peripheral?.writeValue(Data(array), for: characteristic, type: .withResponse)
                     }
                 }
+            } else {
+                //取消闹钟
+                self.peripheral?.writeValue(Data([0x66,0x02,0x00,0x00,0x00,0xa0,0xa2,0xbb] as [UInt8]), for: characteristic, type: .withResponse)
             }
         }
     }
