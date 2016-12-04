@@ -96,7 +96,7 @@ extension CalendarView: CVCalendarViewDelegate {
         return true
     }
     func presentedDateUpdated(_ date: CVDate) {
-        dateButton.setTitle(date.convertedDate()?.ks.string(fromFormat:"yyyy年MM月dd日"), for: UIControlState())
+        dateButton.setTitle(date.convertedDate(calendar: Calendar.current)?.ks.string(fromFormat:"yyyy年MM月dd日"), for: UIControlState())
         update?(date)
     }
 }

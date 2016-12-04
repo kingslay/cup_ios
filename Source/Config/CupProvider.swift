@@ -60,11 +60,11 @@ extension CupMoya {
     public var method: Moya.Method {
         switch self {
         case .login(_,_),.phoneLogin(_):
-            return .GET
+            return .get
         case .clock(_),.temperature(_, _),.uploadImage(_,_):
-            return .POST
+            return .post
         default:
-            return .PUT
+            return .put
         }
     }
     public var parameters: [String: Any]? {
@@ -108,11 +108,11 @@ extension CupMoya {
         let url = target.baseURL.appendingPathComponent(target.path).absoluteString
         switch target {
         case .login(_,_),.phoneLogin(_):
-            return Endpoint(URL: url, sampleResponseClosure: {.networkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters)
+            return Endpoint(url: url, sampleResponseClosure: {.networkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters)
         case .uploadImage(_,_):
-            return Endpoint(URL: url, sampleResponseClosure: {.networkResponse(200, target.sampleData)}, method: target.method, parameters:nil , parameterEncoding: JSONEncoding(),httpHeaderFields: target.parameters as? [String : String])
+            return Endpoint(url: url, sampleResponseClosure: {.networkResponse(200, target.sampleData)}, method: target.method, parameters:nil , parameterEncoding: JSONEncoding(),httpHeaderFields: target.parameters as? [String : String])
         default:
-            return Endpoint(URL: url, sampleResponseClosure: {.networkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters, parameterEncoding: JSONEncoding())
+            return Endpoint(url: url, sampleResponseClosure: {.networkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters, parameterEncoding: JSONEncoding())
             
         }
     }

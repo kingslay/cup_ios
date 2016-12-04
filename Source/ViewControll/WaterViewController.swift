@@ -70,7 +70,7 @@ class WaterViewController: ShareViewController {
             }).addDisposableTo(ks.disposableBag)
         calendarView.update = { [unowned self] date in
             self.calendarView.ks.top(self.view.ks.bottom)
-            self.currentDate = date.convertedDate()!
+            self.currentDate = date.convertedDate(calendar: Calendar.current)!
         }
         currentDate = Foundation.Date()
     }

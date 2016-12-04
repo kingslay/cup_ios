@@ -1,13 +1,13 @@
 source 'https://github.com/CocoaPods/Specs.git'
 inhibit_all_warnings!
-platform:ios, "9.0"
+platform:ios, '9.0'
 use_frameworks!
 target :Cup do
     pod 'KSSwiftExtension/RxCocoa', :path => '../KSSwiftExtension'
     pod 'KSSwiftExtension/ViewKit', :path => '../KSSwiftExtension'
     pod 'KSJSONHelp/SQLiteStandalone', :path => '../KSJSONHelp'
     pod 'R.swift'
-    pod 'Moya/RxSwift', '8.0.0-beta.2'
+    pod 'Moya/RxSwift', '8.0.0-beta.5'
     pod 'RxCocoa'
     pod 'SwiftyJSON'
     pod 'AlamofireImage'
