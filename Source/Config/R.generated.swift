@@ -10,7 +10,7 @@ import UIKit
 /// This `R` struct is generated and contains references to static resources.
 struct R: Rswift.Validatable {
   fileprivate static let applicationLocale = hostingBundle.preferredLocalizations.first.flatMap(Locale.init) ?? Locale.current
-  fileprivate static let hostingBundle = Bundle(identifier: "im.meiyou.IMYTTQ2") ?? Bundle.main
+  fileprivate static let hostingBundle = Bundle(identifier: "com.weilancup.8am") ?? Bundle.main
   
   static func validate() throws {
     try intern.validate()
@@ -31,7 +31,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 55 images.
+  /// This `R.image` struct is generated, and contains static references to 72 images.
   struct image {
     /// Image `LOGO`.
     static let lOGO = Rswift.ImageResource(bundle: R.hostingBundle, name: "LOGO")
@@ -51,6 +51,22 @@ struct R: Rswift.Validatable {
     static let button_woman1 = Rswift.ImageResource(bundle: R.hostingBundle, name: "button_woman1")
     /// Image `button_woman2`.
     static let button_woman2 = Rswift.ImageResource(bundle: R.hostingBundle, name: "button_woman2")
+    /// Image `clock_close`.
+    static let clock_close = Rswift.ImageResource(bundle: R.hostingBundle, name: "clock_close")
+    /// Image `clock_open`.
+    static let clock_open = Rswift.ImageResource(bundle: R.hostingBundle, name: "clock_open")
+    /// Image `clock_up`.
+    static let clock_up = Rswift.ImageResource(bundle: R.hostingBundle, name: "clock_up")
+    /// Image `clock`.
+    static let clock = Rswift.ImageResource(bundle: R.hostingBundle, name: "clock")
+    /// Image `cup_adaptation`.
+    static let cup_adaptation = Rswift.ImageResource(bundle: R.hostingBundle, name: "cup_adaptation")
+    /// Image `cup_level`.
+    static let cup_level = Rswift.ImageResource(bundle: R.hostingBundle, name: "cup_level")
+    /// Image `cup_up`.
+    static let cup_up = Rswift.ImageResource(bundle: R.hostingBundle, name: "cup_up")
+    /// Image `cup`.
+    static let cup = Rswift.ImageResource(bundle: R.hostingBundle, name: "cup")
     /// Image `icon_Battery_charging`.
     static let icon_Battery_charging = Rswift.ImageResource(bundle: R.hostingBundle, name: "icon_Battery_charging")
     /// Image `icon_Battery_hight`.
@@ -127,6 +143,16 @@ struct R: Rswift.Validatable {
     static let logo1 = Rswift.ImageResource(bundle: R.hostingBundle, name: "logo-1")
     /// Image `logo-2`.
     static let logo2 = Rswift.ImageResource(bundle: R.hostingBundle, name: "logo-2")
+    /// Image `me_up`.
+    static let me_up = Rswift.ImageResource(bundle: R.hostingBundle, name: "me_up")
+    /// Image `me`.
+    static let me = Rswift.ImageResource(bundle: R.hostingBundle, name: "me")
+    /// Image `mine_photo`.
+    static let mine_photo = Rswift.ImageResource(bundle: R.hostingBundle, name: "mine_photo")
+    /// Image `photo`.
+    static let photo = Rswift.ImageResource(bundle: R.hostingBundle, name: "photo")
+    /// Image `plus`.
+    static let plus = Rswift.ImageResource(bundle: R.hostingBundle, name: "plus")
     /// Image `record_icon_time`.
     static let record_icon_time = Rswift.ImageResource(bundle: R.hostingBundle, name: "record_icon_time")
     /// Image `share_friend`.
@@ -139,6 +165,14 @@ struct R: Rswift.Validatable {
     static let share_tencent = Rswift.ImageResource(bundle: R.hostingBundle, name: "share_tencent")
     /// Image `share_weixin`.
     static let share_weixin = Rswift.ImageResource(bundle: R.hostingBundle, name: "share_weixin")
+    /// Image `tata_close`.
+    static let tata_close = Rswift.ImageResource(bundle: R.hostingBundle, name: "tata_close")
+    /// Image `已恒温`.
+    static let 已恒温 = Rswift.ImageResource(bundle: R.hostingBundle, name: "已恒温")
+    /// Image `恒温中`.
+    static let 恒温中 = Rswift.ImageResource(bundle: R.hostingBundle, name: "恒温中")
+    /// Image `自然温`.
+    static let 自然温 = Rswift.ImageResource(bundle: R.hostingBundle, name: "自然温")
     /// Image `闪屏`.
     static let 闪屏 = Rswift.ImageResource(bundle: R.hostingBundle, name: "闪屏")
     /// Image `默认头像`.
@@ -187,6 +221,46 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "button_woman2", bundle: ..., traitCollection: ...)`
     static func button_woman2(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.button_woman2, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "clock", bundle: ..., traitCollection: ...)`
+    static func clock(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.clock, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "clock_close", bundle: ..., traitCollection: ...)`
+    static func clock_close(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.clock_close, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "clock_open", bundle: ..., traitCollection: ...)`
+    static func clock_open(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.clock_open, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "clock_up", bundle: ..., traitCollection: ...)`
+    static func clock_up(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.clock_up, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "cup", bundle: ..., traitCollection: ...)`
+    static func cup(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.cup, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "cup_adaptation", bundle: ..., traitCollection: ...)`
+    static func cup_adaptation(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.cup_adaptation, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "cup_level", bundle: ..., traitCollection: ...)`
+    static func cup_level(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.cup_level, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "cup_up", bundle: ..., traitCollection: ...)`
+    static func cup_up(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.cup_up, compatibleWith: traitCollection)
     }
     
     /// `UIImage(named: "icon_Battery_charging", bundle: ..., traitCollection: ...)`
@@ -379,6 +453,31 @@ struct R: Rswift.Validatable {
       return UIKit.UIImage(resource: R.image.logo2, compatibleWith: traitCollection)
     }
     
+    /// `UIImage(named: "me", bundle: ..., traitCollection: ...)`
+    static func me(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.me, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "me_up", bundle: ..., traitCollection: ...)`
+    static func me_up(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.me_up, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "mine_photo", bundle: ..., traitCollection: ...)`
+    static func mine_photo(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.mine_photo, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "photo", bundle: ..., traitCollection: ...)`
+    static func photo(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.photo, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "plus", bundle: ..., traitCollection: ...)`
+    static func plus(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.plus, compatibleWith: traitCollection)
+    }
+    
     /// `UIImage(named: "record_icon_time", bundle: ..., traitCollection: ...)`
     static func record_icon_time(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.record_icon_time, compatibleWith: traitCollection)
@@ -407,6 +506,26 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "share_weixin", bundle: ..., traitCollection: ...)`
     static func share_weixin(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.share_weixin, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "tata_close", bundle: ..., traitCollection: ...)`
+    static func tata_close(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.tata_close, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "已恒温", bundle: ..., traitCollection: ...)`
+    static func 已恒温(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.已恒温, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "恒温中", bundle: ..., traitCollection: ...)`
+    static func 恒温中(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.恒温中, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "自然温", bundle: ..., traitCollection: ...)`
+    static func 自然温(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.自然温, compatibleWith: traitCollection)
     }
     
     /// `UIImage(named: "闪屏", bundle: ..., traitCollection: ...)`

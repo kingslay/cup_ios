@@ -1,51 +1,35 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="M2K-A1-37p">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="M2K-A1-37p">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--恒温-->
         <scene sceneID="YbW-CH-ibQ">
             <objects>
                 <navigationController id="KhA-yu-KI4" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="label_icon_Record_initial" selectedImage="label_icon_Record" id="30v-u0-gGX"/>
+                    <tabBarItem key="tabBarItem" title="恒温" image="label_icon_Record_initial" selectedImage="label_icon_Record" id="30v-u0-gGX"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z4D-2r-9n9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="7s5-8D-umf" kind="relationship" relationship="rootViewController" id="RPu-hW-ndk"/>
+                        <segue destination="etk-Tc-TKC" kind="relationship" relationship="rootViewController" id="WUb-Kj-hr8"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G8p-RX-phd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="546.13333333333333" y="615.33333333333337"/>
         </scene>
-        <!--饮水状况-->
-        <scene sceneID="uka-nI-8sx">
-            <objects>
-                <viewController id="7s5-8D-umf" customClass="WaterViewController" customModule="Cup" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="v5Z-aj-YRu"/>
-                        <viewControllerLayoutGuide type="bottom" id="Lcn-WP-cYx"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="DSm-kW-ZQn">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="饮水状况" id="sFb-I7-fRt"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zrb-HF-F5v" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="939" y="634"/>
-        </scene>
-        <!--Navigation Controller-->
+        <!--闹钟-->
         <scene sceneID="CSD-U0-Z3M">
             <objects>
                 <navigationController id="FXS-g4-2Gh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="label_icon_Clock_initial" selectedImage="label_icon_Clock" id="dXZ-pf-kZc"/>
+                    <tabBarItem key="tabBarItem" title="闹钟" image="label_icon_Clock_initial" selectedImage="label_icon_Clock" id="dXZ-pf-kZc"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gkT-rn-0u9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -63,15 +47,15 @@
             <objects>
                 <tableViewController id="sNu-C4-M4D" customClass="ClockTableViewController" customModule="Cup" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="7xZ-57-Cz8">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Vxq-Cf-qv9">
-                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vxq-Cf-qv9" id="Tme-5Y-gqV">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -87,25 +71,54 @@
             </objects>
             <point key="canvasLocation" x="939" y="-7"/>
         </scene>
+        <!--Cup View Controller-->
+        <scene sceneID="Kn3-3l-RO1">
+            <objects>
+                <tableViewController id="etk-Tc-TKC" customClass="CupViewController" customModule="Cup" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="slE-yZ-wNf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="6eg-0i-R0U">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6eg-0i-R0U" id="JMF-p0-Rxb">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="etk-Tc-TKC" id="Bhb-gA-u6B"/>
+                            <outlet property="delegate" destination="etk-Tc-TKC" id="zLa-XB-6av"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="YrR-dJ-Q1t"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iOt-d5-mQV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="950" y="685"/>
+        </scene>
         <!--个人中心-->
         <scene sceneID="JFz-NF-08c">
             <objects>
                 <tableViewController id="Wyg-1t-UTh" customClass="MineViewController" customModule="Cup" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="fW5-3Z-22z">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="a0B-dS-a2v">
-                            <rect key="frame" x="0.0" y="172" width="320" height="0.0"/>
+                            <rect key="frame" x="0.0" y="172" width="375" height="0.0"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="NpU-FC-NKn">
-                                <rect key="frame" x="0.0" y="92" width="320" height="80"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NpU-FC-NKn" id="yko-ce-OOI">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -122,11 +135,11 @@
             </objects>
             <point key="canvasLocation" x="925.33333333333337" y="1310.1866666666667"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--我-->
         <scene sceneID="0Bf-CD-xCF">
             <objects>
                 <navigationController id="gdv-md-aOT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="label_icon_Personal_initial" selectedImage="label_icon_Personal" id="wJe-rc-ey7"/>
+                    <tabBarItem key="tabBarItem" title="我" image="label_icon_Personal_initial" selectedImage="label_icon_Personal" id="wJe-rc-ey7"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rYp-FT-weh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -146,7 +159,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" id="cNv-Lw-z2k">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="FXS-g4-2Gh" kind="relationship" relationship="viewControllers" id="uZb-VS-cNo"/>
@@ -167,4 +180,9 @@
         <image name="label_icon_Record" width="24" height="20"/>
         <image name="label_icon_Record_initial" width="24" height="20"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
+    </simulatedMetricsContainer>
 </document>

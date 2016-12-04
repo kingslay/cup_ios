@@ -28,10 +28,11 @@ class MineViewController: UITableViewController {
         self.tableView.backgroundColor = Colors.background
         self.tableView.register(R.nib.mineTableViewCell)
         self.tableView.rowHeight = 51
-        datas = [[(R.image.icon_modify(),"个人资料修改"),
-                (R.image.icon_plan(),"饮水计划(ml)")],
-                 [(R.image.icon_account(),"帐号绑定"),
-                    (R.image.icon_warn(),"提醒设置"),
+        datas = [[(R.image.icon_modify(),"个人资料修改")],
+//                (R.image.icon_plan(),"饮水计划(ml)")],
+                 [
+//                    (R.image.icon_account(),"帐号绑定"),
+//                    (R.image.icon_warn(),"提醒设置"),
                     (R.image.icon_pairing(),"配对信息"),
                     (R.image.icon_nickname(),"固件升级"),
                     (R.image.icon_about(),"关于")]]
@@ -111,23 +112,23 @@ extension MineViewController {
         case (0,1):
             let vc = R.nib.waterplanViewController.firstView(owner: nil, options: nil)!
             self.navigationController?.ks.pushViewController(vc)
+//        case(1,0):
+//            let vc = R.nib.accoutBindViewController.firstView(owner: nil, options: nil)!
+//            vc.phoneLabel.text = staticAccount?.phone
+//            self.navigationController?.ks.pushViewController(vc)
+//        case(1,1):
+//            let vc = R.nib.pushSettingViewController.firstView(owner: nil, options: nil)!
+//            self.navigationController?.ks.pushViewController(vc)
         case(1,0):
-            let vc = R.nib.accoutBindViewController.firstView(owner: nil, options: nil)!
-            vc.phoneLabel.text = staticAccount?.phone
-            self.navigationController?.ks.pushViewController(vc)
-        case(1,1):
-            let vc = R.nib.pushSettingViewController.firstView(owner: nil, options: nil)!
-            self.navigationController?.ks.pushViewController(vc)
-        case(1,2):
             let vc = R.nib.firmwareViewController.firstView(owner: nil, options: nil)!
             vc.serialLabel.text = "序列号: " + (staticIdentifier ?? "")
             self.navigationController?.ks.pushViewController(vc)
-        case(1,3):
+        case(1,1):
             let vc = R.nib.firmwareViewController.firstView(owner: nil, options: nil)!
             vc.serialLabel.text = "序列号: " + (staticIdentifier ?? "")
             vc.updateButton.isHidden = false
             self.navigationController?.ks.pushViewController(vc)
-        case(1,4):
+        case(1,2):
             self.navigationController?.ks.pushViewController(R.nib.aboutUsViewController.firstView(owner: nil, options: nil)!)
         default:
             break;

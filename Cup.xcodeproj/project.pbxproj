@@ -529,7 +529,7 @@
 				TargetAttributes = {
 					3C80A5D01BCA5A9C0050B6B6 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = T63J6SF7QS;
+						DevelopmentTeam = 3GSRGS3539;
 						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -861,7 +861,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = T63J6SF7QS;
+				DEVELOPMENT_TEAM = 3GSRGS3539;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -870,7 +870,7 @@
 				);
 				INFOPLIST_FILE = Cup/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = im.meiyou.IMYTTQ2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.weilancup.8am;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Cup/Bridging-Header.h";
@@ -885,7 +885,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = T63J6SF7QS;
+				DEVELOPMENT_TEAM = 3GSRGS3539;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -894,7 +894,7 @@
 				);
 				INFOPLIST_FILE = Cup/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = im.meiyou.IMYTTQ2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.weilancup.8am;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Cup/Bridging-Header.h";
