@@ -12,7 +12,7 @@
         <scene sceneID="YbW-CH-ibQ">
             <objects>
                 <navigationController id="KhA-yu-KI4" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="恒温" image="label_icon_Record_initial" selectedImage="label_icon_Record" id="30v-u0-gGX"/>
+                    <tabBarItem key="tabBarItem" title="恒温" image="cup" selectedImage="cup_up" id="30v-u0-gGX"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z4D-2r-9n9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -173,12 +173,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="cup" width="26" height="26"/>
+        <image name="cup_up" width="26" height="26"/>
         <image name="label_icon_Clock" width="22" height="22"/>
         <image name="label_icon_Clock_initial" width="22" height="22"/>
         <image name="label_icon_Personal" width="20" height="22"/>
         <image name="label_icon_Personal_initial" width="20" height="22"/>
-        <image name="label_icon_Record" width="24" height="20"/>
-        <image name="label_icon_Record_initial" width="24" height="20"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

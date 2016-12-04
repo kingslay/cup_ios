@@ -39,7 +39,7 @@ class ClockTableViewController: UITableViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableHeaderView.ks.height(218)
+        tableHeaderView.ks.height(232)
         self.tableView.tableHeaderView = tableHeaderView
     }
     func addClock() {

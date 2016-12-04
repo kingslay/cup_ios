@@ -31,8 +31,7 @@ public enum CupMoya: TargetType  {
 }
 
 extension CupMoya {
-    //let host = "http://localhost:8280"
-    public var baseURL: URL { return URL(string: "https://114.55.91.36:8282")! }
+    public var baseURL: URL { return URL(string: "https://118.178.185.213:8282")! }
     public var task: Task {
         switch self {
         case .uploadImage(_,let multipart):
@@ -95,6 +94,7 @@ extension CupMoya {
         let serverTrustPolicies: [String: ServerTrustPolicy] = [
             // 不验证证书链，总是让 TLS 握手成功
             "121.199.75.79": .disableEvaluation,
+            "118.178.185.213": .disableEvaluation,
             "114.55.91.36": .disableEvaluation
         ]
         let configuration = URLSessionConfiguration.default

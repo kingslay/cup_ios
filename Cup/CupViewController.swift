@@ -152,12 +152,12 @@ extension CupViewController {
             make.centerY.equalTo(headerView)
         }
         let button = UIButton()
-        button.setImage(UIImage(named: R.image.icon_add.name), for: .normal)
+        button.setImage(UIImage(named: R.image.plus.name), for: .normal)
         headerView.addSubview(button)
         button.snp.makeConstraints { (make) -> Void in
             make.width.height.equalTo(27)
             make.right.equalTo(-12)
-            make.centerY.equalTo(0)
+            make.centerY.equalTo(headerView)
         }
         if self.temperatureArray.count >= 5 {
             button.removeFromSuperview()
@@ -191,8 +191,8 @@ extension CupViewController {
             self.temperatureArray.remove(at: indexPath.row)
             self.tableView.reloadData()
         }
-        editAction.backgroundColor = Colors.black
-        deleteAction.backgroundColor = Colors.black
+        editAction.backgroundColor = Colors.red
+        deleteAction.backgroundColor = Colors.red
         return [deleteAction,editAction]
     }
 }

@@ -1042,7 +1042,7 @@ struct _R: Rswift.Validatable {
       let name = "LaunchScreen"
       
       static func validate() throws {
-        if UIKit.UIImage(named: "闪屏") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named '闪屏' is used in storyboard 'LaunchScreen', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "LOGO") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'LOGO' is used in storyboard 'LaunchScreen', but couldn't be loaded.") }
       }
       
       fileprivate init() {}
@@ -1081,11 +1081,11 @@ struct _R: Rswift.Validatable {
       
       static func validate() throws {
         if UIKit.UIImage(named: "label_icon_Clock_initial") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'label_icon_Clock_initial' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "label_icon_Personal_initial") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'label_icon_Personal_initial' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "label_icon_Record") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'label_icon_Record' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "label_icon_Record_initial") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'label_icon_Record_initial' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "label_icon_Clock") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'label_icon_Clock' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "label_icon_Personal") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'label_icon_Personal' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "label_icon_Personal_initial") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'label_icon_Personal_initial' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "cup") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'cup' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "label_icon_Clock") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'label_icon_Clock' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "cup_up") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'cup_up' is used in storyboard 'Main', but couldn't be loaded.") }
       }
       
       fileprivate init() {}
