@@ -7,14 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C09A74B1DF422F5003F4B77 /* 5.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3C09A7471DF422F5003F4B77 /* 5.gif */; };
+		3C09A74C1DF422F5003F4B77 /* 6.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3C09A7481DF422F5003F4B77 /* 6.gif */; };
+		3C09A74D1DF422F5003F4B77 /* 7.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3C09A7491DF422F5003F4B77 /* 7.gif */; };
+		3C09A74E1DF422F5003F4B77 /* 8.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3C09A74A1DF422F5003F4B77 /* 8.gif */; };
 		3C1BD8671BEB8B47003E34F8 /* CentralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1BD8661BEB8B47003E34F8 /* CentralViewController.swift */; };
 		3C1BD86D1BEB8DA9003E34F8 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1BD86C1BEB8DA9003E34F8 /* Colors.swift */; };
 		3C1BD8761BEF85BD003E34F8 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C1BD8751BEF85BD003E34F8 /* JavaScriptCore.framework */; };
 		3C1BDF811BF0C9E3003E34F8 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C1BDF801BF0C9E3003E34F8 /* libz.tbd */; };
 		3C1BDF831BF0C9ED003E34F8 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C1BDF821BF0C9ED003E34F8 /* libicucore.tbd */; };
-		3C1BDF8A1BF0CA60003E34F8 /* SMS_SDKLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3C1BDF851BF0CA60003E34F8 /* SMS_SDKLocalizable.strings */; };
-		3C1BDF8B1BF0CA60003E34F8 /* MOBFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C1BDF871BF0CA60003E34F8 /* MOBFoundation.framework */; };
-		3C1BDF8C1BF0CA60003E34F8 /* SMS_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C1BDF881BF0CA60003E34F8 /* SMS_SDK.framework */; };
 		3C1BDF8D1BF0CA91003E34F8 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C1BDF731BF0C02F003E34F8 /* libstdc++.tbd */; };
 		3C1BDF8F1BF0D090003E34F8 /* SMS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C1BDF8E1BF0D090003E34F8 /* SMS.storyboard */; };
 		3C1BDF911BF0D5C7003E34F8 /* SMSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1BDF901BF0D5C7003E34F8 /* SMSViewController.swift */; };
@@ -54,10 +55,6 @@
 		3CDF8A7B1CEB02E500B2675B /* 2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3CDF8A731CEB02E500B2675B /* 2.gif */; };
 		3CDF8A7C1CEB02E500B2675B /* 3.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3CDF8A741CEB02E500B2675B /* 3.gif */; };
 		3CDF8A7D1CEB02E500B2675B /* 4.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3CDF8A751CEB02E500B2675B /* 4.gif */; };
-		3CDF8A7E1CEB02E500B2675B /* 5.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3CDF8A761CEB02E500B2675B /* 5.gif */; };
-		3CDF8A7F1CEB02E500B2675B /* 6.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3CDF8A771CEB02E500B2675B /* 6.gif */; };
-		3CDF8A801CEB02E500B2675B /* 7.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3CDF8A781CEB02E500B2675B /* 7.gif */; };
-		3CDF8A811CEB02E500B2675B /* 8.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3CDF8A791CEB02E500B2675B /* 8.gif */; };
 		3CECE6811BF38A0400C43890 /* FirmwareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CECE67F1BF38A0400C43890 /* FirmwareViewController.swift */; };
 		3CECE6821BF38A0400C43890 /* FirmwareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CECE6801BF38A0400C43890 /* FirmwareViewController.xib */; };
 		3CECE6851BF3996500C43890 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CECE6831BF3996500C43890 /* AboutUsViewController.swift */; };
@@ -104,6 +101,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3C09A7471DF422F5003F4B77 /* 5.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 5.gif; sourceTree = "<group>"; };
+		3C09A7481DF422F5003F4B77 /* 6.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 6.gif; sourceTree = "<group>"; };
+		3C09A7491DF422F5003F4B77 /* 7.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 7.gif; sourceTree = "<group>"; };
+		3C09A74A1DF422F5003F4B77 /* 8.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 8.gif; sourceTree = "<group>"; };
 		3C1BD8661BEB8B47003E34F8 /* CentralViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CentralViewController.swift; sourceTree = "<group>"; };
 		3C1BD86C1BEB8DA9003E34F8 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		3C1BD8751BEF85BD003E34F8 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -111,10 +112,6 @@
 		3C1BDF731BF0C02F003E34F8 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		3C1BDF801BF0C9E3003E34F8 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		3C1BDF821BF0C9ED003E34F8 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
-		3C1BDF861BF0CA60003E34F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SMS_SDKLocalizable.strings; sourceTree = "<group>"; };
-		3C1BDF871BF0CA60003E34F8 /* MOBFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOBFoundation.framework; sourceTree = "<group>"; };
-		3C1BDF881BF0CA60003E34F8 /* SMS_SDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SMS_SDK.framework; sourceTree = "<group>"; };
-		3C1BDF891BF0CA60003E34F8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SMS_SDKLocalizable.strings"; sourceTree = "<group>"; };
 		3C1BDF8E1BF0D090003E34F8 /* SMS.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SMS.storyboard; sourceTree = "<group>"; };
 		3C1BDF901BF0D5C7003E34F8 /* SMSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSViewController.swift; sourceTree = "<group>"; };
 		3C1BDF921BF235AA003E34F8 /* TemperatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemperatureViewController.swift; sourceTree = "<group>"; };
@@ -157,10 +154,6 @@
 		3CDF8A731CEB02E500B2675B /* 2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 2.gif; sourceTree = "<group>"; };
 		3CDF8A741CEB02E500B2675B /* 3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 3.gif; sourceTree = "<group>"; };
 		3CDF8A751CEB02E500B2675B /* 4.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 4.gif; sourceTree = "<group>"; };
-		3CDF8A761CEB02E500B2675B /* 5.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 5.gif; sourceTree = "<group>"; };
-		3CDF8A771CEB02E500B2675B /* 6.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 6.gif; sourceTree = "<group>"; };
-		3CDF8A781CEB02E500B2675B /* 7.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 7.gif; sourceTree = "<group>"; };
-		3CDF8A791CEB02E500B2675B /* 8.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 8.gif; sourceTree = "<group>"; };
 		3CECE67F1BF38A0400C43890 /* FirmwareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirmwareViewController.swift; sourceTree = "<group>"; };
 		3CECE6801BF38A0400C43890 /* FirmwareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirmwareViewController.xib; sourceTree = "<group>"; };
 		3CECE6831BF3996500C43890 /* AboutUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
@@ -208,8 +201,6 @@
 				3C1BDF8D1BF0CA91003E34F8 /* libstdc++.tbd in Frameworks */,
 				3C1BDF831BF0C9ED003E34F8 /* libicucore.tbd in Frameworks */,
 				3C1BDF811BF0C9E3003E34F8 /* libz.tbd in Frameworks */,
-				3C1BDF8B1BF0CA60003E34F8 /* MOBFoundation.framework in Frameworks */,
-				3C1BDF8C1BF0CA60003E34F8 /* SMS_SDK.framework in Frameworks */,
 				3C1BD8761BEF85BD003E34F8 /* JavaScriptCore.framework in Frameworks */,
 				57AE249C091790BAA6E3D324 /* Pods_Cup.framework in Frameworks */,
 			);
@@ -228,9 +219,6 @@
 		3C1BDF841BF0CA60003E34F8 /* SMS_SDK */ = {
 			isa = PBXGroup;
 			children = (
-				3C1BDF851BF0CA60003E34F8 /* SMS_SDKLocalizable.strings */,
-				3C1BDF871BF0CA60003E34F8 /* MOBFoundation.framework */,
-				3C1BDF881BF0CA60003E34F8 /* SMS_SDK.framework */,
 				3C1BDF8E1BF0D090003E34F8 /* SMS.storyboard */,
 				3C1BDF901BF0D5C7003E34F8 /* SMSViewController.swift */,
 			);
@@ -244,10 +232,10 @@
 				3CDF8A731CEB02E500B2675B /* 2.gif */,
 				3CDF8A741CEB02E500B2675B /* 3.gif */,
 				3CDF8A751CEB02E500B2675B /* 4.gif */,
-				3CDF8A761CEB02E500B2675B /* 5.gif */,
-				3CDF8A771CEB02E500B2675B /* 6.gif */,
-				3CDF8A781CEB02E500B2675B /* 7.gif */,
-				3CDF8A791CEB02E500B2675B /* 8.gif */,
+				3C09A7471DF422F5003F4B77 /* 5.gif */,
+				3C09A7481DF422F5003F4B77 /* 6.gif */,
+				3C09A7491DF422F5003F4B77 /* 7.gif */,
+				3C09A74A1DF422F5003F4B77 /* 8.gif */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -569,12 +557,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3CDF8A811CEB02E500B2675B /* 8.gif in Resources */,
-				3CDF8A801CEB02E500B2675B /* 7.gif in Resources */,
-				3CDF8A7E1CEB02E500B2675B /* 5.gif in Resources */,
 				3C9BFFC31D7C19FC007C0E89 /* WaterplanViewController.xib in Resources */,
+				3C09A74E1DF422F5003F4B77 /* 8.gif in Resources */,
 				3C80A5E11BCA5A9D0050B6B6 /* LaunchScreen.storyboard in Resources */,
 				3C1BDF951BF235AA003E34F8 /* TemperatureViewController.xib in Resources */,
+				3C09A74C1DF422F5003F4B77 /* 6.gif in Resources */,
 				3C5F31131D7DC42600F77355 /* WaterHistoryTableViewCell.xib in Resources */,
 				CBF5E3711BF1F1CE002D4F8F /* TemperatureTableViewCell.xib in Resources */,
 				3C9BFFB91D7C0092007C0E89 /* AccoutBindViewController.xib in Resources */,
@@ -586,15 +573,15 @@
 				3C9BFFAF1D7AA69F007C0E89 /* ClockTableViewCell.xib in Resources */,
 				3CCCA7171D5F672800AFC6A1 /* ShareSheet.xib in Resources */,
 				3C1BDF8F1BF0D090003E34F8 /* SMS.storyboard in Resources */,
-				3CDF8A7F1CEB02E500B2675B /* 6.gif in Resources */,
 				CBE1DC3B1BEC81F900E1FF29 /* MineTableViewCell.xib in Resources */,
 				3CDF8A7D1CEB02E500B2675B /* 4.gif in Resources */,
 				3C3947441BE9012300E7FE90 /* Images.xcassets in Resources */,
 				3C9BFFBF1D7C02BF007C0E89 /* PushSettingViewController.xib in Resources */,
-				3C1BDF8A1BF0CA60003E34F8 /* SMS_SDKLocalizable.strings in Resources */,
 				3C9BFFB71D7ADC39007C0E89 /* AddClockViewController.xib in Resources */,
 				CBBCA4001BF18A30002E04F7 /* ClockCollectionHeaderView.xib in Resources */,
+				3C09A74D1DF422F5003F4B77 /* 7.gif in Resources */,
 				3CECE6861BF3996500C43890 /* AboutUsViewController.xib in Resources */,
+				3C09A74B1DF422F5003F4B77 /* 5.gif in Resources */,
 				3CDF8A7B1CEB02E500B2675B /* 2.gif in Resources */,
 				CBE1DC291BE9EE5B00E1FF29 /* Main.storyboard in Resources */,
 				CBF5E3751BF1F6E3002D4F8F /* CupHeaderView.xib in Resources */,
@@ -746,15 +733,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		3C1BDF851BF0CA60003E34F8 /* SMS_SDKLocalizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3C1BDF861BF0CA60003E34F8 /* en */,
-				3C1BDF891BF0CA60003E34F8 /* zh-Hans */,
-			);
-			name = SMS_SDKLocalizable.strings;
-			sourceTree = "<group>";
-		};
 		3C80A5DF1BCA5A9D0050B6B6 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

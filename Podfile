@@ -19,5 +19,7 @@ target :Cup do
     pod 'Charts', :path => '../Charts'
 #    , :git => 'https://github.com/danielgindi/Charts.git', :branch => 'Chart2.2.5-Swift3.0'
     pod 'CVCalendar'
+    pod 'SMSSDK'
+    pod 'MOBFoundation_IDFA'
     #pod 'libWeChatSDK',:git => "git@github.com:kingslay/libWeChatSDK.git"
 end

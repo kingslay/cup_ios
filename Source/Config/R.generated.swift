@@ -732,13 +732,8 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.string` struct is generated, and contains static references to 1 localization tables.
+  /// This `R.string` struct is generated, and contains static references to 0 localization tables.
   struct string {
-    /// This `R.string.sMS_SDKLocalizable` struct is generated, and contains static references to 0 localization keys.
-    struct sMS_SDKLocalizable {
-      fileprivate init() {}
-    }
-    
     fileprivate init() {}
   }
   

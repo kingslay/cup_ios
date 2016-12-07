@@ -290,13 +290,13 @@ extension CupViewController {
             self.headerView?.meExplanation.text = self.temperatureArray[selectedIndex].explanation
             if let text = self.headerView?.cupTemperaturelabel.text,let cupTemperature = Int(text) {
                 if abs(cupTemperature - temperature) <= 1 {
-                    //self.headerView?.cupTemperatureImageView.image = R.image.已恒温()
+                    self.headerView?.cupTemperatureImageView.image = R.image.已恒温()
                     let alertController = UIAlertController(title: "亲! 水温已到达最适宜度数!", message: "请及时享用哦。", preferredStyle: .alert)
                     let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.default, handler: nil)
                     alertController.addAction(okAction)
                     present(alertController, animated: true, completion: nil)
                 }else{
-                    //self.headerView?.cupTemperatureImageView.image = R.image.恒温中()
+                    self.headerView?.cupTemperatureImageView.image = R.image.恒温中()
                 }
                 
             }
@@ -317,7 +317,7 @@ extension CupViewController {
             }
             let temperature = self.temperatureArray[selectedIndex].temperature
             if abs(Int(cupTemperature) - temperature) <= 1  {
-//                self.headerView?.cupTemperatureImageView.image = R.image.已恒温()
+                self.headerView?.cupTemperatureImageView.image = R.image.已恒温()
                 let alertController = UIAlertController(title: "亲! 水温已到达最适宜度数!", message: "请及时享用哦。", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.default, handler: nil)
                 alertController.addAction(okAction)

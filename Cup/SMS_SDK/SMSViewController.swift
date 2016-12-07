@@ -23,7 +23,9 @@ class SMSViewController: UIViewController {
   var count = 90
   override func viewDidLoad() {
     super.viewDidLoad()
-    SMSSDK.registerApp("16ece37bd2580", withSecret: "3e403d5017a8b968bc86b461f1f9d543")
+//    SMSSDK.registerApp("16ece37bd2580", withSecret: "3e403d5017a8b968bc86b461f1f9d543")
+    SMSSDK.registerApp("c104bd01f0ba", withSecret: "35cca6958f0f1192aac5ddf7c4bebab9")
+    SMSSDK.enableAppContactFriends(false)
     self.view.backgroundColor = Colors.background
     let image = UIColor.ks.createImage(Colors.red)
     self.verificationButton.setBackgroundImage(image, for: UIControlState())
@@ -35,7 +37,14 @@ class SMSViewController: UIViewController {
         SMSSDK.getVerificationCode(by: SMSGetCodeMethodSMS, phoneNumber: phone, zone: "86", customIdentifier: nil, result: {
           self.ks.clearAllNotice()
           if let error = $0 as? NSError {
-            self.ks.noticeError("\(error.userInfo["getVerificationCode"]!)", autoClear: true)
+            var message = error.userInfo["Action"]
+            if message == nil {
+                message = error.userInfo["getVerificationCode"]
+            }
+            if message == nil {
+                message = "未知错误"
+            }
+            self.ks.noticeError("\(message!)", autoClear: true)
           }else{
             self.loginButton.isEnabled = true
             self.verificationTextField.becomeFirstResponder()
@@ -55,7 +64,7 @@ class SMSViewController: UIViewController {
             self.phonelogin()
         } else {
             SMSSDK.commitVerificationCode(self.verificationTextField.text, phoneNumber: self.phoneTextField.text, zone: "86", result: {
-                if let error = $0 as? NSError {
+                if let error = $1 as? NSError {
                     self.ks.noticeError("\(error.userInfo["commitVerificationCode"]!)", autoClear: true)
                 }else{
                     self.phonelogin()
@@ -85,9 +94,9 @@ class SMSViewController: UIViewController {
     self.timer?.invalidate()
     self.view.isUserInteractionEnabled = false
     CupProvider.request(.phoneLogin(self.phoneTextField.text!)).filterSuccessfulStatusCodes().mapJSON().observeOn(MainScheduler.instance).subscribe(onNext: { (json) -> Void in
-      self.ks.clearAllNotice()
+        self.ks.clearAllNotice()
         staticAccount = AccountModel(from: json as! [String : AnyObject])
-      AccountModel.localSave()
+        AccountModel.localSave()
 //      if staticIdentifier == nil {
 //        self.presentViewController(CentralViewController(), animated: true, completion: nil)
 //      }else{

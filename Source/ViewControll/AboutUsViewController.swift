@@ -25,7 +25,7 @@ class AboutUsViewController: UITableViewController {
             make.centerX.equalTo(tableHeaderView)
         }
         let lable = UILabel()
-        lable.text = "贺迈新能源科技（上海）有限公司"
+        lable.text = "杭州未蓝智能科技有限公司"
         lable.textColor = Colors.pink
         lable.numberOfLines = -1
         lable.textAlignment = .center
@@ -57,7 +57,7 @@ extension AboutUsViewController {
         if (indexPath as NSIndexPath).row == 0 {
             UIApplication.shared.openURL(URL(string: "http://www.8amcup.com")!)
         } else if (indexPath as NSIndexPath).row == 1 {
-            UIApplication.shared.openURL(URL(string: "www.heatmatetech.com")!)
+            UIApplication.shared.openURL(URL(string: "https://shop152288103.taobao.com")!)
         }
     }
 }

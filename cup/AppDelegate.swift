@@ -23,21 +23,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 得到当前应用的版本号
         let infoDictionary = Bundle.main.infoDictionary
         let currentAppVersion = infoDictionary!["CFBundleShortVersionString"] as! String
-        
         let userDefaults = UserDefaults.standard
-        var appVersion = userDefaults.string(forKey: "appVersion")
+        let appVersion = userDefaults.string(forKey: "appVersion")
         // 如果appVersion为nil说明是第一次启动；如果appVersion不等于currentAppVersion说明是更新了
-//        if appVersion == nil {
-//            userDefaults.setValue(currentAppVersion, forKey: "appVersion")
-//            self.window?.rootViewController = R.nib.kSGuidanceViewController.firstView(owner: nil, options: nil)!
-//        }else{
+        if appVersion == nil {
+            userDefaults.setValue(currentAppVersion, forKey: "appVersion")
+            self.window?.rootViewController = R.nib.kSGuidanceViewController.firstView(owner: nil, options: nil)!
+        }else{
             if let dic = UserDefaults.standard.object(forKey: "sharedAccount") as? [String:AnyObject] {
                 staticAccount = AccountModel(from: dic)
               self.window?.rootViewController = R.storyboard.main.instantiateInitialViewController()
             }else{
                 self.window?.rootViewController = R.storyboard.sMS.instantiateInitialViewController()
             }
-//        }
+        }
         self.window?.makeKeyAndVisible()
         UIApplication.shared.keyWindow?.tintColor = Colors.red
         UISegmentedControl.appearance().tintColor = Colors.white

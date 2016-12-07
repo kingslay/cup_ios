@@ -37,7 +37,11 @@ class KSGuidanceViewController: UIViewController {
         }
         for i in 0..<numOfPages {
             let imageView = GIFImageView(frame: CGRect(x: frame.size.width * CGFloat(i), y: 0, width: frame.size.width, height: frame.size.height))
-            imageView.animate(withGIFNamed: "\(i + count).gif")
+            if i == 3 {
+                imageView.image = UIImage(named: "\(i + count).gif")
+            } else {
+                imageView.animate(withGIFNamed: "\(i + count).gif")
+            }
             scrollView.addSubview(imageView)
         }
         
