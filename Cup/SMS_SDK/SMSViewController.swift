@@ -24,7 +24,7 @@ class SMSViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 //    SMSSDK.registerApp("16ece37bd2580", withSecret: "3e403d5017a8b968bc86b461f1f9d543")
-    SMSSDK.registerApp("c104bd01f0ba", withSecret: "35cca6958f0f1192aac5ddf7c4bebab9")
+    SMSSDK.registerApp("19bc776526da4", withSecret: "43174205cb5782d98f3b2eb9289072ff")
     SMSSDK.enableAppContactFriends(false)
     self.view.backgroundColor = Colors.background
     let image = UIColor.ks.createImage(Colors.red)
