@@ -91,7 +91,21 @@ extension ClockTableViewController {
             self.clockArray.remove(at: indexPath.row)
             self.tableView.reloadData()
         }
+        let editAction = UITableViewRowAction(style: .default, title: "编辑") {
+            (action: UITableViewRowAction!, indexPath: IndexPath!) -> Void in
+            let vc = R.nib.addClockViewController.firstView(owner: nil, options: nil)!
+            vc.set(model:model)
+            vc.addModel = { [unowned self] in
+                self.clockArray.append($0)
+                self.clockArray.remove(at: self.clockArray.index(of: model)!)
+                self.tableView.reloadData()
+                model.delete()
+            }
+            self.navigationController!.ks.pushViewController(vc)
+        }
+
+        editAction.backgroundColor = Colors.red
         deleteAction.backgroundColor = Colors.red
-        return [deleteAction]
+        return [deleteAction,editAction]
     }
 }

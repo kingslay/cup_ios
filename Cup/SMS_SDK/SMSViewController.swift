@@ -24,6 +24,7 @@ class SMSViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     SMSSDK.registerApp("16ece37bd2580", withSecret: "3e403d5017a8b968bc86b461f1f9d543")
+    SMSSDK.enableAppContactFriends(false)
     self.view.backgroundColor = Colors.background
     let image = UIColor.ks.createImage(Colors.red)
     self.verificationButton.setBackgroundImage(image, for: UIControlState())
@@ -33,10 +34,17 @@ class SMSViewController: UIViewController {
       if let phone = self.phoneTextField.text , phone.checkMobileNumble() {
         self.ks.pleaseWait("发送验证码中")
         SMSSDK.getVerificationCode(by: SMSGetCodeMethodSMS, phoneNumber: phone, zone: "86", customIdentifier: nil, result: {
-          self.ks.clearAllNotice()
-          if let error = $0 as? NSError {
-            self.ks.noticeError("\(error.userInfo["getVerificationCode"]!)", autoClear: true)
-          }else{
+            self.ks.clearAllNotice()
+            if let error = $0 as? NSError {
+                var message = error.userInfo["Action"]
+                if message == nil {
+                    message = error.userInfo["getVerificationCode"]
+                }
+                if message == nil {
+                    message = "未知错误"
+                }
+                self.ks.noticeError("\(message!)", autoClear: true)
+            }else{
             self.loginButton.isEnabled = true
             self.verificationTextField.becomeFirstResponder()
             self.timer =  Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.setVerificationButtonText), userInfo: nil, repeats: true)
@@ -55,7 +63,7 @@ class SMSViewController: UIViewController {
             self.phonelogin()
         } else {
             SMSSDK.commitVerificationCode(self.verificationTextField.text, phoneNumber: self.phoneTextField.text, zone: "86", result: {
-                if let error = $0 as? NSError {
+                if let error = $1 as? NSError {
                     self.ks.noticeError("\(error.userInfo["commitVerificationCode"]!)", autoClear: true)
                 }else{
                     self.phonelogin()

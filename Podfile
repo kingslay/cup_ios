@@ -17,7 +17,8 @@ target :Cup do
     pod 'Gifu', '~> 2.0.0-rc'
     pod 'MonkeyKing'
     pod 'Charts', :path => '../Charts'
-#    , :git => 'https://github.com/danielgindi/Charts.git', :branch => 'Chart2.2.5-Swift3.0'
     pod 'CVCalendar'
+    pod 'SMSSDK'
+    pod 'MOBFoundation_IDFA'
     #pod 'libWeChatSDK',:git => "git@github.com:kingslay/libWeChatSDK.git"
 end

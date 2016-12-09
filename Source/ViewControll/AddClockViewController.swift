@@ -31,11 +31,16 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 class AddClockViewController: UIViewController {
     @IBOutlet weak var explanationTextField: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
+
     var addModel: ((ClockModel)->())?
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: R.image.icon_add(), style: .plain, target: self, action: #selector(complete))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "完成", style: .plain, target: self, action: #selector(complete))
         self.ks.autoAdjustKeyBoard()
+    }
+    func set(model: ClockModel) {
+        explanationTextField.text = model.explanation
+        datePicker.date = model.date
     }
     func complete() {
         let model = ClockModel(hour:  datePicker.date.ks.hour, minute: datePicker.date.ks.minute)
@@ -44,10 +49,10 @@ class AddClockViewController: UIViewController {
         } else {
             model.explanation = explanationTextField.placeholder!
         }
-        model.save()
         if let block = addModel {
             block(model)
         }
+        model.save()
         self.navigationController!.popViewController(animated: false)
     }
 
