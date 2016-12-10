@@ -36,9 +36,11 @@ class AddClockViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "完成", style: .plain, target: self, action: #selector(complete))
+        self.navigationItem.title = "添加闹钟"
         self.ks.autoAdjustKeyBoard()
     }
     func set(model: ClockModel) {
+        self.navigationItem.title = "编辑闹钟"
         explanationTextField.text = model.explanation
         datePicker.date = model.date
     }

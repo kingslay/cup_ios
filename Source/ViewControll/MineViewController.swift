@@ -121,11 +121,13 @@ extension MineViewController {
         case(1,2):
             let vc = R.nib.firmwareViewController.firstView(owner: nil, options: nil)!
             vc.serialLabel.text = "序列号: " + (staticIdentifier ?? "")
+            vc.navigationItem.title = "配对信息"
             self.navigationController?.ks.pushViewController(vc)
         case(1,3):
             let vc = R.nib.firmwareViewController.firstView(owner: nil, options: nil)!
             vc.serialLabel.text = "序列号: " + (staticIdentifier ?? "")
             vc.updateButton.isHidden = false
+            vc.navigationItem.title = "固件升级"
             self.navigationController?.ks.pushViewController(vc)
         case(1,4):
             self.navigationController?.ks.pushViewController(R.nib.aboutUsViewController.firstView(owner: nil, options: nil)!)

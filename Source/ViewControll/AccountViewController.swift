@@ -37,6 +37,7 @@ class AccountViewController: UITableViewController {
         self.tableView.rowHeight = 51
         self.tableView.backgroundColor = Colors.background
         self.tableView.tableFooterView = UIView()
+        self.navigationItem.title = "个人信息"
     }
     func initData(){
         datas = [[(R.image.icon_Head(),"我的头像","未添加",staticAccount?.avatar),
