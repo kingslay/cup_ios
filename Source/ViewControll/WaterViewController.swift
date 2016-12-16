@@ -32,6 +32,7 @@ class WaterViewController: ShareViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: R.image.icon_add(), style: .plain, target: self, action: #selector(addWater))
         self.setUpCentral()
         waterCycleView = WaterCycleView()
         waterCycleView.batteryRate = 100
@@ -77,6 +78,13 @@ class WaterViewController: ShareViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
          waterCycleView.waterplan = CGFloat(staticAccount?.waterplan?.intValue ?? staticAccount!.calculateProposalWater())
+    }
+    func addWater() {
+        let vc = R.nib.addWaterViewController.firstView(owner: nil)!
+        vc.addModel = { [unowned self] _ in
+            self.setUpChartData(self.currentDate)
+        }
+        self.navigationController!.ks.pushViewController(vc)
     }
     func setUpChartData(_ date: Foundation.Date) {
         var xVals = [String?]()

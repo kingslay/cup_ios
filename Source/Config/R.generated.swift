@@ -422,7 +422,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.nib` struct is generated, and contains static references to 18 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 19 nibs.
   struct nib {
     /// Nib `AboutUsViewController`.
     static let aboutUsViewController = _R.nib._AboutUsViewController()
@@ -432,6 +432,8 @@ struct R: Rswift.Validatable {
     static let accoutBindViewController = _R.nib._AccoutBindViewController()
     /// Nib `AddClockViewController`.
     static let addClockViewController = _R.nib._AddClockViewController()
+    /// Nib `AddWaterViewController`.
+    static let addWaterViewController = _R.nib._AddWaterViewController()
     /// Nib `ClockCollectionHeaderView`.
     static let clockCollectionHeaderView = _R.nib._ClockCollectionHeaderView()
     /// Nib `ClockCollectionViewCell`.
@@ -479,6 +481,11 @@ struct R: Rswift.Validatable {
     /// `UINib(name: "AddClockViewController", in: bundle)`
     static func addClockViewController(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.addClockViewController)
+    }
+    
+    /// `UINib(name: "AddWaterViewController", in: bundle)`
+    static func addWaterViewController(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.addWaterViewController)
     }
     
     /// `UINib(name: "ClockCollectionHeaderView", in: bundle)`
@@ -692,6 +699,17 @@ struct _R: Rswift.Validatable {
       
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> AddClockViewController? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? AddClockViewController
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct _AddWaterViewController: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "AddWaterViewController"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> AddWaterViewController? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? AddWaterViewController
       }
       
       fileprivate init() {}
