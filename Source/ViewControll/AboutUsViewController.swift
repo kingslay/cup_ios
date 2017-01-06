@@ -55,9 +55,9 @@ extension AboutUsViewController {
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath as NSIndexPath).row == 0 {
-            UIApplication.shared.openURL(URL(string: "http://www.8amcup.com")!)
+            UIApplication.shared.openURL(URL(string: "http://www.heatmatetech.com")!)
         } else if (indexPath as NSIndexPath).row == 1 {
-            UIApplication.shared.openURL(URL(string: "www.heatmatetech.com")!)
+            UIApplication.shared.openURL(URL(string: "http://www.heatmatetech.com")!)
         }
     }
 }
