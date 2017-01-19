@@ -40,10 +40,24 @@ class WaterModel: NSObject,Model,Storable,PrimaryKeyProtocol {
     static func fetch(_ date: Date,type:Int=0) -> [WaterModel]? {
         if type == 0 {
             let dic = ["date": date.ks.string(fromFormat:"yyyy-MM-dd")]
-            return WaterModel.fetch(dic: dic)
+            return WaterModel.fetch(dic: dic)?.sorted{
+                if $0.hour == $1.hour {
+                    return $0.minute < $1.minute
+                } else {
+                    return $0.hour < $1.hour
+                }
+            }
         } else {
-            let beginDate = date - (type == 1 ? [.day:7] : [.day:30])
-            let filter = CompositeFilter().greater("date", value: beginDate.ks.string(fromFormat:"yyyy-MM-dd")).lessOrEqual("date",value:date.ks.string(fromFormat:"yyyy-MM-dd"))
+            var beginDate: Date
+            var endDate: Date
+            if date < Date() {
+                beginDate = date - (type == 1 ? [.day:4] : [.day:15])
+                endDate = date + (type == 1 ? [.day:3] : [.day:15])
+            } else {
+                beginDate = date - (type == 1 ? [.day:7] : [.day:30])
+                endDate = date
+            }
+            let filter = CompositeFilter().greater("date", value: beginDate.ks.string(fromFormat:"yyyy-MM-dd")).lessOrEqual("date",value:endDate.ks.string(fromFormat:"yyyy-MM-dd"))
             return WaterModel.fetch(filter)
         }
     }

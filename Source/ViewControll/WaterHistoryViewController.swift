@@ -91,7 +91,7 @@ class WaterHistoryViewController: ShareViewController {
                     model.date = key
                     model.amount = value
                     return model
-                }
+                    }.sorted{ $0.date < $1.date }
             } else {
                 dataSource = [WaterModel]()
             }
@@ -151,7 +151,7 @@ extension WaterHistoryViewController: UITableViewDataSource,UITableViewDelegate 
         let model = dataSource[(indexPath as NSIndexPath).row]
         let deleteAction = UITableViewRowAction(style: .default, title: "删除") {[unowned self]
             (action: UITableViewRowAction!, indexPath: IndexPath!) -> Void in
-            if self.segmented.selectedSegmentIndex == 1 {
+            if self.segmented.selectedSegmentIndex == 0 {
                 model.delete()
             } else {
                 WaterModel.delete(dic: ["date":model.date])

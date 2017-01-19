@@ -77,7 +77,8 @@ class WaterViewController: ShareViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-         waterCycleView.waterplan = CGFloat(staticAccount?.waterplan?.intValue ?? staticAccount!.calculateProposalWater())
+        self.setUpChartData(currentDate)
+        waterCycleView.waterplan = CGFloat(staticAccount?.waterplan?.intValue ?? staticAccount!.calculateProposalWater())
     }
     func addWater() {
         let vc = R.nib.addWaterViewController.firstView(owner: nil)!
@@ -198,7 +199,7 @@ extension WaterViewController {
                     return
                 }
                 let amount = Int(data[2])
-                let date = Date().ks.date(fromValues:[.hour:Int(data[3]),.minute:Int(data[4])])
+                let date = Date().ks.date(fromValues:[.hour:Int(data[3]),.minute:Int(data[4]),.second:0])
                 WaterModel.save(date, amount: amount)
                 //确认喝水量
                 if data[5] == 0x0a {
