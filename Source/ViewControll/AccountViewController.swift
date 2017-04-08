@@ -43,8 +43,8 @@ class AccountViewController: UITableViewController {
         datas = [[(R.image.icon_Head(),"我的头像","未添加",staticAccount?.avatar),
             (R.image.icon_nickname(),"昵称","未添加",staticAccount?.nickname),
             (R.image.icon_gender(),"性别","男",staticAccount?.sex),
-            (R.image.icon_height(),"身高(cm)","身高是多少呢",staticAccount?.height != nil ? "\(staticAccount!.height!)" : nil),
-            (R.image.icon_weight(),"体重","体重是多少呢",staticAccount?.weight != nil ? "\(staticAccount!.weight!)kg" : nil),
+            (R.image.icon_height(),"身高(cm)","身高是多少呢",staticAccount?.height != nil ? "\(staticAccount!.height!.doubleValue)" : nil),
+            (R.image.icon_weight(),"体重","体重是多少呢",staticAccount?.weight != nil ? "\(staticAccount!.weight!.doubleValue)kg" : nil),
             (R.image.icon_age(),"生日","生日是什么时候",staticAccount?.birthday)]]
     }
     override func viewWillDisappear(_ animated: Bool) {
@@ -100,6 +100,10 @@ extension AccountViewController {
             cell.valueTextField.inputAccessoryView = navigationAccessoryView
             let pickerView = KSPickerView()
             pickerView.pickerData = [Array(60...250).map{"\($0)"},Array(0...9).map{".\($0)cm"}]
+            var row = 100
+            if let height = staticAccount?.height {
+                row = height.intValue - 60
+            }
             pickerView.selectRow(100, inComponent: 0, animated: false)
             cell.valueTextField.inputView = pickerView
             pickerView.callBackBlock = {
@@ -112,12 +116,17 @@ extension AccountViewController {
             cell.valueTextField.inputAccessoryView = navigationAccessoryView
             let pickerView = KSPickerView()
             pickerView.pickerData = [Array(30...150).map{"\($0)"},Array(0...9).map{".\($0)kg"}]
-            pickerView.selectRow(20, inComponent: 0, animated: false)
+            var row = 20
+            if let weight = staticAccount?.weight {
+                row = weight.intValue - 30
+            }
+            pickerView.selectRow(row, inComponent: 0, animated: false)
             cell.valueTextField.inputView = pickerView
             pickerView.callBackBlock = {
                 [unowned cell] in
-                staticAccount?.weight =  NSNumber(value: Double($0[0]+30) + Double($0[1])/10)
-                cell.valueTextField.text = "\(staticAccount!.weight!)kg"
+                let weight = Double($0[0]+30) + Double($0[1])/10
+                staticAccount?.weight = NSNumber(value: weight)
+                cell.valueTextField.text = "\(weight)kg"
             }
 
         case (0,5):

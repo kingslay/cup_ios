@@ -11,7 +11,12 @@ import CVCalendar
 import KSSwiftExtension
 
 class CalendarView: UIView {
-    var update: ((_ date: CVDate)->Void)?
+    var update: ((_ date: Date)->Void)?
+    var currentDate = Foundation.Date() {
+        didSet{
+            dateButton.setTitle(currentDate.ks.string(fromFormat:" yyyy年MM月dd日"), for: UIControlState())
+        }
+    }
     fileprivate var nextButton = UIButton()
     fileprivate var preButton = UIButton()
     fileprivate var calendarView = CVCalendarView()
@@ -36,7 +41,6 @@ class CalendarView: UIView {
         dateButton.setImage(R.image.icon_calendar(), for: .normal)
         dateButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         dateButton.setTitleColor(Colors.pink, for: UIControlState())
-        dateButton.setTitle(Foundation.Date().ks.string(fromFormat:" yyyy年MM月dd日"), for: UIControlState())
         topView.addSubview(dateButton)
         menuView.frame = CGRect(x: 0, y: topView.ks.bottom, width: frame.width, height: 24)
         addSubview(menuView)
@@ -53,11 +57,18 @@ class CalendarView: UIView {
         nextButton.rx.tap.subscribe(onNext: { [unowned self] in
             self.calendarView.loadNextView()
         }).addDisposableTo(ks.disposableBag)
+        let tapGest = UITapGestureRecognizer()
+        self.addGestureRecognizer(tapGest)
+        tapGest.rx.event.subscribe(onNext: { [unowned self]_ in
+            self.update?(self.currentDate)
+        }).addDisposableTo(ks.disposableBag)
+        dateButton.setTitle(currentDate.ks.string(fromFormat:" yyyy年MM月dd日"), for: UIControlState())
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
     func commitCalendarViewUpdate() {
         calendarView.commitCalendarViewUpdate()
         menuView.commitMenuViewUpdate()
@@ -93,11 +104,13 @@ extension CalendarView: CVCalendarViewDelegate {
         return false
     }
     func shouldAutoSelectDayOnMonthChange() -> Bool {
-        return true
+        return false
     }
     func presentedDateUpdated(_ date: CVDate) {
-        dateButton.setTitle(date.convertedDate(calendar: Calendar.current)?.ks.string(fromFormat:"yyyy年MM月dd日"), for: UIControlState())
-        update?(date)
+        if let d = date.convertedDate(calendar: Calendar.current) {
+            self.currentDate = d
+            update?(d)
+        }
     }
 }
 extension CalendarView: CVCalendarMenuViewDelegate {

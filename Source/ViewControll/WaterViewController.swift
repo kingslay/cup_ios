@@ -24,6 +24,7 @@ class WaterViewController: ShareViewController {
     lazy var dateButton = UIButton()
     var calendarView: CalendarView!
     var waterCycleView: WaterCycleView!
+    var waterData: Data?
     var currentDate = Foundation.Date() {
         didSet{
             self.dateButton.setTitle(currentDate.ks.string(fromFormat:"yyyy年MM月dd日"), for: UIControlState())
@@ -71,9 +72,14 @@ class WaterViewController: ShareViewController {
             }).addDisposableTo(ks.disposableBag)
         calendarView.update = { [unowned self] date in
             self.calendarView.ks.top(self.view.ks.bottom)
-            self.currentDate = date.convertedDate(calendar: Calendar.current)!
+            self.currentDate = date
         }
         currentDate = Foundation.Date()
+//        handleWaterData(Data([0x55,0x01,0x02,0x14,0x25,0x00,0x3c,0xaa,0x55,0x01,0xfe
+//            ,0x14,0x24,0x00,0x37,0xaa,0x55,0x01,0x18,0x14,] as [UInt8]))
+//        handleWaterData(Data([0x27,0x00,0x54,0xaa] as [UInt8]))
+//        handleWaterData(Data([0x55,0x01,0x02,0x14,0x20,0x0a,0x41,0xaa] as [UInt8]))
+
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -190,29 +196,20 @@ extension WaterViewController {
         guard let data = characteristic.value else {
             return
         }
-        //喝水量
-        if data[0] == 0x55 && data.count >= 8{
+        handleWaterData(data)
+    }
+    func handleWaterData(_ data: Data) {
+        if waterData != nil {
+            waterData!.append(data)
+        } else if data[0] == 0x55 && data.count >= 8 {//喝水量
             if data[1] == 0x01 {
-                let check = data[1] &+ data[2] &+ data[3] &+ data[4] &+ data[5]
-                guard check == data[6] else {
-                    self.peripheral?.writeValue(Data([0x55,0x01,0x00,0x00,0x01,0xAA] as [UInt8]), for: characteristic, type: .withoutResponse)
-                    return
-                }
-                let amount = Int(data[2])
-                let date = Date().ks.date(fromValues:[.hour:Int(data[3]),.minute:Int(data[4]),.second:0])
-                WaterModel.save(date, amount: amount)
-                //确认喝水量
-                if data[5] == 0x0a {
-                    setUpChartData(currentDate)
-                    self.peripheral?.writeValue(Data([0x55,0x01,0x01,0x00,0x02,0xAA] as [UInt8]), for: characteristic, type: .withoutResponse)
-                }
-
+                waterData = data
             }
         } else if data[0] == 0x77 && data.count >= 6 {
             if data[1] == 0x03 {
                 let check = data[1] &+ data[2] &+ data[3]
                 guard check == data[4] else {
-                     self.peripheral?.writeValue(Data([0x77,0x03,0x00,0x00,0x03,0xcc] as [UInt8]), for: characteristic, type: .withoutResponse)
+                    write(value:[0x77,0x03,0x00,0x00,0x03,0xcc])
                     return
                 }
                 switch data[2] {
@@ -230,12 +227,40 @@ extension WaterViewController {
                     waterCycleView.batteryRate = 100
                 }
                 //确认电量
-                self.peripheral?.writeValue(Data([0x77,0x03,0x01,0x00,0x04,0xcc] as [UInt8]), for: characteristic, type: .withoutResponse)
+                write(value:[0x77,0x03,0x01,0x00,0x04,0xcc])
             }
         } else if data[0] == 0x66 {
             print(data)
         }
+        if let waterData = waterData {
+            let count = waterData.count
+            if (count >= 8 && waterData[count-3] == 0x0a) {
+                defer {
+                }
+                for i in 0..<count/8 {
+                    let check = waterData[8*i+1] &+ waterData[8*i+2] &+ waterData[8*i+3] &+ waterData[8*i+4] &+ waterData[8*i+5]
+                    guard check == waterData[8*i+6] else {
+                        write(value:[0x55,0x01,0x00,0x00,0x01,0xAA])
+                        self.waterData = nil
+                        return
+                    }
+                    let amount = Int(waterData[8*i+2])
+                    let date = Date().ks.date(fromValues:[.hour:Int(waterData[8*i+3]),.minute:Int(waterData[8*i+4])])
+                    WaterModel.save(date, amount: amount)
 
+                }
+                //确认喝水量
+                setUpChartData(currentDate)
+                write(value:[0x55,0x01,0x01,0x00,0x02,0xAA])
+                self.waterData = nil
+            }
+        }
+
+    }
+    func write(value: [UInt8]) {
+        if let characteristic = self.characteristic.value {
+            self.peripheral?.writeValue(Data(value), for: characteristic, type: .withoutResponse)
+        }
     }
     func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
 
