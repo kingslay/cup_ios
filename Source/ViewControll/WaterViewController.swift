@@ -25,6 +25,8 @@ class WaterViewController: ShareViewController {
     var calendarView: CalendarView!
     var waterCycleView: WaterCycleView!
     var waterData: Data?
+    //发送结束码的时间。要超过5秒才发送结束码
+    var writeDate: Date?
     var currentDate = Foundation.Date() {
         didSet{
             self.dateButton.setTitle(currentDate.ks.string(fromFormat:"yyyy年MM月dd日"), for: UIControlState())
@@ -79,7 +81,12 @@ class WaterViewController: ShareViewController {
 //            ,0x14,0x24,0x00,0x37,0xaa,0x55,0x01,0x18,0x14,] as [UInt8]))
 //        handleWaterData(Data([0x27,0x00,0x54,0xaa] as [UInt8]))
 //        handleWaterData(Data([0x55,0x01,0x02,0x14,0x20,0x0a,0x41,0xaa] as [UInt8]))
-
+//        Async.main(after: 1) { [unowned self] _ in
+//            self.handleWaterData(Data([0x55,0x01,0x02,0x14,0x20,0x0a,0x41,0xaa] as [UInt8]))
+//        }
+//        Async.main(after: 6) { [unowned self] _ in
+//            self.handleWaterData(Data([0x55,0x01,0x02,0x14,0x20,0x0a,0x41,0xaa] as [UInt8]))
+//        }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -245,14 +252,23 @@ extension WaterViewController {
                         return
                     }
                     let amount = Int(waterData[8*i+2])
-                    let date = Date().ks.date(fromValues:[.hour:Int(waterData[8*i+3]),.minute:Int(waterData[8*i+4])])
+                    let hour = Int(waterData[8*i+3])
+                    let minute = Int(waterData[8*i+4])
+                    let date = Date().ks.date(fromValues:[.hour:hour,.minute:minute,.second:0])
                     WaterModel.save(date, amount: amount)
 
                 }
-                //确认喝水量
                 setUpChartData(currentDate)
-                write(value:[0x55,0x01,0x01,0x00,0x02,0xAA])
                 self.waterData = nil
+                //确认喝水量,要隔5秒以上才能再次发送喝水量
+                if let date = writeDate {
+                    let interval = Date().timeIntervalSince(date)
+                    if interval < 5 {
+                        return
+                    }
+                }
+                write(value:[0x55,0x01,0x01,0x00,0x02,0xAA])
+                writeDate = Date()
             }
         }
 

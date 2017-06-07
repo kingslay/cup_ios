@@ -154,14 +154,14 @@ extension AccountViewController {
         switch ((indexPath as NSIndexPath).section,(indexPath as NSIndexPath).row) {
         case (0,0):
             let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            let albumAction = UIAlertAction(title: "从相册选择", style: UIAlertActionStyle.default) {
+            let albumAction = UIAlertAction(title: "从相册选择", style: UIAlertActionStyle.default) { [unowned self]
                 (action: UIAlertAction!) -> Void in
                 let imagePickerController = UIImagePickerController()
                 imagePickerController.delegate = self
-                imagePickerController.sourceType = .savedPhotosAlbum
+                imagePickerController.sourceType = .photoLibrary
                 self.present(imagePickerController, animated: true, completion: nil)
             }
-            let pictureAction = UIAlertAction(title: "拍照", style: UIAlertActionStyle.default) {
+            let pictureAction = UIAlertAction(title: "拍照", style: UIAlertActionStyle.default) {[unowned self]
                 (action: UIAlertAction!) -> Void in
                 let imagePickerController = UIImagePickerController()
                 imagePickerController.delegate = self
